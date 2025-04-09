@@ -1,5 +1,5 @@
 ## Lilian Chan, University of Guelph
-## Arctic Vector-borne disease transmission suitability model
+## Arctic vector-borne disease transmission suitability model
 ##
 ## Purpose: use Bayesian inference (JAGS) to fit TPCs for mosquito development 
 ## rate (MDR) for Aedes nigripes
@@ -34,6 +34,16 @@ setwd("~/Documents/UofG/Arctic-VBD")
 ###### 1. Load and process data ----
 ##########
 
-nigripes <- 
+data <- read_csv("data/data-processed/TraitData_MDR.csv")
+unique(data$species)
+
+# Subset data
+data.MDR.nigripes <- subset(data, species == "nigripes")
+data.MDR.sierrensis <- subset(data, species == "sierrensis")
+
+# Plot the data
+data %>% ggplot() +
+  geom_point(aes(x = temp, y = trait, color = species), position = "jitter") +
+  theme_bw()
 
 
