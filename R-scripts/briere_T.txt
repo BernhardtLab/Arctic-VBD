@@ -2,9 +2,9 @@
     model{
 
     ## Priors
+    cf.q ~ dunif(0, 1)
     cf.T0 ~ dunif(0, 20)
     cf.Tm ~ dunif(20, 45)
-    cf.q ~ dunif(0, 1)
     cf.sigma ~ dunif(0, 1000)
     cf.tau <- 1 / (cf.sigma * cf.sigma)
 
