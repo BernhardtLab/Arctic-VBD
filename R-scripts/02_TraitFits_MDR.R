@@ -115,7 +115,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 # )
 
 ## Save the model as Rdata 
-#save(MDR.nigripes.bri.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
+save(MDR.nigripes.bri.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
