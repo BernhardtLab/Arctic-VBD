@@ -31,7 +31,6 @@
 ##########
 ###### 0. Set-up workspace ----
 ##########
-
 library(tidyverse)
 library(readxl)
 library(janitor)
@@ -77,18 +76,16 @@ nb <- 10000 # number of 'burn in' iterations to discard
 nt <- 100 # thinning rate - jags saves every nt iterations in each chain
 nc <- 5 # number of chains
 
-##### Temp sequence for derived quantity calculations
-# For actual fits
-# Temp.xs <- seq(0, 45, 0.1)
-# N.Temp.xs <-length(Temp.xs)
-
-# For priors - fewer temps for derived calculations makes it go faster
-Temp.xs <- seq(0, 45, 0.5)
-N.Temp.xs <-length(Temp.xs)
 
 ##########
 ###### 2A. Fit MDR thermal responses with uniform priors (Ae. nigripes): Briere ----
 ##########
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
+
 
 ##### Set data
 data <- data.MDR.nigripes
@@ -115,7 +112,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 # )
 
 ## Save the model as Rdata 
-save(MDR.nigripes.bri.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
+#save(MDR.nigripes.bri.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
@@ -159,6 +156,11 @@ plot.MDR.nigripes.bri.uni
 ##########
 ###### 2B. Fit MDR thermal responses for priors (Ae. sierrensis): Briere ----
 ##########
+
+##### Temp sequence for derived quantity calculations
+# For priors - fewer temps for derived calculations makes it go faster
+Temp.xs <- seq(0, 45, 0.5)
+N.Temp.xs <-length(Temp.xs)
 
 ##### Set data
 data <- data.MDR.sierrensis
@@ -246,14 +248,14 @@ MDR.nigripes.prior.gamma.fits = apply(MDR.nigripes.prior.cf.dists, 2,
 
 
 MDR.hypers <- MDR.nigripes.prior.gamma.fits
-save(MDR.hypers, file = "R-scripts/R2jags-objects/MDRhypers.bri.Rsave")
+#save(MDR.hypers, file = "R-scripts/R2jags-objects/MDRhypers.bri.Rsave")
 
 
 ##########
 ###### 2D. Fit MDR thermal responses with data-informed priors (Ae. nigripes): Briere ----
 ##########
 
-load("R-scripts/R2jags-objects/MDRhypers.Rsave")
+load("R-scripts/R2jags-objects/MDRhypers.bri.Rsave")
 MDR.nigripes.prior.gamma.fits <- MDR.hypers
 
 ##### Temp sequence for derived quantity calculations
@@ -275,20 +277,20 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, hypers = hypers)
 
 ##### Run JAGS -----
-# MDR.nigripes.bri.inf <- jags(data = jag.data, 
-#                              inits = inits, 
-#                              parameters.to.save = parameters, 
-#                              model.file = "R-scripts/briere_inf.txt",
-#                              n.thin = nt, 
-#                              n.chains = nc, 
-#                              n.burnin = nb, 
-#                              n.iter = ni, 
-#                              DIC = T, 
-#                              working.directory = getwd()
-# )
+MDR.nigripes.bri.inf <- jags(data = jag.data,
+                             inits = inits,
+                             parameters.to.save = parameters,
+                             model.file = "R-scripts/briere_inf.txt",
+                             n.thin = nt,
+                             n.chains = nc,
+                             n.burnin = nb,
+                             n.iter = ni,
+                             DIC = T,
+                             working.directory = getwd()
+)
 
 ## Save the model as Rdata 
-#save(MDR.nigripes.bri.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
+save(MDR.nigripes.bri.inf, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
@@ -374,7 +376,7 @@ plot.all <- df.all %>%
 
 plot.all
 
-#ggsave("figures/MDR.all.png", plot.all, 
+#ggsave("figures/MDR.all.bri.png", plot.all, 
 #        width = 10.3, height = 5.6)
 
 
@@ -382,6 +384,11 @@ plot.all
 ##########
 ###### 3A. Fit MDR thermal responses with uniform priors (Ae. nigripes): Quadratic ----
 ##########
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
 
 ##### Set data
 data <- data.MDR.nigripes
@@ -395,14 +402,14 @@ temp <- data$temp
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
 
 # ##### Run JAGS -----
-# MDR.nigripes.quad.uni <- jags(data = jag.data, 
-#                               inits = inits, 
-#                               parameters.to.save = parameters, 
+# MDR.nigripes.quad.uni <- jags(data = jag.data,
+#                               inits = inits,
+#                               parameters.to.save = parameters,
 #                               model.file = "R-scripts/quad_T.txt",
-#                               n.chains = nc, 
-#                               n.burnin = nb, 
-#                               n.iter = ni, 
-#                               DIC = T, 
+#                               n.chains = nc,
+#                               n.burnin = nb,
+#                               n.iter = ni,
+#                               DIC = T,
 #                               working.directory = getwd()
 # )
 
@@ -452,6 +459,12 @@ plot.MDR.nigripes.quad.uni
 ###### 3B. Fit MDR thermal responses for priors (Ae. sierrensis): Quadratic ----
 ##########
 
+##### Temp sequence for derived quantity calculations
+# For priors - fewer temps for derived calculations makes it go faster
+Temp.xs <- seq(0, 45, 0.5)
+N.Temp.xs <-length(Temp.xs)
+
+
 ##### Set data
 data <- data.MDR.sierrensis
 
@@ -479,7 +492,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 # )
 
 ## Save the model as Rdata 
-#save(MDR.sierrensis.quad.uni, file = "R-scripts/R2jags-objects/MDR.sierrensis.quad.uni.Rdata")
+# save(MDR.sierrensis.quad.uni, file = "R-scripts/R2jags-objects/MDR.sierrensis.quad.uni.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/MDR.sierrensis.quad.uni.Rdata")
@@ -567,20 +580,20 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, hypers = hypers)
 
 ##### Run JAGS -----
-# MDR.nigripes.quad.inf <- jags(data = jag.data, 
-#                              inits = inits, 
-#                              parameters.to.save = parameters, 
-#                              model.file = "R-scripts/quad_inf.txt",
-#                              n.thin = nt, 
-#                              n.chains = nc, 
-#                              n.burnin = nb, 
-#                              n.iter = ni, 
-#                              DIC = T, 
-#                              working.directory = getwd()
-# )
+MDR.nigripes.quad.inf <- jags(data = jag.data,
+                             inits = inits,
+                             parameters.to.save = parameters,
+                             model.file = "R-scripts/quad_inf.txt",
+                             n.thin = nt,
+                             n.chains = nc,
+                             n.burnin = nb,
+                             n.iter = ni,
+                             DIC = T,
+                             working.directory = getwd()
+)
 
 ## Save the model as Rdata 
-#save(MDR.nigripes.quad.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
+#save(MDR.nigripes.quad.inf, file = "R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
@@ -639,7 +652,7 @@ df.MDR.nigripes.quad.inf <- df.MDR.nigripes.quad.inf %>%
 # Combine the three dataframes
 df.all <- rbind(df.MDR.nigripes.quad.uni, df.MDR.sierrensis.quad.uni, df.MDR.nigripes.quad.inf)
 
-# Plot
+##### Plot
 plot.all <- df.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
@@ -666,5 +679,47 @@ plot.all <- df.all %>%
 
 plot.all
 
-#ggsave("figures/MDR.all.png", plot.all, 
+# ggsave("figures/MDR.all.quad.png", plot.all,
+#        width = 10.3, height = 5.6)
+
+##### Plot all nigripes TPCs for comparison ----
+# Add an identifying column in each model output dataframe
+df.MDR.nigripes.bri.uni <- df.MDR.nigripes.bri.uni %>% 
+  mutate(type = "Briere (uni)")
+
+df.MDR.nigripes.bri.inf <- df.MDR.nigripes.bri.inf %>% 
+  mutate(type = "Briere (inf)")
+
+df.MDR.nigripes.quad.uni <- df.MDR.nigripes.quad.uni %>% 
+  mutate(type = "Quadratic (uni)")
+
+df.MDR.nigripes.quad.inf <- df.MDR.nigripes.quad.inf %>% 
+  mutate(type = "Quadratic (inf)")
+
+# Combine the three dataframes
+df.all <- rbind(df.MDR.nigripes.bri.uni, df.MDR.nigripes.bri.inf, 
+                df.MDR.nigripes.quad.uni, df.MDR.nigripes.quad.inf)
+
+##### Plot
+plot.all <- df.all %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
+  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_point(data = data.MDR.nigripes, aes(x = temp, y = trait), size = 2) +
+  #geom_point(data = data.MDR.sierrensis, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Development rate (days-1)"
+  ) +
+  # Customize the colours
+  scale_fill_jco() +
+  scale_color_jco() +
+  theme_bw()
+
+plot.all
+
+# ggsave("figures/MDR.all.nigripes.png", plot.all,
 #        width = 10.3, height = 5.6)
