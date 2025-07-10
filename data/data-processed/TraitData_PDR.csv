@@ -1,0 +1,26 @@
+trait_name,temp,trait,genus,species,host.genus,host.species,trait_def,citation,data_source,notes
+1/PDR,24,12,varestrongylus,eleguneniensis,deroceras,laeve,days first L3 observed,Kafle_2018_ParasitVectors,table 1,
+1/PDR,20,16,varestrongylus,eleguneniensis,deroceras,laeve,days first L3 observed,Kafle_2018_ParasitVectors,table 1,
+1/PDR,15,31,varestrongylus,eleguneniensis,deroceras,laeve,days first L3 observed,Kafle_2018_ParasitVectors,table 1,
+1/PDR,12.5,61,varestrongylus,eleguneniensis,deroceras,laeve,days first L3 observed,Kafle_2018_ParasitVectors,table 1,
+1/PDR,8.5,1000,varestrongylus,eleguneniensis,deroceras,laeve,days first L3 observed,Kafle_2018_ParasitVectors,table 1,did not develop after 101 days
+1/PDR,14.1,1000,setaria,tundra,see notes,NA,days first L3 observed,Laaksonen_2009_ParasitVectors,result text,development was not completed; outdoor conditions; parasites a mixture of aedes spp.
+1/PDR,21,14,setaria,tundra,see notes,NA,days first L3 observed,Laaksonen_2009_ParasitVectors,result text,laboratory conditions; parasites in a mixture of aedes and anopheles spp.
+1/PDR,14.5,1000,dirofilaria,immitis,aedes,trivittatus,days first L3 observed,Christensen_1978_ProcHelmintholSocWash,table 1,development did not occur
+1/PDR,18.5,43,dirofilaria,immitis,aedes,trivittatus,days first L3 observed,Christensen_1978_ProcHelmintholSocWash,table 1,NA
+1/PDR,22.5,16,dirofilaria,immitis,aedes,trivittatus,days first L3 observed,Christensen_1978_ProcHelmintholSocWash,table 1,NA
+1/PDR,26.5,11,dirofilaria,immitis,aedes,trivittatus,days first L3 observed,Christensen_1978_ProcHelmintholSocWash,table 1,NA
+1/PDR,30.5,9,dirofilaria,immitis,aedes,trivittatus,days first L3 observed,Christensen_1978_ProcHelmintholSocWash,table 1,NA
+1/PDR,34.5,9,dirofilaria,immitis,aedes,trivittatus,days first L3 observed,Christensen_1978_ProcHelmintholSocWash,table 1,NA
+1/PDR,19.22,24,dirofilaria,immitis,aedes,aegypti,days first L3 in Malpighian tubules,Ledesma_2015_VetParasitol,table 1,
+1/PDR,19.09,26,dirofilaria,immitis,aedes,aegypti,days first L3 in Malpighian tubules,Ledesma_2015_VetParasitol,table 1,
+1/PDR,21.7,16,dirofilaria,immitis,aedes,aegypti,days first L3 in Malpighian tubules,Ledesma_2015_VetParasitol,table 1,
+1/PDR,25.4,12,dirofilaria,immitis,aedes,aegypti,days first L3 in Malpighian tubules,Ledesma_2015_VetParasitol,table 1,
+1/PDR,25.37,9,dirofilaria,immitis,aedes,aegypti,days first L3 in Malpighian tubules,Ledesma_2015_VetParasitol,table 1,
+1/PDR,20,28.27,wuchereria,bancrofti,aedes,polynesiensis,days to appearance of L3 after experimental infection,Ladeaux_1997_Parasitology,table 1,
+1/PDR,22.5,17.79,wuchereria,bancrofti,aedes,polynesiensis,days to appearance of L3 after experimental infection,Ladeaux_1997_Parasitology,table 1,
+1/PDR,25,12.11,wuchereria,bancrofti,aedes,polynesiensis,days to appearance of L3 after experimental infection,Ladeaux_1997_Parasitology,table 1,
+1/PDR,27.5,11.68,wuchereria,bancrofti,aedes,polynesiensis,days to appearance of L3 after experimental infection,Ladeaux_1997_Parasitology,table 1,
+1/PDR,30,9.53,wuchereria,bancrofti,aedes,polynesiensis,days to appearance of L3 after experimental infection,Ladeaux_1997_Parasitology,table 1,
+1/PDR,32,9.89,wuchereria,bancrofti,aedes,polynesiensis,days to appearance of L3 after experimental infection,Ladeaux_1997_Parasitology,table 1,
+1/PDR,34,1000,wuchereria,bancrofti,aedes,polynesiensis,days to appearance of L3 after experimental infection,Ladeaux_1997_Parasitology,table 1,

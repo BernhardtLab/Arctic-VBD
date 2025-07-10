@@ -1,864 +1,864 @@
-temp,trait,trait_name,genus,species,citation,data_source,notes
-11.1,0.05,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-11.1,0.05,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-11.19,0.045454545454545456,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-11.19,0.045454545454545456,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-11.19,0.045454545454545456,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-11.19,0.045454545454545456,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-11.19,0.045454545454545456,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.32,0.06666666666666667,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.31,0.0625,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.25,0.05555555555555555,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.25,0.05555555555555555,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.05263157894736842,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-13.27,0.05263157894736842,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-15.78,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-15.78,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-15.78,0.07692307692307693,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-15.78,0.07692307692307693,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-15.78,0.07142857142857142,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-15.78,0.07142857142857142,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-15.78,0.07142857142857142,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-15.78,0.07142857142857142,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.41,0.1111111111111111,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.57,0.1,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.67,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.67,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.67,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.67,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.8,0.07692307692307693,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.79,0.125,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-18.91,0.1,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,female
-11.14,0.047619047619047616,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-11.14,0.047619047619047616,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-11.19,0.045454545454545456,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-13.32,0.06666666666666667,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-13.31,0.0625,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-13.31,0.0625,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-13.27,0.058823529411764705,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.82,0.1111111111111111,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.81,0.1,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.81,0.1,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.78,0.08333333333333333,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.78,0.08333333333333333,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.78,0.07692307692307693,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.78,0.07692307692307693,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.78,0.07142857142857142,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.78,0.07142857142857142,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-15.78,0.07142857142857142,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.08,0.14285714285714285,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.26,0.125,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.41,0.1111111111111111,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.57,0.1,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.67,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.67,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.67,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.67,0.09090909090909091,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.73,0.08333333333333333,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.73,0.08333333333333333,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.79,0.125,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.79,0.125,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.85,0.1111111111111111,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.85,0.1111111111111111,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.85,0.1111111111111111,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-18.91,0.1,MDR,aedes,nigripes,Culler_2015_ProcRSocB,raw_data,male
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.011
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.012
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.014
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.016
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.017
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.026
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.027
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.036
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.047
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.048
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.049
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.056
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.057
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.058
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.059
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.060a
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.061
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.071
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.072
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.076
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.078
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.079
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.086
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.087
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.088
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.089
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.096a
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.096b
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.096c
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.097
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.098
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.101
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.102
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.103
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.104
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.105a
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.105b
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.111
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.112
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.113
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.114
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.115
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.116
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.117
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.126
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.127
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.128
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.129
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.130
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.136
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.137
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.141
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.142
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.143
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.144
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.145
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.146
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.147
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.148
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.149
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.150
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.166
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.167
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.171
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.172
-23.75,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.173
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.181
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.182
-13.35,0.025641026,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.183
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.187
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,HOP_Hop37.188
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.051
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.052
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.053
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.061
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.066
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.067
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.068
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.069
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.076
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.077
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.078
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.082
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.083
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.084
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.085
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.086
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.091
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.092
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.094
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.095
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.096
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.097
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.101
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.102
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.103
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.108
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.109
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.111
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.112
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.113
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.114
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.116a
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.116b
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.117
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.121
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.122
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.123
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.124
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.126
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.127
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.128
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.130
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.131
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.132
-17.12,0.035714286,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.133
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.136
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.137
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.139
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.141
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.142
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.143
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.144
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.146
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.147
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.148
-17.12,0.025641026,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.149
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.152
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.153
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.154
-13.35,0.025,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.155
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.157
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.158
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.159
-13.35,0.025641026,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.160
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.161
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.162
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.163
-13.35,0.019607843,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.164
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.166
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.168
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.169
-13.35,0.025,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN35_Marin.35.170
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.051
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.052
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.054
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.056
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.058
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.059
-27.5,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.060
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.062
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.063
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.064
-27.5,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.065
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.066
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.067
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.068
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.069
-27.5,0.05,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.070
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.072
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.073
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.074
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.076
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.077
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.078
-27.5,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.079
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.091
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.093
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.094
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.096
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.097
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.098
-23.75,0.047619048,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.099
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.101
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.102
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.103
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.104
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.105
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.106
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.107
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.108
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.109
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.110
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.111
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.112
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.113
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.114
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.116
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.117
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.118
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.119
-23.75,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.120
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.131
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.133
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.134
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.135
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.137
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.138
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.140
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.151
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.152
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.153
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.154
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.160A
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,MARIN29_Marin.29.160B
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.056
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.057
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.061
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.064
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.065
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.066
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.067
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.068
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.072
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.073
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.074
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.075
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.076
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.077
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.078
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.079
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.081
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.082
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.084
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.085a
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.085b
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.091
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.092
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.096
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.101
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.102
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.103
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.104
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.106
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.108
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.109
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.111
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.112
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.113
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.114
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.115
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.136
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.137
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.138
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.139
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.146
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.147
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.148
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.149
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,EUG_Eug.03.150
-32.18,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.011
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.051
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.052
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.053
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.054
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.058
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.059
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.061
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.062
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.063
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.064
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.066
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.068
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.069
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.070
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.071
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.072
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.073
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.076
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.077
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.078
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.079
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.080
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.082
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.083
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.084
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.085a
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.085b
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.087
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.088
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.089
-27.5,0.05,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.090
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.091
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.092
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.093
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.094
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.095
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.096
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.097
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.099
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.100a
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.100b
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.101
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.102
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.103
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.104
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.106
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.107
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.109
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.110
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.111
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.112A
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.112B
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.113
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.114
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.115
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.116
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.117
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.118
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.119
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.122
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.123
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.124
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.127
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.128
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.129
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.130
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.132
-17.12,0.035714286,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.133
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.136
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.137
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.138
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.139
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.141
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.142
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.143
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.147
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.148
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.149
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.150
-13.35,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.151
-13.35,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.152
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.153
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.154
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.155
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.156
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.157
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.158
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.159
-13.35,0.023255814,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.160
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.163
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.164
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.165
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.166
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.167
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.168
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.169
-13.35,0.025,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,WAW_WAW.12.170
-32.18,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.046
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.051
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.052
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.054
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.056
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.057
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.058
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.059
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.061
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.063
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.064
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.066
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.071
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.072
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.073
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.074
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.076
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.077
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.078
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.079
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.081
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.084
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.085
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.086
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.087
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.088
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.090
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.091
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.092
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.093
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.094
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.095
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.096
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.097
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.098
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.099
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.100
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.101
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.102
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.103
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.104
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.108
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.109
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.110
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.111
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.112
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.113
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.114
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.116
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.117
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.118
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.119
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.120
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.121
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.123
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.124
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.125
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.126
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.129
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.130
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.131
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.132
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.133
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.134
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.135
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.136
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.137
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.139
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.141
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.143
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.146
-17.12,0.035714286,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.147
-17.12,0.033333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.148
-13.35,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.151
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.152
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.154
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.157
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.159
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.160
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.161
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.162
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.163
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.164
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.165
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.166
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.167
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.168
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,SB_SB.04.170
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.052
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.053
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.054
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.055
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.061
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.062
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.063
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.064
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.066
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.067
-27.5,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.068
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.071
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.072
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.074
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.078
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.079
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.081
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.082
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.084
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.085a
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.085b
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.086
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.087
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.088
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.091
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.092
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.093
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.094
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.096
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.097
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.098
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.106
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.107
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.108
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.109
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.110
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.111
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.112
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.113
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.114
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.115
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.116
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.117
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.119
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.120
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.123
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.124
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.125a
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.129
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.131
-17.12,0.047619048,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.132
-17.12,0.047619048,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.133
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.135a
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.135b
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.136
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.137
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.138
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.142
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.143
-17.12,0.047619048,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.144
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.145
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.146
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.147
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.148
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.149
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.152
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.153
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.154
-13.35,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.156
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.157
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.158
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.159
-13.35,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.161
-13.35,0.032258065,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.163
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.164
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.165
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.166
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.168
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,JRA_JR.A.170A
-32.18,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.011
-32.18,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.026
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.051
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.052
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.053
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.054
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.056
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.057
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.058
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.059
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.061
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.062
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.063
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.064
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.066
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.067
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.068
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.070
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.071
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.072
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.074
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.076
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.077
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.078
-27.5,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.079
-27.5,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.080
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.081
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.086
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.087
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.092
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.093
-23.75,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.094
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.095
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.096
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.097
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.099
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.100
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.101
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.102
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.103
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.104
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.105a
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.105b
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.106
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.107
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.109
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.110a
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.110b
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.111
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.112
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.113
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.114
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.116
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.117
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.118
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.119
-23.75,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.120
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.122
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.123
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.124
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.126
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.128
-23.75,0.052631579,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.129
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.130
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.131
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.132
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.133
-17.12,0.035714286,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.134
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.136
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.137
-17.12,0.034482759,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.138
-17.12,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.139
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.141
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.142
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.143
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.146
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.147
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.148
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.150
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.151
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.154
-13.35,0.014084507,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.155b
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.156
-13.35,0.025641026,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.157
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.158
-13.35,0.025,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.159
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.160
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.161
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.162
-13.35,0.026315789,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.163
-13.35,0.025641026,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.165a
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.167
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.168
-13.35,0.024390244,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.170A
-13.35,0.016393443,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,POW_POW.02.170B
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.052
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.053
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.056
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.058
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.059
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.060
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.061
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.062
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.063
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.071
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.073
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.074
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.076
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.077
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.078
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.079
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.080
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.081
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.082
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.083
-27.5,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.084
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.087
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.088
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.090
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.091
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.092
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.093
-23.75,0.055555556,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.094
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.096
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.097
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.098
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.099
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.101
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.103
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.106
-23.75,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.107
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.108
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.110
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.111
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.112
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.113
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.114
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.116
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.117
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.118
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.119
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.120
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.121
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.122
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.123
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.124
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.125
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.127
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.128
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.129
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.131
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.132
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.133
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.134
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.135
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.136
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.137
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.138
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.139
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.141
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.142
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.143
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.144
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.145
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.146
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.148
-17.12,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.150
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.152
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.153
-13.35,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.156
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.157
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.158
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.159
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.160a
-13.35,0.025641026,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.160d
-13.35,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.161
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.162
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.163
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.164
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.165
-13.35,0.03030303,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.166
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.167
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.168
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PAR_Par.07.169
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.052
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.053
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.054
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.055
-27.5,0.083333333,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.056
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.057
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.058
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.059
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.060a
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.060b
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.061
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.066
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.067
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.068
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.071
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.072
-27.5,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.073
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.076
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.082
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.083
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.084
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.085a
-27.5,0.076923077,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.086
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.088
-27.5,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.089
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.090b
-27.5,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.090c
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.092
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.093
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.101
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.102
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.103
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.104
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.107
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.108
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.109
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.110a
-23.75,0.03125,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.110c
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.111
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.112
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.113
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.114
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.116
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.117
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.118
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.119
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.120
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.121
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.122
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.123
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.124
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.125
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.126
-23.75,0.071428571,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.127
-23.75,0.066666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.128
-23.75,0.0625,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.129
-23.75,0.058823529,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.130
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.131
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.132
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.133
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.136
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.138
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.139
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.140
-17.12,0.045454545,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.141
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.142
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.143
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.144
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.145
-17.12,0.043478261,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.146
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.147
-17.12,0.04,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.148
-17.12,0.041666667,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.149
-17.12,0.038461538,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.150a
-17.12,0.037037037,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.150b
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.151
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.152
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.153
-13.35,0.027777778,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.154
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.155
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.156
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.157
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.158
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.162
-13.35,0.024390244,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.164
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.167
-13.35,0.029411765,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.168
-13.35,0.028571429,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.169
-13.35,0.027027027,MDR,aedes,sierrensis,Couper_2024_ProcBiolSci,raw_data,PLA_PLA.01.170
+trait_name,temp,trait,genus,species,trait_def,citation,data_source,notes
+MDR,11.1,0.05,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,11.1,0.05,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,11.19,0.045454545454545456,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,11.19,0.045454545454545456,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,11.19,0.045454545454545456,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,11.19,0.045454545454545456,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,11.19,0.045454545454545456,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.32,0.06666666666666667,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.31,0.0625,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.25,0.05555555555555555,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.25,0.05555555555555555,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.05263157894736842,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,13.27,0.05263157894736842,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,15.78,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,15.78,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,15.78,0.07692307692307693,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,15.78,0.07692307692307693,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,15.78,0.07142857142857142,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,15.78,0.07142857142857142,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,15.78,0.07142857142857142,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,15.78,0.07142857142857142,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.41,0.1111111111111111,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.57,0.1,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.67,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.67,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.67,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.67,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.8,0.07692307692307693,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.79,0.125,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,18.91,0.1,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,female
+MDR,11.14,0.047619047619047616,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,11.14,0.047619047619047616,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,11.19,0.045454545454545456,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,13.32,0.06666666666666667,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,13.31,0.0625,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,13.31,0.0625,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,13.27,0.058823529411764705,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.82,0.1111111111111111,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.81,0.1,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.81,0.1,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.78,0.08333333333333333,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.78,0.08333333333333333,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.78,0.07692307692307693,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.78,0.07692307692307693,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.78,0.07142857142857142,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.78,0.07142857142857142,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,15.78,0.07142857142857142,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.08,0.14285714285714285,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.26,0.125,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.41,0.1111111111111111,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.57,0.1,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.67,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.67,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.67,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.67,0.09090909090909091,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.73,0.08333333333333333,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.73,0.08333333333333333,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.79,0.125,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.79,0.125,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.85,0.1111111111111111,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.85,0.1111111111111111,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.85,0.1111111111111111,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,18.91,0.1,aedes,nigripes,1/days until emergence,Culler_2015_ProcRSocB,raw data,male
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.011
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.012
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.014
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.016
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.017
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.026
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.027
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.036
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.047
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.048
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.049
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.056
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.057
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.058
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.059
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.060a
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.061
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.071
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.072
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.076
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.078
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.079
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.086
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.087
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.088
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.089
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.096a
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.096b
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.096c
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.097
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.098
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.101
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.102
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.103
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.104
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.105a
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.105b
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.111
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.112
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.113
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.114
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.115
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.116
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.117
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.126
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.127
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.128
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.129
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.130
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.136
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.137
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.141
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.142
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.143
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.144
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.145
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.146
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.147
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.148
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.149
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.150
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.166
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.167
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.171
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.172
+MDR,23.75,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.173
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.181
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.182
+MDR,13.35,0.025641026,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.183
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.187
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,HOP_Hop37.188
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.051
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.052
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.053
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.061
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.066
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.067
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.068
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.069
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.076
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.077
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.078
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.082
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.083
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.084
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.085
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.086
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.091
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.092
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.094
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.095
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.096
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.097
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.101
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.102
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.103
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.108
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.109
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.111
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.112
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.113
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.114
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.116a
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.116b
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.117
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.121
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.122
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.123
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.124
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.126
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.127
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.128
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.130
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.131
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.132
+MDR,17.12,0.035714286,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.133
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.136
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.137
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.139
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.141
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.142
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.143
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.144
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.146
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.147
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.148
+MDR,17.12,0.025641026,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.149
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.152
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.153
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.154
+MDR,13.35,0.025,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.155
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.157
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.158
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.159
+MDR,13.35,0.025641026,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.160
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.161
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.162
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.163
+MDR,13.35,0.019607843,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.164
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.166
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.168
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.169
+MDR,13.35,0.025,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN35_Marin.35.170
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.051
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.052
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.054
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.056
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.058
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.059
+MDR,27.5,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.060
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.062
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.063
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.064
+MDR,27.5,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.065
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.066
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.067
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.068
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.069
+MDR,27.5,0.05,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.070
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.072
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.073
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.074
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.076
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.077
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.078
+MDR,27.5,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.079
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.091
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.093
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.094
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.096
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.097
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.098
+MDR,23.75,0.047619048,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.099
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.101
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.102
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.103
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.104
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.105
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.106
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.107
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.108
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.109
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.110
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.111
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.112
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.113
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.114
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.116
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.117
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.118
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.119
+MDR,23.75,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.120
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.131
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.133
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.134
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.135
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.137
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.138
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.140
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.151
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.152
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.153
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.154
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.160A
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,MARIN29_Marin.29.160B
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.056
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.057
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.061
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.064
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.065
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.066
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.067
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.068
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.072
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.073
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.074
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.075
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.076
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.077
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.078
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.079
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.081
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.082
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.084
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.085a
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.085b
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.091
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.092
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.096
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.101
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.102
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.103
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.104
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.106
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.108
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.109
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.111
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.112
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.113
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.114
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.115
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.136
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.137
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.138
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.139
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.146
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.147
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.148
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.149
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,EUG_Eug.03.150
+MDR,32.18,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.011
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.051
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.052
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.053
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.054
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.058
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.059
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.061
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.062
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.063
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.064
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.066
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.068
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.069
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.070
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.071
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.072
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.073
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.076
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.077
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.078
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.079
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.080
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.082
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.083
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.084
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.085a
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.085b
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.087
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.088
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.089
+MDR,27.5,0.05,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.090
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.091
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.092
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.093
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.094
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.095
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.096
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.097
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.099
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.100a
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.100b
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.101
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.102
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.103
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.104
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.106
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.107
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.109
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.110
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.111
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.112A
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.112B
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.113
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.114
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.115
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.116
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.117
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.118
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.119
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.122
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.123
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.124
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.127
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.128
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.129
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.130
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.132
+MDR,17.12,0.035714286,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.133
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.136
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.137
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.138
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.139
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.141
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.142
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.143
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.147
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.148
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.149
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.150
+MDR,13.35,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.151
+MDR,13.35,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.152
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.153
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.154
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.155
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.156
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.157
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.158
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.159
+MDR,13.35,0.023255814,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.160
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.163
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.164
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.165
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.166
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.167
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.168
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.169
+MDR,13.35,0.025,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,WAW_WAW.12.170
+MDR,32.18,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.046
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.051
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.052
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.054
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.056
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.057
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.058
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.059
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.061
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.063
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.064
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.066
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.071
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.072
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.073
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.074
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.076
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.077
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.078
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.079
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.081
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.084
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.085
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.086
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.087
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.088
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.090
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.091
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.092
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.093
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.094
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.095
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.096
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.097
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.098
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.099
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.100
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.101
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.102
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.103
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.104
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.108
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.109
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.110
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.111
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.112
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.113
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.114
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.116
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.117
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.118
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.119
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.120
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.121
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.123
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.124
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.125
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.126
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.129
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.130
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.131
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.132
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.133
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.134
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.135
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.136
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.137
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.139
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.141
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.143
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.146
+MDR,17.12,0.035714286,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.147
+MDR,17.12,0.033333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.148
+MDR,13.35,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.151
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.152
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.154
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.157
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.159
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.160
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.161
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.162
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.163
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.164
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.165
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.166
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.167
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.168
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,SB_SB.04.170
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.052
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.053
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.054
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.055
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.061
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.062
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.063
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.064
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.066
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.067
+MDR,27.5,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.068
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.071
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.072
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.074
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.078
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.079
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.081
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.082
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.084
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.085a
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.085b
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.086
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.087
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.088
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.091
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.092
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.093
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.094
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.096
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.097
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.098
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.106
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.107
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.108
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.109
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.110
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.111
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.112
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.113
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.114
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.115
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.116
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.117
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.119
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.120
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.123
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.124
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.125a
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.129
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.131
+MDR,17.12,0.047619048,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.132
+MDR,17.12,0.047619048,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.133
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.135a
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.135b
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.136
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.137
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.138
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.142
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.143
+MDR,17.12,0.047619048,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.144
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.145
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.146
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.147
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.148
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.149
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.152
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.153
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.154
+MDR,13.35,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.156
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.157
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.158
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.159
+MDR,13.35,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.161
+MDR,13.35,0.032258065,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.163
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.164
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.165
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.166
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.168
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,JRA_JR.A.170A
+MDR,32.18,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.011
+MDR,32.18,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.026
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.051
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.052
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.053
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.054
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.056
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.057
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.058
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.059
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.061
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.062
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.063
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.064
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.066
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.067
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.068
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.070
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.071
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.072
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.074
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.076
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.077
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.078
+MDR,27.5,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.079
+MDR,27.5,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.080
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.081
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.086
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.087
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.092
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.093
+MDR,23.75,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.094
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.095
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.096
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.097
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.099
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.100
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.101
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.102
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.103
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.104
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.105a
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.105b
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.106
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.107
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.109
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.110a
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.110b
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.111
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.112
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.113
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.114
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.116
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.117
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.118
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.119
+MDR,23.75,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.120
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.122
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.123
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.124
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.126
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.128
+MDR,23.75,0.052631579,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.129
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.130
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.131
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.132
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.133
+MDR,17.12,0.035714286,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.134
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.136
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.137
+MDR,17.12,0.034482759,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.138
+MDR,17.12,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.139
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.141
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.142
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.143
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.146
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.147
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.148
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.150
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.151
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.154
+MDR,13.35,0.014084507,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.155b
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.156
+MDR,13.35,0.025641026,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.157
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.158
+MDR,13.35,0.025,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.159
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.160
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.161
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.162
+MDR,13.35,0.026315789,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.163
+MDR,13.35,0.025641026,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.165a
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.167
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.168
+MDR,13.35,0.024390244,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.170A
+MDR,13.35,0.016393443,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,POW_POW.02.170B
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.052
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.053
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.056
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.058
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.059
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.060
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.061
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.062
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.063
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.071
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.073
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.074
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.076
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.077
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.078
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.079
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.080
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.081
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.082
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.083
+MDR,27.5,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.084
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.087
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.088
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.090
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.091
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.092
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.093
+MDR,23.75,0.055555556,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.094
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.096
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.097
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.098
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.099
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.101
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.103
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.106
+MDR,23.75,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.107
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.108
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.110
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.111
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.112
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.113
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.114
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.116
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.117
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.118
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.119
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.120
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.121
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.122
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.123
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.124
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.125
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.127
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.128
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.129
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.131
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.132
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.133
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.134
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.135
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.136
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.137
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.138
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.139
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.141
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.142
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.143
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.144
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.145
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.146
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.148
+MDR,17.12,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.150
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.152
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.153
+MDR,13.35,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.156
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.157
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.158
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.159
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.160a
+MDR,13.35,0.025641026,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.160d
+MDR,13.35,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.161
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.162
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.163
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.164
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.165
+MDR,13.35,0.03030303,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.166
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.167
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.168
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PAR_Par.07.169
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.052
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.053
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.054
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.055
+MDR,27.5,0.083333333,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.056
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.057
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.058
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.059
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.060a
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.060b
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.061
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.066
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.067
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.068
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.071
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.072
+MDR,27.5,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.073
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.076
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.082
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.083
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.084
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.085a
+MDR,27.5,0.076923077,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.086
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.088
+MDR,27.5,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.089
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.090b
+MDR,27.5,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.090c
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.092
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.093
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.101
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.102
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.103
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.104
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.107
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.108
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.109
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.110a
+MDR,23.75,0.03125,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.110c
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.111
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.112
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.113
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.114
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.116
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.117
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.118
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.119
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.120
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.121
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.122
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.123
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.124
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.125
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.126
+MDR,23.75,0.071428571,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.127
+MDR,23.75,0.066666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.128
+MDR,23.75,0.0625,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.129
+MDR,23.75,0.058823529,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.130
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.131
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.132
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.133
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.136
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.138
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.139
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.140
+MDR,17.12,0.045454545,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.141
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.142
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.143
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.144
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.145
+MDR,17.12,0.043478261,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.146
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.147
+MDR,17.12,0.04,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.148
+MDR,17.12,0.041666667,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.149
+MDR,17.12,0.038461538,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.150a
+MDR,17.12,0.037037037,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.150b
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.151
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.152
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.153
+MDR,13.35,0.027777778,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.154
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.155
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.156
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.157
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.158
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.162
+MDR,13.35,0.024390244,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.164
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.167
+MDR,13.35,0.029411765,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.168
+MDR,13.35,0.028571429,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.169
+MDR,13.35,0.027027027,aedes,sierrensis,1/days,Couper_2024_ProcBiolSci,raw data,PLA_PLA.01.170

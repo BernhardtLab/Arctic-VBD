@@ -1,28 +1,28 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian inference (JAGS) to fit TPCs for mosquito development 
-## rate (MDR) for Aedes nigripes (Culler et al. 2015)
+## Purpose: use Bayesian inference (JAGS) to fit TPCs for mosquito adult lifespan (lf) 
+## for Aedes vexans (Costello and Brust 1971) 
 ##     1) with uniform priors; and 
 ##     2) with data-informed priors from Aedes sierrensis data (Couper et al. 2024)
-## 
+##
 ## Table of content:
 ##    0. Set-up workspace
 ##
 ##    1. MCMC settings for all models
 ##
 ##    2. Fitting TPC (Briere)
-##        A. Fit MDR thermal responses with uniform priors (Ae. nigripes)
-##        B. Fit MDR thermal responses for priors (Ae. sierrensis)
-##        C. Fit gamma distributions to MDR prior thermal responses
-##        D. Fit MDR thermal responses with data-informed priors (Ae. nigripes)
+##        A. Fit lf thermal responses with uniform priors (Ae. vexans)
+##        B. Fit lf thermal responses for priors (Ae. sierrensis)
+##        C. Fit gamma distributions to lf prior thermal responses
+##        D. Fit lf thermal responses with data-informed priors (Ae. vexans)
 ##        E. Plot all three TPCs in the same graph (for comparison)
 ##
 ##    3. Fitting TPC (Quadratic)
-##        A. Fit MDR thermal responses with uniform priors (Ae. nigripes)
-##        B. Fit MDR thermal responses for priors (Ae. sierrensis)
-##        C. Fit gamma distributions to MDR prior thermal responses
-##        D. Fit MDR thermal responses with data-informed priors (Ae. nigripes)
+##        A. Fit lf thermal responses with uniform priors (Ae. vexans)
+##        B. Fit lf thermal responses for priors (Ae. sierrensis)
+##        C. Fit gamma distributions to lf prior thermal responses
+##        D. Fit lf thermal responses with data-informed priors (Ae. vexans)
 
 
 ##########
@@ -39,17 +39,22 @@ library(ggsci)
 setwd("~/Documents/UofG/Arctic-VBD")
 
 # Load data
-data <- read_csv("data/data-processed/TraitData_MDR.csv")
+data <- read_csv("data/data-processed/TraitData_lf.csv")
 unique(data$species)
 
 # Subset data
-data.MDR.nigripes <- subset(data, species == "nigripes")
-data.MDR.sierrensis <- subset(data, species == "sierrensis")
+data.lf.vexans <- subset(data, species == "vexans")
+colnames(data.lf.vexans)
+  
+data.lf.sierrensis <- subset(data, species == "sierrensis")
+
 
 # Plot the data
+
 data %>% ggplot() +
   geom_point(aes(x = temp, y = trait, color = species), position = "jitter") +
   theme_bw()
+
 
 
 ##########
@@ -75,7 +80,7 @@ nc <- 5 # number of chains
 
 
 ##########
-###### 2A. Fit MDR thermal responses with uniform priors (Ae. nigripes): Briere ----
+###### 2A. Fit lf thermal responses with uniform priors (Ae. vexans): Briere ----
 ##########
 
 ##### Temp sequence for derived quantity calculations
@@ -85,7 +90,7 @@ N.Temp.xs <-length(Temp.xs)
 
 
 ##### Set data
-data <- data.MDR.nigripes
+data <- data.lf.vexans
 
 ##### Organize data for JAGS
 trait <- data$trait
@@ -96,42 +101,42 @@ temp <- data$temp
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
 
 ##### Run JAGS -----
-# MDR.nigripes.bri.uni <- jags(data = jag.data, 
-#                      inits = inits, 
-#                      parameters.to.save = parameters, 
-#                      model.file = "R-scripts/briere_T.txt",
-#                      n.thin = nt, 
-#                      n.chains = nc, 
-#                      n.burnin = nb, 
-#                      n.iter = ni, 
-#                      DIC = T, 
-#                      working.directory = getwd()
-# )
+lf.vexans.bri.uni <- jags(data = jag.data,
+                          inits = inits,
+                          parameters.to.save = parameters,
+                          model.file = "R-scripts/briere_T.txt",
+                          n.thin = nt,
+                          n.chains = nc,
+                          n.burnin = nb,
+                          n.iter = ni,
+                          DIC = T,
+                          working.directory = getwd()
+                          )
 
 ## Save the model as Rdata 
-#save(MDR.nigripes.bri.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
+#save(lf.vexans.bri.uni, file = "R-scripts/R2jags-objects/lf.vexans.bri.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
+load("R-scripts/R2jags-objects/lf.vexans.bri.uni.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-MDR.nigripes.bri.uni$BUGSoutput$summary[1:5,]
-mcmcplot(MDR.nigripes.bri.uni)
+lf.vexans.bri.uni$BUGSoutput$summary[1:5,]
+mcmcplot(lf.vexans.bri.uni) # Tmin doesn't look good
 
 # Extract the DIC for future model comparisons
-MDR.nigripes.bri.uni$BUGSoutput$DIC
+lf.vexans.bri.uni$BUGSoutput$DIC
 
 ## Plot data + fit ----
-df.MDR.nigripes.bri.uni <- data.frame(MDR.nigripes.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+df.lf.vexans.bri.uni <- data.frame(lf.vexans.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.MDR.nigripes.bri.uni)
+head(df.lf.vexans.bri.uni)
 
 ##### Plot
-plot.MDR.nigripes.bri.uni <- df.MDR.nigripes.bri.uni %>% 
+plot.lf.vexans.bri.uni <- df.lf.vexans.bri.uni %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
@@ -141,17 +146,17 @@ plot.MDR.nigripes.bri.uni <- df.MDR.nigripes.bri.uni %>%
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   theme_bw()
 
-plot.MDR.nigripes.bri.uni
+plot.lf.vexans.bri.uni
 
-# ggsave("figures/MDR.nigripes.bri.uni.png", plot.MDR.nigripes.bri.uni, 
-#        width = 10.3, height = 5.6)
+# ggsave("figures/lf.vexans.bri.uni.png", plot.lf.vexans.bri.uni, width = 10.3, height = 5.6)
+
 
 ##########
-###### 2B. Fit MDR thermal responses for priors (Ae. sierrensis): Briere ----
+###### 2B. Fit lf thermal responses for priors (Ae. sierrensis): Briere ----
 ##########
 
 ##### Temp sequence for derived quantity calculations
@@ -160,7 +165,7 @@ Temp.xs <- seq(0, 45, 0.5)
 N.Temp.xs <-length(Temp.xs)
 
 ##### Set data
-data <- data.MDR.sierrensis
+data <- data.lf.sierrensis
 
 ##### Organize data for JAGS
 trait <- data$trait
@@ -173,87 +178,89 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 ##### Run JAGS -----
 
 # This code took an hour to run!
-# MDR.sierrensis.bri.uni <- jags(data = jag.data,
-#                                inits = inits,
-#                                parameters.to.save = parameters,
-#                                model.file = "R-scripts/briere_T.txt",
-#                                n.thin = nt,
-#                                n.chains = nc,
-#                                n.burnin = nb,
-#                                n.iter = ni,
-#                                DIC = T,
-#                                working.directory = getwd()
-# )
+lf.sierrensis.bri.uni <- jags(data = jag.data,
+                               inits = inits,
+                               parameters.to.save = parameters,
+                               model.file = "R-scripts/briere_T.txt",
+                               n.thin = nt,
+                               n.chains = nc,
+                               n.burnin = nb,
+                               n.iter = ni,
+                               DIC = T,
+                               working.directory = getwd()
+)
 
 ## Save the model as Rdata 
-#save(MDR.sierrensis.bri.uni, file = "R-scripts/R2jags-objects/MDR.sierrensis.bri.uni.Rdata")
+#save(lf.sierrensis.bri.uni, file = "R-scripts/R2jags-objects/lf.sierrensis.bri.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.sierrensis.bri.uni.Rdata")
+load("R-scripts/R2jags-objects/lf.sierrensis.bri.uni.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-MDR.sierrensis.bri.uni$BUGSoutput$summary[1:5,]
-mcmcplot(MDR.sierrensis.bri.uni)
+lf.sierrensis.bri.uni$BUGSoutput$summary[1:5,]
+mcmcplot(lf.sierrensis.bri.uni)
 
 # Extract the DIC for future model comparisons
-MDR.sierrensis.bri.uni$BUGSoutput$DIC
+lf.sierrensis.bri.uni$BUGSoutput$DIC
 
 ## Plot data + fit ----
-df.MDR.sierrensis.bri.uni <- data.frame(MDR.sierrensis.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+df.lf.sierrensis.bri.uni <- data.frame(lf.sierrensis.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.MDR.sierrensis.bri.uni)
+head(df.lf.sierrensis.bri.uni)
 
 ##### Plot
-plot.df.MDR.sierrensis.bri.uni <- df.MDR.sierrensis.bri.uni %>% 
+plot.lf.sierrensis.bri.uni <- df.lf.sierrensis.bri.uni %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "grey", alpha = 0.5) +
   geom_line(aes(y = mean), color = "#868686FF", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait), size = 2 
-             , position = "jitter"
-             ) +
+  stat_summary(data = data, aes(x = temp, y = trait),
+               fun = mean, geom = "point") +
+  stat_summary(data = data, aes(x = temp, y = trait),
+               fun.data = "mean_se", geom = "errorbar") +
+  # geom_point(data = data, aes(x = temp, y = trait), size = 2
+  #            , position = "jitter"
+  # ) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) + 
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   theme_bw()
 
-plot.df.MDR.sierrensis.bri.uni
+plot.lf.sierrensis.bri.uni
 
-# ggsave("figures/MDR.sierrensis.bri.uni.png", plot.df.MDR.sierrensis.bri.uni, 
-#        width = 10.3, height = 5.6)
-
+# ggsave("figures/lf.sierrensis.bri.uni.png", plot.lf.sierrensis.bri.uni, width = 10.3, height = 5.6)
 
 ##########
-###### 2C. Fit gamma distributions to MDR prior thermal responses: Briere ----
+###### 2C. Fit gamma distributions to lf prior thermal responses: Briere ----
 ##########
 
 # Get the posterior dists for 3 main parameters (not sigma) into a data frame
-MDR.nigripes.prior.cf.dists <- data.frame(q = as.vector(MDR.sierrensis.bri.uni$BUGSoutput$sims.list$cf.q),
-                                          T0 = as.vector(MDR.sierrensis.bri.uni$BUGSoutput$sims.list$cf.T0),
-                                          Tm = as.vector(MDR.sierrensis.bri.uni$BUGSoutput$sims.list$cf.Tm))
+lf.vexans.prior.cf.dists <- data.frame(q = as.vector(lf.sierrensis.bri.uni$BUGSoutput$sims.list$cf.q),
+                                          T0 = as.vector(lf.sierrensis.bri.uni$BUGSoutput$sims.list$cf.T0),
+                                          Tm = as.vector(lf.sierrensis.bri.uni$BUGSoutput$sims.list$cf.Tm))
 
 # Fit gamma distributions for each parameter posterior dists
-MDR.nigripes.prior.gamma.fits = apply(MDR.nigripes.prior.cf.dists, 2, 
+lf.vexans.prior.gamma.fits <- apply(lf.vexans.prior.cf.dists, 2, 
                                       function(df) fitdistr(df, "gamma")$estimate)
 
 
-MDR.hypers <- MDR.nigripes.prior.gamma.fits
-#save(MDR.hypers, file = "R-scripts/R2jags-objects/MDRhypers.bri.Rsave")
+lf.hypers <- lf.vexans.prior.gamma.fits
+#save(lf.hypers, file = "R-scripts/R2jags-objects/lfhypers.bri.Rsave")
 
 
 ##########
-###### 2D. Fit MDR thermal responses with data-informed priors (Ae. nigripes): Briere ----
+###### 2D. Fit lf thermal responses with data-informed priors (Ae. vexans): Briere ----
 ##########
 
-load("R-scripts/R2jags-objects/MDRhypers.bri.Rsave")
-MDR.nigripes.prior.gamma.fits <- MDR.hypers
+load("R-scripts/R2jags-objects/lfhypers.bri.Rsave")
+lf.vexans.prior.gamma.fits <- lf.hypers
 
 ##### Temp sequence for derived quantity calculations
 # For actual fits
@@ -261,8 +268,8 @@ Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
 ##### Set data
-data <- data.MDR.nigripes
-hypers <- MDR.nigripes.prior.gamma.fits * 0.1
+data <- data.lf.vexans
+hypers <- lf.vexans.prior.gamma.fits * 0.1
 
 ##### Organize data for JAGS
 trait <- data$trait
@@ -274,7 +281,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, hypers = hypers)
 
 ##### Run JAGS -----
-MDR.nigripes.bri.inf <- jags(data = jag.data,
+lf.vexans.bri.inf <- jags(data = jag.data,
                              inits = inits,
                              parameters.to.save = parameters,
                              model.file = "R-scripts/briere_inf.txt",
@@ -287,29 +294,29 @@ MDR.nigripes.bri.inf <- jags(data = jag.data,
 )
 
 ## Save the model as Rdata 
-save(MDR.nigripes.bri.inf, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
+# save(lf.vexans.bri.inf, file = "R-scripts/R2jags-objects/lf.vexans.bri.inf.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
+load("R-scripts/R2jags-objects/lf.vexans.bri.inf.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-MDR.nigripes.bri.inf$BUGSoutput$summary[1:5,]
-mcmcplot(MDR.nigripes.bri.inf)
+lf.vexans.bri.inf$BUGSoutput$summary[1:5,]
+mcmcplot(lf.vexans.bri.inf)
 
 # Extract the DIC for future model comparisons
-MDR.nigripes.bri.inf$BUGSoutput$DIC
+lf.vexans.bri.inf$BUGSoutput$DIC
 
 ## Plot data + fit ----
-df.MDR.nigripes.bri.inf <- data.frame(MDR.nigripes.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
+df.lf.vexans.bri.inf <- data.frame(lf.vexans.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.MDR.nigripes.bri.inf)
+head(df.lf.vexans.bri.inf)
 
 ##### Plot
-plot.MDR.nigripes.bri.inf <- df.MDR.nigripes.bri.inf %>% 
+plot.lf.vexans.bri.inf <- df.lf.vexans.bri.inf %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "pink", alpha = 0.5) +
   geom_line(aes(y = mean), color = "red", linewidth = 1) +
@@ -319,13 +326,13 @@ plot.MDR.nigripes.bri.inf <- df.MDR.nigripes.bri.inf %>%
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   theme_bw()
 
-plot.MDR.nigripes.bri.inf
+plot.lf.vexans.bri.inf
 
-# ggsave("figures/MDR.nigripes.bri.inf.png", plot.MDR.nigripes.bri.inf, 
+# ggsave("figures/lf.vexans.bri.inf.png", plot.lf.vexans.bri.inf, 
 #        width = 10.3, height = 5.6)
 
 
@@ -334,52 +341,52 @@ plot.MDR.nigripes.bri.inf
 ##########
 
 # Add an identifying column in each model output dataframe
-df.MDR.nigripes.bri.uni <- df.MDR.nigripes.bri.uni %>% 
-  mutate(type = "Ae. nigripes uniform")
+df.lf.vexans.bri.uni <- df.lf.vexans.bri.uni %>% 
+  mutate(type = "Ae. vexans uniform")
 
-df.MDR.sierrensis.bri.uni <- df.MDR.sierrensis.bri.uni %>% 
+df.lf.sierrensis.bri.uni <- df.lf.sierrensis.bri.uni %>% 
   mutate(type = "Ae. sierrensis uniform")
 
-df.MDR.nigripes.bri.inf <- df.MDR.nigripes.bri.inf %>% 
-  mutate(type = "Ae. nigripes informative")
+df.lf.vexans.bri.inf <- df.lf.vexans.bri.inf %>% 
+  mutate(type = "Ae. vexans informative")
 
 # Combine the three dataframes
-df.all <- rbind(df.MDR.nigripes.bri.uni, df.MDR.sierrensis.bri.uni, df.MDR.nigripes.bri.inf)
+df.all <- rbind(df.lf.vexans.bri.uni, df.lf.sierrensis.bri.uni, df.lf.vexans.bri.inf)
 
 # Plot
 plot.all <- df.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
   geom_line(aes(y = mean, color = type), linewidth = 1) +
-  geom_point(data = data.MDR.nigripes, aes(x = temp, y = trait), size = 2) +
-  #geom_point(data = data.MDR.sierrensis, aes(x = temp, y = trait), size = 2) +
+  geom_point(data = data.lf.vexans, aes(x = temp, y = trait), size = 2) +
+  #geom_point(data = data.lf.sierrensis, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) + 
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   # Customize the colours
   ## ribbon
-  scale_fill_manual(values = c("Ae. nigripes uniform" = "#4363d8", 
-                             "Ae. sierrensis uniform" = "grey",
-                             "Ae. nigripes informative" = "pink")) +
+  scale_fill_manual(values = c("Ae. vexans uniform" = "#4363d8", 
+                               "Ae. sierrensis uniform" = "grey",
+                               "Ae. vexans informative" = "pink")) +
   ## line
-  scale_color_manual(values = c("Ae. nigripes uniform" = "blue", 
-                               "Ae. sierrensis uniform" = "#868686FF",
-                               "Ae. nigripes informative" = "red")) +
+  scale_color_manual(values = c("Ae. vexans uniform" = "blue", 
+                                "Ae. sierrensis uniform" = "#868686FF",
+                                "Ae. vexans informative" = "red")) +
   theme_bw()
 
 plot.all
 
-#ggsave("figures/MDR.all.bri.png", plot.all, 
+#ggsave("figures/lf.all.bri.png", plot.all, 
 #        width = 10.3, height = 5.6)
 
 
 
 ##########
-###### 3A. Fit MDR thermal responses with uniform priors (Ae. nigripes): Quadratic ----
+###### 3A. Fit lf thermal responses with uniform priors (Ae. vexans): Quadratic ----
 ##########
 
 ##### Temp sequence for derived quantity calculations
@@ -388,7 +395,7 @@ Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
 ##### Set data
-data <- data.MDR.nigripes
+data <- data.lf.vexans
 
 ##### Organize data for JAGS
 trait <- data$trait
@@ -399,41 +406,41 @@ temp <- data$temp
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
 
 # ##### Run JAGS -----
-# MDR.nigripes.quad.uni <- jags(data = jag.data,
-#                               inits = inits,
-#                               parameters.to.save = parameters,
-#                               model.file = "R-scripts/quad_T.txt",
-#                               n.chains = nc,
-#                               n.burnin = nb,
-#                               n.iter = ni,
-#                               DIC = T,
-#                               working.directory = getwd()
-# )
+lf.vexans.quad.uni <- jags(data = jag.data,
+                              inits = inits,
+                              parameters.to.save = parameters,
+                              model.file = "R-scripts/quad_T.txt",
+                              n.chains = nc,
+                              n.burnin = nb,
+                              n.iter = ni,
+                              DIC = T,
+                              working.directory = getwd()
+)
 
 ## Save the model as Rdata 
-#save(MDR.nigripes.quad.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.quad.uni.Rdata")
+#save(lf.vexans.quad.uni, file = "R-scripts/R2jags-objects/lf.vexans.quad.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.nigripes.quad.uni.Rdata")
+load("R-scripts/R2jags-objects/lf.vexans.quad.uni.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-MDR.nigripes.quad.uni$BUGSoutput$summary[1:5,]
-mcmcplot(MDR.nigripes.quad.uni)
+lf.vexans.quad.uni$BUGSoutput$summary[1:5,]
+mcmcplot(lf.vexans.quad.uni)
 
 # Extract the DIC for future model comparisons
-MDR.nigripes.quad.uni$BUGSoutput$DIC
+lf.vexans.quad.uni$BUGSoutput$DIC
 
 ## Plot data + fit ----
-df.MDR.nigripes.quad.uni <- data.frame(MDR.nigripes.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+df.lf.vexans.quad.uni <- data.frame(lf.vexans.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.MDR.nigripes.quad.uni)
+head(df.lf.vexans.quad.uni)
 
 ##### Plot
-plot.MDR.nigripes.quad.uni <- df.MDR.nigripes.quad.uni %>% 
+plot.lf.vexans.quad.uni <- df.lf.vexans.quad.uni %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
@@ -443,17 +450,18 @@ plot.MDR.nigripes.quad.uni <- df.MDR.nigripes.quad.uni %>%
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   theme_bw()
 
-plot.MDR.nigripes.quad.uni
+plot.lf.vexans.quad.uni
 
-# ggsave("figures/MDR.nigripes.quad.uni.png", plot.MDR.nigripes.quad.uni, 
+# ggsave("figures/lf.vexans.quad.uni.png", plot.lf.vexans.quad.uni, 
 #        width = 10.3, height = 5.6)
 
+
 ##########
-###### 3B. Fit MDR thermal responses for priors (Ae. sierrensis): Quadratic ----
+###### 3B. Fit lf thermal responses for priors (Ae. sierrensis): Quadratic ----
 ##########
 
 ##### Temp sequence for derived quantity calculations
@@ -463,7 +471,7 @@ N.Temp.xs <-length(Temp.xs)
 
 
 ##### Set data
-data <- data.MDR.sierrensis
+data <- data.lf.sierrensis
 
 ##### Organize data for JAGS
 trait <- data$trait
@@ -476,7 +484,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 ##### Run JAGS -----
 
 # This code took an hour to run!
-# MDR.sierrensis.quad.uni <- jags(data = jag.data, 
+# lf.sierrensis.quad.uni <- jags(data = jag.data, 
 #                              inits = inits, 
 #                              parameters.to.save = parameters, 
 #                              model.file = "R-scripts/quad_T.txt",
@@ -489,29 +497,29 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 # )
 
 ## Save the model as Rdata 
-# save(MDR.sierrensis.quad.uni, file = "R-scripts/R2jags-objects/MDR.sierrensis.quad.uni.Rdata")
+# save(lf.sierrensis.quad.uni, file = "R-scripts/R2jags-objects/lf.sierrensis.quad.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.sierrensis.quad.uni.Rdata")
+load("R-scripts/R2jags-objects/lf.sierrensis.quad.uni.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-MDR.sierrensis.quad.uni$BUGSoutput$summary[1:5,]
-mcmcplot(MDR.sierrensis.quad.uni)
+lf.sierrensis.quad.uni$BUGSoutput$summary[1:5,]
+mcmcplot(lf.sierrensis.quad.uni)
 
 # Extract the DIC for future model comparisons
-MDR.sierrensis.quad.uni$BUGSoutput$DIC
+lf.sierrensis.quad.uni$BUGSoutput$DIC
 
 ## Plot data + fit ----
-df.MDR.sierrensis.quad.uni <- data.frame(MDR.sierrensis.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+df.lf.sierrensis.quad.uni <- data.frame(lf.sierrensis.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.MDR.sierrensis.quad.uni)
+head(df.lf.sierrensis.quad.uni)
 
 ##### Plot
-plot.df.MDR.sierrensis.quad.uni <- df.MDR.sierrensis.quad.uni %>% 
+plot.df.lf.sierrensis.quad.uni <- df.lf.sierrensis.quad.uni %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "grey", alpha = 0.5) +
   geom_line(aes(y = mean), color = "#868686FF", linewidth = 1) +
@@ -523,40 +531,40 @@ plot.df.MDR.sierrensis.quad.uni <- df.MDR.sierrensis.quad.uni %>%
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   theme_bw()
 
-plot.df.MDR.sierrensis.quad.uni
+plot.df.lf.sierrensis.quad.uni
 
-# ggsave("figures/MDR.sierrensis.quad.uni.png", plot.df.MDR.sierrensis.quad.uni, 
+# ggsave("figures/lf.sierrensis.quad.uni.png", plot.df.lf.sierrensis.quad.uni, 
 #        width = 10.3, height = 5.6)
 
 
 ##########
-###### 3C. Fit gamma distributions to MDR prior thermal responses: Quadratic ----
+###### 3C. Fit gamma distributions to lf prior thermal responses: Quadratic ----
 ##########
 
 # Get the posterior dists for 3 main parameters (not sigma) into a data frame
-MDR.nigripes.prior.cf.dists <- data.frame(q = as.vector(MDR.sierrensis.quad.uni$BUGSoutput$sims.list$cf.q),
-                                          T0 = as.vector(MDR.sierrensis.quad.uni$BUGSoutput$sims.list$cf.T0),
-                                          Tm = as.vector(MDR.sierrensis.quad.uni$BUGSoutput$sims.list$cf.Tm))
+lf.vexans.prior.cf.dists <- data.frame(q = as.vector(lf.sierrensis.quad.uni$BUGSoutput$sims.list$cf.q),
+                                       T0 = as.vector(lf.sierrensis.quad.uni$BUGSoutput$sims.list$cf.T0),
+                                       Tm = as.vector(lf.sierrensis.quad.uni$BUGSoutput$sims.list$cf.Tm))
 
 # Fit gamma distributions for each parameter posterior dists
-MDR.nigripes.prior.gamma.fits = apply(MDR.nigripes.prior.cf.dists, 2, 
-                                      function(df) fitdistr(df, "gamma")$estimate)
+lf.vexans.prior.gamma.fits = apply(lf.vexans.prior.cf.dists, 2, 
+                                   function(df) fitdistr(df, "gamma")$estimate)
 
 
-MDR.hypers <- MDR.nigripes.prior.gamma.fits
-save(MDR.hypers, file = "R-scripts/R2jags-objects/MDRhypers.quad.Rsave")
+lf.hypers <- lf.vexans.prior.gamma.fits
+save(lf.hypers, file = "R-scripts/R2jags-objects/lfhypers.quad.Rsave")
 
 
 ##########
-###### 3D. Fit MDR thermal responses with data-informed priors (Ae. nigripes): Quadratic ----
+###### 3D. Fit lf thermal responses with data-informed priors (Ae. vexans): Quadratic ----
 ##########
 
-load("R-scripts/R2jags-objects/MDRhypers.quad.Rsave")
-MDR.nigripes.prior.gamma.fits <- MDR.hypers
+load("R-scripts/R2jags-objects/lfhypers.quad.Rsave")
+lf.vexans.prior.gamma.fits <- lf.hypers
 
 ##### Temp sequence for derived quantity calculations
 # For actual fits
@@ -564,8 +572,8 @@ Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
 ##### Set data
-data <- data.MDR.nigripes
-hypers <- MDR.nigripes.prior.gamma.fits * 0.1
+data <- data.lf.vexans
+hypers <- lf.vexans.prior.gamma.fits * 0.1
 
 ##### Organize data for JAGS
 trait <- data$trait
@@ -577,42 +585,42 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, hypers = hypers)
 
 ##### Run JAGS -----
-MDR.nigripes.quad.inf <- jags(data = jag.data,
-                             inits = inits,
-                             parameters.to.save = parameters,
-                             model.file = "R-scripts/quad_inf.txt",
-                             n.thin = nt,
-                             n.chains = nc,
-                             n.burnin = nb,
-                             n.iter = ni,
-                             DIC = T,
-                             working.directory = getwd()
+lf.vexans.quad.inf <- jags(data = jag.data,
+                              inits = inits,
+                              parameters.to.save = parameters,
+                              model.file = "R-scripts/quad_inf.txt",
+                              n.thin = nt,
+                              n.chains = nc,
+                              n.burnin = nb,
+                              n.iter = ni,
+                              DIC = T,
+                              working.directory = getwd()
 )
 
 ## Save the model as Rdata 
-#save(MDR.nigripes.quad.inf, file = "R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
+#save(lf.vexans.quad.inf, file = "R-scripts/R2jags-objects/lf.vexans.quad.inf.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
+load("R-scripts/R2jags-objects/lf.vexans.quad.inf.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-MDR.nigripes.quad.inf$BUGSoutput$summary[1:5,]
-mcmcplot(MDR.nigripes.quad.inf)
+lf.vexans.quad.inf$BUGSoutput$summary[1:5,]
+mcmcplot(lf.vexans.quad.inf)
 
 # Extract the DIC for future model comparisons
-MDR.nigripes.quad.inf$BUGSoutput$DIC
+lf.vexans.quad.inf$BUGSoutput$DIC
 
 ## Plot data + fit ----
-df.MDR.nigripes.quad.inf <- data.frame(MDR.nigripes.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
+df.lf.vexans.quad.inf <- data.frame(lf.vexans.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.MDR.nigripes.quad.inf)
+head(df.lf.vexans.quad.inf)
 
 ##### Plot
-plot.MDR.nigripes.quad.inf <- df.MDR.nigripes.quad.inf %>% 
+plot.lf.vexans.quad.inf <- df.lf.vexans.quad.inf %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "pink", alpha = 0.5) +
   geom_line(aes(y = mean), color = "red", linewidth = 1) +
@@ -622,13 +630,13 @@ plot.MDR.nigripes.quad.inf <- df.MDR.nigripes.quad.inf %>%
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   theme_bw()
 
-plot.MDR.nigripes.quad.inf
+plot.lf.vexans.quad.inf
 
-# ggsave("figures/MDR.nigripes.quad.inf.png", plot.MDR.nigripes.quad.inf, 
+# ggsave("figures/lf.vexans.quad.inf.png", plot.lf.vexans.quad.inf, 
 #        width = 10.3, height = 5.6)
 
 
@@ -637,79 +645,79 @@ plot.MDR.nigripes.quad.inf
 ##########
 
 # Add an identifying column in each model output dataframe
-df.MDR.nigripes.quad.uni <- df.MDR.nigripes.quad.uni %>% 
-  mutate(type = "Ae. nigripes uniform")
+df.lf.vexans.quad.uni <- df.lf.vexans.quad.uni %>% 
+  mutate(type = "Ae. vexans uniform")
 
-df.MDR.sierrensis.quad.uni <- df.MDR.sierrensis.quad.uni %>% 
+df.lf.sierrensis.quad.uni <- df.lf.sierrensis.quad.uni %>% 
   mutate(type = "Ae. sierrensis uniform")
 
-df.MDR.nigripes.quad.inf <- df.MDR.nigripes.quad.inf %>% 
-  mutate(type = "Ae. nigripes informative")
+df.lf.vexans.quad.inf <- df.lf.vexans.quad.inf %>% 
+  mutate(type = "Ae. vexans informative")
 
 # Combine the three dataframes
-df.all <- rbind(df.MDR.nigripes.quad.uni, df.MDR.sierrensis.quad.uni, df.MDR.nigripes.quad.inf)
+df.all <- rbind(df.lf.vexans.quad.uni, df.lf.sierrensis.quad.uni, df.lf.vexans.quad.inf)
 
 ##### Plot
 plot.all <- df.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
   geom_line(aes(y = mean, color = type), linewidth = 1) +
-  geom_point(data = data.MDR.nigripes, aes(x = temp, y = trait), size = 2) +
-  #geom_point(data = data.MDR.sierrensis, aes(x = temp, y = trait), size = 2) +
+  geom_point(data = data.lf.vexans, aes(x = temp, y = trait), size = 2) +
+  #geom_point(data = data.lf.sierrensis, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) + 
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   # Customize the colours
   ## ribbon
-  scale_fill_manual(values = c("Ae. nigripes uniform" = "#4363d8", 
+  scale_fill_manual(values = c("Ae. vexans uniform" = "#4363d8", 
                                "Ae. sierrensis uniform" = "grey",
-                               "Ae. nigripes informative" = "pink")) +
+                               "Ae. vexans informative" = "pink")) +
   ## line
-  scale_color_manual(values = c("Ae. nigripes uniform" = "blue", 
+  scale_color_manual(values = c("Ae. vexans uniform" = "blue", 
                                 "Ae. sierrensis uniform" = "#868686FF",
-                                "Ae. nigripes informative" = "red")) +
+                                "Ae. vexans informative" = "red")) +
   theme_bw()
 
 plot.all
 
-# ggsave("figures/MDR.all.quad.png", plot.all,
+# ggsave("figures/lf.all.quad.png", plot.all,
 #        width = 10.3, height = 5.6)
 
-##### Plot all nigripes TPCs for comparison ----
+##### Plot all vexans TPCs for comparison ----
 # Add an identifying column in each model output dataframe
-df.MDR.nigripes.bri.uni <- df.MDR.nigripes.bri.uni %>% 
+df.lf.vexans.bri.uni <- df.lf.vexans.bri.uni %>% 
   mutate(type = "Briere (uni)")
 
-df.MDR.nigripes.bri.inf <- df.MDR.nigripes.bri.inf %>% 
+df.lf.vexans.bri.inf <- df.lf.vexans.bri.inf %>% 
   mutate(type = "Briere (inf)")
 
-df.MDR.nigripes.quad.uni <- df.MDR.nigripes.quad.uni %>% 
+df.lf.vexans.quad.uni <- df.lf.vexans.quad.uni %>% 
   mutate(type = "Quadratic (uni)")
 
-df.MDR.nigripes.quad.inf <- df.MDR.nigripes.quad.inf %>% 
+df.lf.vexans.quad.inf <- df.lf.vexans.quad.inf %>% 
   mutate(type = "Quadratic (inf)")
 
 # Combine the three dataframes
-df.all <- rbind(df.MDR.nigripes.bri.uni, df.MDR.nigripes.bri.inf, 
-                df.MDR.nigripes.quad.uni, df.MDR.nigripes.quad.inf)
+df.all <- rbind(df.lf.vexans.bri.uni, df.lf.vexans.bri.inf, 
+                df.lf.vexans.quad.uni, df.lf.vexans.quad.inf)
 
 ##### Plot
 plot.all <- df.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
   geom_line(aes(y = mean, color = type), linewidth = 1) +
-  geom_point(data = data.MDR.nigripes, aes(x = temp, y = trait), size = 2) +
-  #geom_point(data = data.MDR.sierrensis, aes(x = temp, y = trait), size = 2) +
+  geom_point(data = data.lf.vexans, aes(x = temp, y = trait), size = 2) +
+  #geom_point(data = data.lf.sierrensis, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) + 
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Adult lifespan (days)"
   ) +
   # Customize the colours
   scale_fill_jco() +
@@ -718,5 +726,5 @@ plot.all <- df.all %>%
 
 plot.all
 
-# ggsave("figures/MDR.all.nigripes.png", plot.all,
+# ggsave("figures/lf.all.vexans.png", plot.all,
 #        width = 10.3, height = 5.6)
