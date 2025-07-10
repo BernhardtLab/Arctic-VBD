@@ -474,7 +474,6 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 
 ##### Run JAGS -----
 
-# This code took an hour to run!
 # MDR.sierrensis.quad.uni <- jags(data = jag.data, 
 #                              inits = inits, 
 #                              parameters.to.save = parameters, 
@@ -491,7 +490,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 # save(MDR.sierrensis.quad.uni, file = "R-scripts/R2jags-objects/MDR.sierrensis.quad.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.sierrensis.quad.uni.Rdata")
+# load("R-scripts/R2jags-objects/MDR.sierrensis.quad.uni.Rdata")
 
 
 ## Diagnostics ----
@@ -589,10 +588,10 @@ MDR.nigripes.quad.inf <- jags(data = jag.data,
 )
 
 ## Save the model as Rdata 
-#save(MDR.nigripes.quad.inf, file = "R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
+# save(MDR.nigripes.quad.inf, file = "R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
+# load("R-scripts/R2jags-objects/MDR.nigripes.quad.inf.Rdata")
 
 
 ## Diagnostics ----
