@@ -427,26 +427,6 @@ TraitData_pLA <- rbind(pLA.vexans, pLA.aedes)
 
 # write_csv(TraitData_pLA, "data/data-processed/TraitData_pLA.csv")
 
-## Plot raw data
-plot.data.pLA <- TraitData_pLA %>% 
-  mutate(type = c(rep("Arctic", 6), rep("non-Arctic", 31))) %>% 
-  ggplot(aes(x = temp, y = trait)) +
-  geom_point(aes(colour = species, shape = citation)) +
-  geom_line(data = ~filter(.x, species != "triseriatus"),
-            aes(colour = species)) +
-  labs(y = "Larval survival", x = "Temperature ºC") +
-  scale_colour_discrete(name = "Species", labels = c("Ae. nigromaculis",
-                                                     "Ae. sollicitans",
-                                                     "Ae. triseriatus",
-                                                     "Ae. vexans"
-  )) +
-  facet_grid(rows = vars(type)) +
-  theme_bw()
-
-plot.data.pLA
-
-# ggsave("figures/raw_data/plot.data.pLA.png", plot.data.pLA, width = 9.83, height = 6.17)
-
 
 ##########
 ###### 6. Mosquito egg-to-adult development rate (MDR) ----
