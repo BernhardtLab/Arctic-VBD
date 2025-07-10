@@ -49,8 +49,9 @@ cat("
     ## Random effect for q
     sigma_q ~ dunif(0, 1000) # standard deviation of random effect (variance between unique ids)
 	  tau_q <- 1 / (sigma_q * sigma_q) # convert to precision
+	  
     for (j in 1:Nids){
-		q[j] ~ dnorm(0, tau_q) # random intercept for each unique id
+		q[j] ~ dnorm(0, tau_q) # random q for each unique id
 		}
 
     ## Likelihood

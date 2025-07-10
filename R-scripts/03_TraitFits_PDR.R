@@ -210,7 +210,7 @@ plot.PDR.arctic.bri.uni
 ##### Temp sequence for derived quantity calculations
 # For actual fits
 Temp.xs <- seq(0, 45, 0.1)
-N.Temp.xs <-length(Temp.xs)
+N.Temp.xs <- length(Temp.xs)
 
 
 ##### Set data
@@ -221,20 +221,56 @@ data <- data %>%
   group_by(species, host.species, citation) %>% 
   mutate(unique_id = cur_group_id())
 
+# ##### Organize data for JAGS
+# trait <- data$trait
+# N.obs <- length(trait)
+# temp <- data$temp
+# 
+# ##### define data for JAGS in a list object
+# jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
+# 
+# ##### Run JAGS
+# PDR.nonarctic.bri.uni <- jags(
+#   data = jag.data,
+#   inits = inits,
+#   parameters.to.save = parameters,
+#   model.file = "R-scripts/briere_T.txt",
+#   n.thin = nt,
+#   n.chains = nc,
+#   n.burnin = nb,
+#   n.iter = ni,
+#   DIC = T,
+#   working.directory = getwd()
+# )
+
+## Add random effects ----
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1),
+  sigma_q = rlnorm(0.1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "z.trait.mu.pred")
+
 ##### Organize data for JAGS
 trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
+unique.id <- as.integer(as.factor(data$unique_id))
+Nids <- max(unique.id)
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id)
 
 ##### Run JAGS
 PDR.nonarctic.bri.uni <- jags(
   data = jag.data,
   inits = inits,
   parameters.to.save = parameters,
-  model.file = "R-scripts/briere_T.txt",
+  model.file = "R-scripts/briere_T_randeff.txt",
   n.thin = nt,
   n.chains = nc,
   n.burnin = nb,
@@ -242,6 +278,8 @@ PDR.nonarctic.bri.uni <- jags(
   DIC = T,
   working.directory = getwd()
 )
+
+## Random effects END ----
 
 ## Save the model as Rdata 
 # save(PDR.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/PDR.nonarctic.bri.uni.Rdata")
