@@ -66,11 +66,11 @@ inits<-function(){list(
 parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
 
 ##### MCMC Settings
-# Number of posterior dist elements = [(ni - nb) / nt ] * nc = [ (110000 - 10000) / 100 ] * 5 = 5000
-ni <- 110000 # number of iterations in each chain
-nb <- 10000 # number of 'burn in' iterations to discard
-nt <- 100 # thinning rate - jags saves every nt iterations in each chain
-nc <- 5 # number of chains
+# Number of posterior dist elements = [(ni - nb) / nt ] * nc = [ (25000 - 5000) / 8 ] * 3 = 7500
+ni <- 25000 # number of iterations in each chain
+nb <- 5000 # number of 'burn in' iterations to discard
+nt <- 8 # thinning rate - jags saves every nt iterations in each chain
+nc <- 3 # number of chains
 
 
 ##########
@@ -95,23 +95,23 @@ temp <- data$temp
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
 
 ##### Run JAGS -----
-# MDR.nigripes.bri.uni <- jags(data = jag.data, 
-#                      inits = inits, 
-#                      parameters.to.save = parameters, 
-#                      model.file = "R-scripts/briere_T.txt",
-#                      n.thin = nt, 
-#                      n.chains = nc, 
-#                      n.burnin = nb, 
-#                      n.iter = ni, 
-#                      DIC = T, 
-#                      working.directory = getwd()
-# )
+MDR.nigripes.bri.uni <- jags(data = jag.data,
+                     inits = inits,
+                     parameters.to.save = parameters,
+                     model.file = "R-scripts/briere_T.txt",
+                     n.thin = nt,
+                     n.chains = nc,
+                     n.burnin = nb,
+                     n.iter = ni,
+                     DIC = T,
+                     working.directory = getwd()
+)
 
 ## Save the model as Rdata 
-#save(MDR.nigripes.bri.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
+# save(MDR.nigripes.bri.uni, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
+# load("R-scripts/R2jags-objects/MDR.nigripes.bri.uni.Rdata")
 
 
 ## Diagnostics ----
@@ -172,23 +172,23 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 ##### Run JAGS -----
 
 # This code took an hour to run!
-# MDR.sierrensis.bri.uni <- jags(data = jag.data,
-#                                inits = inits,
-#                                parameters.to.save = parameters,
-#                                model.file = "R-scripts/briere_T.txt",
-#                                n.thin = nt,
-#                                n.chains = nc,
-#                                n.burnin = nb,
-#                                n.iter = ni,
-#                                DIC = T,
-#                                working.directory = getwd()
-# )
+MDR.sierrensis.bri.uni <- jags(data = jag.data,
+                               inits = inits,
+                               parameters.to.save = parameters,
+                               model.file = "R-scripts/briere_T.txt",
+                               n.thin = nt,
+                               n.chains = nc,
+                               n.burnin = nb,
+                               n.iter = ni,
+                               DIC = T,
+                               working.directory = getwd()
+)
 
 ## Save the model as Rdata 
-#save(MDR.sierrensis.bri.uni, file = "R-scripts/R2jags-objects/MDR.sierrensis.bri.uni.Rdata")
+# save(MDR.sierrensis.bri.uni, file = "R-scripts/R2jags-objects/MDR.sierrensis.bri.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.sierrensis.bri.uni.Rdata")
+# load("R-scripts/R2jags-objects/MDR.sierrensis.bri.uni.Rdata")
 
 
 ## Diagnostics ----
@@ -286,10 +286,10 @@ MDR.nigripes.bri.inf <- jags(data = jag.data,
 )
 
 ## Save the model as Rdata 
-save(MDR.nigripes.bri.inf, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
+# save(MDR.nigripes.bri.inf, file = "R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
+# load("R-scripts/R2jags-objects/MDR.nigripes.bri.inf.Rdata")
 
 
 ## Diagnostics ----
