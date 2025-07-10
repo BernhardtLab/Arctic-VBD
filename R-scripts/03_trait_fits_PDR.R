@@ -5,7 +5,7 @@
 ## rate (PDR) for Arctic nematode using data from Varestrongylus eleguneniensis 
 ## (Kafle et al. 2018) and from Setaria tundra (Laaksonen et al. 2009).
 ##     1) with uniform priors; and 
-##     2) with data-informed priors from Dirofilaria immitis and wuchereria bancrofti
+##     2) with data-informed priors from Dirofilaria immitis and Wuchereria bancrofti
 ##
 ## (V. eleguneniensis is a nematode infecting caribou and muskoxen in the Canadian
 ## Arctic. It is transmitted by gastropod.)
