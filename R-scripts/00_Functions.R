@@ -1,4 +1,4 @@
-setwd("~/Documents/UofG/Arctic-VBD/R-scripts")
+
 
 ##########
 ###### Briere model (truncated) ----

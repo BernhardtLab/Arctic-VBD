@@ -27,7 +27,6 @@ library(tidyverse)
 library(readxl)
 library(janitor)
 
-setwd("~/Documents/UofG/Arctic-VBD")
 
 
 ##########

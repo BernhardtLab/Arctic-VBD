@@ -36,7 +36,6 @@ library(mcmcplots) # Diagnostic plots for fits
 library(MASS)
 library(ggsci)
 
-setwd("~/Documents/UofG/Arctic-VBD")
 
 # Load data
 data <- read_csv("data/data-processed/TraitData_lf.csv")
