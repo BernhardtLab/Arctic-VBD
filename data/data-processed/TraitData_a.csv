@@ -1,0 +1,234 @@
+trait_name,temp,trait,error_pos,error_neg,error_unit,genus,species,trait_def,citation,data_source,notes
+1/a,20,8.1,NA,NA,NA,Aedes,albopictus,mean duration of gonotrophic cycle,Delatte_2009_JMedEntomol,table 5,Saint-Pierre Reunion Island
+1/a,25,4.5,NA,NA,NA,Aedes,albopictus,mean duration of gonotrophic cycle,Delatte_2009_JMedEntomol,table 5,Saint-Pierre Reunion Island
+1/a,30,3.5,NA,NA,NA,Aedes,albopictus,mean duration of gonotrophic cycle,Delatte_2009_JMedEntomol,table 5,Saint-Pierre Reunion Island
+1/a,35,4.4,NA,NA,NA,Aedes,albopictus,mean duration of gonotrophic cycle,Delatte_2009_JMedEntomol,table 5,Saint-Pierre Reunion Island
+1/a,25,3.8,0.1,0.1,se,Aedes,albopictus,mean duration of gonotrophic cycle,Marini_2020_Insects,table 4,Trento Italy
+1/a,30,3.3,0.1,0.1,se,Aedes,albopictus,mean duration of gonotrophic cycle,Marini_2020_Insects,table 4,Trento Italy
+1/a,24,9.67,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,9,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,13.67,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,9,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,10.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,9,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,9,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,15.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,10,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,9,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,10.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,10.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,14,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,13,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,10.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,13.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,13.4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,21,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,11,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,13,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,7,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,9,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,8,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,7.33,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,24,11.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9.67,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8.75,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,13,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,7.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,11,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,16,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,16,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9.25,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,11,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9.71,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,22,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,10.67,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,13.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,20,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,15,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,14.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,11,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8.67,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,11.25,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,7.75,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,3,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,12,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,10,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,11,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,15.57,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,11.25,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,13,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,16,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,4.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9.25,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,4.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,3,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,10,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,7,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,3,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,11.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,10.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8.67,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,2,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,4.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,13.6,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9.67,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,8,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,6,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,27,9,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,8.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7.33,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,10,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5.5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,5,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,8,NA,NA,NA,Aedes,aegypti,individual-level duration of first gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,3.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6.5,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6.67,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,9.67,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,6.75,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7.33,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,4,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,30,7,NA,NA,NA,Aedes,aegypti,individual-level duration of second gonotrophic cycle,Goindin_2015_PLoSOne,supplementary file 1,Guadeloupe French West Indies
+1/a,22,7.3,NA,NA,NA,aedes,aegypti,NA,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,NA
+1/a,24,6.1,NA,NA,NA,aedes,aegypti,NA,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,NA
+1/a,26,4.2,NA,NA,NA,aedes,aegypti,NA,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,NA
+1/a,28,3.5,NA,NA,NA,aedes,aegypti,NA,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,NA
+1/a,30,2.9,NA,NA,NA,aedes,aegypti,NA,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,NA
+1/a,32,2.4,NA,NA,NA,aedes,aegypti,NA,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,NA
+a,21.68742415,0.167518059,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,22.2943022,0.144213433,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,22.38953929,0.168599215,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,22.92476429,0.168082804,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,24.39558634,0.25167012,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,25.01425641,0.251952493,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,25.87751143,0.202140476,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,26.16176525,0.202270215,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,27.47748918,0.307846963,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,28.18628204,0.27698188,NA,NA,NA,aedes,aegypti,NA,Focks_1993_JMedEntom,NA,NA
+a,16,0,NA,NA,NA,aedes,aegypti,NA,Morin_2015,NA,NA
+a,40,0,NA,NA,NA,aedes,aegypti,NA,Morin_2015,NA,NA
