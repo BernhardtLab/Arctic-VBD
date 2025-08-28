@@ -33,9 +33,12 @@ library(janitor)
 ###### 1. Biting rate (a) ----
 ##########
 
-a.albopictus.Delatte2009 <- read_csv("data/aedes_albopictus.Delatte2009.csv") %>% 
-  clean_names()
+# Read data
 
+## Aedes albopictus ----
+a.albopictus.Delatte2009 <- read_csv("data-raw/aedes_albopictus.Delatte2009.csv") %>% 
+  clean_names()
+str(a.albopictus.Delatte2009)
 
 a.albopictus.Delatte2009  <- a.albopictus.Delatte2009  %>% 
   filter(original_trait_def == "mean duration of gonotrophic cycle") %>% 
@@ -46,17 +49,17 @@ a.albopictus.Delatte2009  <- a.albopictus.Delatte2009  %>%
   mutate(citation = "Delatte_2009_JMedEntomol") %>% 
   select(trait_name, interactor1temp, trait, original_error_pos, 
          original_error_neg, original_error_unit, interactor1genus, 
-         interactor1species, trait_def, citation, figure_table, location)
+         interactor1species, trait_def, citation, doi, figure_table, location)
   
 
 colnames(a.albopictus.Delatte2009) <- c("trait_name", "temp", "trait", 
                                         "error_pos", "error_neg", "error_unit", 
                                         "genus", "species", "trait_def", 
-                                        "citation", "data_source", "notes")
+                                        "citation", "doi", "data_source", "notes")
 
 
 
-a.albopictus.Marini2020 <- read_csv("data/aedes_albopictus.Marini2020.csv") %>% 
+a.albopictus.Marini2020 <- read_csv("data-raw/aedes_albopictus.Marini2020.csv") %>% 
   clean_names() 
 
 a.albopictus.Marini2020 <- a.albopictus.Marini2020 %>% 
@@ -68,17 +71,18 @@ a.albopictus.Marini2020 <- a.albopictus.Marini2020 %>%
   mutate(citation = "Marini_2020_Insects") %>% 
   select(trait_name, interactor1temp, trait, original_error_pos, 
          original_error_neg, original_error_unit, interactor1genus, 
-         interactor1species, trait_def, citation, figure_table, location)
+         interactor1species, trait_def, citation, doi, figure_table, location)
 
 
 
 colnames(a.albopictus.Marini2020) <- c("trait_name", "temp", "trait", 
                                        "error_pos", "error_neg", "error_unit", 
                                        "genus", "species", "trait_def", 
-                                       "citation", "data_source", "notes")
+                                       "citation", "doi", "data_source", "notes")
 
 
-a.aegypti.Goindin2015 <- read_csv("data/aedes_aegypti.Goindin2015.csv") %>% 
+## Aedes aegypti ----
+a.aegypti.Goindin2015 <- read_csv("data-raw/aedes_aegypti.Goindin2015.csv") %>% 
   clean_names()
 
 
@@ -89,15 +93,15 @@ a.aegypti.Goindin2015  <- a.aegypti.Goindin2015  %>%
   mutate(trait_def = original_trait_def) %>% 
   mutate(citation = "Goindin_2015_PLoSOne") %>% 
   select(trait_name, interactor1temp, trait, interactor1genus, 
-         interactor1species, trait_def, citation, figure_table, location)
+         interactor1species, trait_def, citation, doi, figure_table, location)
 
 
 colnames(a.aegypti.Goindin2015) <- c("trait_name", "temp", "trait", 
                                         "genus", "species", "trait_def", 
-                                        "citation", "data_source", "notes")
+                                        "citation","doi", "data_source", "notes")
 
 
-a.aegypti <- read_csv("data/a.aegypti.csv") %>% 
+a.aegypti <- read_csv("data-raw/aedes_aegypti.csv") %>% 
   clean_names() 
 
 #a.aegypti$trait[a.aegypti$trait_name == "GCD"] <- 1/a.aegypti$trait[a.aegypti$trait_name == "GCD"]
@@ -106,10 +110,11 @@ a.aegypti$trait_name[a.aegypti$trait_name == "GCD"] <- "1/a"
 TraitData_a <-  bind_rows(a.albopictus.Delatte2009, a.albopictus.Marini2020, 
                           a.aegypti.Goindin2015, a.aegypti)
 
-# write_csv(TraitData_a, "data/data-processed/TraitData_a.csv")
+# write_csv(TraitData_a, "data-processed/TraitData_a.csv")
 
 ## Plot raw data
-plot.data.a <- TraitData_a %>% 
+plot.data.a <- TraitData_a %>%
+  mutate(trait = ifelse(trait_name == "1/a", 1/trait, trait)) %>% 
   mutate(type = "non-Arctic") %>% 
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = species, shape = citation)) +
@@ -138,12 +143,13 @@ plot.data.a
 ## transmission efficiency (b)
 
 
+
 ##########
 ###### 2i. Infection efficiency (c) ----
 ##########
 
 ## Ae. Trivittatus (transmitting Dirofilaria immitis); for informative priors) ----
-c.trivittatus <- read_csv("data/dirofilaria_immitis_x_aedes_trivittatus.Christensen1978.csv") %>% 
+c.trivittatus <- read_csv("data-raw/dirofilaria_immitis_x_aedes_trivittatus.Christensen1978.csv") %>% 
   clean_names() 
 
 c.trivittatus <- c.trivittatus %>% 
@@ -156,11 +162,12 @@ c.trivittatus <- c.trivittatus %>%
   mutate(species = "trivittatus ") %>% 
   mutate(paras.species = "Dirofilaria immitis") %>% 
   mutate(citation = "Christensen_1978_ProcHelmintholSocWash") %>% 
+  mutate(doi = NA) %>% 
   mutate(data_source = "figure 2") %>% 
   select(trait_name, temp, trait, genus, species, paras.species, trait_def,
          citation, data_source, notes)
 
-# write_csv(c.trivittatus, "data/data-processed/TraitData_c.csv")
+# write_csv(c.trivittatus, "data-processed/TraitData_c.csv")
 
 
 ## Plot raw data
@@ -168,7 +175,6 @@ plot.data.c <- c.trivittatus %>%
 mutate(type = "non-Arctic") %>% 
   ggplot() +
   geom_point(aes(x = temp, y = trait, colour = species)) +
-  geom_line(aes(x = temp, y = trait, colour = species)) +
   labs(y = "Infection probability", x = "Temperature ºC") +
   scale_color_discrete(name = "Species", label = "Ae. trivittatus") +
   facet_grid(rows = vars(type)) +
@@ -177,6 +183,7 @@ mutate(type = "non-Arctic") %>%
 plot.data.c
 
 # ggsave("figures/raw_data/plot.data.c.png", plot.data.c, , width = 9.83, height = 6.17)
+
 
 ##########
 ###### 2ii. Transmission efficiency (b) ----
@@ -187,8 +194,9 @@ plot.data.c
 ###### 3. Parasite development rate (PDR) ----
 ##########
 
+# Arctic species
 ## Varestrongylus eleguneniensis ----
-PDR.eleguneniensis <- read_csv("data/varestrongylus_eleguneniensis.Kafle2018.csv") %>% 
+PDR.eleguneniensis <- read_csv("data-raw/varestrongylus_eleguneniensis.Kafle2018.csv") %>% 
   clean_names()
 
 PDR.eleguneniensis <- PDR.eleguneniensis %>% 
@@ -201,10 +209,11 @@ PDR.eleguneniensis <- PDR.eleguneniensis %>%
   mutate(host.genus = "deroceras") %>% 
   mutate(host.species = "laeve") %>% 
   mutate(citation = "Kafle_2018_ParasitVectors") %>% 
+  mutate(doi = "10.1186/s13071-018-2946-x") %>% 
   mutate(data_source = "table 1") %>% 
-  mutate(notes = "") %>% 
+  mutate(notes = "Nematode infecting caribou and muskoxen in the Canadian Arctic; transmitted by gastropods") %>% 
   dplyr::select(trait_name, temp, trait, genus, species, host.genus, host.species, 
-         trait_def, citation, data_source, notes)
+         trait_def, citation, doi, data_source, notes)
 
 
 
@@ -215,7 +224,7 @@ PDR.eleguneniensis[5,"notes"] <- "did not develop after 101 days"
 
 
 ## Setaria tundra ----
-PDR.tundra <- read_csv("data/setaria_tundra.Laaksonen2009.csv") %>% 
+PDR.tundra <- read_csv("data-raw/setaria_tundra.Laaksonen2009.csv") %>% 
   clean_names()
 
 PDR.tundra <- PDR.tundra %>% 
@@ -229,17 +238,18 @@ PDR.tundra <- PDR.tundra %>%
   mutate(host.genus = "see notes") %>% 
   mutate(host.species = NA) %>% 
   mutate(citation = "Laaksonen_2009_ParasitVectors") %>% 
+  mutate(doi = "10.1186/1756-3305-2-3") %>% 
   mutate(data_source = "result text") %>% 
   select(trait_name, temp, trait, genus, species, host.genus, host.species, 
-         trait_def, citation, data_source, notes)
+         trait_def, citation, doi, data_source, notes)
 
 
 ## At 14.1ºC, development was not completed. Change development time to 1000 days
 PDR.tundra[1, "trait"] <- 1000
 
 
-## Dirofilaria immitis (in Ae. Trivittatus; for informative priors) ----
-PDR.immitis <- read_csv("data/dirofilaria_immitis_x_aedes_trivittatus.Christensen1978.csv") %>% 
+## Dirofilaria immitis (in Ae. Trivittatus; for informing priors) ----
+PDR.immitis <- read_csv("data-raw/dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
   clean_names() 
 
 PDR.immitis <- PDR.immitis %>% 
@@ -253,16 +263,17 @@ PDR.immitis <- PDR.immitis %>%
   mutate(host.genus = "aedes") %>% 
   mutate(host.species = "trivittatus") %>% 
   mutate(citation = "Christensen_1978_ProcHelmintholSocWash") %>% 
+  mutate(doi = NA) %>% 
   mutate(data_source = "table 1") %>% 
   select(trait_name, temp, trait, genus, species, host.genus, host.species, 
-         trait_def, citation, data_source, notes)
+         trait_def, citation, doi, data_source, notes)
 
 ## At 14.5ºC, development was not completed. Change development time to 1000 days
 PDR.immitis[1,"trait"] <- 1000
 
 
 ## Dirofilaria immitis (in Ae. aegypti; for informative priors) ----
-PDR.immitis.aegypti <- read_csv("data/dirofilaria_immitis_x_aedes_aegypti.Ledesma2015.csv") %>% 
+PDR.immitis.aegypti <- read_csv("data-raw/dirofilaria_immitis_aedes_aegypti.Ledesma2015.csv") %>% 
   clean_names() 
 
 PDR.immitis.aegypti <- PDR.immitis.aegypti %>% 
@@ -276,14 +287,15 @@ PDR.immitis.aegypti <- PDR.immitis.aegypti %>%
   mutate(host.genus = "aedes") %>% 
   mutate(host.species = "aegypti") %>% 
   mutate(citation = "Ledesma_2015_VetParasitol") %>% 
+  mutate(doi = "10.1016/j.vetpar.2015.02.003") %>% 
   mutate(data_source = "table 1") %>% 
-  mutate(notes = "") %>% 
+  mutate(notes = NA) %>% 
   select(trait_name, temp, trait, genus, species, host.genus, host.species, 
-         trait_def, citation, data_source, notes)
+         trait_def, citation, doi, data_source, notes)
 
 
 ## lymphatic filarisis worms in Ae. polynesiensis
-PDR.polynesiensis <- read_csv("data/apol.pdr.csv") %>% 
+PDR.polynesiensis <- read_csv("data-raw/wuchereria_bancrofti_aedes_polynesiensis.Lardeux1997.csv") %>% 
   clean_names()
 
 PDR.polynesiensis <- PDR.polynesiensis %>% 
@@ -291,21 +303,29 @@ PDR.polynesiensis <- PDR.polynesiensis %>%
   # Add new columns to provide more info
   mutate(trait_name = "1/PDR") %>% 
   mutate(trait_def = "days to appearance of L3 after experimental infection") %>% 
-  # Convert development time to development rate
+  mutate(error = sd) %>% 
+  mutate(error_unit = "sd") %>% 
   mutate(genus = "wuchereria") %>% 
   mutate(species = "bancrofti") %>% 
   mutate(host.genus = "aedes") %>% 
   mutate(host.species = "polynesiensis") %>% 
   mutate(citation = "Ladeaux_1997_Parasitology") %>% 
+  mutate(doi = "10.1017/s0031182096008359") %>% 
   mutate(data_source = "table 1") %>% 
-  mutate(notes = "") %>% 
-  select(trait_name, temp, trait, genus, species, host.genus, host.species, 
-         trait_def, citation, data_source, notes)
+  mutate(notes = NA) %>% 
+  select(trait_name, temp, trait, error, error_unit, genus, species, host.genus, 
+         host.species, trait_def, citation, doi, data_source, notes)
 
 TraitData_PDR <- bind_rows(PDR.eleguneniensis, PDR.tundra, PDR.immitis, 
                            PDR.immitis.aegypti, PDR.polynesiensis)
 
-# write_csv(TraitData_PDR, "data/data-processed/TraitData_PDR.csv")
+## Reorder columns
+TraitData_PDR <- TraitData_PDR %>% 
+  relocate(error, .after = trait) %>% 
+  relocate(error_unit, .after = error)
+
+
+# write_csv(TraitData_PDR, "data-processed/TraitData_PDR.csv")
 
 
 
@@ -352,7 +372,7 @@ plot.data.EFD
 
 # Aedes vexans ----
 ## Read data
-EV.vexans <- read_csv("data/aedes_vexans.McHaffey1972.csv") %>% 
+EV.vexans <- read_csv("data-raw/aedes_vexans.McHaffey1972.csv") %>% 
   clean_names()
 
 EV.vexans <- EV.vexans %>% 
@@ -368,7 +388,8 @@ EV.vexans <- EV.vexans %>%
 
 colnames(EV.vexans) <- c("trait_name", "temp", "trait", "error_pos", 
                          "error_neg", "trait2_name", "trait_2", "genus", 
-                         "species", "trait_def", "citation", "data_source", "notes")
+                         "species", "trait_def", "citation", "doi", "data_source",
+                         "notes")
 
 ## Plot raw data
 plot.data.EV <- EV.vexans %>% 
@@ -395,7 +416,7 @@ plot.data.EV
 
 # Aedes vexans ----
 ## Read data
-pLA.vexans <- read_csv("data/aedes_vexans.Brust1967.csv") %>% 
+pLA.vexans <- read_csv("data-raw/aedes_vexans.Brust1967.csv") %>% 
   clean_names()
 
 pLA.vexans <- pLA.vexans %>% 
@@ -410,7 +431,8 @@ pLA.vexans <- pLA.vexans %>%
   
 colnames(pLA.vexans) <- c("trait_name", "temp", "trait", "error_pos", 
                           "error_neg", "trait2_name", "trait_2", "genus", 
-                          "species", "trait_def", "citation", "data_source", "notes")
+                          "species", "trait_def", "citation", "doi",
+                          "data_source", "notes")
 
 pLA.vexans %>% 
   ggplot() +

@@ -71,11 +71,11 @@ inits<-function(){list(
 parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
 
 ##### MCMC Settings
-# Number of posterior dist elements = [(ni - nb) / nt ] * nc = [ (110000 - 10000) / 100 ] * 5 = 5000
-ni <- 110000 # number of iterations in each chain
-nb <- 10000 # number of 'burn in' iterations to discard
-nt <- 100 # thinning rate - jags saves every nt iterations in each chain
-nc <- 5 # number of chains
+# Number of posterior dist elements = [(ni - nb) / nt ] * nc = [ (25000 - 5000) / 8 ] * 3 = 7500
+ni <- 25000 # number of iterations in each chain
+nb <- 5000 # number of 'burn in' iterations to discard
+nt <- 8 # thinning rate - jags saves every nt iterations in each chain
+nc <- 3 # number of chains
 
 
 ##########
@@ -176,7 +176,6 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N
 
 ##### Run JAGS -----
 
-# This code took an hour to run!
 lf.sierrensis.bri.uni <- jags(data = jag.data,
                                inits = inits,
                                parameters.to.save = parameters,
@@ -190,7 +189,7 @@ lf.sierrensis.bri.uni <- jags(data = jag.data,
 )
 
 ## Save the model as Rdata 
-#save(lf.sierrensis.bri.uni, file = "R-scripts/R2jags-objects/lf.sierrensis.bri.uni.Rdata")
+# save(lf.sierrensis.bri.uni, file = "R-scripts/R2jags-objects/lf.sierrensis.bri.uni.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/lf.sierrensis.bri.uni.Rdata")
@@ -214,15 +213,15 @@ head(df.lf.sierrensis.bri.uni)
 ##### Plot
 plot.lf.sierrensis.bri.uni <- df.lf.sierrensis.bri.uni %>% 
   ggplot(aes(x = temp)) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2
+             , position = "jitter"
+  ) +
+  stat_summary(data = data, aes(x = temp, y = trait, colour = "red"),
+               fun = mean, geom = "point") +
+  stat_summary(data = data, aes(x = temp, y = trait, colour = "red"),
+               fun.data = "mean_se", geom = "errorbar") +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "grey", alpha = 0.5) +
   geom_line(aes(y = mean), color = "#868686FF", linewidth = 1) +
-  stat_summary(data = data, aes(x = temp, y = trait),
-               fun = mean, geom = "point") +
-  stat_summary(data = data, aes(x = temp, y = trait),
-               fun.data = "mean_se", geom = "errorbar") +
-  # geom_point(data = data, aes(x = temp, y = trait), size = 2
-  #            , position = "jitter"
-  # ) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) + 
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
@@ -296,7 +295,7 @@ lf.vexans.bri.inf <- jags(data = jag.data,
 # save(lf.vexans.bri.inf, file = "R-scripts/R2jags-objects/lf.vexans.bri.inf.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/lf.vexans.bri.inf.Rdata")
+# load("R-scripts/R2jags-objects/lf.vexans.bri.inf.Rdata")
 
 
 ## Diagnostics ----

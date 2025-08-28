@@ -214,64 +214,28 @@ N.Temp.xs <-length(Temp.xs)
 ##### Set data
 data <- data.PDR.nonarctic
 
+
 ## Create a unique id for each species-study combination
 data <- data %>% 
   group_by(species, host.species, citation) %>% 
   mutate(unique_id = cur_group_id())
 
+
+## No random effect ----
 # ##### Organize data for JAGS
-# trait <- data$trait
-# N.obs <- length(trait)
-# temp <- data$temp
-# 
-# ##### define data for JAGS in a list object
-# jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
-# 
-# ##### Run JAGS
-# PDR.nonarctic.bri.uni <- jags(
-#   data = jag.data,
-#   inits = inits,
-#   parameters.to.save = parameters,
-#   model.file = "R-scripts/briere_T.txt",
-#   n.thin = nt,
-#   n.chains = nc,
-#   n.burnin = nb,
-#   n.iter = ni,
-#   DIC = T,
-#   working.directory = getwd()
-# )
-
-## Add random effects ----
-##### inits Function
-inits <- function(){list(
-  
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1),
-  sigma_q = rlnorm(0.01),
-  sigma_T0 = rlnorm(0.01),
-  sigma_Tm = rlnorm(0.01))}
-
-##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", "sigma_Tm", "z.trait.mu.pred")
-
-##### Organize data for JAGS
 trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
-unique.id <- as.integer(data$unique_id)
-Nids <- max(unique.id)
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
 
 ##### Run JAGS
 PDR.nonarctic.bri.uni <- jags(
   data = jag.data,
   inits = inits,
   parameters.to.save = parameters,
-  model.file = "R-scripts/briere_T_randeff.txt",
+  model.file = "R-scripts/briere_T.txt",
   n.thin = nt,
   n.chains = nc,
   n.burnin = nb,
@@ -280,13 +244,11 @@ PDR.nonarctic.bri.uni <- jags(
   working.directory = getwd()
 )
 
-## Random effects END ----
-
 ## Save the model as Rdata 
 # save(PDR.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/PDR.nonarctic.bri.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/PDR.nonarctic.bri.uni.Rdata")
+# load("R-scripts/R2jags-objects/PDR.nonarctic.bri.uni.Rdata")
 
 
 ## Diagnostics ----
@@ -308,26 +270,145 @@ head(df.PDR.nonarctic.bri.uni)
 plot.PDR.nonarctic.bri.uni <- df.PDR.nonarctic.bri.uni %>%
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
-              fill = "#4363d8",
+              fill = "grey",
               alpha = 0.5) +
-  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1) +
   geom_point(data = data,
-             aes(x = temp, y = trait, colour = species, shape = host.species),
+             aes(x = temp, y = trait, colour = as.factor(unique_id)),
              size = 2) +
   # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) +
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  scale_x_continuous(limits = c(0, 45)) +
+  scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Development rate (days-1)") +
   # Customize legend
-  scale_color_discrete(name = "Parasite Species",
-                       labels = c("W. bancrofti", "D. immitis")) +
-  scale_shape_discrete(name = "Host Species",
-                       labels = c("Ae. aegypti", "Ae. polynesiensis", "Ae. trivittatus")) +
+  scale_colour_discrete(name = element_blank(),
+                        labels = c("W. bancrofti in Ae. polynesiensis",
+                                   "D. immitis in Ae. aegypti", 
+                                   "D. immitis in Ae. trivittatus")) +
   theme_bw()
 
 plot.PDR.nonarctic.bri.uni
 
 # ggsave("figures/PDR.nonarctic.bri.uni.png", plot.PDR.nonarctic.bri.uni,
+#        width = 10.3, height = 5.6)
+
+
+## Add random effects ----
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1),
+  sigma_q = rlnorm(0.01),
+  sigma_T0 = rlnorm(0.01),
+  sigma_Tm = rlnorm(0.01))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", 
+                "sigma_q", 
+                "sigma_T0", "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+unique.id <- as.integer(data$unique_id)
+Nids <- max(unique.id)
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id)
+
+##### Run JAGS
+PDR.nonarctic.bri.uni.raneff <- jags(
+  data = jag.data,
+  inits = inits,
+  parameters.to.save = parameters,
+  model.file = "R-scripts/briere_T_randeff.txt",
+  n.thin = nt,
+  n.chains = nc,
+  n.burnin = nb,
+  n.iter = ni,
+  DIC = T,
+  working.directory = getwd()
+)
+
+## Random effects END ----
+
+## Save the model as Rdata 
+# save(PDR.nonarctic.bri.uni.raneff, file = "R-scripts/R2jags-objects/PDR.nonarctic.bri.uni.raneff.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/PDR.nonarctic.bri.uni.raneff.Rdata")
+
+
+## Diagnostics ----
+##### Examine output
+PDR.nonarctic.bri.uni.raneff$BUGSoutput$summary[1:8,]
+mcmcplot(PDR.nonarctic.bri.uni.raneff)
+
+# Extract the DIC for future model comparisons
+PDR.nonarctic.bri.uni.raneff$BUGSoutput$DIC
+
+## Plot data + fit ----
+
+df.PDR.nonarctic.bri.uni.raneff <- data.frame(PDR.nonarctic.bri.uni.raneff$BUGSoutput$summary)[-(1:8),]
+
+df.PDR.arctic.bri.uni.raneff.pop <- df.PDR.nonarctic.bri.uni.raneff %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.PDR.nonarctic.bri.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.)
+
+
+df.PDR.arctic.bri.uni.1 <- df.PDR.nonarctic.bri.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[1,*]"), rownames(df.PDR.nonarctic.bri.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 1)
+
+df.PDR.arctic.bri.uni.2 <- df.PDR.nonarctic.bri.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[2,*]"), rownames(df.PDR.nonarctic.bri.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 2)
+
+df.PDR.arctic.bri.uni.3 <- df.PDR.nonarctic.bri.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[3,*]"), rownames(df.PDR.nonarctic.bri.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 3)
+
+df.PDR.arctic.bri.uni.raneff.sp <- rbind(df.PDR.arctic.bri.uni.1,
+                                  df.PDR.arctic.bri.uni.2,
+                                  df.PDR.arctic.bri.uni.3) 
+
+df.PDR.arctic.bri.uni.raneff.sp$unique_id <- as.factor(df.PDR.arctic.bri.uni.raneff.sp$unique_id)
+
+##### Plot
+plot.PDR.nonarctic.bri.uni.raneff <- ggplot(data = df.PDR.arctic.bri.uni.raneff.pop, aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
+              fill = "grey",
+              alpha = 0.5) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1) +
+  geom_line(data = df.PDR.arctic.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_point(data = data,
+             aes(x = temp, y = trait, colour = as.factor(unique_id)),
+             size = 2) +
+  # Customize the axes and labels
+  # scale_x_continuous(limits = c(0, 45)) +
+  # scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Development rate (days-1)") +
+  # Customize legend
+  scale_colour_discrete(name = element_blank(),
+                        labels = c("W. bancrofti in Ae. polynesiensis",
+                                  "D. immitis in Ae. aegypti", 
+                                  "D. immitis in Ae. trivittatus")) +
+  theme_bw()
+
+
+plot.PDR.nonarctic.bri.uni.raneff
+
+# ggsave("figures/PDR.nonarctic.bri.uni.raneff.png", plot.PDR.nonarctic.bri.uni.raneff,
 #        width = 10.3, height = 5.6)
 
 
