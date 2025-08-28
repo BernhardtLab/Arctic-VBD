@@ -1,0 +1,17 @@
+﻿trait_name,temp,trait,error_pos,error_neg,genus,species,trait_def,citation,doi,data_source,notes
+GCD,22,7.3,,,aedes,aegypti,,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,,table 5,
+GCD,24,6.1,,,aedes,aegypti,,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,,table 5,
+GCD,26,4.2,,,aedes,aegypti,,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,,table 5,
+GCD,28,3.5,,,aedes,aegypti,,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,,table 5,
+GCD,30,2.9,,,aedes,aegypti,,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,,table 5,
+GCD,32,2.4,,,aedes,aegypti,,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,,table 5,
+a,21.68742415,0.167518059,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,22.2943022,0.144213433,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,22.38953929,0.168599215,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,22.92476429,0.168082804,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,24.39558634,0.25167012,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,25.01425641,0.251952493,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,25.87751143,0.202140476,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,26.16176525,0.202270215,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,27.47748918,0.307846963,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
+a,28.18628204,0.27698188,,,aedes,aegypti,,Focks_1993_JMedEntom,10.1093/jmedent/30.6.1003,figure 9,Original data is in per hour; Converted to per day
