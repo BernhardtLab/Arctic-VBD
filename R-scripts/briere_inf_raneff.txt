@@ -1,12 +1,13 @@
 
     model{
-
+    
     ## Priors
-    cf.q ~ dunif(0, 0.001)
-    cf.T0 ~ dunif(0, 20)
-    cf.Tm ~ dunif(20, 45)
+    cf.q ~ dgamma(hypers[1,1], hypers[2,1])
+    cf.T0 ~ dgamma(hypers[1,2], hypers[2,2])
+    cf.Tm ~ dgamma(hypers[1,3], hypers[2,3])
     cf.sigma ~ dunif(0, 1000)
     cf.tau <- 1 / (cf.sigma * cf.sigma)
+    
     
     ## Random effect priors
     sigma_q ~ dunif(0, 0.001)

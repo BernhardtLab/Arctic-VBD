@@ -10,6 +10,7 @@
 ## (V. eleguneniensis is a nematode infecting caribou and muskoxen in the Canadian
 ## Arctic. It is transmitted by gastropod.)
 ## 
+##
 ## Table of content:
 ##    0. Set-up workspace
 ##
@@ -158,7 +159,7 @@ PDR.arctic.bri.uni <- jags(
 # save(PDR.arctic.bri.uni, file = "R-scripts/R2jags-objects/PDR.arctic.bri.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/PDR.arctic.bri.uni.Rdata")
+# load("R-scripts/R2jags-objects/PDR.arctic.bri.uni.Rdata")
 
 
 ## Diagnostics ----
@@ -295,14 +296,15 @@ plot.PDR.nonarctic.bri.uni
 
 ## Add random effects ----
 ##### inits Function
+setwd("..")
 inits <- function(){list(
-  cf.q = 0.01,
+  cf.q = 0.001,
   cf.Tm = 35,
   cf.T0 = 5,
   cf.sigma = rlnorm(1),
-  sigma_q = rlnorm(0.01),
-  sigma_T0 = rlnorm(0.01),
-  sigma_Tm = rlnorm(0.01))}
+  sigma_q = 0.001, #rlnorm(1, meanlog = -4, sdlog = 1),
+  sigma_T0 = rlnorm(1),
+  sigma_Tm = rlnorm(1))}
 
 ##### Parameters to Estimate
 parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", 
@@ -350,8 +352,8 @@ mcmcplot(PDR.nonarctic.bri.uni.raneff)
 # Extract the DIC for future model comparisons
 PDR.nonarctic.bri.uni.raneff$BUGSoutput$DIC
 
-## Plot data + fit ----
 
+## Plot data + fit ----
 df.PDR.nonarctic.bri.uni.raneff <- data.frame(PDR.nonarctic.bri.uni.raneff$BUGSoutput$summary)[-(1:8),]
 
 df.PDR.arctic.bri.uni.raneff.pop <- df.PDR.nonarctic.bri.uni.raneff %>% 
@@ -389,6 +391,8 @@ plot.PDR.nonarctic.bri.uni.raneff <- ggplot(data = df.PDR.arctic.bri.uni.raneff.
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
               fill = "grey",
               alpha = 0.5) +
+  geom_ribbon(data = df.PDR.arctic.bri.uni.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
+              alpha = 0.5) +
   geom_line(aes(y = mean), color = "black", linewidth = 1) +
   geom_line(data = df.PDR.arctic.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
   geom_point(data = data,
@@ -396,7 +400,7 @@ plot.PDR.nonarctic.bri.uni.raneff <- ggplot(data = df.PDR.arctic.bri.uni.raneff.
              size = 2) +
   # Customize the axes and labels
   # scale_x_continuous(limits = c(0, 45)) +
-  # scale_y_continuous(limits = c(-0.005, 0.19)) +
+  # scale_y_continuous(limits = c(-0.005,zb      cXZBcbcbc 0.19)) +
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Development rate (days-1)") +
   # Customize legend
   scale_colour_discrete(name = element_blank(),

@@ -2,14 +2,14 @@
     model{
 
     ## Priors
-    cf.q ~ dunif(0, 0.001)
+    cf.q ~ dunif(0, 1)
     cf.T0 ~ dunif(0, 20)
     cf.Tm ~ dunif(20, 45)
     cf.sigma ~ dunif(0, 1000)
     cf.tau <- 1 / (cf.sigma * cf.sigma)
     
     ## Random effect priors
-    sigma_q ~ dunif(0, 0.001)
+    sigma_q ~ dunif(0, 0.1)
     tau_q <- 1 / (sigma_q * sigma_q)
     
     sigma_T0 ~ dunif(0, 10)
@@ -28,19 +28,19 @@
 		
     ## Likelihood
     for(i in 1:N.obs){
-    trait.mu[i] <- (cf.q + q[unique.id[i]]) * temp[i] * (temp[i] - (cf.T0 + T0[unique.id[i]])) * sqrt(((cf.Tm + Tm[unique.id[i]]) - temp[i]) * ((cf.Tm + Tm[unique.id[i]]) > temp[i])) * ((cf.T0 + T0[unique.id[i]]) < temp[i])
+    trait.mu[i] <- -1 * (cf.q + q[unique.id[i]]) * (temp[i] - (cf.T0 + T0[unique.id[i]])) * (temp[i] - (cf.Tm + Tm[unique.id[i]])) * ((cf.Tm + Tm[unique.id[i]]) > temp[i]) * ((cf.T0 + T0[unique.id[i]]) < temp[i])
     trait[i] ~ dnorm(trait.mu[i], cf.tau)T(0,)
     }
 
     ## Derived Quantities and Predictions
     for(i in 1:N.Temp.xs){
-    z.trait.mu.pred.pop[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i])}
+    z.trait.mu.pred.pop[i] <- -1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i])
+    }
     
     for (j in 1:Nids) {
       for(i in 1:N.Temp.xs){
-        z.trait.mu.pred.id[j,i] <- (cf.q + q[j]) * Temp.xs[i] * (Temp.xs[i] - (cf.T0 + T0[j])) * sqrt(((cf.Tm + Tm[j]) - Temp.xs[i]) * ((cf.Tm + Tm[j]) > Temp.xs[i])) * ((cf.T0 + T0[j]) < Temp.xs[i])
+        z.trait.mu.pred.id[j,i] <- -1 * (cf.q + q[j]) * (Temp.xs[i] - (cf.T0 + T0[j])) * (Temp.xs[i] - (cf.Tm + Tm[j])) * ((cf.Tm + Tm[j]) > Temp.xs[i]) * ((cf.T0 + T0[j]) < Temp.xs[i])
       }
     }
-    
     } # close model
     

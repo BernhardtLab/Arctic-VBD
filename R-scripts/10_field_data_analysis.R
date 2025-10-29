@@ -18,7 +18,6 @@ library(janitor)
 library(ggsci)
 library(lubridate) # for time zone
 library(RColorBrewer) # colour palette
-library()
 
 # Load data
 data <- read_csv("data/raw-data/field-data/guelph_data.csv") %>% 
@@ -44,50 +43,50 @@ sample <- data %>%
 
 # HOBO ----
 
-airport1 <- read_xlsx("data/raw-data/field-data/hobo/airport_road_1.xlsx", 
+airport1 <- read_xlsx("data-raw/field-data/hobo/airport_road_1.xlsx", 
                       sheet = "Data") %>% 
   clean_names() %>% 
   mutate(site = "airport_road_1")
 
 
-airport2 <- read_xlsx("data/raw-data/field-data/hobo/airport_road_2.xlsx", 
+airport2 <- read_xlsx("data-raw/field-data/hobo/airport_road_2.xlsx", 
                       sheet = "Data") %>% 
   clean_names() %>% 
   mutate(site = "airport_road_2")
 
 
-construction_shop <- read_xlsx("data/raw-data/field-data/hobo/construction_shop.xlsx", 
+construction_shop <- read_xlsx("data-raw/field-data/hobo/construction_shop.xlsx", 
                       sheet = "Data") %>% 
   clean_names() %>% 
   mutate(site = "construction_shop")
 
 
-dew_line_road <- read_xlsx("data/raw-data/field-data/hobo/dew_line_road.xlsx", 
+dew_line_road <- read_xlsx("data-raw/field-data/hobo/dew_line_road.xlsx", 
                                sheet = "Data") %>% 
   clean_names() %>% 
   mutate(site = "dew_line_road")
 
 
-end_of_pelly_road <- read_xlsx("data/raw-data/field-data/hobo/end_of_pelly_road.xlsx", 
+end_of_pelly_road <- read_xlsx("data-raw/field-data/hobo/end_of_pelly_road.xlsx", 
                            sheet = "Data") %>% 
   clean_names() %>% 
   mutate(site = "end_of_pelly_road")
 
 
-first_creek <- read_xlsx("data/raw-data/field-data/hobo/first_creek.xlsx", 
+first_creek <- read_xlsx("data-raw/field-data/hobo/first_creek.xlsx", 
                            sheet = "Data") %>% 
   clean_names() %>% 
   mutate(site = "first_creek")
 
 
 
-sewage_dump <- read_xlsx("data/raw-data/field-data/hobo/sewage_dump.xlsx", 
+sewage_dump <- read_xlsx("data-raw/field-data/hobo/sewage_dump.xlsx", 
                          sheet = "Data") %>% 
   clean_names() %>% 
   mutate(site = "sewage_dump")
 
 
-swimming_hole <- read_xlsx("data/raw-data/field-data/hobo/swimming_hole.xlsx", 
+swimming_hole <- read_xlsx("data-raw/field-data/hobo/swimming_hole.xlsx", 
                          sheet = "Data") %>% 
   clean_names() %>% 
   mutate(site = "swimming_hole")
@@ -120,7 +119,7 @@ temp_data <- temp_data %>% filter(site != "first_creek" |
 
 
 # write_csv(temp_data[,-1], "data/data-processed/temp_all.csv")
-temp_data <- read_csv("data/data-processed/temp_all.csv")
+temp_data <- read_csv("data-processed/temp_all.csv")
 
 ## Since HOBOs were set up at different days, only use dates that all HOBOs have data on
 ## The first malaise trap we set up (and taken down) was sewage dump (Jul 19 - Aug 2);
