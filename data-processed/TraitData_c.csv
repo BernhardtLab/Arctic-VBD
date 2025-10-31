@@ -1,7 +1,7 @@
-trait_name,temp,trait,genus,species,paras.species,trait_def,citation,data_source,notes
-c,14.5,0.5538083538083539,aedes,trivittatus ,Dirofilaria immitis,infection rate %,Christensen_1978_ProcHelmintholSocWash,figure 2,development did not occur
-c,18.5,0.8977886977886979,aedes,trivittatus ,Dirofilaria immitis,infection rate %,Christensen_1978_ProcHelmintholSocWash,figure 2,NA
-c,22.5,0.8938574938574939,aedes,trivittatus ,Dirofilaria immitis,infection rate %,Christensen_1978_ProcHelmintholSocWash,figure 2,NA
-c,26.5,0.7444717444717446,aedes,trivittatus ,Dirofilaria immitis,infection rate %,Christensen_1978_ProcHelmintholSocWash,figure 2,NA
-c,30.5,0.49680589680589676,aedes,trivittatus ,Dirofilaria immitis,infection rate %,Christensen_1978_ProcHelmintholSocWash,figure 2,NA
-c,34.5,0.3631449631449631,aedes,trivittatus ,Dirofilaria immitis,infection rate %,Christensen_1978_ProcHelmintholSocWash,figure 2,NA
+trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,paras_genus,paras_species,citation,doi,data_source,notes
+c,14.5,0.5538083538083539,NA,NA,NA,infection rate %,NA,NA,aedes,trivittatus,dirofilaria,immitis,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA
+c,18.5,0.8977886977886979,NA,NA,NA,infection rate %,NA,NA,aedes,trivittatus,dirofilaria,immitis,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA
+c,22.5,0.8938574938574939,NA,NA,NA,infection rate %,NA,NA,aedes,trivittatus,dirofilaria,immitis,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA
+c,26.5,0.7444717444717446,NA,NA,NA,infection rate %,NA,NA,aedes,trivittatus,dirofilaria,immitis,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA
+c,30.5,0.49680589680589676,NA,NA,NA,infection rate %,NA,NA,aedes,trivittatus,dirofilaria,immitis,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA
+c,34.5,0.3631449631449631,NA,NA,NA,infection rate %,NA,NA,aedes,trivittatus,dirofilaria,immitis,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA
