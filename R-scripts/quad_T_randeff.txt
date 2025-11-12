@@ -2,20 +2,20 @@
     model{
 
     ## Priors
-    cf.q ~ dunif(0, 1)
-    cf.T0 ~ dunif(0, 20)
-    cf.Tm ~ dunif(20, 45)
+    cf.q ~ dunif(prior[1,1], prior[2,1])
+    cf.T0 ~ dunif(prior[1,2], prior[2,2])
+    cf.Tm ~ dunif(prior[1,3], prior[2,3])
     cf.sigma ~ dunif(0, 1000)
     cf.tau <- 1 / (cf.sigma * cf.sigma)
     
     ## Random effect priors
-    sigma_q ~ dunif(0, 0.1)
+    sigma_q ~ dunif(prior[1,4], prior[2,4])
     tau_q <- 1 / (sigma_q * sigma_q)
     
-    sigma_T0 ~ dunif(0, 10)
+    sigma_T0 ~ dunif(prior[1,5], prior[2,5])
     tau_T0 <- 1 / (sigma_T0 * sigma_T0)
     
-    sigma_Tm ~ dunif(0, 10)
+    sigma_Tm ~ dunif(prior[1,6], prior[2,6])
     tau_Tm <- 1 / (sigma_Tm * sigma_Tm)
     
     ## Random effects for each species-study combination (unique_id)

@@ -2,32 +2,35 @@
 ## Arctic vector-borne disease transmission suitability model
 ##
 ## Purpose: use Bayesian inference (JAGS) to fit TPCs for lifetime egg 
-## production (B) for Aedes hexodontus (Barlow 1955), Aedes cinereus, Aedes 
-## communis, Aedes impiger, and Aedes punctor (Sommerman 1969)
-##     1) with uniform priors; and 
-##     2) with data-informed priors from Aedes aegypti data
-##        Since I only have Eggs per female per day (EFD) data for these 
-##        species, I will fit the TPC for EFD and adult lifespan to obtain 
-##        lifetime egg production
+## production (B). Since  I only have Eggs per female per day (EFD) data for these 
+## species, I will fit the TPC for EFD and adult lifespan to obtain 
+## lifetime egg production. Then, I will combine the TPC fits and data from Arctic 
+## species (Aedes hexodontus (Barlow 1955), Aedes cinereus, Aedes 
+## communis, Aedes impiger, and Aedes punctor (Sommerman 1969)) and fit another 
+## TPC.
+##
 ##
 ## Table of content:
 ##    0. Set-up workspace
 ##
 ##    1. MCMC settings for all models
 ##
-##    2. Fitting TPC (Briere)
-##        A. Fit EFD and lf thermal responses (with random effects) for priors (non-Arctic species)
-##        B. Calculate B for non-Arctic species
-##        C. Fit gamma distributions to B prior thermal responses
-##        D. Fit B thermal responses with data-informed priors (Arctic species)
-##        E. Plot all TPCs for Arctic species in the same graph (for comparison)
+##    2. Fit EFD thermal responses (with random effects)
+##        A. Briere
+##        B. Quadratic
+##        C. Compare the two TPC fits
 ##
-##    3. Fitting TPC (Quadratic)
-##        A. Fit EFD and lf thermal responses (with random effects) for priors (non-Arctic species)
-##        B. Calculate B for non-Arctic species
-##        C. Fit gamma distributions to B prior thermal responses
-##        D. Fit B thermal responses with data-informed priors (Arctic species)
-##        E. Plot all TPCs for Arctic species in the same graph (for comparison)
+##    3. Fit lf thermal responses (with random effects) 
+##        A. Briere
+##        B. Quadratic
+##        C. Compare the two TPC fits
+##
+##    4. Calculate B and fit TPC
+##       A. Calculate B for non-Arctic species
+##       B. Combine data from non-Arctic and Arctic species
+##       C. Fit thermal responses to B (all data): Briere
+##       D. Fit thermal responses to B (all data): Quadratic
+
 
 
 ##########
@@ -42,6 +45,8 @@ library(MASS)
 library(ggsci)
 library(RColorBrewer) # colour palette
 
+##### Load functions
+source("R-scripts/00_Functions.R")
 
 # Load data
 data <- read_csv("data-processed/TraitData_B.csv")
@@ -105,75 +110,16 @@ nt <- 8 # thinning rate - jags saves every nt iterations in each chain
 nc <- 3 # number of chains
 
 
-sink("R-scripts/briere_T_randeff_B.txt")
-cat("
-    model{
-
-    ## Priors
-    cf.q ~ dunif(prior[1,1], prior[2,1])
-    cf.T0 ~ dunif(prior[1,2], prior[2,2])
-    cf.Tm ~ dunif(prior[1,3], prior[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Random effect priors
-    sigma_q ~ dunif(prior[1,4], prior[2,4])
-    tau_q <- 1 / (sigma_q * sigma_q)
-    
-    sigma_T0 ~ dunif(prior[1,5], prior[2,5])
-    tau_T0 <- 1 / (sigma_T0 * sigma_T0)
-    
-    sigma_Tm ~ dunif(prior[1,6], prior[2,6])
-    tau_Tm <- 1 / (sigma_Tm * sigma_Tm)
-    
-    ## Random effects for each species-study combination (unique_id)
-     
-    for (j in 1:Nids) {
-    q[j] ~ dnorm(0, tau_q)
-    T0[j] ~ dnorm(0, tau_T0)
-    Tm[j] ~ dnorm(0, tau_Tm)
-    }
-		
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- (cf.q + q[unique.id[i]]) * temp[i] * (temp[i] - (cf.T0 + T0[unique.id[i]])) * sqrt(((cf.Tm + Tm[unique.id[i]]) - temp[i]) * ((cf.Tm + Tm[unique.id[i]]) > temp[i])) * ((cf.T0 + T0[unique.id[i]]) < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)T(0,)
-    }
-
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred.pop[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i])}
-    
-    for (j in 1:Nids) {
-      for(i in 1:N.Temp.xs){
-        z.trait.mu.pred.id[j,i] <- (cf.q + q[j]) * Temp.xs[i] * (Temp.xs[i] - (cf.T0 + T0[j])) * sqrt(((cf.Tm + Tm[j]) - Temp.xs[i]) * ((cf.Tm + Tm[j]) > Temp.xs[i])) * ((cf.T0 + T0[j]) < Temp.xs[i])
-      }
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
-
-
-## Set priors
-prior <- data.frame(q = c(0, 0.1),
-                    T0 = c(0, 20),
-                    Tm = c(30, 45),
-                    sigma_q = c(0, 0.0001),
-                    sigma_T0 = c(0, 10),
-                    sigma_Tm = c(0, 10)
-)
 
 ##########
-###### 2A. Fit EFD and lf thermal responses (with random effects) for priors (non-Arctic species): Briere ----
+###### 2A. Fit EFD thermal responses (with random effects): Briere ----
 ##########
 
 ##### Temp sequence for derived quantity calculations
-# For actual fits
-Temp.xs <- seq(0, 45, 0.1)
+# Fewer temps for derived calculations makes it go faster
+Temp.xs <- seq(0, 45, 0.5)
 N.Temp.xs <-length(Temp.xs)
 
-## EFD ----
 ##### Set data
 data <- data.B.nonarctic %>% 
   filter(trait_name == "EFD")
@@ -184,6 +130,14 @@ data <- data %>%
   group_by(species, citation) %>% 
   mutate(unique_id = cur_group_id())
 
+## Set priors
+prior <- data.frame(q = c(0, 0.1),
+                    T0 = c(0, 20),
+                    Tm = c(30, 45),
+                    sigma_q = c(0, 0.0001),
+                    sigma_T0 = c(0, 10),
+                    sigma_Tm = c(0, 10)
+)
 
 ##### inits Function
 inits <- function(){list(
@@ -208,6 +162,7 @@ temp <- data$temp
 unique.id <- as.integer(data$unique_id)
 Nids <- max(unique.id)
 
+
 ##### define data for JAGS in a list object
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
                  N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id,
@@ -218,7 +173,7 @@ B.EFD.nonarctic.bri.uni.raneff <- jags(
   data = jag.data,
   inits = inits,
   parameters.to.save = parameters,
-  model.file = "R-scripts/briere_T_randeff_B.txt",
+  model.file = "R-scripts/briere_T_randeff.txt",
   n.thin = nt,
   n.chains = nc,
   n.burnin = nb,
@@ -308,99 +263,441 @@ plot.B.EFD.nonarctic.bri.uni.raneff
 #        width = 10.3, height = 5.6)
 
 
-## lf ----
+##########
+###### 2B. Fit EFD thermal responses (with random effects): Quadratic ----
+##########
 
-# ##### Set data
-# data <- data.B.nonarctic %>% 
-#   filter(trait_name == "lf")
-# 
-# ##### Organize data for JAGS
-# trait <- data$trait
-# N.obs <- length(trait)
-# temp <- data$temp
-# 
-# ##### define data for JAGS in a list object
-# jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
-# 
-# ##### Run JAGS
-# lf.nonarctic.bri.uni <- jags(
-#   data = jag.data,
-#   inits = inits,
-#   parameters.to.save = parameters,
-#   model.file = "R-scripts/briere_T_B.txt",
-#   n.thin = nt,
-#   n.chains = nc,
-#   n.burnin = nb,
-#   n.iter = ni,
-#   DIC = T,
-#   working.directory = getwd()
-# )
-# 
-# ## Save the model as Rdata 
-# # save(lf.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/lf.nonarctic.bri.uni.Rdata")
-# 
-# # Read the .Rdata
-# # load("R-scripts/R2jags-objects/lf.nonarctic.bri.uni.Rdata")
-# 
-# 
-# ## Diagnostics ----
-# ##### Examine output
-# lf.nonarctic.bri.uni$BUGSoutput$summary[1:5,]
-# mcmcplot(lf.nonarctic.bri.uni)
-# 
-# # Extract the DIC for future model comparisons
-# lf.nonarctic.bri.uni$BUGSoutput$DIC
-# 
-# ## Plot data + fit ----
-# df.lf.nonarctic.bri.uni <- data.frame(lf.nonarctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
-#   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-#   dplyr::select(temp, mean, sd, X2.5., X97.5.)
-# 
-# head(df.lf.nonarctic.bri.uni)
-# 
-# ##### Plot
-# plot.lf.nonarctic.bri.uni <- df.lf.nonarctic.bri.uni %>%
-#   ggplot(aes(x = temp)) +
-#   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
-#               fill = "#4363d8",
-#               alpha = 0.5) +
-#   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-#   geom_point(data = data,
-#              aes(x = temp, y = trait, colour = species),
-#              size = 2) +
-#   # Customize the axes and labels
-#   #scale_x_continuous(limits = c(0, 41)) +
-#   #scale_y_continuous(limits = c(-0.005, 0.19)) +
-#   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Adult mosquito lifespan (days)") +
-#   # Customize legend
-#   # scale_color_discrete(name = "Species",
-#   #                      labels = c("Ae. cinereus",
-#   #                                 "Ae. communis",
-#   #                                 "Ae. impiger",
-#   #                                 "Ae. punctor",
-#   #                                 "Ae. vexans")) +
-#   theme_bw()
-# 
-# plot.lf.nonarctic.bri.uni
-# 
-# # ggsave("figures/B.lf.nonarctic.bri.uni.png", plot.lf.nonarctic.bri.uni,
-# #        width = 10.3, height = 5.6)
+##### Temp sequence for derived quantity calculations
+# Fewer temps for derived calculations makes it go faster
+Temp.xs <- seq(0, 45, 0.5)
+N.Temp.xs <-length(Temp.xs)
+
+##### Set data
+data <- data.B.nonarctic %>% 
+  filter(trait_name == "EFD")
 
 
-## Random effects START ----
+## Create a unique id for each species-study combination
+data <- data %>% 
+  group_by(species, citation) %>% 
+  mutate(unique_id = cur_group_id())
 
 ## Set priors
-prior <- data.frame(q = c(0, 0.01),
+prior <- data.frame(q = c(0, 0.1),
                     T0 = c(0, 20),
                     Tm = c(30, 45),
-                    sigma_q = c(0, 0.0001),
+                    sigma_q = c(0, 0.0002),
                     sigma_T0 = c(0, 10),
                     sigma_Tm = c(0, 10)
 )
 
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.1,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1),
+  sigma_q = 0.0001,
+  sigma_T0 = rlnorm(1),
+  sigma_Tm = rlnorm(1))}
+
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+                "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
+
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+unique.id <- as.integer(data$unique_id)
+Nids <- max(unique.id)
+
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id,
+                 prior = prior)
+
+##### Run JAGS
+B.EFD.nonarctic.quad.uni.raneff <- jags(
+  data = jag.data,
+  inits = inits,
+  parameters.to.save = parameters,
+  model.file = "R-scripts/quad_T_randeff.txt",
+  n.thin = nt,
+  n.chains = nc,
+  n.burnin = nb,
+  n.iter = ni,
+  DIC = T,
+  working.directory = getwd()
+)
+
+
+## Save the model as Rdata 
+# save(B.EFD.nonarctic.quad.uni.raneff, file = "R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.raneff.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.raneff.Rdata")
+
+
+## Diagnostics ----
+##### Examine output
+B.EFD.nonarctic.quad.uni.raneff$BUGSoutput$summary[1:8,]
+mcmcplot(B.EFD.nonarctic.quad.uni.raneff)
+
+# Extract the DIC for future model comparisons
+B.EFD.nonarctic.quad.uni.raneff$BUGSoutput$DIC
+
+
+## Plot data + fit ----
+df.B.EFD.nonarctic.quad.uni.raneff <- data.frame(B.EFD.nonarctic.quad.uni.raneff$BUGSoutput$summary)[-(1:8),]
+
+## Extract the model prediction
+## Overall curve
+df.B.EFD.nonarctic.quad.uni.raneff.pop <- df.B.EFD.nonarctic.quad.uni.raneff %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.B.EFD.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.)
+
+
+## Unique ID 1: Ae. aegypti (Beserra 2009)
+df.B.EFD.nonarctic.quad.uni.raneff.1 <- df.B.EFD.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[1,*]"), rownames(df.B.EFD.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 1)
+
+## Unique ID 2: Ae. aegypti (Yang et al 2008)
+df.B.EFD.nonarctic.quad.uni.raneff.2 <- df.B.EFD.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[2,*]"), rownames(df.B.EFD.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 2)
+
+
+## Combine the model prediciton of all three unique groups into a dataframe
+df.B.EFD.nonarctic.quad.uni.raneff.sp <- rbind(df.B.EFD.nonarctic.quad.uni.raneff.1,
+                                              df.B.EFD.nonarctic.quad.uni.raneff.2) 
+
+## Change unique_id into factor type
+df.B.EFD.nonarctic.quad.uni.raneff.sp$unique_id <- as.factor(df.B.EFD.nonarctic.quad.uni.raneff.sp$unique_id)
+
+
+##### Plot
+plot.B.EFD.nonarctic.quad.uni.raneff <- ggplot(data = df.B.EFD.nonarctic.quad.uni.raneff.pop, 
+                                              aes(x = temp)) +
+  ## Overall TPC
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
+              fill = "grey",
+              alpha = 0.5) +
+  ## a separate TPC (and credible interval) for each unique group
+  # geom_ribbon(data = df.B.EFD.nonarctic.quad.uni.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
+  #             alpha = 0.5) +
+  geom_line(data = df.B.EFD.nonarctic.quad.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
+  geom_point(data = data,
+             aes(x = temp, y = trait, colour = as.factor(unique_id)),
+             size = 2) +
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Eggs per female per day") +
+  # Customize legend
+  scale_colour_discrete(name = element_blank(),
+                        labels = c("Ae. aegypti (Beserra 2009)",
+                                   "Ae. aegypti (Yang et al 2008)")) +
+  theme_bw()
+
+
+plot.B.EFD.nonarctic.quad.uni.raneff
+
+# ggsave("figures/B.EFD.nonarctic.quad.uni.raneff.png", plot.B.EFD.nonarctic.quad.uni.raneff,
+#        width = 10.3, height = 5.6)
+
+
+##########
+###### 2C. Fit EFD thermal responses (NO random effects): Briere ----
+##########
+
+##### Temp sequence for derived quantity calculations
+# Fewer temps for derived calculations makes it go faster
+Temp.xs <- seq(0, 45, 0.5)
+N.Temp.xs <-length(Temp.xs)
+
+
+#### Set data
+data <- data.B.nonarctic %>% 
+  filter(trait_name == "EFD")
+
+
+## Create a unique id for each species-study combination
+data <- data %>% 
+  group_by(species, citation) %>% 
+  mutate(unique_id = cur_group_id())
+
+
+## Set priors
+prior <- data.frame(q = c(0, 0.01),
+                    T0 = c(0, 20),
+                    Tm = c(30, 45)
+)
+
+
+##### inits Function
+inits<-function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
+
+##### Run JAGS -----
+B.EFD.nonarctic.bri.uni <- jags(data = jag.data,
+                           inits = inits,
+                           parameters.to.save = parameters,
+                           model.file = "R-scripts/briere_T.txt",
+                           n.thin = nt,
+                           n.chains = nc,
+                           n.burnin = nb,
+                           n.iter = ni,
+                           DIC = T,
+                           working.directory = getwd()
+)
+
+## Save the model as Rdata 
+# save(B.EFD.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.Rdata")
+
+## Diagnostics ----
+##### Examine output
+B.EFD.nonarctic.bri.uni$BUGSoutput$summary[1:5,]
+mcmcplot(B.EFD.nonarctic.bri.uni)
+
+# Extract the DIC for future model comparisons
+B.EFD.nonarctic.bri.uni$BUGSoutput$DIC
+
+## Plot data + fit ----
+df.B.EFD.nonarctic.bri.uni <- data.frame(B.EFD.nonarctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.)
+
+head(df.B.EFD.nonarctic.bri.uni)
+
+##### Plot
+plot.B.EFD.nonarctic.bri.uni <- df.B.EFD.nonarctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Development rate (days-1)"
+  ) +
+  theme_bw()
+
+plot.B.EFD.nonarctic.bri.uni
+
+# ggsave("figures/B.EFD.nonarctic.bri.uni.png", plot.B.EFD.nonarctic.bri.uni, 
+#        width = 10.3, height = 5.6)
+
+
+
+##########
+###### 2D. Fit EFD thermal responses (NO random effects): Quadratic ----
+##########
+
+##### Temp sequence for derived quantity calculations
+# Fewer temps for derived calculations makes it go faster
+Temp.xs <- seq(0, 45, 0.5)
+N.Temp.xs <-length(Temp.xs)
+
+
+#### Set data
+data <- data.B.nonarctic %>% 
+  filter(trait_name == "EFD")
+
+
+## Create a unique id for each species-study combination
+data <- data %>% 
+  group_by(species, citation) %>% 
+  mutate(unique_id = cur_group_id())
+
+
+## Set priors
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(30, 45)
+)
+
+##### inits Function
+inits<-function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
+
+##### Run JAGS -----
+B.EFD.nonarctic.quad.uni <- jags(data = jag.data,
+                                inits = inits,
+                                parameters.to.save = parameters,
+                                model.file = "R-scripts/quad_T.txt",
+                                n.thin = nt,
+                                n.chains = nc,
+                                n.burnin = nb,
+                                n.iter = ni,
+                                DIC = T,
+                                working.directory = getwd()
+)
+
+## Save the model as Rdata 
+# save(B.EFD.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.Rdata")
+
+## Diagnostics ----
+##### Examine output
+B.EFD.nonarctic.quad.uni$BUGSoutput$summary[1:5,]
+mcmcplot(B.EFD.nonarctic.quad.uni)
+
+# Extract the DIC for future model comparisons
+B.EFD.nonarctic.quad.uni$BUGSoutput$DIC
+
+## Plot data + fit ----
+df.B.EFD.nonarctic.quad.uni <- data.frame(B.EFD.nonarctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.)
+
+head(df.B.EFD.nonarctic.quad.uni)
+
+##### Plot
+plot.B.EFD.nonarctic.quad.uni <- df.B.EFD.nonarctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Development rate (days-1)"
+  ) +
+  theme_bw()
+
+plot.B.EFD.nonarctic.quad.uni
+
+# ggsave("figures/B.EFD.nonarctic.quad.uni.png", plot.B.EFD.nonarctic.quad.uni, 
+#        width = 10.3, height = 5.6)
+
+
+
+##########
+###### 2E. Compare the TPC fits ----
+##########
+
+## DIC
+B.EFD.nonarctic.bri.uni$BUGSoutput$DIC
+B.EFD.nonarctic.bri.uni.raneff$BUGSoutput$DIC
+B.EFD.nonarctic.quad.uni$BUGSoutput$DIC
+B.EFD.nonarctic.quad.uni.raneff$BUGSoutput$DIC
+
+
+df.B.EFD.nonarctic.bri.uni <- df.B.EFD.nonarctic.bri.uni %>% 
+  mutate(type = "Briere")
+
+df.B.EFD.nonarctic.bri.uni.raneff.pop <- df.B.EFD.nonarctic.bri.uni.raneff.pop %>% 
+  mutate(type = "Briere w/ random effects")
+
+df.B.EFD.nonarctic.quad.uni <- df.B.EFD.nonarctic.quad.uni %>% 
+  mutate(type = "Quadratic")
+
+df.B.EFD.nonarctic.quad.uni.raneff.pop <- df.B.EFD.nonarctic.quad.uni.raneff.pop %>% 
+  mutate(type = "Quadratic w/ random effects")
+
+
+# Combine the three dataframes
+df.all <- rbind(df.B.EFD.nonarctic.bri.uni,
+                df.B.EFD.nonarctic.bri.uni.raneff.pop, 
+                df.B.EFD.nonarctic.quad.uni,
+                df.B.EFD.nonarctic.quad.uni.raneff.pop
+                )
+
+# Plot
+plot.all <- df.all %>% 
+  ggplot(aes(x = temp)) +
+  # geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
+  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait, colour = as.factor(unique_id)), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Eggs per female per day"
+  ) +
+  # Customize the colours
+  ## ribbon
+  # scale_fill_manual(name = element_blank(),
+  #                   values = c("Briere" = "#4363d8",
+  #                              "Quadratic" = "grey")) +
+
+  ## line
+  # scale_color_manual(name = element_blank(),
+  #                    values = c("Briere" = "blue",
+  #                               "Quadratic" = "#868686FF",
+  #                               "1" = "#F8766D",
+  #                               "2" = "#00BFC4"),
+  #                    label = c("Beserra 2009", "Yang et al 2008", "Briere", "Quadratic")) +
+  theme_bw()
+
+plot.all
+
+# ggsave("figures/B.EFD.nonarctic.all.png", plot.all, width = 10.3, height = 5.6)
+
+
+
+
+
+##########
+###### 3A. Fit lf thermal responses (with random effects): Briere ----
+##########
+
 ##### Temp sequence for derived quantity calculations
 # For actual fits
-Temp.xs <- seq(0, 45, 0.1)
+Temp.xs <- seq(0, 45, 0.5)
 N.Temp.xs <-length(Temp.xs)
 
 ##### Set data
@@ -413,6 +710,15 @@ data <- data %>%
   group_by(species, citation) %>% 
   mutate(unique_id = cur_group_id())
 
+
+## Set priors
+prior <- data.frame(q = c(0, 0.01),
+                    T0 = c(0, 20),
+                    Tm = c(30, 45),
+                    sigma_q = c(0, 0.0001),
+                    sigma_T0 = c(0, 10),
+                    sigma_Tm = c(0, 10)
+)
 
 ##### inits Function
 inits <- function(){list(
@@ -461,7 +767,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
 # save(B.lf.nonarctic.bri.uni.raneff, file = "R-scripts/R2jags-objects/B.lf.nonarctic.bri.uni.raneff.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/B.lf.nonarctic.bri.uni.raneff.Rdata")
+load("R-scripts/R2jags-objects/B.lf.nonarctic.bri.uni.raneff.Rdata")
 
 
 ## Diagnostics ----
@@ -559,13 +865,11 @@ plot.B.lf.nonarctic.bri.uni.raneff <- ggplot(data = df.B.lf.nonarctic.bri.uni.ra
               fill = "grey",
               alpha = 0.5) +
   ## a separate TPC (and credible interval) for each unique group
-  # geom_ribbon(data = df.B.lf.nonarctic.bri.uni.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
-  #             alpha = 0.5) +
-  geom_line(data = df.B.lf.nonarctic.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
-  geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
   geom_point(data = data,
              aes(x = temp, y = trait, colour = as.factor(unique_id)),
              size = 2) +
+  geom_line(data = df.B.lf.nonarctic.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "lifespan (days)") +
   # Customize legend
@@ -586,52 +890,294 @@ plot.B.lf.nonarctic.bri.uni.raneff
 #        width = 10.3, height = 5.6)
 
 
+
+
 ##########
-###### 2B. Calculate B for non-Arctic species ----
+###### 3B. Fit lf thermal responses (with random effects): Quadratic ----
 ##########
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.5)
+N.Temp.xs <-length(Temp.xs)
+
+##### Set data
+data <- data.B.nonarctic %>% 
+  filter(trait_name == "lf")
+
+
+## Create a unique id for each species-study combination
+data <- data %>% 
+  group_by(species, citation) %>% 
+  mutate(unique_id = cur_group_id())
+
+
+## Set priors
+prior <- data.frame(q = c(0, 0.1),
+                    T0 = c(0, 20),
+                    Tm = c(30, 45),
+                    sigma_q = c(0, 0.0002),
+                    sigma_T0 = c(0, 10),
+                    sigma_Tm = c(0, 10)
+)
+
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.1,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1),
+  sigma_q = 0.0001,
+  sigma_T0 = rlnorm(1),
+  sigma_Tm = rlnorm(1))}
+
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+                "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
+
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+unique.id <- as.integer(data$unique_id)
+Nids <- max(unique.id)
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id,
+                 prior = prior)
+
+##### Run JAGS
+B.lf.nonarctic.quad.uni.raneff <- jags(
+  data = jag.data,
+  inits = inits,
+  parameters.to.save = parameters,
+  model.file = "R-scripts/quad_T_randeff.txt",
+  n.thin = nt,
+  n.chains = nc,
+  n.burnin = nb,
+  n.iter = ni,
+  DIC = T,
+  working.directory = getwd()
+)
+
+
+## Save the model as Rdata 
+# save(B.lf.nonarctic.quad.uni.raneff, file = "R-scripts/R2jags-objects/B.lf.nonarctic.quad.uni.raneff.Rdata")
+
+# Read the .Rdata
+load("R-scripts/R2jags-objects/B.lf.nonarctic.quad.uni.raneff.Rdata")
+
+
+## Diagnostics ----
+##### Examine output
+B.lf.nonarctic.quad.uni.raneff$BUGSoutput$summary[1:8,]
+mcmcplot(lf.nonarctic.quad.uni.raneff)
+
+# Extract the DIC for future model comparisons
+B.lf.nonarctic.quad.uni.raneff$BUGSoutput$DIC
+
+
+## Plot data + fit ----
+df.B.lf.nonarctic.quad.uni.raneff <- data.frame(B.lf.nonarctic.quad.uni.raneff$BUGSoutput$summary)[-(1:8),]
+
+## Extract the model prediction
+## Overall curve
+df.B.lf.nonarctic.quad.uni.raneff.pop <- df.B.lf.nonarctic.quad.uni.raneff %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.B.lf.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.)
+
+
+## Unique ID 1: Ae. aegypti (Beserra 2009)
+df.B.lf.nonarctic.quad.uni.raneff.1 <- df.B.lf.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[1,*]"), rownames(df.B.lf.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 1)
+
+## Unique ID 2: Ae. aegypti (Goindin et al. 2015)
+df.B.lf.nonarctic.quad.uni.raneff.2 <- df.B.lf.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[2,*]"), rownames(df.B.lf.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 2)
+
+## Unique ID 3: Ae. aegypti (Huxley et al. 2021)
+df.B.lf.nonarctic.quad.uni.raneff.3 <- df.B.lf.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[3,*]"), rownames(df.B.lf.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 3)
+
+
+## Unique ID 4: Ae. aegypti (Huxley et al. 2022)
+df.B.lf.nonarctic.quad.uni.raneff.4 <- df.B.lf.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[4,*]"), rownames(df.B.lf.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 4)
+
+
+## Unique ID 5: Ae. aegypti (Marinho et al. 2016)
+df.B.lf.nonarctic.quad.uni.raneff.5 <- df.B.lf.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[5,*]"), rownames(df.B.lf.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 5)
+
+
+## Unique ID 6: Ae. aegypti (Rocha-Santos et al. 2021)
+df.B.lf.nonarctic.quad.uni.raneff.6 <- df.B.lf.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[6,*]"), rownames(df.B.lf.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 6)
+
+
+## Unique ID 7: Ae. aegypti (Yang et al. 2009)
+df.B.lf.nonarctic.quad.uni.raneff.7 <- df.B.lf.nonarctic.quad.uni.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[7,*]"), rownames(df.B.lf.nonarctic.quad.uni.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 7)
+
+
+## Combine the model prediciton of all three unique groups into a dataframe
+df.B.lf.nonarctic.quad.uni.raneff.sp <- rbind(df.B.lf.nonarctic.quad.uni.raneff.1,
+                                             df.B.lf.nonarctic.quad.uni.raneff.2,
+                                             df.B.lf.nonarctic.quad.uni.raneff.3,
+                                             df.B.lf.nonarctic.quad.uni.raneff.4,
+                                             df.B.lf.nonarctic.quad.uni.raneff.5,
+                                             df.B.lf.nonarctic.quad.uni.raneff.6,
+                                             df.B.lf.nonarctic.quad.uni.raneff.7) 
+
+## Change unique_id into factor type
+df.B.lf.nonarctic.quad.uni.raneff.sp$unique_id <- as.factor(df.B.lf.nonarctic.quad.uni.raneff.sp$unique_id)
+
+
+##### Plot
+plot.B.lf.nonarctic.quad.uni.raneff <- ggplot(data = df.B.lf.nonarctic.quad.uni.raneff.pop, 
+                                             aes(x = temp)) +
+  ## Overall TPC
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
+              fill = "grey",
+              alpha = 0.5) +
+  ## a separate TPC (and credible interval) for each unique group
+  # geom_ribbon(data = df.B.lf.nonarctic.quad.uni.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
+  #             alpha = 0.5) +
+  geom_line(data = df.B.lf.nonarctic.quad.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
+  geom_point(data = data,
+             aes(x = temp, y = trait, colour = as.factor(unique_id)),
+             size = 2) +
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), y = "lifespan (days)") +
+  # Customize legend
+  scale_colour_discrete(name = element_blank(),
+                        labels = c("Ae. aegypti (Beserra 2009)",
+                                   "Ae. aegypti (Goindin et al. 2015)",
+                                   "Ae. aegypti (Huxley et al. 2021)",
+                                   "Ae. aegypti (Huxley et al. 2022)",
+                                   "Ae. aegypti (Marinho et al. 2016)",
+                                   "Ae. aegypti (Rocha-Santos et al. 2021)",
+                                   "Ae. aegypti (Yang et al. 2009)")) +
+  theme_bw()
+
+
+plot.B.lf.nonarctic.quad.uni.raneff
+
+# ggsave("figures/B.lf.nonarctic.quad.uni.raneff.png", plot.B.lf.nonarctic.quad.uni.raneff,
+#        width = 10.3, height = 5.6)
+
+
+
+
+##########
+###### 3C. Compare TPC fits ----
+##########
+
+## DIC
+B.lf.nonarctic.bri.uni.raneff$BUGSoutput$DIC
+B.lf.nonarctic.quad.uni.raneff$BUGSoutput$DIC
+
+
+df.B.lf.nonarctic.bri.uni.raneff.pop <- df.B.lf.nonarctic.bri.uni.raneff.pop %>% 
+  mutate(type = "Briere w/ random effects")
+
+df.B.lf.nonarctic.quad.uni.raneff.pop <- df.B.lf.nonarctic.quad.uni.raneff.pop %>% 
+  mutate(type = "Quadratic w/ random effects")
+
+
+# Combine the three dataframes
+df.all <- rbind(df.B.lf.nonarctic.bri.uni.raneff.pop,
+                df.B.lf.nonarctic.quad.uni.raneff.pop
+)
+
+# Plot
+plot.all <- df.all %>% 
+  ggplot(aes(x = temp)) +
+  # geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
+  geom_point(data = data, aes(x = temp, y = trait, colour = as.factor(unique_id)), size = 2) +
+  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "lifespan (days)"
+  ) +
+  # Customize the colours
+  ## ribbon
+  # scale_fill_manual(name = element_blank(),
+  #                   values = c("Briere" = "#4363d8",
+  #                              "Quadratic" = "grey")) +
+  
+  ## line
+  # scale_color_manual(name = element_blank(),
+  #                    values = c("Briere" = "blue",
+  #                               "Quadratic" = "#868686FF",
+  #                               "1" = "#F8766D",
+  #                               "2" = "#00BFC4"),
+  #                    label = c("Beserra 2009", "Yang et al 2008", "Briere", "Quadratic")) +
+  theme_bw()
+
+plot.all
+
+# ggsave("figures/B.lf.nonarctic.all.png", plot.all, width = 10.3, height = 5.6)
+
+
+##########
+###### 4A. Calculate B for non-Arctic species ----
+##########
+
+## Load the models
+load("R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.Rdata")
+load("R-scripts/R2jags-objects/B.lf.nonarctic.quad.uni.raneff.Rdata")
 
 ## Pull out the derived/predicted values:
-B.EFD.nonarctic.bri.uni.raneff.pred <- B.EFD.nonarctic.bri.uni.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop
-B.lf.nonarctic.bri.uni.raneff.pred <- B.lf.nonarctic.bri.uni.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop
-
-
-
-## Specify function to calculate mean & quantiles
-calcPostQuants = function(input, grad.xs) {
-  
-  # Get length of gradient
-  N.grad.xs <- length(grad.xs)
-  
-  # Create output dataframe
-  output.df <- data.frame("mean" = numeric(N.Temp.xs), "median" = numeric(N.Temp.xs), 
-                          "lowerCI" = numeric(N.Temp.xs), "upperCI" = numeric(N.Temp.xs), 
-                          "lowerQuartile" = numeric(N.Temp.xs), "upperQuartile" = numeric(N.Temp.xs), temp = grad.xs)
-  
-  # Calculate mean & quantiles
-  for(i in 1:N.grad.xs){
-    output.df$mean[i] <- mean(input[ ,i])
-    output.df$median[i] <- quantile(input[ ,i], 0.5, na.rm = TRUE)
-    output.df$lowerCI[i] <- quantile(input[ ,i], 0.025, na.rm = TRUE)
-    output.df$upperCI[i] <- quantile(input[ ,i], 0.975, na.rm = TRUE)
-    output.df$lowerQuartile[i] <- quantile(input[ ,i], 0.25, na.rm = TRUE)
-    output.df$upperQuartile[i] <- quantile(input[ ,i], 0.75, na.rm = TRUE)
-  }
-  
-  output.df # return output
-  
-}
+B.EFD.pred <- B.EFD.nonarctic.bri.uni$BUGSoutput$sims.list$z.trait.mu.pred
+B.lf.pred <- B.lf.nonarctic.quad.uni.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop
 
 
 ## Calculate B for Ae. aegypti
-B.nonarctic.bri.uni.calc <- B.EFD.nonarctic.bri.uni.raneff.pred * B.lf.nonarctic.bri.uni.raneff.pred
+B.nonarctic.calc <- B.EFD.pred * B.lf.pred
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.5)
+N.Temp.xs <-length(Temp.xs)
+
 
 ## Get the mean, median, CI, and upper and lower quartile
-df.B.nonarctic.bri.uni <- calcPostQuants(B.nonarctic.bri.uni.calc, Temp.xs)
+df.B.nonarctic <- calcPostQuants(B.nonarctic.calc, Temp.xs)
 
 
 ## plot 
 ##### Plot
-plot.B.nonarctic.bri.uni <- df.B.nonarctic.bri.uni %>%
+plot.B.nonarctic <- df.B.nonarctic %>%
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = lowerCI, ymax = upperCI),
               fill = "#4363d8",
@@ -643,26 +1189,66 @@ plot.B.nonarctic.bri.uni <- df.B.nonarctic.bri.uni %>%
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Lifetime egg production") +
   theme_bw()
 
-plot.B.nonarctic.bri.uni
+plot.B.nonarctic
 
-# ggsave("figures/B.nonarctic.bri.uni.png", plot.B.nonarctic.bri.uni,
+# ggsave("figures/B.nonarctic.png", plot.B.nonarctic,
 #        width = 10.3, height = 5.6)
 
 
 ##########
-###### 2C. Fit gamma distributions to B prior thermal responses: Briere ----
+###### 4B. Combine data from non-Arctic and Arctic species ----
 ##########
-## First fit a Briere to the mean
-data <- df.B.nonarctic.bri.uni[, c("temp", "mean")]
+
+## Get the mean values for B
+data <- df.B.nonarctic[, c("temp", "mean")]
 
 colnames(data) <- c("temp", "trait")
+data$species <- "aegypti"
 
-## Include the arctic data
-data <-rbind(data, data.B.arctic[, c("temp", "trait")])
+## Combined with the arctic data
+data <- bind_rows(data, data.B.arctic[, c("temp", "trait", "species")])
 
-ggplot(data = data) +
-  geom_point(aes(x = temp, y = trait)) +
+
+B.alldata <- ggplot(data = data) +
+  geom_point(aes(x = temp, y = trait, colour = species)) +
+  labs(y = "Lifetime eggs", x = "Temperature ºC") +
+  scale_colour_discrete(name = "species", labels = c("Ae. aegypti",
+                                                     "Ae. cinereus",
+                                                     "Ae. communis",
+                                                     "Ae. hexodontus",
+                                                     "Ae. impiger",
+                                                     "Ae. punctor"
+  )) +
   theme_bw()
+
+B.alldata
+
+# ggsave("figures/raw_data/B.alldata.png", B.alldata, , width = 9.83, height = 6.17)
+
+
+##########
+###### 4C. Fit thermal responses to B (all data): Briere ----
+##########
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
+
+
+## Set priors
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(30, 45)
+)
+
+##### inits Function
+inits<-function(){list(
+  cf.q = 0.1,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
 
 ##### Organize data for JAGS
 trait <- data$trait
@@ -670,26 +1256,20 @@ N.obs <- length(trait)
 temp <- data$temp
 
 
-##### inits Function
-inits<-function(){list(
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
-
 ##### Parameters to Estimate
 parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
 
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
 
 ##### Run JAGS
-B.nonarctic.bri.uni <- jags(
+B.alldata.bri.uni <- jags(
   data = jag.data,
   inits = inits,
   parameters.to.save = parameters,
-  model.file = "R-scripts/briere_T_B.txt",
+  model.file = "R-scripts/briere_T.txt",
   n.thin = nt,
   n.chains = nc,
   n.burnin = nb,
@@ -700,89 +1280,60 @@ B.nonarctic.bri.uni <- jags(
 
 
 ## Save the model as Rdata
-# save(B.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/B.nonarctic.bri.uni.Rdata")
+# save(B.alldata.bri.uni, file = "R-scripts/R2jags-objects/B.alldata.bri.uni.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/B.nonarctic.bri.uni.Rdata")
+load("R-scripts/R2jags-objects/B.alldata.bri.uni.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-B.nonarctic.bri.uni$BUGSoutput$summary[1:5,]
-mcmcplot(B.nonarctic.bri.uni)
+B.alldata.bri.uni$BUGSoutput$summary[1:5,]
+mcmcplot(B.alldata.bri.uni)
 
 # Extract the DIC for future model comparisons
-B.nonarctic.bri.uni$BUGSoutput$DIC
+B.alldata.bri.uni$BUGSoutput$DIC
 
 ## Plot data + fit ----
-df.B.nonarctic.bri.uni <- data.frame(B.nonarctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>%
+df.B.alldata.bri.uni <- data.frame(B.alldata.bri.uni$BUGSoutput$summary)[-(1:5),] %>%
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.B.nonarctic.bri.uni)
+head(df.B.alldata.bri.uni)
 
 ##### Plot
-plot.B.nonarctic.bri.uni <- df.B.nonarctic.bri.uni%>%
+plot.B.alldata.bri.uni <- df.B.alldata.bri.uni%>%
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
               fill = "#4363d8",
               alpha = 0.5) +
   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
   geom_point(data = data,
-             aes(x = temp, y = trait),
+             aes(x = temp, y = trait, colour = species),
              size = 2) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) +
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Lifetime egg production") +
+  scale_colour_discrete(name = "species", labels = c("Ae. aegypti",
+                                                     "Ae. cinereus",
+                                                     "Ae. communis",
+                                                     "Ae. hexodontus",
+                                                     "Ae. impiger",
+                                                     "Ae. punctor"
+  )) +
   theme_bw()
 
-plot.B.nonarctic.bri.uni
+plot.B.alldata.bri.uni
 
-# ggsave("figures/B.nonarctic.bri.uni.png", plot.B.nonarctic.bri.uni,
+# ggsave("figures/B.alldata.bri.uni.png", plot.B.alldata.bri.uni,
 #        width = 10.3, height = 5.6)
 
 
 
-
-# Get the posterior dists for 3 main parameters (not sigma) into a data frame
-B.arctic.prior.cf.dists <- data.frame(q = as.vector(B.nonarctic.bri.uni$BUGSoutput$sims.list$cf.q),
-                                       T0 = as.vector(B.nonarctic.bri.uni$BUGSoutput$sims.list$cf.T0),
-                                       Tm = as.vector(B.nonarctic.bri.uni$BUGSoutput$sims.list$cf.Tm))
-
-# Fit gamma distributions for each parameter posterior dists
-B.arctic.prior.gamma.fits = apply(B.arctic.prior.cf.dists, 2, 
-                                    function(df) fitdistr(df, "gamma")$estimate)
-
-
-B.hypers <- B.arctic.prior.gamma.fits
-# save(B.hypers, file = "R-scripts/R2jags-objects/Bhypers.bri.Rsave")
-
-
-
 ##########
-###### 2D. Fit B thermal responses with data-informed priors (Arctic species): Briere ----
+###### 4D. Fit thermal responses to B (all data): Quadratic ----
 ##########
-
-load("R-scripts/R2jags-objects/Bhypers.bri.Rsave")
-B.arctic.prior.gamma.fits <- B.hypers
-
-
-##### Set data
-data <- data.B.arctic
-hypers <- B.arctic.prior.gamma.fits * 0.1
-
-##### No random effect ----
-##### inits Function
-inits<-function(){list(
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
-
-##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
-
 
 ##### Temp sequence for derived quantity calculations
 # For actual fits
@@ -790,572 +1341,145 @@ Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
 
+## Set priors
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(30, 45)
+)
+
+##### inits Function
+inits<-function(){list(
+  cf.q = 0.1,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+
 ##### Organize data for JAGS
 trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
 
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+
 ##### define data for JAGS in a list object
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
-                 N.Temp.xs = N.Temp.xs, hypers = hypers)
+                 N.Temp.xs = N.Temp.xs, prior = prior)
 
-##### Run JAGS -----
-B.arctic.bri.inf <- jags(data = jag.data,
-                           inits = inits,
-                           parameters.to.save = parameters,
-                           model.file = "R-scripts/briere_inf.txt",
-                           n.thin = nt,
-                           n.chains = nc,
-                           n.burnin = nb,
-                           n.iter = ni,
-                           DIC = T,
-                           working.directory = getwd()
+##### Run JAGS
+B.alldata.quad.uni <- jags(
+  data = jag.data,
+  inits = inits,
+  parameters.to.save = parameters,
+  model.file = "R-scripts/quad_T.txt",
+  n.thin = nt,
+  n.chains = nc,
+  n.burnin = nb,
+  n.iter = ni,
+  DIC = T,
+  working.directory = getwd()
 )
 
-## Save the model as Rdata 
-# save(B.arctic.bri.inf, file = "R-scripts/R2jags-objects/B.arctic.bri.inf.Rdata")
+
+## Save the model as Rdata
+# save(B.alldata.quad.uni, file = "R-scripts/R2jags-objects/B.alldata.quad.uni.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/B.arctic.bri.inf.Rdata")
+# load("R-scripts/R2jags-objects/B.alldata.quad.uni.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-B.arctic.bri.inf$BUGSoutput$summary[1:5,]
-mcmcplot(B.arctic.bri.inf)
+B.alldata.quad.uni$BUGSoutput$summary[1:5,]
+mcmcplot(B.alldata.quad.uni)
 
 # Extract the DIC for future model comparisons
-B.arctic.bri.inf$BUGSoutput$DIC
+B.alldata.quad.uni$BUGSoutput$DIC
 
 ## Plot data + fit ----
-df.B.arctic.bri.inf <- data.frame(B.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
+df.B.alldata.quad.uni <- data.frame(B.alldata.quad.uni$BUGSoutput$summary)[-(1:5),] %>%
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.B.arctic.bri.inf)
+head(df.B.alldata.quad.uni)
 
 ##### Plot
-plot.B.arctic.bri.inf <- df.B.arctic.bri.inf %>% 
+plot.B.alldata.quad.uni <- df.B.alldata.quad.uni%>%
   ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
+              fill = "#4363d8",
+              alpha = 0.5) +
   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait, color = species), size = 2) +
+  geom_point(data = data,
+             aes(x = temp, y = trait, colour = species),
+             size = 2) +
   # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_x_continuous(limits = c(0, 41)) +
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Mosquito adult lifespan (days)"
-  ) +
-  # Customize legend
-  scale_color_discrete(name = "Species",
-                       labels = c("Ae. cinereus",
-                                  "Ae. communis",
-                                  "Ae. impiger",
-                                  "Ae. punctor",
-                                  "Ae. vexans")) +
+  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Lifetime egg production") +
+  scale_colour_discrete(name = "species", labels = c("Ae. aegypti",
+                                                     "Ae. cinereus",
+                                                     "Ae. communis",
+                                                     "Ae. hexodontus",
+                                                     "Ae. impiger",
+                                                     "Ae. punctor"
+  )) +
   theme_bw()
 
-plot.B.arctic.bri.inf
+plot.B.alldata.quad.uni
 
-# ggsave("figures/B.arctic.bri.inf.png", plot.B.arctic.bri.inf,
+# ggsave("figures/B.alldata.quad.uni.png", plot.B.alldata.quad.uni,
 #        width = 10.3, height = 5.6)
 
-
-
 ##########
-###### 2E. Plot all TPCs for Arctic species in the same graph (for comparison): Briere ----
+###### 4E. Compare TPC fits ----
 ##########
 
-# Add an identifying column in each model output dataframe
-df.B.arctic.bri.uni <- df.B.arctic.bri.uni %>% 
-  mutate(type = "Briere uniform")
+## DIC
+B.alldata.bri.uni$BUGSoutput$DIC
+B.alldata.quad.uni$BUGSoutput$DIC
 
-df.B.arctic.bri.inf <- df.B.arctic.bri.inf %>% 
-  mutate(type = "Briere informative")
+
+df.B.alldata.bri.uni <- df.B.alldata.bri.uni %>% 
+  mutate(type = "Briere")
+
+df.B.alldata.quad.uni <- df.B.alldata.quad.uni %>% 
+  mutate(type = "Quadratic")
 
 
 # Combine the three dataframes
-df.all <- rbind(df.B.arctic.bri.uni, df.B.arctic.bri.inf)
-
-df.all$type <- factor(df.all$type, levels = c( "Briere uniform", "Briere informative"))
-
+df.all <- rbind(df.B.alldata.bri.uni,
+                df.B.alldata.quad.uni
+)
 
 # Plot
 plot.all <- df.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
-  geom_point(data = data.B.arctic, aes(x = temp, y = trait), size = 2) +
-  #geom_point(data = data.B.nonarctic, aes(x = temp, y = trait), size = 2) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Mosquito adult lifespan (days)"
-  ) +
-  # Customize the colours
-  ## ribbon
-  scale_fill_manual(values = c("Briere uniform" = "grey",
-                               "Briere informative" = "#4363d8")) +
-  
-  ## line
-  scale_color_manual(values = c("Briere uniform" = "#868686FF",
-                                "Briere informative" = "blue")) +
-  theme_bw()
-
-plot.all
-
-# ggsave("figures/B.arctic.bri.all.png", plot.all, width = 10.3, height = 5.6)
-
-B.arctic.bri.uni$BUGSoutput$DIC
-B.arctic.bri.inf$BUGSoutput$DIC
-
-
-
-##########
-###### 3A. Fit EFD and lf thermal responses (with random effects) for priors (non-Arctic species): Quadratic ----
-##########
-
-##### inits Function
-inits<-function(){list(
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
-
-##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
-
-
-##### Temp sequence for derived quantity calculations
-# For actual fits
-Temp.xs <- seq(0, 45, 0.1)
-N.Temp.xs <-length(Temp.xs)
-
-## EFD ----
-##### Set data
-data <- data.B.nonarctic %>% 
-  filter(trait_name == "EFD")
-
-
-
-##### Organize data for JAGS
-trait <- data$trait
-N.obs <- length(trait)
-temp <- data$temp
-
-##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
-
-##### Run JAGS
-EFD.nonarctic.quad.uni <- jags(
-  data = jag.data,
-  inits = inits,
-  parameters.to.save = parameters,
-  model.file = "R-scripts/quad_T.txt",
-  n.thin = nt,
-  n.chains = nc,
-  n.burnin = nb,
-  n.iter = ni,
-  DIC = T,
-  working.directory = getwd()
-)
-
-## Save the model as Rdata 
-# save(EFD.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/EFD.nonarctic.quad.uni.Rdata")
-
-# Read the .Rdata
-# load("R-scripts/R2jags-objects/EFD.nonarctic.quad.uni.Rdata")
-
-
-## Diagnostics ----
-##### Examine output
-EFD.nonarctic.quad.uni$BUGSoutput$summary[1:5,]
-mcmcplot(EFD.nonarctic.quad.uni)
-
-# Extract the DIC for future model comparisons
-EFD.nonarctic.quad.uni$BUGSoutput$DIC
-
-## Plot data + fit ----
-df.EFD.nonarctic.quad.uni <- data.frame(EFD.nonarctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
-  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.)
-
-head(df.EFD.nonarctic.quad.uni)
-
-##### Plot
-plot.EFD.nonarctic.quad.uni <- df.EFD.nonarctic.quad.uni %>%
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
-              fill = "#4363d8",
-              alpha = 0.5) +
-  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  geom_point(data = data,
-             aes(x = temp, y = trait, colour = species),
-             size = 2) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) +
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Eggs per female per day") +
-  # Customize legend
-  # scale_color_discrete(name = "Species",
-  #                      labels = c("Ae. cinereus",
-  #                                 "Ae. communis",
-  #                                 "Ae. impiger",
-  #                                 "Ae. punctor",
-  #                                 "Ae. vexans")) +
-  theme_bw()
-
-plot.EFD.nonarctic.quad.uni
-
-# ggsave("figures/B.EFD.nonarctic.quad.uni.png", plot.EFD.nonarctic.quad.uni,
-#        width = 10.3, height = 5.6)
-
-
-## lf ----
-
-##### Set data
-data <- data.B.nonarctic %>% 
-  filter(trait_name == "lf")
-
-##### Organize data for JAGS
-trait <- data$trait
-N.obs <- length(trait)
-temp <- data$temp
-
-##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
-
-##### Run JAGS
-lf.nonarctic.quad.uni <- jags(
-  data = jag.data,
-  inits = inits,
-  parameters.to.save = parameters,
-  model.file = "R-scripts/quad_T.txt",
-  n.thin = nt,
-  n.chains = nc,
-  n.burnin = nb,
-  n.iter = ni,
-  DIC = T,
-  working.directory = getwd()
-)
-
-## Save the model as Rdata 
-# save(lf.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/lf.nonarctic.quad.uni.Rdata")
-
-# Read the .Rdata
-# load("R-scripts/R2jags-objects/lf.nonarctic.quad.uni.Rdata")
-
-
-## Diagnostics ----
-##### Examine output
-lf.nonarctic.quad.uni$BUGSoutput$summary[1:5,]
-mcmcplot(lf.nonarctic.quad.uni)
-
-# Extract the DIC for future model comparisons
-lf.nonarctic.quad.uni$BUGSoutput$DIC
-
-## Plot data + fit ----
-df.lf.nonarctic.quad.uni <- data.frame(lf.nonarctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
-  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.)
-
-head(df.lf.nonarctic.quad.uni)
-
-##### Plot
-plot.lf.nonarctic.quad.uni <- df.lf.nonarctic.quad.uni %>%
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
-              fill = "#4363d8",
-              alpha = 0.5) +
-  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  geom_point(data = data,
-             aes(x = temp, y = trait, colour = species),
-             size = 2) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) +
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Adult mosquito lifespan (days)") +
-  # Customize legend
-  # scale_color_discrete(name = "Species",
-  #                      labels = c("Ae. cinereus",
-  #                                 "Ae. communis",
-  #                                 "Ae. impiger",
-  #                                 "Ae. punctor",
-  #                                 "Ae. vexans")) +
-  theme_bw()
-
-plot.lf.nonarctic.quad.uni
-
-# ggsave("figures/B.lf.nonarctic.quad.uni.png", plot.lf.nonarctic.quad.uni,
-#        width = 10.3, height = 5.6)
-
-##########
-###### 3B. Calculate B for non-Arctic species ----
-##########
-
-## Pull out the derived/predicted values:
-EFD.nonarctic.quad.uni.pred <- EFD.nonarctic.quad.uni$BUGSoutput$sims.list$z.trait.mu.pred
-lf.nonarctic.quad.uni.pred <- lf.nonarctic.quad.uni$BUGSoutput$sims.list$z.trait.mu.pred
-
-
-
-## Specify function to calculate mean & quantiles
-calcPostQuants = function(input, grad.xs) {
-  
-  # Get length of gradient
-  N.grad.xs <- length(grad.xs)
-  
-  # Create output dataframe
-  output.df <- data.frame("mean" = numeric(N.Temp.xs), "median" = numeric(N.Temp.xs), 
-                          "lowerCI" = numeric(N.Temp.xs), "upperCI" = numeric(N.Temp.xs), 
-                          "lowerQuartile" = numeric(N.Temp.xs), "upperQuartile" = numeric(N.Temp.xs), temp = grad.xs)
-  
-  # Calculate mean & quantiles
-  for(i in 1:N.grad.xs){
-    output.df$mean[i] <- mean(input[ ,i])
-    output.df$median[i] <- quantile(input[ ,i], 0.5, na.rm = TRUE)
-    output.df$lowerCI[i] <- quantile(input[ ,i], 0.025, na.rm = TRUE)
-    output.df$upperCI[i] <- quantile(input[ ,i], 0.975, na.rm = TRUE)
-    output.df$lowerQuartile[i] <- quantile(input[ ,i], 0.25, na.rm = TRUE)
-    output.df$upperQuartile[i] <- quantile(input[ ,i], 0.75, na.rm = TRUE)
-  }
-  
-  output.df # return output
-  
-}
-
-
-## Calculate B for Ae. aegypti
-B.nonarctic.quad.uni.calc <- EFD.nonarctic.quad.uni.pred * lf.nonarctic.quad.uni.pred
-
-## Get the mean, median, CI, and upper and lower quartile
-df.B.nonarctic.quad.uni <- calcPostQuants(B.nonarctic.quad.uni.calc, Temp.xs)
-
-
-## plot 
-##### Plot
-plot.B.nonarctic.quad.uni <- df.B.nonarctic.quad.uni %>%
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = lowerCI, ymax = upperCI),
-              fill = "#4363d8",
-              alpha = 0.5) +
-  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) +
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Lifetime egg production") +
-  theme_bw()
-
-plot.B.nonarctic.quad.uni
-
-# ggsave("figures/B.nonarctic.quad.uni.png", plot.B.nonarctic.quad.uni,
-#        width = 10.3, height = 5.6)
-
-
-##########
-###### 3C. Fit gamma distributions to B prior thermal responses: Quadratic ----
-##########
-
-# Get the posterior dists for 3 main parameters (not sigma) into a data frame
-B.arctic.prior.cf.dists <- data.frame(q = as.vector(B.nonarctic.quad.uni$BUGSoutput$sims.list$cf.q),
-                                        T0 = as.vector(B.nonarctic.quad.uni$BUGSoutput$sims.list$cf.T0),
-                                        Tm = as.vector(B.nonarctic.quad.uni$BUGSoutput$sims.list$cf.Tm))
-
-# Fit gamma distributions for each parameter posterior dists
-B.arctic.prior.gamma.fits = apply(B.arctic.prior.cf.dists, 2, 
-                                    function(df) fitdistr(df, "gamma")$estimate)
-
-
-B.hypers <- B.arctic.prior.gamma.fits
-save(B.hypers, file = "R-scripts/R2jags-objects/Bhypers.quad.Rsave")
-
-
-
-##########
-###### 3D. Fit B thermal responses with data-informed priors (Arctic species): Quadratic ----
-##########
-
-load("R-scripts/R2jags-objects/Bhypers.quad.Rsave")
-B.arctic.prior.gamma.fits <- B.hypers
-
-##### Temp sequence for derived quantity calculations
-# For actual fits
-Temp.xs <- seq(0, 45, 0.1)
-N.Temp.xs <-length(Temp.xs)
-
-##### Set data
-data <- data.B.arctic
-hypers <- B.arctic.prior.gamma.fits * 0.1
-
-
-##### inits Function
-inits<-function(){list(
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
-
-##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
-
-
-##### Organize data for JAGS
-trait <- data$trait
-N.obs <- length(trait)
-temp <- data$temp
-
-##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
-                 N.Temp.xs = N.Temp.xs, hypers = hypers)
-
-##### Run JAGS -----
-B.arctic.quad.inf <- jags(data = jag.data,
-                            inits = inits,
-                            parameters.to.save = parameters,
-                            model.file = "R-scripts/quad_inf.txt",
-                            n.thin = nt,
-                            n.chains = nc,
-                            n.burnin = nb,
-                            n.iter = ni,
-                            DIC = T,
-                            working.directory = getwd()
-)
-
-## Save the model as Rdata 
-# save(B.arctic.quad.inf, file = "R-scripts/R2jags-objects/B.arctic.quad.inf.Rdata")
-
-# Read the .Rdata
-# load("R-scripts/R2jags-objects/B.arctic.quad.inf.Rdata")
-
-
-## Diagnostics ----
-##### Examine output
-B.arctic.quad.inf$BUGSoutput$summary[1:5,]
-mcmcplot(B.arctic.quad.inf)
-
-# Extract the DIC for future model comparisons
-B.arctic.quad.inf$BUGSoutput$DIC
-
-## Plot data + fit ----
-df.B.arctic.quad.inf <- data.frame(B.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
-  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.)
-
-head(df.B.arctic.quad.inf)
-
-##### Plot
-plot.B.arctic.quad.inf <- df.B.arctic.quad.inf %>% 
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "pink", alpha = 0.5) +
-  geom_line(aes(y = mean), color = "red", linewidth = 1) +
   geom_point(data = data, aes(x = temp, y = trait), size = 2) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Mosquito adult lifespan (days)"
-  ) +
-  theme_bw()
-
-plot.B.arctic.quad.inf
-
-# ggsave("figures/B.arctic.quad.inf.png", plot.B.arctic.quad.inf, 
-#        width = 10.3, height = 5.6)
-
-
-##        A. Fit EFD and lf thermal responses (with random effects) for priors (non-Arctic species)
-##        B. Calculate B for non-Arctic species
-##        C. Fit gamma distributions to B prior thermal responses
-##        D. 
-##        E. Plot all TPCs in the same graph (for comparison)
-
-##########
-###### 3E. Plot all TPCs in the same graph (for comparison) ----
-##########
-
-# Add an identifying column in each model output dataframe
-df.B.arctic.quad.uni <- df.B.arctic.quad.uni %>% 
-  mutate(type = "Quadratic uniform")
-
-
-df.B.arctic.quad.inf <- df.B.arctic.quad.inf %>% 
-  mutate(type = "Quadratic informative")
-
-
-# Combine the three dataframes
-df.all <- rbind(df.B.arctic.quad.uni, df.B.arctic.quad.inf)
-
-##### Plot
-plot.all <- df.all %>% 
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
   geom_line(aes(y = mean, color = type), linewidth = 1) +
-  geom_point(data = data.B.arctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) + 
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Mosquito adult lifespan (days)"
+    y = "lifespan (days)"
   ) +
   # Customize the colours
   ## ribbon
-  scale_fill_manual(values = c("Quadratic uniform" = "grey", 
-                               "Quadratic informative" = "#4363d8")) +
+  scale_fill_manual(name = element_blank(),
+                    values = c("Briere" = "#4363d8",
+                               "Quadratic" = "grey")) +
+
   ## line
-  scale_color_manual(values = c("Quadratic uniform" = "#868686FF", 
-                                "Quadratic informative" = "blue")) +
+  scale_color_manual(name = element_blank(),
+                     values = c("Briere" = "blue",
+                                "Quadratic" = "#868686FF")) +
   theme_bw()
 
 plot.all
 
-# ggsave("figures/B.arctic.quad.all.png", plot.all, width = 10.3, height = 5.6)
-
-
-##### Plot all best fitting TPCs for comparison ----
-
-#### DIC ----
-B.arctic.bri.uni$BUGSoutput$DIC
-B.arctic.bri.inf$BUGSoutput$DIC
-B.arctic.quad.uni$BUGSoutput$DIC
-B.arctic.quad.inf$BUGSoutput$DIC
-
-# Combine the three dataframes
-df.all <- rbind(df.B.arctic.bri.uni, 
-                df.B.arctic.bri.inf, 
-                df.B.arctic.quad.uni,
-                df.B.arctic.quad.inf)
-
-
-
-##### Plot
-plot.all <- df.all %>% 
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
-  geom_point(data = data.B.arctic, aes(x = temp, y = trait), size = 2) +
-  #geom_point(data = data.B.sierrensis, aes(x = temp, y = trait), size = 2) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Mosquito adult lifespan (days)"
-  ) +
-  # Customize the colours
-  scale_fill_jco() +
-  scale_color_jco() +
-  # scale_fill_brewer(palette = "Accent") +
-  # scale_color_brewer(palette = "Accent") +
-  theme_bw()
-
-plot.all
-
-# ggsave("figures/B.arctic.arctic.all.png", plot.all, width = 10.3, height = 5.6)
-
-
-
+# ggsave("figures/B.alldata.all.png", plot.all, width = 10.3, height = 5.6)

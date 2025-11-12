@@ -108,8 +108,15 @@ trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
 
+
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(20, 45)
+)
+
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
 
 ##### Run JAGS -----
 MDR.arctic.bri.uni <- jags(data = jag.data,
@@ -183,8 +190,16 @@ trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
 
+## Set priors
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(20, 45)
+)
+
+
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
 
 ##### Run JAGS -----
 
@@ -432,7 +447,7 @@ temp <- data$temp
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
                  N.Temp.xs = N.Temp.xs, prior = prior)
 
-# ##### Run JAGS -----
+##### Run JAGS -----
 MDR.arctic.quad.uni <- jags(data = jag.data,
                             inits = inits,
                             parameters.to.save = parameters,

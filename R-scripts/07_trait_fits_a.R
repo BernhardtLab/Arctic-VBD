@@ -70,7 +70,7 @@ plot.data.a <- data.a %>%
 
 plot.data.a
 
-# ggsave("figures/raw_data/plot.data.a.png", plot.data.a, , width = 9.83, height = 6.17)
+# ggsave("figures/raw_data/plot.data.a.png", plot.data.a, width = 9.83, height = 6.17)
 
 ## Put all data into the same graph
 plot.data.a.combine <- data.a %>%

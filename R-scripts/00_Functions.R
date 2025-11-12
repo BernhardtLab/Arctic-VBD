@@ -1,471 +1,194 @@
-setwd("R-scripts")
+## Lilian Chan, University of Guelph
+## Arctic vector-borne disease transmission suitability model
+##
+## Functions to load for use in other scripts
+## Code adapted from https://github.com/JoeyBernhardt/anopheles-rate-summation/blob/master/R-scripts/working-versions-code/00_RSProjectFunctions.R
 
-##########
-###### Briere model (truncated) ----
-##########
+##	Table of contents:
+##
+##	1. Functions to process TPC model output
+##			A. Function to calculate TPC posterior summary statistics across a temperature gradient
+##			B. Function to extract full posterior distributions for 3 mean-defining TPC parameters & calculate Tbreadth
+##			C. Function to calculate Topt
+##			D. Function to calculate Tmin, Max, and Tbreadth for derived TPCs 
+##			E. Wrapper function to calculate summary data for and extract parameter posteriors from JAGS fitted TPCs
+##			F. Wrapper function to calculate summary data for derived TPCs 
 
-sink("briere_T.txt")
-cat("
-    model{
 
-    ## Priors
-    cf.q ~ dunif(0, 1)
-    cf.T0 ~ dunif(0, 20)
-    cf.Tm ~ dunif(20, 45)
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
+##  5. Function to calculate relative suitability
+##  6. Functions for Sensitivity Analysis
+##			A. Function for derivative of Briere thermal response
+##			B. Function for derivative of quadratic thermal response
+##			C. Function for sensitivity analysis #1 - partial derivatives
 
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- cf.q * temp[i] * (temp[i] - cf.T0) * sqrt((cf.Tm - temp[i]) * (cf.Tm > temp[i])) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)T(0,)
-    }
-
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i])
-    }
-
-    } # close model
-    ",fill=T)
-sink()
 
 
 
 ##########
-###### Briere model Probability (truncated) ----
+###### 0. Set-up workspace ----
 ##########
 
-sink("briereprob.txt")
-cat("
-    model{
-    
-    ## Priors
-    cf.q ~ dunif(0, 1)
-    cf.T0 ~ dunif(0, 24)
-    cf.Tm ~ dunif(25, 50)
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- cf.q * temp[i] * (temp[i] - cf.T0) * sqrt((cf.Tm - temp[i]) * (cf.Tm > temp[i])) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)
-    }
-    
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i]) * (cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) < 1) + (cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) > 1)
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
+library(tidyverse)
 
 
-##########
-###### Briere model (with random effects) ----
-##########
+########################################### 1. Functions to process TPC model output
 
-sink("briere_T_randeff.txt")
-cat("
-    model{
-
-    ## Priors
-    cf.q ~ dunif(0, 0.001)
-    cf.T0 ~ dunif(0, 20)
-    cf.Tm ~ dunif(20, 45)
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Random effect priors
-    sigma_q ~ dunif(0, 0.001)
-    tau_q <- 1 / (sigma_q * sigma_q)
-    
-    sigma_T0 ~ dunif(0, 10)
-    tau_T0 <- 1 / (sigma_T0 * sigma_T0)
-    
-    sigma_Tm ~ dunif(0, 10)
-    tau_Tm <- 1 / (sigma_Tm * sigma_Tm)
-    
-    ## Random effects for each species-study combination (unique_id)
-     
-    for (j in 1:Nids) {
-    q[j] ~ dnorm(0, tau_q)
-    T0[j] ~ dnorm(0, tau_T0)
-    Tm[j] ~ dnorm(0, tau_Tm)
-    }
-		
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- (cf.q + q[unique.id[i]]) * temp[i] * (temp[i] - (cf.T0 + T0[unique.id[i]])) * sqrt(((cf.Tm + Tm[unique.id[i]]) - temp[i]) * ((cf.Tm + Tm[unique.id[i]]) > temp[i])) * ((cf.T0 + T0[unique.id[i]]) < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)T(0,)
-    }
-
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred.pop[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i])}
-    
-    for (j in 1:Nids) {
-      for(i in 1:N.Temp.xs){
-        z.trait.mu.pred.id[j,i] <- (cf.q + q[j]) * Temp.xs[i] * (Temp.xs[i] - (cf.T0 + T0[j])) * sqrt(((cf.Tm + Tm[j]) - Temp.xs[i]) * ((cf.Tm + Tm[j]) > Temp.xs[i])) * ((cf.T0 + T0[j]) < Temp.xs[i])
-      }
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
+###### A. Function to calculate TPC posterior summary statistics across a temperature gradient
+calcPostQuants = function(input, grad.xs) {
+  
+  # Get length of gradient
+  N.grad.xs <- length(grad.xs)
+  
+  # Create output dataframe
+  output.df <- data.frame("mean" = numeric(N.Temp.xs), "median" = numeric(N.Temp.xs), 
+                          "lowerCI" = numeric(N.Temp.xs), "upperCI" = numeric(N.Temp.xs), 
+                          "lowerQuartile" = numeric(N.Temp.xs), "upperQuartile" = numeric(N.Temp.xs), temp = grad.xs)
+  
+  # Calculate mean & quantiles
+  for(i in 1:N.grad.xs){
+    output.df$mean[i] <- mean(input[ ,i])
+    output.df$median[i] <- quantile(input[ ,i], 0.5, na.rm = TRUE)
+    output.df$lowerCI[i] <- quantile(input[ ,i], 0.025, na.rm = TRUE)
+    output.df$upperCI[i] <- quantile(input[ ,i], 0.975, na.rm = TRUE)
+    output.df$lowerQuartile[i] <- quantile(input[ ,i], 0.25, na.rm = TRUE)
+    output.df$upperQuartile[i] <- quantile(input[ ,i], 0.75, na.rm = TRUE)
+  }
+  
+  output.df # return output
+  
+}
 
 
-##########
-###### Briere Model with gamma priors (except sigma) ----
-##########
+# Creating a small constant to keep denominators from being zero
+ec <- 0.000001
 
-sink("briere_inf.txt")
-cat("
-    model{
-    
-    ## Priors
-    cf.q ~ dgamma(hypers[1,1], hypers[2,1])
-    cf.T0 ~ dgamma(hypers[1,2], hypers[2,2])
-    cf.Tm ~ dgamma(hypers[1,3], hypers[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- cf.q * temp[i] * (temp[i] - cf.T0) * sqrt((cf.Tm - temp[i]) * (cf.Tm > temp[i])) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)
-    }
-    
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i])
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
+# Define S(T) with bc as one value
+S = function(a, bc, lf, PDR, B, EV, pLA, MDR){
+  (a^2 * bc * exp(-(1/(lf+ec))*(1/(PDR+ec))) * B * EV * pLA * MDR * lf^2)^0.5
+}
 
+########################################### 6. Functions for Sensitivity Analysis
 
-##########
-###### Briere Model Probability with gamma priors (except sigma) ----
-##########
+###### A. Function for derivative of Briere thermal response
+d_briere = function(T, T0, Tm, q) {
+  
+  b <- c()
+  
+  for (i in 1:length(T)) {
+    if (T[i]>T0 && T[i]<Tm) ## When trait value > 0
+      {b[i] <- (q*(-5*(T[i]^2) + 3*T[i]*T0 + 4*T[i]*Tm - 2*T0*Tm)/(2*sqrt(Tm-T[i])))}
+    else {b[i] <- 0}
+  }
+  
+  b # return output
+  
+}
 
-sink("briereprob_inf.txt")
-cat("
-    model{
-    
-    ## Priors
-    cf.q ~ dgamma(hypers[1,1], hypers[2,1])
-    cf.T0 ~ dgamma(hypers[1,2], hypers[2,2])
-    cf.Tm ~ dgamma(hypers[1,3], hypers[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- cf.q * temp[i] * (temp[i] - cf.T0) * sqrt((cf.Tm - temp[i]) * (cf.Tm > temp[i])) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)
-    }
-    
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i]) * (cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) < 1) + (cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) > 1)
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
+###### B. Function for derivative of quadratic thermal response
+d_quad = function(T, T0, Tm, q){
+  
+  b <- c()
+  
+  for (i in 1:length(T)){
+    if (T[i]>T0 && T[i]<Tm) # When trait value > 0
+      {b[i] <- -1*q*(2*T[i] - T0 - Tm)}
+    else {b[i] <- 0}
+  }
+  
+  b # return output
+  
+}
 
 
-##########
-###### Briere Model with random effect and gamma priors (except sigma) ----
-##########
+###### C. Function for sensitivity analysis #1 - partial derivatives
 
-sink("briere_inf_raneff.txt")
-cat("
-    model{
+# Arguments: mod_x_pred = the JAGS model for each trait (for the fitted TPC parameters - T0, Tm, and q);
+#			 m_x = the mean value for each trait over the temperature gradient
+
+SensitivityAnalysis_pd = function(mod_a, mod_bc, mod_lf, mod_PDR, mod_B, mod_EV, mod_pLA, mod_MDR,
+                                   m_a, m_bc, m_lf, m_PDR, m_B, m_EV, m_pLA, m_MDR) {
+  
+  # Create matrices to hold results
+  dS.da <- dS.dbc <- dS.dlf <- dS.dPDR <- dS.dB <- dS.dEV <- dS.dpLA <- dS.dMDR <- dS.dT <- matrix(NA, nMCMC, N.Temp.xs)
+  
+  # Extract predicted trait values
+  mod_a_preds <- mod_a$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit for a
+  mod_bc_preds <- mod_bc$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_lf_preds <- mod_lf$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit for lf
+  mod_PDR_preds <- mod_PDR$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_B_preds <- mod_B$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_EV_preds <- mod_EV$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_pLA_preds <- mod_pLA$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_MDR_preds <- mod_MDR$BUGSoutput$sims.list$z.trait.mu.pred
+  
+  # Calculate dy/dt and dS/dy for each MCMC step across the temp gradient
+  for(i in 1:nMCMC){ # loop through MCMC steps
     
-    ## Priors
-    cf.q ~ dgamma(hypers[1,1], hypers[2,1])
-    cf.T0 ~ dgamma(hypers[1,2], hypers[2,2])
-    cf.Tm ~ dgamma(hypers[1,3], hypers[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
+    # Calculate derivative of all traits with respect to temp (dy/dt) across temp gradient (for a single MCMC step)
+    # The sims.list refers to the lists of fitted TPC parameters (T0, Tm, and q)
+    da.dT <- d_briere(Temp.xs, 
+                      mod_a$BUGSoutput$sims.list[[1]][i], # T0
+                      mod_a$BUGSoutput$sims.list[[2]][i], # Tm
+                      mod_a$BUGSoutput$sims.list[[3]][i]) # q
     
+    dbc.dT <- d_quad(Temp.xs, 
+                     mod_bc$BUGSoutput$sims.list[[1]][i], # T0
+                     mod_bc$BUGSoutput$sims.list[[2]][i], # Tm
+                     mod_bc$BUGSoutput$sims.list[[3]][i]) # q
     
-    ## Random effect priors
-    sigma_q ~ dunif(0, 0.001)
-    tau_q <- 1 / (sigma_q * sigma_q)
+    dlf.dT <- d_briere(Temp.xs, 
+                       mod_lf$BUGSoutput$sims.list[[1]][i], # T0
+                       mod_lf$BUGSoutput$sims.list[[2]][i], # Tm
+                       mod_lf$BUGSoutput$sims.list[[3]][i]) # q
     
-    sigma_T0 ~ dunif(0, 10)
-    tau_T0 <- 1 / (sigma_T0 * sigma_T0)
+    dPDR.dT <- d_briere(Temp.xs,
+                        mod_PDR$BUGSoutput$sims.list[[1]][i], # T0
+                        mod_PDR$BUGSoutput$sims.list[[2]][i], # Tm
+                        mod_PDR$BUGSoutput$sims.list[[3]][i]) # q
     
-    sigma_Tm ~ dunif(0, 10)
-    tau_Tm <- 1 / (sigma_Tm * sigma_Tm)
+    dB.dT <- d_briere(Temp.xs,
+                      mod_B$BUGSoutput$sims.list[[1]][i], # T0
+                      mod_B$BUGSoutput$sims.list[[2]][i], # Tm
+                      mod_B$BUGSoutput$sims.list[[3]][i]) # q
     
-    ## Random effects for each species-study combination (unique_id)
-     
-    for (j in 1:Nids) {
-    q[j] ~ dnorm(0, tau_q)
-    T0[j] ~ dnorm(0, tau_T0)
-    Tm[j] ~ dnorm(0, tau_Tm)
-    }
-		
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- (cf.q + q[unique.id[i]]) * temp[i] * (temp[i] - (cf.T0 + T0[unique.id[i]])) * sqrt(((cf.Tm + Tm[unique.id[i]]) - temp[i]) * ((cf.Tm + Tm[unique.id[i]]) > temp[i])) * ((cf.T0 + T0[unique.id[i]]) < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)T(0,)
-    }
-
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred.pop[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i])}
+    dEV.dT <- d_quad(Temp.xs,
+                      mod_EV$BUGSoutput$sims.list[[1]][i], # T0
+                      mod_EV$BUGSoutput$sims.list[[2]][i], # Tm
+                      mod_EV$BUGSoutput$sims.list[[3]][i]) # q
     
-    for (j in 1:Nids) {
-      for(i in 1:N.Temp.xs){
-        z.trait.mu.pred.id[j,i] <- (cf.q + q[j]) * Temp.xs[i] * (Temp.xs[i] - (cf.T0 + T0[j])) * sqrt(((cf.Tm + Tm[j]) - Temp.xs[i]) * ((cf.Tm + Tm[j]) > Temp.xs[i])) * ((cf.T0 + T0[j]) < Temp.xs[i])
-      }
-    }
+    dpLA.dT <- d_quad(Temp.xs,
+                      mod_pLA$BUGSoutput$sims.list[[1]][i], # T0
+                      mod_pLA$BUGSoutput$sims.list[[2]][i], # Tm
+                      mod_pLA$BUGSoutput$sims.list[[3]][i]) # q
     
-    } # close model
-    ",fill=T)
-sink()
+    dMDR.dT <- d_briere(Temp.xs,
+                        mod_MDR$BUGSoutput$sims.list[[1]][i], # T0
+                        mod_MDR$BUGSoutput$sims.list[[2]][i], # Tm
+                        mod_MDR$BUGSoutput$sims.list[[3]][i]) # q
+    
+    # Calculate sensitivity (dS/dy * dy/dt) across temp gradient (for a single MCMC step)
 
-
-##########
-###### Quadratic model (truncated) ----
-##########
-
-sink("quad_T.txt")
-cat("
-    model{
-
-    ## Priors
-    cf.q ~ dunif(prior[1,1], prior[2,1])
-    cf.T0 ~ dunif(prior[1,2], prior[2,2])
-    cf.Tm ~ dunif(prior[1,3], prior[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- -1 * cf.q * (temp[i] - cf.T0) * (temp[i] - cf.Tm) * (cf.Tm > temp[i]) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)T(0,)
-    }
-
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- -1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i])
-    }
-
-    } # close model
-    ",fill=T)
-sink()
+    # See Mathematica notebook from Shocket et al. 2018 eLife for dR0/dy derivative calculations
+    
+    dS.da[i, ] <- S(mod_a_preds[i, ], m_bc, m_lf, m_PDR, m_B, m_EV, m_pLA, m_MDR)/(mod_a_preds[i, ]+ec) * da.dT
+    dS.dbc[i, ] <- 1/2 * (S(m_a, mod_bc_preds[i, ], m_lf, m_PDR, m_B, m_EV, m_pLA, m_MDR)/(mod_bc_preds[i, ]+ec) * dbc.dT)
+    dS.dlf[i, ] <- 1/2 * (S(m_a, m_bc, mod_lf_preds[i, ], m_PDR, m_B, m_EV, m_pLA, m_MDR) * 
+                             (1 + 2*mod_lf_preds[i, ]*m_PDR) / ((mod_lf_preds[i, ] + ec)^2 * (m_PDR + ec)) * dlf.dT)
+    dS.dPDR[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, mod_PDR_preds[i, ], m_B, m_EV, m_pLA, m_MDR)/((m_lf + ec)*(mod_PDR_preds[i, ]+ec)^2) * dPDR.dT)
+    dS.dB[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, mod_B_preds[i, ], m_EV, m_pLA, m_MDR)/(mod_B_preds[i, ]+ec) * dB.dT)
+    dS.dEV[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_B, mod_EV_preds[i, ], m_pLA, m_MDR)/(mod_EV_preds[i, ]+ec) * dEV.dT)
+    dS.dpLA[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_B, m_EV, mod_pLA_preds[i, ], m_MDR)/(mod_pLA_preds[i, ]+ec) * dpLA.dT)
+    dS.dMDR[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_B, m_EV, m_pLA, mod_MDR_preds[i, ])/(mod_MDR_preds[i, ]+ec) * dMDR.dT)
+    
+    dS.dT[i, ] <-  dS.da[i, ] + dS.dbc[i, ] + dS.dlf[i, ] + dS.dPDR[i, ] + dS.dB[i, ] + dS.dEV[i, ] + dS.dpLA[i, ] + dS.dMDR[i, ]
+    
+  } # end MCMC loop
+  
+  # Collect output in a list and return it
+  SA_list_out <- list(dS.da, dS.dbc, dS.dlf, dS.dPDR, dS.dB, dS.dEV, dS.dpLA, dS.dMDR, dS.dT)
+  SA_list_out
+  
+} # end function
 
 
 
-##########
-###### Quadratic model (with random effects) ----
-##########
-
-sink("quad_T_randeff.txt")
-cat("
-    model{
-
-    ## Priors
-    cf.q ~ dunif(0, 1)
-    cf.T0 ~ dunif(0, 20)
-    cf.Tm ~ dunif(20, 45)
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Random effect priors
-    sigma_q ~ dunif(0, 0.1)
-    tau_q <- 1 / (sigma_q * sigma_q)
-    
-    sigma_T0 ~ dunif(0, 10)
-    tau_T0 <- 1 / (sigma_T0 * sigma_T0)
-    
-    sigma_Tm ~ dunif(0, 10)
-    tau_Tm <- 1 / (sigma_Tm * sigma_Tm)
-    
-    ## Random effects for each species-study combination (unique_id)
-     
-    for (j in 1:Nids) {
-    q[j] ~ dnorm(0, tau_q)
-    T0[j] ~ dnorm(0, tau_T0)
-    Tm[j] ~ dnorm(0, tau_Tm)
-    }
-		
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- -1 * (cf.q + q[unique.id[i]]) * (temp[i] - (cf.T0 + T0[unique.id[i]])) * (temp[i] - (cf.Tm + Tm[unique.id[i]])) * ((cf.Tm + Tm[unique.id[i]]) > temp[i]) * ((cf.T0 + T0[unique.id[i]]) < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)T(0,)
-    }
-
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred.pop[i] <- -1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i])
-    }
-    
-    for (j in 1:Nids) {
-      for(i in 1:N.Temp.xs){
-        z.trait.mu.pred.id[j,i] <- -1 * (cf.q + q[j]) * (Temp.xs[i] - (cf.T0 + T0[j])) * (Temp.xs[i] - (cf.Tm + Tm[j])) * ((cf.Tm + Tm[j]) > Temp.xs[i]) * ((cf.T0 + T0[j]) < Temp.xs[i])
-      }
-    }
-    } # close model
-    ",fill=T)
-sink()
-
-
-
-##########
-###### Quadratic Model with gamma priors (except sigma) ----
-##########
-
-sink("quad_inf.txt")
-cat("
-    model{
-    
-    ## Priors
-    cf.q ~ dgamma(hypers[1,1], hypers[2,1])
-    cf.T0 ~ dgamma(hypers[1,2], hypers[2,2])
-    cf.Tm ~ dgamma(hypers[1,3], hypers[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- -1 * cf.q * (temp[i] - cf.T0) * (temp[i] - cf.Tm) * (cf.Tm > temp[i]) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)
-    }
-    
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- -1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i])
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
-
-
-
-##########
-###### Quadratic model Probability (truncated) ----
-##########
-## For proportion and probability traits: maximum trait value set to 1
-
-sink("quadprob.txt")
-cat("
-    model{
-    
-    ## Priors
-    cf.q ~ dunif(0, 1)
-    cf.T0 ~ dunif(0, 24)
-    cf.Tm ~ dunif(26, 50)
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- -1 * cf.q * (temp[i] - cf.T0) * (temp[i] - cf.Tm) * (cf.Tm > temp[i]) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)
-    }
-    
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- (-1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i])) * (-1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) < 1) + (-1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) > 1)
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
-
-
-##########
-###### Quadratic model Probability (with random effects) ----
-##########
-
-sink("quadprob_randeff.txt")
-cat("
-    model{
-
-    ## Priors
-    cf.q ~ dunif(0, 1)
-    cf.T0 ~ dunif(0, 20)
-    cf.Tm ~ dunif(20, 45)
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Random effect priors
-    sigma_q ~ dunif(0, 0.1)
-    tau_q <- 1 / (sigma_q * sigma_q)
-    
-    sigma_T0 ~ dunif(0, 10)
-    tau_T0 <- 1 / (sigma_T0 * sigma_T0)
-    
-    sigma_Tm ~ dunif(0, 10)
-    tau_Tm <- 1 / (sigma_Tm * sigma_Tm)
-    
-    ## Random effects for each species-study combination (unique_id)
-     
-    for (j in 1:Nids) {
-    q[j] ~ dnorm(0, tau_q)
-    T0[j] ~ dnorm(0, tau_T0)
-    Tm[j] ~ dnorm(0, tau_Tm)
-    }
-		
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- -1 * (cf.q + q[unique.id[i]]) * (temp[i] - (cf.T0 + T0[unique.id[i]])) * (temp[i] - (cf.Tm + Tm[unique.id[i]])) * ((cf.Tm + Tm[unique.id[i]]) > temp[i]) * ((cf.T0 + T0[unique.id[i]]) < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)T(0,)
-    }
-
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred.pop[i] <- -1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i]) * (-1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) < 1) + (-1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) > 1)
-    }
-    
-    for (j in 1:Nids) {
-      for(i in 1:N.Temp.xs){
-        z.trait.mu.pred.id[j,i] <- -1 * (cf.q + q[j]) * (Temp.xs[i] - (cf.T0 + T0[j])) * (Temp.xs[i] - (cf.Tm + Tm[j])) * ((cf.Tm + Tm[j]) > Temp.xs[i]) * ((cf.T0 + T0[j]) < Temp.xs[i]) * (-1 * (cf.q + q[j]) * (Temp.xs[i] - (cf.T0 + T0[j])) * (Temp.xs[i] - (cf.Tm + Tm[j])) < 1) + (-1 * (cf.q + q[j]) * (Temp.xs[i] - (cf.T0 + T0[j])) * (Temp.xs[i] - (cf.Tm + Tm[j])) > 1)
-      }
-    }
-    } # close model
-    ",fill=T)
-sink()
-
-
-
-##########
-###### Quadratic Model with gamma priors (except sigma) ----
-##########
-
-sink("quadprob_inf.txt")
-cat("
-    model{
-    
-    ## Priors
-    cf.q ~ dgamma(hypers[1,1], hypers[2,1])
-    cf.T0 ~ dgamma(hypers[1,2], hypers[2,2])
-    cf.Tm ~ dgamma(hypers[1,3], hypers[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- -1 * cf.q * (temp[i] - cf.T0) * (temp[i] - cf.Tm) * (cf.Tm > temp[i]) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)
-    }
-    
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- -1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i]) * (-1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) < 1) + (-1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) > 1)
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
