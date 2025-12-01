@@ -86,18 +86,18 @@ a.aegypti.Goindin2015 <- read_csv("data-raw/aedes_aegypti.Goindin2015.csv") %>%
 
 
 a.aegypti.Goindin2015  <- a.aegypti.Goindin2015  %>% 
+  group_by(interactor1temp, original_trait_def, interactor1genus, interactor1species, figure_table, location, doi) %>% 
+  summarize(trait = mean(original_trait_value)) %>% 
   # Add new columns to provide more info
   mutate(trait_name = "1/a") %>% 
-  mutate(trait = original_trait_value) %>% 
-  mutate(trait_def = original_trait_def) %>% 
   mutate(citation = "Goindin_2015_PLoSOne") %>% 
-  select(trait_name, interactor1temp, trait, trait_def, interactor1genus, 
+  select(trait_name, interactor1temp, trait, original_trait_def, interactor1genus, 
          interactor1species, citation, doi, figure_table, location)
 
 
-colnames(a.aegypti.Goindin2015) <- c("trait_name", "temp", "trait", 
-                                     "trait_def", "genus", "species", 
-                                     "citation","doi", "data_source", "notes")
+colnames(a.aegypti.Goindin2015) <- c("trait_name", "temp", "trait", "trait_def", 
+                                     "genus", "species", "citation","doi", 
+                                     "data_source", "notes")
 
 
 ## Data from Marta
@@ -181,11 +181,11 @@ TraitData_a <-  bind_rows(a.aedes,
 ## Plot raw data
 plot.data.a <- TraitData_a %>%
   mutate(trait = ifelse(trait_name == "1/a", 1/trait, trait)) %>% 
-  mutate(type = c(rep("Arctic", 22), rep("non-Arctic", 231))) %>% 
+  mutate(type = c(rep("Arctic", 13), rep("non-Arctic", 30))) %>% 
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = species
                  #, shape = citation
-                 )) +
+                 ), size = 2) +
   labs(y = "Biting rate (1/days)", x = "Temperature ºC") +
   scale_colour_discrete(name = "Species", labels = c("Ae. aegypti",
                                                      "Ae. albopictus",
@@ -754,6 +754,9 @@ lf.sierrensis <- read_csv("data-raw/aedes_sierrensis.Couper2024.csv") %>%
 
 # Select relevant columns
 lf.sierrensis <- lf.sierrensis %>% 
+  filter(!is.na(adult_lifespan)) %>% 
+  group_by(temp_treatment) %>% 
+  summarize(trait = mean(adult_lifespan)) %>% 
   # Add new columns to provide more info
   mutate(trait_name = "lf") %>% 
   mutate(trait_def = "days") %>% 
@@ -761,16 +764,15 @@ lf.sierrensis <- lf.sierrensis %>%
   mutate(species = "sierrensis") %>% 
   mutate(citation = "Couper_2024_ProcBiolSci") %>% 
   mutate(doi = "10.1098/rspb.2023.2457") %>% 
-  mutate(data_source = "raw data") %>% # raw data from the paper
+  mutate(data_source = "calculated from raw data") %>% # raw data from the paper
   # Combine info from population and sample_id into a new column called "notes"
-  unite(population, sample_id, sep = "_", col = "notes") %>% 
-  dplyr::select(trait_name, temp_treatment, adult_lifespan, trait_def, genus, species,
-         citation, doi, data_source, notes) %>% 
-  filter(!is.na(adult_lifespan))
+  # unite(population, sample_id, sep = "_", col = "notes") %>% 
+  dplyr::select(trait_name, temp_treatment, trait, trait_def, genus, species,
+         citation, doi, data_source)
 
 # Rename columns
 colnames(lf.sierrensis)[2] <- "temp"
-colnames(lf.sierrensis)[3] <- "trait"
+# colnames(lf.sierrensis)[3] <- "trait"
 
 
 
@@ -799,6 +801,28 @@ colnames(lf.VecTrait) <- c("trait_name", "temp", "trait", "error_pos",
 
 lf.VecTrait$trait2 <- as.character(lf.VecTrait$trait2) ## Change the trait2 column to character (so that it can combine with other dataset)
 
+
+## Calculate mean lifespan for each temperature for Huxley et al. 2021 and Huxley et al. 2022 paper
+
+lf.Huxley2021 <- lf.VecTrait %>% 
+  filter(citation == "Huxley et al. 2021. The effect of resource limitation on the temperature-dependance of mosquito fitness. Proc. R. Soc. B. 288: 20203217.") %>% 
+  group_by(trait_name, temp, trait2_name, trait2, genus, species, citation, doi) %>% 
+  summarize(trait = mean(trait)) %>% 
+  mutate(trait_def = "duration of life stage") %>% 
+  mutate(data_source = "calculated from supplementary material")
+
+
+lf.Huxley2022 <- lf.VecTrait %>% 
+  filter(citation == "Huxley et al. 2022. Competition and resource depletion shape the thermal response of population fitness in Aedes aegypti. Commun. Biol. 5: 66.") %>% 
+  group_by(trait_name, temp, trait2_name, trait2, genus, species, citation, doi) %>% 
+  summarize(trait = mean(trait)) %>% 
+  mutate(trait_def = "duration of life stage") %>% 
+  mutate(data_source = "calculated from supplementary material")
+
+lf.VecTrait <- lf.VecTrait %>% 
+  filter(citation != "Huxley et al. 2021. The effect of resource limitation on the temperature-dependance of mosquito fitness. Proc. R. Soc. B. 288: 20203217.") %>% 
+  filter(citation != "Huxley et al. 2022. Competition and resource depletion shape the thermal response of population fitness in Aedes aegypti. Commun. Biol. 5: 66.") 
+  
 
 ## Aedes aegypti (from Shocket) ----
 lf.aegypti <- read_csv("data-raw/AdultSurvival_Data_fromShocket.csv") %>% 
@@ -832,14 +856,14 @@ colnames(lf.aegypti) <- c("trait_name", "temp", "trait", "error_pos", "error_neg
 
 
 # Combine data from vexans and sierrensis into a single dataframe
-TraitData_lf <- bind_rows(lf.vexans, lf.aedes, lf.sierrensis, lf.aegypti, lf.VecTrait)
+TraitData_lf <- bind_rows(lf.vexans, lf.aedes, lf.sierrensis, lf.aegypti, lf.VecTrait, lf.Huxley2021, lf.Huxley2022)
 
 # write_csv(TraitData_lf, "data-processed/TraitData_lf.csv")
 
 
 ## Plot raw data
 plot.data.lf <- TraitData_lf %>% 
-  mutate(type = c(rep("Arctic", 54), rep("non-Arctic", 1712))) %>% 
+  mutate(type = c(rep("Arctic", 54), rep("non-Arctic", 97))) %>% 
   ggplot(aes(x = temp, y = trait, colour = species)) +
   geom_point(aes(colour = species), position = "jitter") +
   
@@ -895,7 +919,7 @@ EFD.aegypti <- EFD.aegypti %>%
   filter(host_code == "Aaeg") %>% 
   filter(trait_name == "EFD") %>% 
   # select columns that we need
-  select(trait_name, t, trait, error_pos_si, error_neg_si, trait2_name, 
+  dplyr::select(trait_name, t, trait, error_pos_si, error_neg_si, trait2_name, 
          trait_2, citation, figure, notes) %>% 
   # Add new columns to provide more info
   mutate(error_unit = NA) %>% 
@@ -935,10 +959,10 @@ TraitData_B <- bind_rows(B.hexodontus, B.aedes.spp, EFD.aegypti, lf.aegypti)
 
 ## Plot raw data
 plot.data.B <- TraitData_B %>% 
-  mutate(type = c(rep("Arctic",6), rep("non-Arctic: EFD", 30), rep("non-Arctic: lf", 907))) %>% 
+  mutate(type = c(rep("Arctic",6), rep("non-Arctic: EFD", 30), rep("non-Arctic: lf", 74))) %>% 
   ggplot() +
   geom_point(aes(x = temp, y = trait, colour = species)) +
-  xlim(c(10,35)) +
+  # xlim(c(10,35)) +
   labs(y = "lifetime egg production", x = "Temperature ºC") +
   scale_colour_discrete(name = "species", labels = c("Ae. aegypti",
                                                      "Ae. cinereus",

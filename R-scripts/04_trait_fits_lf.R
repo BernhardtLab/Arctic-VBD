@@ -57,7 +57,7 @@ data.lf <- data
 
 ## Plot raw data
 plot.data.lf <- data %>% 
-  mutate(type = c(rep("Arctic", 54), rep("non-Arctic", 1712))) %>% 
+  mutate(type = c(rep("Arctic", 54), rep("non-Arctic", 97))) %>% 
   ggplot(aes(x = temp, y = trait, colour = species)) +
   geom_point(aes(colour = species)) +
   
@@ -278,18 +278,18 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
-# lf.nonarctic.bri.uni.raneff <- jags(
-#   data = jag.data,
-#   inits = inits,
-#   parameters.to.save = parameters,
-#   model.file = "R-scripts/briere_T_randeff.txt",
-#   n.thin = nt,
-#   n.chains = nc,
-#   n.burnin = nb,
-#   n.iter = ni,
-#   DIC = T,
-#   working.directory = getwd()
-# )
+lf.nonarctic.bri.uni.raneff <- jags(
+  data = jag.data,
+  inits = inits,
+  parameters.to.save = parameters,
+  model.file = "R-scripts/briere_T_randeff.txt",
+  n.thin = nt,
+  n.chains = nc,
+  n.burnin = nb,
+  n.iter = ni,
+  DIC = T,
+  working.directory = getwd()
+)
 
 
 ## Save the model as Rdata 
@@ -432,17 +432,29 @@ plot.lf.nonarctic.bri.uni.raneff <- ggplot(data = df.lf.nonarctic.bri.uni.raneff
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Mosquito adult lifespan (days)") +
   # Customize legend
-  # scale_colour_discrete(name = element_blank(),
-  #                       labels = c("Ae. aegypti (Goindin et al. 2015)",
-  #                                  "Ae. aegypti (Huxley et al. 2021)",
-  #                                  "Ae. aegypti (Huxley et al. 2022)",
-  #                                  "Ae. aegypti (Marinho et al. 2016)",
-  #                                  "Ae. aegypti (Rocha-Santos et al. 2021)",
-  #                                  "Ae. aegypti (Yang et al. 2009)",
-  #                                  "Ae. albopictus (Calado and Navarro-Silva 2002)",
-  #                                  "Ae. albopictus (Marini et al. 2020)",
-  #                                  "Ae. albopictus (Tsuda et al. 1994)",
-  #                                  "Ae. sierrensis")) +
+  scale_colour_discrete(name = element_blank(),
+                        # labels = c("Ae. aegypti (Beserra 2009)",
+                        #            "Ae. aegypti (Goindin et al. 2015)",
+                        #            "Ae. aegypti (Huxley et al. 2021)",
+                        #            "Ae. aegypti (Huxley et al. 2022)",
+                        #            "Ae. aegypti (Marinho et al. 2016)",
+                        #            "Ae. aegypti (Rocha-Santos et al. 2021)",
+                        #            "Ae. aegypti (Yang et al. 2009)",
+                        #            "Ae. albopictus (Calado and Navarro-Silva 2002)",
+                        #            "Ae. albopictus (Marini et al. 2020)",
+                        #            "Ae. albopictus (Tsuda et al. 1994)",
+                        #            "Ae. sierrensis")) +
+                        labels = c("Ae. aegypti 1",
+                                   "Ae. aegypti 2",
+                                   "Ae. aegypti 3",
+                                   "Ae. aegypti 4",
+                                   "Ae. aegypti 5",
+                                   "Ae. aegypti 6",
+                                   "Ae. aegypti 7",
+                                   "Ae. albopictus 1",
+                                   "Ae. albopictus 2",
+                                   "Ae. albopictus 3",
+                                   "Ae. sierrensis")) +
   theme_bw()
 
 
@@ -486,91 +498,260 @@ hypers <- lf.arctic.prior.gamma.fits * 0.1
 
 ##### No random effect ----
 ##### inits Function
-inits<-function(){list(
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
+# inits<-function(){list(
+#   cf.q = 0.01,
+#   cf.Tm = 35,
+#   cf.T0 = 5,
+#   cf.sigma = rlnorm(1))}
+# 
+# ##### Parameters to Estimate
+# parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+# 
+# 
+# ##### Temp sequence for derived quantity calculations
+# # For actual fits
+# Temp.xs <- seq(0, 45, 0.1)
+# N.Temp.xs <-length(Temp.xs)
+# 
+# 
+# ##### Organize data for JAGS
+# trait <- data$trait
+# N.obs <- length(trait)
+# temp <- data$temp
+# 
+# ##### define data for JAGS in a list object
+# jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+#                  N.Temp.xs = N.Temp.xs, hypers = hypers)
+# 
+# ##### Run JAGS -----
+# lf.arctic.bri.inf <- jags(data = jag.data,
+#                            inits = inits,
+#                            parameters.to.save = parameters,
+#                            model.file = "R-scripts/briere_inf.txt",
+#                            n.thin = nt,
+#                            n.chains = nc,
+#                            n.burnin = nb,
+#                            n.iter = ni,
+#                            DIC = T,
+#                            working.directory = getwd()
+# )
+# 
+# ## Save the model as Rdata 
+# # save(lf.arctic.bri.inf, file = "R-scripts/R2jags-objects/lf.arctic.bri.inf.Rdata")
+# 
+# # Read the .Rdata
+# # load("R-scripts/R2jags-objects/lf.arctic.bri.inf.Rdata")
+# 
+# 
+# ## Diagnostics ----
+# ##### Examine output
+# lf.arctic.bri.inf$BUGSoutput$summary[1:5,]
+# mcmcplot(lf.arctic.bri.inf)
+# 
+# # Extract the DIC for future model comparisons
+# lf.arctic.bri.inf$BUGSoutput$DIC
+# 
+# ## Plot data + fit ----
+# df.lf.arctic.bri.inf <- data.frame(lf.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
+#   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+#   dplyr::select(temp, mean, sd, X2.5., X97.5.)
+# 
+# head(df.lf.arctic.bri.inf)
+# 
+# ##### Plot
+# plot.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>% 
+#   ggplot(aes(x = temp)) +
+#   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+#   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
+#   geom_point(data = data, aes(x = temp, y = trait, color = species), size = 2) +
+#   # Customize the axes and labels
+#   #scale_x_continuous(limits = c(0, 41)) + 
+#   #scale_y_continuous(limits = c(-0.005, 0.19)) +
+#   labs(
+#     x = expression(paste("Temperature (", degree, "C)")),
+#     y = "Mosquito adult lifespan (days)"
+#   ) +
+#   # Customize legend
+#   scale_color_discrete(name = "Species",
+#                        labels = c("Ae. cinereus",
+#                                   "Ae. communis",
+#                                   "Ae. impiger",
+#                                   "Ae. punctor",
+#                                   "Ae. vexans")) +
+#   theme_bw()
+# 
+# plot.lf.arctic.bri.inf
 
-##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+# ggsave("figures/lf.arctic.bri.inf.png", plot.lf.arctic.bri.inf,
+#        width = 10.3, height = 5.6)
 
 
+##### With random effect ----
 ##### Temp sequence for derived quantity calculations
 # For actual fits
 Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
 
+##### Set data
+data <- data.lf.arctic
+hypers <- lf.arctic.prior.gamma.fits * 0.1
+
+## Create a unique id for each species-study combination
+data <- data %>% 
+  group_by(species, citation) %>% 
+  mutate(unique_id = cur_group_id())
+
+
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1),
+  sigma_q = 0.0001,
+  sigma_T0 = rlnorm(1),
+  sigma_Tm = rlnorm(1))}
+
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+                "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
+
+
 ##### Organize data for JAGS
 trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
+unique.id <- as.integer(data$unique_id)
+Nids <- max(unique.id)
 
 ##### define data for JAGS in a list object
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
-                 N.Temp.xs = N.Temp.xs, hypers = hypers)
+                 N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id,
+                 hypers = hypers)
 
-##### Run JAGS -----
-lf.arctic.bri.inf <- jags(data = jag.data,
-                           inits = inits,
-                           parameters.to.save = parameters,
-                           model.file = "R-scripts/briere_inf.txt",
-                           n.thin = nt,
-                           n.chains = nc,
-                           n.burnin = nb,
-                           n.iter = ni,
-                           DIC = T,
-                           working.directory = getwd()
-)
+
+##### Run JAGS
+# lf.arctic.bri.inf.raneff <- jags(
+#   data = jag.data,
+#   inits = inits,
+#   parameters.to.save = parameters,
+#   model.file = "R-scripts/briere_inf_raneff.txt",
+#   n.thin = nt,
+#   n.chains = nc,
+#   n.burnin = nb,
+#   n.iter = ni,
+#   DIC = T,
+#   working.directory = getwd()
+# )
+
 
 ## Save the model as Rdata 
-# save(lf.arctic.bri.inf, file = "R-scripts/R2jags-objects/lf.arctic.bri.inf.Rdata")
+# save(lf.arctic.bri.inf.raneff, file = "R-scripts/R2jags-objects/lf.arctic.bri.inf.raneff.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/lf.arctic.bri.inf.Rdata")
+load("R-scripts/R2jags-objects/lf.arctic.bri.inf.raneff.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-lf.arctic.bri.inf$BUGSoutput$summary[1:5,]
-mcmcplot(lf.arctic.bri.inf)
+lf.arctic.bri.inf.raneff$BUGSoutput$summary[1:8,]
+mcmcplot(lf.arctic.bri.inf.raneff)
 
 # Extract the DIC for future model comparisons
-lf.arctic.bri.inf$BUGSoutput$DIC
+lf.arctic.bri.inf.raneff$BUGSoutput$DIC
+
 
 ## Plot data + fit ----
-df.lf.arctic.bri.inf <- data.frame(lf.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
+df.lf.arctic.bri.inf.raneff <- data.frame(lf.arctic.bri.inf.raneff$BUGSoutput$summary)[-(1:8),]
+
+## Extract the model prediction
+## Overall curve
+df.lf.arctic.bri.inf.raneff.pop <- df.lf.arctic.bri.inf.raneff %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.lf.arctic.bri.inf.raneff))) %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.lf.arctic.bri.inf)
+
+## infque ID 1: Ae. cinereus
+df.lf.arctic.bri.inf.1 <- df.lf.arctic.bri.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[1,*]"), rownames(df.lf.arctic.bri.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 1)
+
+## infque ID 2: Ae. communis
+df.lf.arctic.bri.inf.2 <- df.lf.arctic.bri.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[2,*]"), rownames(df.lf.arctic.bri.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 2)
+
+## infque ID 3: Ae. impiger
+df.lf.arctic.bri.inf.3 <- df.lf.arctic.bri.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[3,*]"), rownames(df.lf.arctic.bri.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 3)
+
+## infque ID 4: Ae. punctor
+df.lf.arctic.bri.inf.4 <- df.lf.arctic.bri.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[4,*]"), rownames(df.lf.arctic.bri.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 4)
+
+## infque ID 5: Ae. vexans
+df.lf.arctic.bri.inf.5 <- df.lf.arctic.bri.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[5,*]"), rownames(df.lf.arctic.bri.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 5)
+
+
+## Combine the model prediciton of all three infque groups into a dataframe
+df.lf.arctic.bri.inf.raneff.sp <- rbind(df.lf.arctic.bri.inf.1,
+                                        df.lf.arctic.bri.inf.2,
+                                        df.lf.arctic.bri.inf.3,
+                                        df.lf.arctic.bri.inf.4,
+                                        df.lf.arctic.bri.inf.5
+) 
+
+## Change unique_id into factor type
+df.lf.arctic.bri.inf.raneff.sp$unique_id <- as.factor(df.lf.arctic.bri.inf.raneff.sp$unique_id)
+
 
 ##### Plot
-plot.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>% 
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
-  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait, color = species), size = 2) +
+plot.lf.arctic.bri.inf.raneff <- ggplot(data = df.lf.arctic.bri.inf.raneff.pop, 
+                                           aes(x = temp)) +
+  ## Overall TPC
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
+              fill = "grey",
+              alpha = 0.5) +
+  ## a separate TPC (and credible interval) for each unique group
+  # geom_ribbon(data = df.lf.arctic.bri.inf.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
+  #             alpha = 0.5) +
+  geom_point(data = data,
+             aes(x = temp, y = trait, colour = as.factor(unique_id)),
+             size = 2) +
+  geom_line(data = df.lf.arctic.bri.inf.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1) +
   # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Mosquito adult lifespan (days)"
-  ) +
+  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Mosquito adult lifespan (days)") +
   # Customize legend
-  scale_color_discrete(name = "Species",
-                       labels = c("Ae. cinereus",
-                                  "Ae. communis",
-                                  "Ae. impiger",
-                                  "Ae. punctor",
-                                  "Ae. vexans")) +
+  scale_colour_discrete(name = element_blank(),
+                        labels = c("Ae. cinereus",
+                                   "Ae. communis",
+                                   "Ae. impiger",
+                                   "Ae. punctor",
+                                   "Ae. vexans")) +
   theme_bw()
 
-plot.lf.arctic.bri.inf
 
-# ggsave("figures/lf.arctic.bri.inf.png", plot.lf.arctic.bri.inf,
+plot.lf.arctic.bri.inf.raneff
+
+# ggsave("figures/lf.arctic.bri.inf.raneff.png", plot.lf.arctic.bri.inf.raneff,
 #        width = 10.3, height = 5.6)
 
 
@@ -645,7 +826,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
 
 
 ## Save the model as Rdata 
-# save(lf.alldata.bri.uni.raneff, file = "R-scripts/R2jags-objects/lf.alldata.bri.uni.raneff2.Rdata")
+# save(lf.alldata.bri.uni.raneff, file = "R-scripts/R2jags-objects/lf.alldata.bri.uni.raneff.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/lf.alldata.bri.uni.raneff.Rdata")
@@ -831,7 +1012,7 @@ plot.lf.alldata.bri.uni.raneff <- ggplot(data = df.lf.alldata.bri.uni.raneff.pop
   geom_point(data = data,
              aes(x = temp, y = trait, colour = as.factor(unique_id)),
              size = 2) +
-  geom_line(data = df.lf.alldata.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  # geom_line(data = df.lf.alldata.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
   geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Adult lifespan (days)") +
@@ -888,14 +1069,16 @@ plot.lf.alldata.bri.uni.raneff
 df.lf.arctic.bri.uni <- df.lf.arctic.bri.uni %>% 
   mutate(type = "Briere uniform")
 
-df.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>% 
+df.lf.arctic.bri.inf.raneff.pop <- df.lf.arctic.bri.inf.raneff.pop %>% 
   mutate(type = "Briere informative")
 
+df.lf.alldata.bri.uni.raneff.pop <- df.lf.alldata.bri.uni.raneff.pop %>% 
+  mutate(type = "Briere all data")
 
 # Combine the three dataframes
-df.all <- rbind(df.lf.arctic.bri.uni, df.lf.arctic.bri.inf)
+df.all <- rbind(df.lf.arctic.bri.uni, df.lf.arctic.bri.inf.raneff.pop, df.lf.alldata.bri.uni.raneff.pop)
 
-df.all$type <- factor(df.all$type, levels = c( "Briere uniform", "Briere informative"))
+df.all$type <- factor(df.all$type, levels = c("Briere uniform", "Briere informative", "Briere all data"))
 
 
 # Plot
@@ -915,11 +1098,13 @@ plot.all <- df.all %>%
   # Customize the colours
   ## ribbon
   scale_fill_manual(values = c("Briere uniform" = "grey",
-                               "Briere informative" = "#4363d8")) +
+                               "Briere informative" = "#4363d8",
+                               "Briere all data" = "pink")) +
   
   ## line
   scale_color_manual(values = c("Briere uniform" = "#868686FF",
-                                "Briere informative" = "blue")) +
+                                "Briere informative" = "blue",
+                                "Briere all data" = "red")) +
   theme_bw()
 
 plot.all
@@ -927,8 +1112,8 @@ plot.all
 # ggsave("figures/lf.arctic.bri.all.png", plot.all, width = 10.3, height = 5.6)
 
 lf.arctic.bri.uni$BUGSoutput$DIC
-lf.arctic.bri.inf$BUGSoutput$DIC
-
+lf.arctic.bri.inf.raneff$BUGSoutput$DIC
+lf.alldata.bri.uni.raneff$BUGSoutput$DIC
 
 
 ##########
@@ -1052,10 +1237,10 @@ data <- data %>%
 
 
 ## Set priors
-prior <- data.frame(q = c(0, 1),
+prior <- data.frame(q = c(0, 0.1),
                     T0 = c(0, 20),
                     Tm = c(20, 45),
-                    sigma_q = c(0, 0.1),
+                    sigma_q = c(0, 0.01),
                     sigma_T0 = c(0, 10),
                     sigma_Tm = c(0, 10)
 )
@@ -1066,7 +1251,7 @@ inits <- function(){list(
   cf.Tm = 35,
   cf.T0 = 5,
   cf.sigma = rlnorm(1),
-  sigma_q = 0.1,
+  sigma_q = 0.01,
   sigma_T0 = rlnorm(1),
   sigma_Tm = rlnorm(1))}
 
@@ -1089,18 +1274,18 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
-lf.nonarctic.quad.uni.raneff <- jags(
-  data = jag.data,
-  inits = inits,
-  parameters.to.save = parameters,
-  model.file = "R-scripts/quad_T_randeff.txt",
-  n.thin = nt,
-  n.chains = nc,
-  n.burnin = nb,
-  n.iter = ni,
-  DIC = T,
-  working.directory = getwd()
-)
+# lf.nonarctic.quad.uni.raneff <- jags(
+#   data = jag.data,
+#   inits = inits,
+#   parameters.to.save = parameters,
+#   model.file = "R-scripts/quad_T_randeff.txt",
+#   n.thin = nt,
+#   n.chains = nc,
+#   n.burnin = nb,
+#   n.iter = ni,
+#   DIC = T,
+#   working.directory = getwd()
+# )
 
 ## Save the model as Rdata 
 # save(lf.nonarctic.quad.uni.raneff, file = "R-scripts/R2jags-objects/lf.nonarctic.quad.uni.raneff.Rdata")
@@ -1242,17 +1427,29 @@ plot.lf.nonarctic.quad.uni.raneff <- ggplot(data = df.lf.nonarctic.quad.uni.rane
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Mosquito adult lifespan (days)") +
   # Customize legend
-  # scale_colour_discrete(name = element_blank(),
-  #                       labels = c("Ae. aegypti (Goindin et al. 2015)",
-  #                                  "Ae. aegypti (Huxley et al. 2021)",
-  #                                  "Ae. aegypti (Huxley et al. 2022)",
-  #                                  "Ae. aegypti (Marinho et al. 2016)",
-  #                                  "Ae. aegypti (Rocha-Santos et al. 2021)",
-  #                                  "Ae. aegypti (Yang et al. 2009)",
-  #                                  "Ae. albopictus (Calado and Navarro-Silva 2002)",
-  #                                  "Ae. albopictus (Marini et al. 2020)",
-  #                                  "Ae. albopictus (Tsuda et al. 1994)",
-  #                                  "Ae. sierrensis")) +
+  scale_colour_discrete(name = element_blank(),
+                        # labels = c("Ae. aegypti (Beserra 2009)",
+                        #            "Ae. aegypti (Goindin et al. 2015)",
+                        #            "Ae. aegypti (Huxley et al. 2021)",
+                        #            "Ae. aegypti (Huxley et al. 2022)",
+                        #            "Ae. aegypti (Marinho et al. 2016)",
+                        #            "Ae. aegypti (Rocha-Santos et al. 2021)",
+                        #            "Ae. aegypti (Yang et al. 2009)",
+                        #            "Ae. albopictus (Calado and Navarro-Silva 2002)",
+                        #            "Ae. albopictus (Marini et al. 2020)",
+                        #            "Ae. albopictus (Tsuda et al. 1994)",
+                        #            "Ae. sierrensis")) +
+                        labels = c("Ae. aegypti 1",
+                                   "Ae. aegypti 2",
+                                   "Ae. aegypti 3",
+                                   "Ae. aegypti 4",
+                                   "Ae. aegypti 5",
+                                   "Ae. aegypti 6",
+                                   "Ae. aegypti 7",
+                                   "Ae. albopictus 1",
+                                   "Ae. albopictus 2",
+                                   "Ae. albopictus 3",
+                                   "Ae. sierrensis")) +
   theme_bw()
 
 
@@ -1287,97 +1484,268 @@ save(lf.hypers, file = "R-scripts/R2jags-objects/lfhypers.quad.Rsave")
 load("R-scripts/R2jags-objects/lfhypers.quad.Rsave")
 lf.arctic.prior.gamma.fits <- lf.hypers
 
+#### No random effect ----
+##### Temp sequence for derived quantity calculations
+# For actual fits
+# Temp.xs <- seq(0, 45, 0.1)
+# N.Temp.xs <-length(Temp.xs)
+# 
+# ##### Set data
+# data <- data.lf.arctic
+# hypers <- lf.arctic.prior.gamma.fits * 0.1
+# 
+# 
+# ##### inits Function
+# inits<-function(){list(
+#   cf.q = 0.01,
+#   cf.Tm = 35,
+#   cf.T0 = 5,
+#   cf.sigma = rlnorm(1))}
+# 
+# ##### Parameters to Estimate
+# parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+# 
+# 
+# ##### Organize data for JAGS
+# trait <- data$trait
+# N.obs <- length(trait)
+# temp <- data$temp
+# 
+# ##### define data for JAGS in a list object
+# jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+#                  N.Temp.xs = N.Temp.xs, hypers = hypers)
+# 
+# ##### Run JAGS -----
+# lf.arctic.quad.inf <- jags(data = jag.data,
+#                             inits = inits,
+#                             parameters.to.save = parameters,
+#                             model.file = "R-scripts/quad_inf.txt",
+#                             n.thin = nt,
+#                             n.chains = nc,
+#                             n.burnin = nb,
+#                             n.iter = ni,
+#                             DIC = T,
+#                             working.directory = getwd()
+# )
+# 
+# ## Save the model as Rdata 
+# # save(lf.arctic.quad.inf, file = "R-scripts/R2jags-objects/lf.arctic.quad.inf.Rdata")
+# 
+# # Read the .Rdata
+# # load("R-scripts/R2jags-objects/lf.arctic.quad.inf.Rdata")
+# 
+# 
+# ## Diagnostics ----
+# ##### Examine output
+# lf.arctic.quad.inf$BUGSoutput$summary[1:5,]
+# mcmcplot(lf.arctic.quad.inf)
+# 
+# # Extract the DIC for future model comparisons
+# lf.arctic.quad.inf$BUGSoutput$DIC
+# 
+# ## Plot data + fit ----
+# df.lf.arctic.quad.inf <- data.frame(lf.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
+#   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+#   dplyr::select(temp, mean, sd, X2.5., X97.5.)
+# 
+# head(df.lf.arctic.quad.inf)
+# 
+# ##### Plot
+# plot.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>% 
+#   ggplot(aes(x = temp)) +
+#   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+#   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
+#   geom_point(data = data, aes(x = temp, y = trait, colour = species), size = 2) +
+#   # Customize the axes and labels
+#   #scale_x_continuous(limits = c(0, 41)) + 
+#   #scale_y_continuous(limits = c(-0.005, 0.19)) +
+#   labs(
+#     x = expression(paste("Temperature (", degree, "C)")),
+#     y = "Mosquito adult lifespan (days)"
+#   ) +
+#   # Customize legend
+#   scale_color_discrete(name = "Species",
+#                        labels = c("Ae. cinereus",
+#                                   "Ae. communis",
+#                                   "Ae. impiger",
+#                                   "Ae. punctor",
+#                                   "Ae. vexans")) +
+#   theme_bw()
+# 
+# plot.lf.arctic.quad.inf
+
+# ggsave("figures/lf.arctic.quad.inf.png", plot.lf.arctic.quad.inf,
+#        width = 10.3, height = 5.6)
+
+##### With random effects ----
 ##### Temp sequence for derived quantity calculations
 # For actual fits
 Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
+
 ##### Set data
 data <- data.lf.arctic
 hypers <- lf.arctic.prior.gamma.fits * 0.1
 
+## Create a unique id for each species-study combination
+data <- data %>% 
+  group_by(species, citation) %>% 
+  mutate(unique_id = cur_group_id())
+
 
 ##### inits Function
-inits<-function(){list(
+inits <- function(){list(
   cf.q = 0.01,
   cf.Tm = 35,
   cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
+  cf.sigma = rlnorm(1),
+  sigma_q = 0.0001,
+  sigma_T0 = rlnorm(1),
+  sigma_Tm = rlnorm(1))}
+
 
 ##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+                "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
 
 
 ##### Organize data for JAGS
 trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
+unique.id <- as.integer(data$unique_id)
+Nids <- max(unique.id)
 
 ##### define data for JAGS in a list object
 jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
-                 N.Temp.xs = N.Temp.xs, hypers = hypers)
+                 N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id,
+                 hypers = hypers)
 
-##### Run JAGS -----
-lf.arctic.quad.inf <- jags(data = jag.data,
-                            inits = inits,
-                            parameters.to.save = parameters,
-                            model.file = "R-scripts/quad_inf.txt",
-                            n.thin = nt,
-                            n.chains = nc,
-                            n.burnin = nb,
-                            n.iter = ni,
-                            DIC = T,
-                            working.directory = getwd()
-)
+
+##### Run JAGS
+# lf.arctic.quad.inf.raneff <- jags(
+#   data = jag.data,
+#   inits = inits,
+#   parameters.to.save = parameters,
+#   model.file = "R-scripts/quad_inf_raneff.txt",
+#   n.thin = nt,
+#   n.chains = nc,
+#   n.burnin = nb,
+#   n.iter = ni,
+#   DIC = T,
+#   working.directory = getwd()
+# )
+
 
 ## Save the model as Rdata 
-# save(lf.arctic.quad.inf, file = "R-scripts/R2jags-objects/lf.arctic.quad.inf.Rdata")
+# save(lf.arctic.quad.inf.raneff, file = "R-scripts/R2jags-objects/lf.arctic.quad.inf.raneff.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/lf.arctic.quad.inf.Rdata")
+load("R-scripts/R2jags-objects/lf.arctic.quad.inf.raneff.Rdata")
 
 
 ## Diagnostics ----
 ##### Examine output
-lf.arctic.quad.inf$BUGSoutput$summary[1:5,]
-mcmcplot(lf.arctic.quad.inf)
+lf.arctic.quad.inf.raneff$BUGSoutput$summary[1:8,]
+mcmcplot(lf.arctic.quad.inf.raneff)
 
 # Extract the DIC for future model comparisons
-lf.arctic.quad.inf$BUGSoutput$DIC
+lf.arctic.quad.inf.raneff$BUGSoutput$DIC
+
 
 ## Plot data + fit ----
-df.lf.arctic.quad.inf <- data.frame(lf.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
+df.lf.arctic.quad.inf.raneff <- data.frame(lf.arctic.quad.inf.raneff$BUGSoutput$summary)[-(1:8),]
+
+## Extract the model prediction
+## Overall curve
+df.lf.arctic.quad.inf.raneff.pop <- df.lf.arctic.quad.inf.raneff %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.lf.arctic.quad.inf.raneff))) %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X97.5.)
 
-head(df.lf.arctic.quad.inf)
+
+## infque ID 1: Ae. cinereus
+df.lf.arctic.quad.inf.1 <- df.lf.arctic.quad.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[1,*]"), rownames(df.lf.arctic.quad.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 1)
+
+## infque ID 2: Ae. communis
+df.lf.arctic.quad.inf.2 <- df.lf.arctic.quad.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[2,*]"), rownames(df.lf.arctic.quad.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 2)
+
+## infque ID 3: Ae. impiger
+df.lf.arctic.quad.inf.3 <- df.lf.arctic.quad.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[3,*]"), rownames(df.lf.arctic.quad.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 3)
+
+## infque ID 4: Ae. punctor
+df.lf.arctic.quad.inf.4 <- df.lf.arctic.quad.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[4,*]"), rownames(df.lf.arctic.quad.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 4)
+
+## infque ID 5: Ae. vexans
+df.lf.arctic.quad.inf.5 <- df.lf.arctic.quad.inf.raneff %>% 
+  filter(grepl(glob2rx("z.trait.mu.pred.id[5,*]"), rownames(df.lf.arctic.quad.inf.raneff))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  mutate(unique_id = 5)
+
+
+## Combine the model prediciton of all three infque groups into a dataframe
+df.lf.arctic.quad.inf.raneff.sp <- rbind(df.lf.arctic.quad.inf.1,
+                                        df.lf.arctic.quad.inf.2,
+                                        df.lf.arctic.quad.inf.3,
+                                        df.lf.arctic.quad.inf.4,
+                                        df.lf.arctic.quad.inf.5
+) 
+
+## Change unique_id into factor type
+df.lf.arctic.quad.inf.raneff.sp$unique_id <- as.factor(df.lf.arctic.quad.inf.raneff.sp$unique_id)
+
 
 ##### Plot
-plot.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>% 
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
-  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait, colour = species), size = 2) +
+plot.lf.arctic.quad.inf.raneff <- ggplot(data = df.lf.arctic.quad.inf.raneff.pop, 
+                                           aes(x = temp)) +
+  ## Overall TPC
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.),
+              fill = "grey",
+              alpha = 0.5) +
+  ## a separate TPC (and credible interval) for each unique group
+  # geom_ribbon(data = df.lf.arctic.quad.inf.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
+  #             alpha = 0.5) +
+  geom_point(data = data,
+             aes(x = temp, y = trait, colour = as.factor(unique_id)),
+             size = 2) +
+  geom_line(data = df.lf.arctic.quad.inf.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1) +
   # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Mosquito adult lifespan (days)"
-  ) +
+  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Mosquito adult lifespan (days)") +
   # Customize legend
-  scale_color_discrete(name = "Species",
-                       labels = c("Ae. cinereus",
-                                  "Ae. communis",
-                                  "Ae. impiger",
-                                  "Ae. punctor",
-                                  "Ae. vexans")) +
+  scale_colour_discrete(name = element_blank(),
+                        labels = c("Ae. cinereus",
+                                   "Ae. communis",
+                                   "Ae. impiger",
+                                   "Ae. punctor",
+                                   "Ae. vexans")) +
   theme_bw()
 
-plot.lf.arctic.quad.inf
 
-# ggsave("figures/lf.arctic.quad.inf.png", plot.lf.arctic.quad.inf,
+plot.lf.arctic.quad.inf.raneff
+
+# ggsave("figures/lf.arctic.quad.inf.raneff.png", plot.lf.arctic.quad.inf.raneff,
 #        width = 10.3, height = 5.6)
+
+
 
 
 ##########
@@ -1436,22 +1804,22 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
-lf.alldata.quad.uni.raneff <- jags(
-  data = jag.data,
-  inits = inits,
-  parameters.to.save = parameters,
-  model.file = "R-scripts/quad_T_randeff.txt",
-  n.thin = nt,
-  n.chains = nc,
-  n.burnin = nb,
-  n.iter = ni,
-  DIC = T,
-  working.directory = getwd()
-)
+# lf.alldata.quad.uni.raneff <- jags(
+#   data = jag.data,
+#   inits = inits,
+#   parameters.to.save = parameters,
+#   model.file = "R-scripts/quad_T_randeff.txt",
+#   n.thin = nt,
+#   n.chains = nc,
+#   n.burnin = nb,
+#   n.iter = ni,
+#   DIC = T,
+#   working.directory = getwd()
+# )
 
 
 ## Save the model as Rdata 
-# save(lf.alldata.quad.uni.raneff, file = "R-scripts/R2jags-objects/lf.alldata.quad.uni.raneff.Rdata")
+save(lf.alldata.quad.uni.raneff, file = "R-scripts/R2jags-objects/lf.alldata.quad.uni.raneff.Rdata")
 
 # Read the .Rdata
 # load("R-scripts/R2jags-objects/lf.alldata.quad.uni.raneff.Rdata")
@@ -1642,8 +2010,8 @@ plot.lf.alldata.quad.uni.raneff <- ggplot(data = df.lf.alldata.quad.uni.raneff.p
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Adult lifespan (days)") +
   # Customize legend
-  scale_colour_manual(name = element_blank(),
-                       values = c(rep("grey", 10), "#56B4E9", "#E69F00", "#009E73", "#F0E442", "grey", "pink"),
+  scale_colour_discrete(name = element_blank(),
+                       #values = c(rep("grey", 10), "#56B4E9", "#E69F00", "#009E73", "#F0E442", "grey", "pink"),
                        # labels = c("Ae. aegypti (Beserra 2009)",
                        #            "Ae. aegypti (Goindin et al. 2015)",
                        #            "Ae. aegypti (Huxley et al. 2021)",
@@ -1696,13 +2064,15 @@ plot.lf.alldata.quad.uni.raneff
 df.lf.arctic.quad.uni <- df.lf.arctic.quad.uni %>% 
   mutate(type = "Quadratic uniform")
 
-
-df.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>% 
+df.lf.arctic.quad.inf.raneff.pop <- df.lf.arctic.quad.inf.raneff.pop %>% 
   mutate(type = "Quadratic informative")
+
+df.lf.alldata.quad.uni.raneff.pop <- df.lf.alldata.quad.uni.raneff.pop %>% 
+  mutate(type = "Quadratic all data")
 
 
 # Combine the three dataframes
-df.all <- rbind(df.lf.arctic.quad.uni, df.lf.arctic.quad.inf)
+df.all <- rbind(df.lf.arctic.quad.uni, df.lf.arctic.quad.inf.raneff.pop, df.lf.alldata.quad.uni.raneff.pop)
 
 ##### Plot
 plot.all <- df.all %>% 
@@ -1720,10 +2090,12 @@ plot.all <- df.all %>%
   # Customize the colours
   ## ribbon
   scale_fill_manual(values = c("Quadratic uniform" = "grey", 
-                               "Quadratic informative" = "#4363d8")) +
+                               "Quadratic informative" = "#4363d8",
+                               "Quadratic all data" = "pink")) +
   ## line
   scale_color_manual(values = c("Quadratic uniform" = "#868686FF", 
-                                "Quadratic informative" = "blue")) +
+                                "Quadratic informative" = "blue",
+                                "Quadratic all data" = "red")) +
   theme_bw()
 
 plot.all
@@ -1735,15 +2107,20 @@ plot.all
 
 #### DIC ----
 lf.arctic.bri.uni$BUGSoutput$DIC
-lf.arctic.bri.inf$BUGSoutput$DIC
+lf.arctic.bri.inf.raneff$BUGSoutput$DIC
+lf.alldata.bri.uni.raneff$BUGSoutput$DIC
 lf.arctic.quad.uni$BUGSoutput$DIC
-lf.arctic.quad.inf$BUGSoutput$DIC
+lf.arctic.quad.inf.raneff$BUGSoutput$DIC
+lf.alldata.quad.uni.raneff$BUGSoutput$DIC
+
 
 # Combine the three dataframes
 df.all <- rbind(df.lf.arctic.bri.uni, 
-                df.lf.arctic.bri.inf, 
-                df.lf.arctic.quad.uni,
-                df.lf.arctic.quad.inf)
+                df.lf.arctic.bri.inf.raneff.pop, 
+                df.lf.alldata.bri.uni.raneff.pop, 
+                df.lf.arctic.quad.uni, 
+                df.lf.arctic.quad.inf.raneff.pop, 
+                df.lf.alldata.quad.uni.raneff.pop)
 
 
 
@@ -1770,7 +2147,7 @@ plot.all <- df.all %>%
 
 plot.all
 
-# ggsave("figures/lf.arctic.arctic.all.png", plot.all, width = 10.3, height = 5.6)
+# ggsave("figures/lf.arctic.all.png", plot.all, width = 10.3, height = 5.6)
 
 
 

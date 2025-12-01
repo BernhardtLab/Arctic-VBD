@@ -191,4 +191,83 @@ SensitivityAnalysis_pd = function(mod_a, mod_bc, mod_lf, mod_PDR, mod_B, mod_EV,
 } # end function
 
 
+## No lifetime egg production ----
+SensitivityAnalysis_pd_noB = function(mod_a, mod_bc, mod_lf, mod_PDR, mod_EV, mod_pLA, mod_MDR,
+                                  m_a, m_bc, m_lf, m_PDR, m_B, m_EV, m_pLA, m_MDR) {
+  
+  # Create matrices to hold results
+  dS.da <- dS.dbc <- dS.dlf <- dS.dPDR <- dS.dEV <- dS.dpLA <- dS.dMDR <- dS.dT <- matrix(NA, nMCMC, N.Temp.xs)
+  
+  # Extract predicted trait values
+  mod_a_preds <- mod_a$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit for a
+  mod_bc_preds <- mod_bc$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_lf_preds <- mod_lf$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit for lf
+  mod_PDR_preds <- mod_PDR$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_EV_preds <- mod_EV$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_pLA_preds <- mod_pLA$BUGSoutput$sims.list$z.trait.mu.pred
+  mod_MDR_preds <- mod_MDR$BUGSoutput$sims.list$z.trait.mu.pred
+  
+  # Calculate dy/dt and dS/dy for each MCMC step across the temp gradient
+  for(i in 1:nMCMC){ # loop through MCMC steps
+    
+    # Calculate derivative of all traits with respect to temp (dy/dt) across temp gradient (for a single MCMC step)
+    # The sims.list refers to the lists of fitted TPC parameters (T0, Tm, and q)
+    da.dT <- d_briere(Temp.xs, 
+                      mod_a$BUGSoutput$sims.list[[1]][i], # T0
+                      mod_a$BUGSoutput$sims.list[[2]][i], # Tm
+                      mod_a$BUGSoutput$sims.list[[3]][i]) # q
+    
+    dbc.dT <- d_quad(Temp.xs, 
+                     mod_bc$BUGSoutput$sims.list[[1]][i], # T0
+                     mod_bc$BUGSoutput$sims.list[[2]][i], # Tm
+                     mod_bc$BUGSoutput$sims.list[[3]][i]) # q
+    
+    dlf.dT <- d_briere(Temp.xs, 
+                       mod_lf$BUGSoutput$sims.list[[1]][i], # T0
+                       mod_lf$BUGSoutput$sims.list[[2]][i], # Tm
+                       mod_lf$BUGSoutput$sims.list[[3]][i]) # q
+    
+    dPDR.dT <- d_briere(Temp.xs,
+                        mod_PDR$BUGSoutput$sims.list[[1]][i], # T0
+                        mod_PDR$BUGSoutput$sims.list[[2]][i], # Tm
+                        mod_PDR$BUGSoutput$sims.list[[3]][i]) # q
+    
+    
+    dEV.dT <- d_quad(Temp.xs,
+                     mod_EV$BUGSoutput$sims.list[[1]][i], # T0
+                     mod_EV$BUGSoutput$sims.list[[2]][i], # Tm
+                     mod_EV$BUGSoutput$sims.list[[3]][i]) # q
+    
+    dpLA.dT <- d_quad(Temp.xs,
+                      mod_pLA$BUGSoutput$sims.list[[1]][i], # T0
+                      mod_pLA$BUGSoutput$sims.list[[2]][i], # Tm
+                      mod_pLA$BUGSoutput$sims.list[[3]][i]) # q
+    
+    dMDR.dT <- d_briere(Temp.xs,
+                        mod_MDR$BUGSoutput$sims.list[[1]][i], # T0
+                        mod_MDR$BUGSoutput$sims.list[[2]][i], # Tm
+                        mod_MDR$BUGSoutput$sims.list[[3]][i]) # q
+    
+    # Calculate sensitivity (dS/dy * dy/dt) across temp gradient (for a single MCMC step)
+    
+    # See Mathematica notebook from Shocket et al. 2018 eLife for dR0/dy derivative calculations
+    
+    dS.da[i, ] <- S(mod_a_preds[i, ], m_bc, m_lf, m_PDR, m_B, m_EV, m_pLA, m_MDR)/(mod_a_preds[i, ]+ec) * da.dT
+    dS.dbc[i, ] <- 1/2 * (S(m_a, mod_bc_preds[i, ], m_lf, m_PDR, m_B, m_EV, m_pLA, m_MDR)/(mod_bc_preds[i, ]+ec) * dbc.dT)
+    dS.dlf[i, ] <- 1/2 * (S(m_a, m_bc, mod_lf_preds[i, ], m_PDR, m_B, m_EV, m_pLA, m_MDR) * 
+                            (1 + 2*mod_lf_preds[i, ]*m_PDR) / ((mod_lf_preds[i, ] + ec)^2 * (m_PDR + ec)) * dlf.dT)
+    dS.dPDR[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, mod_PDR_preds[i, ], m_B, m_EV, m_pLA, m_MDR)/((m_lf + ec)*(mod_PDR_preds[i, ]+ec)^2) * dPDR.dT)
+    dS.dEV[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_B, mod_EV_preds[i, ], m_pLA, m_MDR)/(mod_EV_preds[i, ]+ec) * dEV.dT)
+    dS.dpLA[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_B, m_EV, mod_pLA_preds[i, ], m_MDR)/(mod_pLA_preds[i, ]+ec) * dpLA.dT)
+    dS.dMDR[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_B, m_EV, m_pLA, mod_MDR_preds[i, ])/(mod_MDR_preds[i, ]+ec) * dMDR.dT)
+    
+    dS.dT[i, ] <-  dS.da[i, ] + dS.dbc[i, ] + dS.dlf[i, ] + dS.dPDR[i, ] + dS.dEV[i, ] + dS.dpLA[i, ] + dS.dMDR[i, ]
+    
+  } # end MCMC loop
+  
+  # Collect output in a list and return it
+  SA_list_out <- list(dS.da, dS.dbc, dS.dlf, dS.dPDR, dS.dEV, dS.dpLA, dS.dMDR, dS.dT)
+  SA_list_out
+  
+} # end function
 

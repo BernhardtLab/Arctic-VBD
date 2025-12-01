@@ -63,7 +63,7 @@ data.B.nonarctic <- subset(data, species %in% "aegypti")
 
 # Plot the raw data
 plot.data.B <- data %>% 
-  mutate(type = c(rep("Arctic",6), rep("non-Arctic: EFD", 30), rep("non-Arctic: lf", 907))) %>% 
+  mutate(type = c(rep("Arctic",6), rep("non-Arctic: EFD", 30), rep("non-Arctic: lf", 74))) %>% 
   ggplot() +
   geom_point(aes(x = temp, y = trait, colour = species)) +
   labs(y = "eggs or adult lifespan", x = "Temperature ºC") +
@@ -80,17 +80,26 @@ plot.data.B <- data %>%
 
 plot.data.B
 
-# ggsave("figures/raw_data/plot.data.fecundity.png", plot.data.B, , width = 9.83, height = 6.17)
+# ggsave("figures/raw_data/plot.data.B.png", plot.data.B, , width = 9.83, height = 6.17)
 
 plot.data.B.nonarctic <- data.B.nonarctic %>% 
-  mutate(type = c(rep("non-Arctic: EFD", 30), rep("non-Arctic: lf", 907))) %>% 
+  mutate(type = c(rep("non-Arctic: EFD", 30), rep("non-Arctic: lf", 74))) %>% 
   ggplot() +
   geom_point(aes(x = temp, y = trait, colour = citation)) +
   labs(y = "eggs per days or adult lifespan", x = "Temperature ºC") +
   # scale_colour_discrete(name = "species", labels = c("Ae. aegypti"
   # )) +
   facet_grid(rows = vars(type), scales = "free_y") +
-  scale_colour_discrete(name = "citation", labels = c()) +
+  # Customize legend
+  scale_colour_discrete(name = element_blank(),
+                        labels = c("Ae. aegypti (Beserra 2009)",
+                                   "Ae. aegypti (Goindin et al. 2015)",
+                                   "Ae. aegypti (Huxley et al. 2021)",
+                                   "Ae. aegypti (Huxley et al. 2022)",
+                                   "Ae. aegypti (Marinho et al. 2016)",
+                                   "Ae. aegypti (Rocha-Santos et al. 2021)",
+                                   "Ae. aegypti (Yang et al. 2009)",
+                                   "Ae. aegypti (Yang et al. 2008)")) +
   theme_bw()
 
 
@@ -187,7 +196,7 @@ B.EFD.nonarctic.bri.uni.raneff <- jags(
 # save(B.EFD.nonarctic.bri.uni.raneff, file = "R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.raneff.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.raneff.Rdata")
+load("R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.raneff.Rdata")
 
 
 ## Diagnostics ----
@@ -321,25 +330,25 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
-B.EFD.nonarctic.quad.uni.raneff <- jags(
-  data = jag.data,
-  inits = inits,
-  parameters.to.save = parameters,
-  model.file = "R-scripts/quad_T_randeff.txt",
-  n.thin = nt,
-  n.chains = nc,
-  n.burnin = nb,
-  n.iter = ni,
-  DIC = T,
-  working.directory = getwd()
-)
+# B.EFD.nonarctic.quad.uni.raneff <- jags(
+#   data = jag.data,
+#   inits = inits,
+#   parameters.to.save = parameters,
+#   model.file = "R-scripts/quad_T_randeff.txt",
+#   n.thin = nt,
+#   n.chains = nc,
+#   n.burnin = nb,
+#   n.iter = ni,
+#   DIC = T,
+#   working.directory = getwd()
+# )
 
 
 ## Save the model as Rdata 
 # save(B.EFD.nonarctic.quad.uni.raneff, file = "R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.raneff.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.raneff.Rdata")
+load("R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.raneff.Rdata")
 
 
 ## Diagnostics ----
@@ -465,23 +474,23 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, prior = prior)
 
 ##### Run JAGS -----
-B.EFD.nonarctic.bri.uni <- jags(data = jag.data,
-                           inits = inits,
-                           parameters.to.save = parameters,
-                           model.file = "R-scripts/briere_T.txt",
-                           n.thin = nt,
-                           n.chains = nc,
-                           n.burnin = nb,
-                           n.iter = ni,
-                           DIC = T,
-                           working.directory = getwd()
-)
+# B.EFD.nonarctic.bri.uni <- jags(data = jag.data,
+#                            inits = inits,
+#                            parameters.to.save = parameters,
+#                            model.file = "R-scripts/briere_T.txt",
+#                            n.thin = nt,
+#                            n.chains = nc,
+#                            n.burnin = nb,
+#                            n.iter = ni,
+#                            DIC = T,
+#                            working.directory = getwd()
+# )
 
 ## Save the model as Rdata 
 # save(B.EFD.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.Rdata")
+load("R-scripts/R2jags-objects/B.EFD.nonarctic.bri.uni.Rdata")
 
 ## Diagnostics ----
 ##### Examine output
@@ -503,14 +512,17 @@ plot.B.EFD.nonarctic.bri.uni <- df.B.EFD.nonarctic.bri.uni %>%
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  geom_point(data = data, aes(x = temp, y = trait, colour = citation), size = 2) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) + 
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Eggs per day"
   ) +
+  scale_color_discrete(name = "Citation", 
+                       label = c("Beserra 2009",
+                                 "Yang 2008")) +
   theme_bw()
 
 plot.B.EFD.nonarctic.bri.uni
@@ -569,23 +581,23 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, prior = prior)
 
 ##### Run JAGS -----
-B.EFD.nonarctic.quad.uni <- jags(data = jag.data,
-                                inits = inits,
-                                parameters.to.save = parameters,
-                                model.file = "R-scripts/quad_T.txt",
-                                n.thin = nt,
-                                n.chains = nc,
-                                n.burnin = nb,
-                                n.iter = ni,
-                                DIC = T,
-                                working.directory = getwd()
-)
+# B.EFD.nonarctic.quad.uni <- jags(data = jag.data,
+#                                 inits = inits,
+#                                 parameters.to.save = parameters,
+#                                 model.file = "R-scripts/quad_T.txt",
+#                                 n.thin = nt,
+#                                 n.chains = nc,
+#                                 n.burnin = nb,
+#                                 n.iter = ni,
+#                                 DIC = T,
+#                                 working.directory = getwd()
+# )
 
 ## Save the model as Rdata 
 # save(B.EFD.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.Rdata")
+load("R-scripts/R2jags-objects/B.EFD.nonarctic.quad.uni.Rdata")
 
 ## Diagnostics ----
 ##### Examine output
@@ -607,7 +619,7 @@ plot.B.EFD.nonarctic.quad.uni <- df.B.EFD.nonarctic.quad.uni %>%
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
   geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  geom_point(data = data, aes(x = temp, y = trait, colour = as.factor(unique_id)), size = 2) +
   # Customize the axes and labels
   #scale_x_continuous(limits = c(0, 41)) + 
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
@@ -615,6 +627,9 @@ plot.B.EFD.nonarctic.quad.uni <- df.B.EFD.nonarctic.quad.uni %>%
     x = expression(paste("Temperature (", degree, "C)")),
     y = "Development rate (days-1)"
   ) +
+  scale_color_discrete(name = "Citation", 
+                       label = c("Beserra 2009",
+                                 "Yang 2008")) +
   theme_bw()
 
 plot.B.EFD.nonarctic.quad.uni
@@ -714,8 +729,8 @@ data <- data %>%
 ## Set priors
 prior <- data.frame(q = c(0, 0.01),
                     T0 = c(0, 20),
-                    Tm = c(30, 45),
-                    sigma_q = c(0, 0.0001),
+                    Tm = c(25, 45),
+                    sigma_q = c(0, 0.001),
                     sigma_T0 = c(0, 10),
                     sigma_Tm = c(0, 10)
 )
@@ -749,25 +764,25 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
-# B.lf.nonarctic.bri.uni.raneff <- jags(
-#   data = jag.data,
-#   inits = inits,
-#   parameters.to.save = parameters,
-#   model.file = "R-scripts/briere_T_randeff_B.txt",
-#   n.thin = nt,
-#   n.chains = nc,
-#   n.burnin = nb,
-#   n.iter = ni,
-#   DIC = T,
-#   working.directory = getwd()
-# )
+B.lf.nonarctic.bri.uni.raneff <- jags(
+  data = jag.data,
+  inits = inits,
+  parameters.to.save = parameters,
+  model.file = "R-scripts/briere_T_randeff_B.txt",
+  n.thin = nt,
+  n.chains = nc,
+  n.burnin = nb,
+  n.iter = ni,
+  DIC = T,
+  working.directory = getwd()
+)
 
 
 ## Save the model as Rdata 
 # save(B.lf.nonarctic.bri.uni.raneff, file = "R-scripts/R2jags-objects/B.lf.nonarctic.bri.uni.raneff.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/B.lf.nonarctic.bri.uni.raneff.Rdata")
+# load("R-scripts/R2jags-objects/B.lf.nonarctic.bri.uni.raneff.Rdata")
 
 
 ## Diagnostics ----
@@ -871,7 +886,7 @@ plot.B.lf.nonarctic.bri.uni.raneff <- ggplot(data = df.B.lf.nonarctic.bri.uni.ra
   geom_line(data = df.B.lf.nonarctic.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
   geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
   # Customize the axes and labels
-  labs(x = expression(paste("Temperature (", degree, "C)")), y = "lifespan (days)") +
+  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Mosquito adult lifespan (days)") +
   # Customize legend
   scale_colour_discrete(name = element_blank(),
                         labels = c("Ae. aegypti (Beserra 2009)",
@@ -915,8 +930,8 @@ data <- data %>%
 ## Set priors
 prior <- data.frame(q = c(0, 0.1),
                     T0 = c(0, 20),
-                    Tm = c(30, 45),
-                    sigma_q = c(0, 0.0002),
+                    Tm = c(25, 45),
+                    sigma_q = c(0, 0.001),
                     sigma_T0 = c(0, 10),
                     sigma_Tm = c(0, 10)
 )
@@ -968,7 +983,7 @@ B.lf.nonarctic.quad.uni.raneff <- jags(
 # save(B.lf.nonarctic.quad.uni.raneff, file = "R-scripts/R2jags-objects/B.lf.nonarctic.quad.uni.raneff.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/B.lf.nonarctic.quad.uni.raneff.Rdata")
+# load("R-scripts/R2jags-objects/B.lf.nonarctic.quad.uni.raneff.Rdata")
 
 
 ## Diagnostics ----
@@ -1068,13 +1083,13 @@ plot.B.lf.nonarctic.quad.uni.raneff <- ggplot(data = df.B.lf.nonarctic.quad.uni.
   ## a separate TPC (and credible interval) for each unique group
   # geom_ribbon(data = df.B.lf.nonarctic.quad.uni.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
   #             alpha = 0.5) +
-  geom_line(data = df.B.lf.nonarctic.quad.uni.raneff.sp, aes(y = mean, color = unique_id)) +
-  geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
   geom_point(data = data,
              aes(x = temp, y = trait, colour = as.factor(unique_id)),
              size = 2) +
+  geom_line(data = df.B.lf.nonarctic.quad.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
   # Customize the axes and labels
-  labs(x = expression(paste("Temperature (", degree, "C)")), y = "lifespan (days)") +
+  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Adult lifespan (days)") +
   # Customize legend
   scale_colour_discrete(name = element_blank(),
                         labels = c("Ae. aegypti (Beserra 2009)",
@@ -1084,6 +1099,14 @@ plot.B.lf.nonarctic.quad.uni.raneff <- ggplot(data = df.B.lf.nonarctic.quad.uni.
                                    "Ae. aegypti (Marinho et al. 2016)",
                                    "Ae. aegypti (Rocha-Santos et al. 2021)",
                                    "Ae. aegypti (Yang et al. 2009)")) +
+  # scale_colour_discrete(name = element_blank(),
+  #                       labels = c("Ae. aegypti 1",
+  #                                  "Ae. aegypti 2",
+  #                                  "Ae. aegypti 3",
+  #                                  "Ae. aegypti 4",
+  #                                  "Ae. aegypti 5",
+  #                                  "Ae. aegypti 6",
+  #                                  "Ae. aegypti 7")) +
   theme_bw()
 
 
@@ -1188,6 +1211,18 @@ plot.B.nonarctic <- df.B.nonarctic %>%
   #scale_y_continuous(limits = c(-0.005, 0.19)) +
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Lifetime egg production") +
   theme_bw()
+
+# plot.B.nonarctic <- df.B.nonarctic %>%
+#   ggplot(aes(x = temp)) +
+#   geom_ribbon(aes(ymin = lowerCI, ymax = upperCI),
+#               fill = "#4363d8",
+#               alpha = 0.2) +
+#   geom_point(aes(y = mean), color = "blue") +
+#   # Customize the axes and labels
+#   #scale_x_continuous(limits = c(0, 41)) +
+#   #scale_y_continuous(limits = c(-0.005, 0.19)) +
+#   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Lifetime egg production") +
+#   theme_bw()
 
 plot.B.nonarctic
 
@@ -1428,6 +1463,7 @@ plot.B.alldata.quad.uni <- df.B.alldata.quad.uni%>%
                                                      "Ae. punctor"
   )) +
   theme_bw()
+
 
 plot.B.alldata.quad.uni
 

@@ -39,7 +39,7 @@ load("R-scripts/R2jags-objects/a.alldata.bri.uni.raneff.Rdata")
 load("R-scripts/R2jags-objects/c.nonarctic.quad.uni.Rdata")
 
 ## Adult lifespan (lf)
-load("R-scripts/R2jags-objects/lf.alldata.quad.uni.raneff.Rdata")
+load("R-scripts/R2jags-objects/lf.arctic.quad.inf.raneff.Rdata")
 
 ## Parasite development rate (PDR)
 load("R-scripts/R2jags-objects/PDR.arctic.bri.inf.Rdata")
@@ -47,7 +47,7 @@ load("R-scripts/R2jags-objects/PDR.arctic.bri.inf.Rdata")
 ## Lifetime egg production (B)
 load("R-scripts/R2jags-objects/B.alldata.bri.uni.Rdata")
 
-## Egg viability
+## Egg viability (EV)
 load("R-scripts/R2jags-objects/EV.arctic.quad.inf.Rdata")
 
 ## Larval-to-adult survival (pLA)
@@ -60,7 +60,7 @@ load("R-scripts/R2jags-objects/MDR.arctic.bri.inf.Rdata")
 #####  Pull out the derived/predicted values:
 a.preds <- a.alldata.bri.uni.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
 c.preds <- c.nonarctic.quad.uni$BUGSoutput$sims.list$z.trait.mu.pred
-lf.preds <- lf.alldata.quad.uni.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
+lf.preds <- lf.arctic.quad.inf.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
 PDR.preds <- PDR.arctic.bri.inf$BUGSoutput$sims.list$z.trait.mu.pred
 B.preds <- B.alldata.bri.uni$BUGSoutput$sims.list$z.trait.mu.pred
 EV.preds <- EV.arctic.quad.inf$BUGSoutput$sims.list$z.trait.mu.pred
@@ -76,6 +76,7 @@ MDR.preds <- MDR.arctic.bri.inf$BUGSoutput$sims.list$z.trait.mu.pred
 
 ## Columns = temp from 0 to 45ºC at a 0.1ºC interval, Rows = 15000 MCMC iterations
 S.calc <- S(a.preds, c.preds, lf.preds, PDR.preds, B.preds, EV.preds, pLA.preds, MDR.preds)
+# S.calc <- S(a.preds, c.preds, lf.preds, PDR.preds, 1, EV.preds, pLA.preds, MDR.preds)
 
 ##### Temp sequence for derived quantity calculations
 Temp.xs <- seq(0, 45, 0.1)
@@ -108,17 +109,26 @@ S.out.upperCI <- S.out %>%
 # plot.S <- ggplot(data = S.out.upperCI) +
 #   geom_ribbon(aes(x = temp, ymin = scaled_lowerCI, ymax = scaled_upperCI),
 #               fill = "grey",
+#               alpha = 0.5) +
+#   geom_ribbon(aes(x = temp, ymin = scaled_lowerQuartile, ymax = scaled_upperQuartile),
+#               fill = "grey",
 #               alpha = 0.7) +
 #   geom_line(aes(x = temp, y = scaled_median), colour = "black", linewidth = 1) +
-#  geom_line(aes(x = temp, y = scaled_lowerQuartile), colour = "black", linetype = "dotted", linewidth = 1) +
-#  geom_line(aes(x = temp, y = scaled_upperQuartile), colour = "black", linetype = "dotted", linewidth = 1) +
+#   # geom_line(aes(x = temp, y = scaled_lowerQuartile), colour = "black", linetype = "dotted", linewidth = 1) +
+#   # geom_line(aes(x = temp, y = scaled_upperQuartile), colour = "black", linetype = "dotted", linewidth = 1) +
 #   scale_x_continuous(limits = c(10, 35)) +
+#   # scale_x_continuous(limits = c(10, 40)) +
 #   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Suitability (S)") +
 #   theme_bw()
+# 
+# plot.S
+# 
+# ggsave("figures/S.CI.png", plot.S, width = 10.3, height = 5.6)
 
 plot.S <- ggplot(data = S.out.median) +
   geom_line(aes(x = temp, y = scaled_median), colour = "black", linewidth = 1) +
   scale_x_continuous(limits = c(10, 35)) +
+  # scale_x_continuous(limits = c(10, 40)) +
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Suitability (S)") +
   theme_bw()
 
@@ -216,11 +226,12 @@ S.viz.out$parameter <- factor(S.viz.out$parameter,
 
 plot.S.viz <- ggplot(data = S.viz.out) +
   geom_linerange(aes(xmin = lowerQ, xmax = upperQ, y = parameter, colour = parameter), 
-                 size = 1) +
+                 linewidth = 1) +
   geom_linerange(aes(xmin = lowerCI, xmax = upperCI, y = parameter, colour = parameter), 
-                 size = 0.5) + #default size = 0.5
+                 linewidth = 0.5) + #default size = 0.5
   geom_point(aes(x = med, y = parameter, colour = parameter)) +
   scale_x_continuous(limits = c(10, 35)) +
+  # scale_x_continuous(limits = c(10, 40)) +
   labs(x = expression(paste("Temperature (", degree, "C)"))) +
   scale_y_discrete(labels=c("Tmin" = expression(paste("T"[min])), 
                             "peak" = expression(paste("T"[opt])), 
@@ -275,11 +286,17 @@ MDR.m <- colMeans(MDR.preds)
 
 
 # Calculate sensitivity using partial derivatives
-SA <- SensitivityAnalysis_pd(a.alldata.bri.uni.raneff, c.nonarctic.quad.uni, 
-                             lf.alldata.quad.uni.raneff, PDR.arctic.bri.inf, 
-                             B.alldata.bri.uni, EV.arctic.quad.inf, 
-                             pLA.arctic.quad.inf, MDR.arctic.bri.inf,
-                             a.m, bc.m, lf.m, PDR.m, B.m, EV.m, pLA.m, MDR.m)
+# SA <- SensitivityAnalysis_pd(a.alldata.bri.uni.raneff, c.nonarctic.quad.uni, 
+#                              lf.arctic.quad.inf.raneff, PDR.arctic.bri.inf, 
+#                              B.alldata.bri.uni, EV.arctic.quad.inf, 
+#                              pLA.arctic.quad.inf, MDR.arctic.bri.inf,
+#                              a.m, bc.m, lf.m, PDR.m, B.m, EV.m, pLA.m, MDR.m)
+
+SA <- SensitivityAnalysis_pd_noB(a.alldata.bri.uni.raneff, c.nonarctic.quad.uni, 
+                                 lf.arctic.quad.inf.raneff, PDR.arctic.bri.inf, 
+                                 EV.arctic.quad.inf, pLA.arctic.quad.inf, 
+                                 MDR.arctic.bri.inf,
+                                 a.m, bc.m, lf.m, PDR.m, 1, EV.m, pLA.m, MDR.m)
 
 
 # Get sensitivity posteriors for each parameter and summarize them
@@ -293,6 +310,13 @@ dS.dpLA 	<- calcPostQuants(as.data.frame(SA[[7]]), Temp.xs)
 dS.dMDR		<- calcPostQuants(as.data.frame(SA[[8]]), Temp.xs)
 dS.dT		<- calcPostQuants(as.data.frame(SA[[9]]), Temp.xs)
 
+## No lifetime egg production (B)
+#dS.dB		<- calcPostQuants(as.data.frame(SA[[5]]), Temp.xs)
+dS.dEV 	<- calcPostQuants(as.data.frame(SA[[5]]), Temp.xs)
+dS.dpLA 	<- calcPostQuants(as.data.frame(SA[[6]]), Temp.xs)
+dS.dMDR		<- calcPostQuants(as.data.frame(SA[[7]]), Temp.xs)
+dS.dT		<- calcPostQuants(as.data.frame(SA[[8]]), Temp.xs)
+
 
 ##### Plot results
 plot.SA <- ggplot() +
@@ -300,7 +324,7 @@ plot.SA <- ggplot() +
   geom_line(data = dS.dbc, aes(x = temp, y = median, colour = "bc")) +
   geom_line(data = dS.dlf, aes(x = temp, y = median, colour = "lf")) +
   geom_line(data = dS.dPDR, aes(x = temp, y = median, colour = "PDR")) +
-  geom_line(data = dS.dB, aes(x = temp, y = median, , colour = "B")) +
+  #geom_line(data = dS.dB, aes(x = temp, y = median, , colour = "B")) +
   geom_line(data = dS.dEV, aes(x = temp, y = median, , colour = "EV")) +
   geom_line(data = dS.dpLA, aes(x = temp, y = median, colour = "pLA")) +
   geom_line(data = dS.dMDR, aes(x = temp, y = median, colour = "MDR")) +
@@ -309,12 +333,19 @@ plot.SA <- ggplot() +
   # geom_vline(aes(xintercept = 22.1), linetype = "dashed") +
   # geom_vline(aes(xintercept = 20.0), linetype = "dashed") +
   scale_x_continuous(limits = c(10, 35)) +
+  # scale_x_continuous(limits = c(10, 40)) +
   labs(x = expression(paste("Temperature (", degree, "C)")),
        y = "Relative sensitivity") +
-  scale_colour_grafify(palette = "okabe_ito", 
+  scale_colour_grafify(palette = "okabe_ito",
                        name = element_blank(), # No legend title
                        breaks = c("S", "a", "bc", "lf", "PDR", "B", "EV", "pLA", "MDR"),
                        labels = c("S", "a", "bc", "lf", "PDR", "B", "EV", "pLA", "MDR")) +
+  # scale_colour_manual(values = c("#000000", "#E69F00", "#009E73", "#0072B2",
+  #                                "#CC79A7", #"#56B4E9",
+  #                                "#F5C710", "#999999", "#D55E00"), 
+  #                      name = element_blank(), # No legend title
+  #                      breaks = c("S", "a", "bc", "lf", "PDR", "EV", "pLA", "MDR"),
+  #                      labels = c("S", "a", "bc", "lf", "PDR", "EV", "pLA", "MDR")) +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
@@ -322,7 +353,7 @@ plot.SA <- ggplot() +
 
 plot.SA
 
-# ggsave("figures/sensitivity_analysis.png", plot.SA, width = 10.3, height = 5.6)
+# ggsave("figures/SA.png", plot.SA, width = 10.3, height = 5.6)
 
 
 plot.everything <- ggarrange(plot.S, plot.S.viz, plot.SA, nrow = 3, align = "v", heights = c(2,1))
@@ -335,7 +366,7 @@ plot.everything
 
 a.alldata.bri.uni.raneff$BUGSoutput$summary[1:8,]
 c.nonarctic.quad.uni$BUGSoutput$summary[1:5,]
-lf.alldata.bri.uni.raneff$BUGSoutput$summary[1:5,]
+lf.arctic.quad.inf.raneff$BUGSoutput$summary[1:8,]
 PDR.arctic.bri.inf$BUGSoutput$summary[1:5,]
 B.alldata.bri.uni$BUGSoutput$summary[1:5,]
 EV.arctic.quad.inf$BUGSoutput$summary[1:5,]

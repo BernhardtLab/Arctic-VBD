@@ -63,6 +63,9 @@ plot.data.pLA <- data %>%
                                                      "Ae. triseriatus",
                                                      "Ae. vexans"
   )) +
+  scale_shape_discrete(name = "Citation", labels = c("Brust 1967",
+                                                     "Shelton 1973",
+                                                     "Teng 2000")) +
   facet_grid(rows = vars(type)) +
   theme_bw()
 
@@ -723,18 +726,15 @@ plot.pLA.nonarctic.quad.uni.raneff <- ggplot() +
               alpha = 0.5) +
   
   ## a separate TPC (and credible interval) for each unique group
-  geom_ribbon(data = df.pLA.nonarctic.quad.uni.raneff.sp, 
-              aes(x = temp, ymin = X2.5., ymax = X97.5., fill = unique_id), alpha = 0.5) +
-  
-  geom_line(data = df.pLA.nonarctic.quad.uni.raneff.pop, 
-            aes(x = temp, y = mean), color = "black", linewidth = 1) +
-  
-  geom_line(data = df.pLA.nonarctic.quad.uni.raneff.sp, 
-            aes(x = temp, y = mean, color = unique_id)) +
-  
+  # geom_ribbon(data = df.pLA.nonarctic.quad.uni.raneff.sp, 
+  #             aes(x = temp, ymin = X2.5., ymax = X97.5., fill = unique_id), alpha = 0.5) +
   geom_point(data = data,
              aes(x = temp, y = trait, colour = as.factor(unique_id)),
              size = 2) +
+  geom_line(data = df.pLA.nonarctic.quad.uni.raneff.sp, 
+            aes(x = temp, y = mean, color = unique_id)) +
+  geom_line(data = df.pLA.nonarctic.quad.uni.raneff.pop,
+            aes(x = temp, y = mean), color = "black", linewidth = 1.5) +
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Larval survival (%)") +
   # Customize legend
@@ -768,8 +768,34 @@ pLA.arctic.prior.gamma.fits = apply(pLA.arctic.prior.cf.dists, 2,
 
 
 pLA.hypers <- pLA.arctic.prior.gamma.fits
-save(pLA.hypers, file = "R-scripts/R2jags-objects/pLAhypers.quad.Rsave")
+# save(pLA.hypers, file = "R-scripts/R2jags-objects/pLAhypers.quad.Rsave")
 
+q <-rgamma(1000000, shape = 4.311846, rate = 707.790282)
+T0 <-rgamma(1000000, shape = 60.505941, rate = 5.343882)
+Tm <-rgamma(1000000, shape = 119.62490, rate = 3.32988)
+
+df <- data.frame(T0 = T0)
+
+gamma.dist <- ggplot() +
+  geom_histogram(data = pLA.arctic.prior.cf.dists, aes(x = T0, y = ..density..), 
+                 bins = 50, fill = "grey", color = "black", alpha = 0.6) +
+  stat_function(fun = dgamma, args = list(shape = 60.505941, rate = 5.343882), 
+                color = "black", linewidth = 1.2) +
+  labs(x = "Tmin",
+       y = "Density") +
+  theme_bw()
+
+gamma.dist
+
+# ggsave("figures/pLA.T0.gamma.dist.png", gamma.dist,
+#        width = 10.3, height = 5.6)
+
+
+mean(T0)
+mean(Tm)
+plot(density(q))
+plot(density(T0))
+plot(density(Tm))
 
 ##########
 ###### 3D. Fit pLA thermal responses with data-informed priors (Arctic): Quadratic ----

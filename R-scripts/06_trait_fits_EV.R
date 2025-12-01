@@ -644,14 +644,6 @@ Temp.xs <- seq(0, 45, 0.5)
 N.Temp.xs <-length(Temp.xs)
 
 
-##### Set data
-data <- data.EV.nonarctic
-
-## Create a unique id for each species-study combination
-data <- data %>% 
-  group_by(species, citation) %>% 
-  mutate(unique_id = cur_group_id())
-
 # ## With random effect ----
 
 ##### Temp sequence for derived quantity calculations
@@ -667,6 +659,15 @@ data <- data.EV.nonarctic
 data <- data %>% 
   group_by(species, citation) %>% 
   mutate(unique_id = cur_group_id())
+
+## Set priors
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(20, 45),
+                    sigma_q = c(0, 0.1),
+                    sigma_T0 = c(0, 10),
+                    sigma_Tm = c(0, 10)
+)
 
 
 ##### inits Function
@@ -693,21 +694,23 @@ unique.id <- as.integer(data$unique_id)
 Nids <- max(unique.id)
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id,
+                 prior = prior)
 
 ##### Run JAGS
-EV.nonarctic.quad.uni.raneff <- jags(
-  data = jag.data,
-  inits = inits,
-  parameters.to.save = parameters,
-  model.file = "R-scripts/quad_T_randeff.txt",
-  n.thin = nt,
-  n.chains = nc,
-  n.burnin = nb,
-  n.iter = ni,
-  DIC = T,
-  working.directory = getwd()
-)
+# EV.nonarctic.quad.uni.raneff <- jags(
+#   data = jag.data,
+#   inits = inits,
+#   parameters.to.save = parameters,
+#   model.file = "R-scripts/quadprob_randeff.txt",
+#   n.thin = nt,
+#   n.chains = nc,
+#   n.burnin = nb,
+#   n.iter = ni,
+#   DIC = T,
+#   working.directory = getwd()
+# )
 
 
 ## Save the model as Rdata 
@@ -821,11 +824,12 @@ plot.EV.nonarctic.quad.uni.raneff <- ggplot(data = df.EV.nonarctic.quad.uni.rane
   ## a separate TPC (and credible interval) for each unique group
   # geom_ribbon(data = df.EV.nonarctic.quad.uni.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
   #             alpha = 0.5) +
-  geom_line(aes(y = mean), color = "black", linewidth = 1) +
-  geom_line(data = df.EV.nonarctic.quad.uni.raneff.sp, aes(y = mean, color = unique_id)) +
   geom_point(data = data,
              aes(x = temp, y = trait, colour = as.factor(unique_id)),
              size = 2) +
+  geom_line(data = df.EV.nonarctic.quad.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1.5) +
+
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Egg viability (%)") +
   # Customize legend
@@ -940,9 +944,9 @@ plot.EV.nonarctic.quad.uni
 ##########
 
 # Get the posterior dists for 3 main parameters (not sigma) into a data frame
-EV.arctic.prior.cf.dists <- data.frame(q = as.vector(EV.nonarctic.quad.uni$BUGSoutput$sims.list$cf.q),
-                                       T0 = as.vector(EV.nonarctic.quad.uni$BUGSoutput$sims.list$cf.T0),
-                                       Tm = as.vector(EV.nonarctic.quad.uni$BUGSoutput$sims.list$cf.Tm))
+EV.arctic.prior.cf.dists <- data.frame(q = as.vector(EV.nonarctic.quad.uni.raneff$BUGSoutput$sims.list$cf.q),
+                                       T0 = as.vector(EV.nonarctic.quad.uni.raneff$BUGSoutput$sims.list$cf.T0),
+                                       Tm = as.vector(EV.nonarctic.quad.uni.raneff$BUGSoutput$sims.list$cf.Tm))
 
 # Fit gamma distributions for each parameter posterior dists
 EV.arctic.prior.gamma.fits = apply(EV.arctic.prior.cf.dists, 2, 

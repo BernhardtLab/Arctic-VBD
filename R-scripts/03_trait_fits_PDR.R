@@ -66,7 +66,7 @@ plot.data.PDR <- data %>%
   mutate(type = c(rep("Arctic", 7), rep("non-Arctic", 18))) %>% 
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = citation)) +
-  geom_line(aes(colour = citation)) +
+  #geom_line(aes(colour = citation)) +
   labs(y = "Parasite development rate (1/days)", x = "Temperature ºC") +
   scale_colour_discrete(name = "Species", labels = c("D. immitis (in Ae. Trivittatus)",
                                                      "V. eleguneniensis",
@@ -222,7 +222,8 @@ unique.id <- as.integer(data$unique_id)
 Nids <- max(unique.id)
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id)
 
 ##### Run JAGS
 PDR.arctic.bri.uni.raneff <- jags(
@@ -316,8 +317,8 @@ plot.PDR.arctic.bri.uni.raneff <- ggplot(data = df.PDR.arctic.bri.uni.raneff.pop
 
 plot.PDR.arctic.bri.uni.raneff
 
-ggsave("figures/PDR.arctic.bri.uni.raneff.png", plot.PDR.arctic.bri.uni.raneff,
-       width = 10.3, height = 5.6)
+# ggsave("figures/PDR.arctic.bri.uni.raneff.png", plot.PDR.arctic.bri.uni.raneff,
+#        width = 10.3, height = 5.6)
 
 ##########
 ###### 2B. Fit PDR thermal responses (with random effects) for priors (non-Arctic species): Briere ----
@@ -444,13 +445,13 @@ plot.PDR.nonarctic.bri.uni.raneff <- ggplot(data = df.PDR.nonarctic.bri.uni.rane
               fill = "grey",
               alpha = 0.5) +
   ## a separate TPC (and credible interval) for each unique group
-  geom_ribbon(data = df.PDR.nonarctic.bri.uni.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
-              alpha = 0.5) +
-  geom_line(aes(y = mean), color = "black", linewidth = 1) +
-  geom_line(data = df.PDR.nonarctic.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  # geom_ribbon(data = df.PDR.nonarctic.bri.uni.raneff.sp, aes(ymin = X2.5., ymax = X97.5., fill = unique_id),
+  #             alpha = 0.5) +
   geom_point(data = data,
              aes(x = temp, y = trait, colour = as.factor(unique_id)),
              size = 2) +
+  geom_line(data = df.PDR.nonarctic.bri.uni.raneff.sp, aes(y = mean, color = unique_id)) +
+  geom_line(aes(y = mean), color = "black", linewidth = 1) +
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Development rate (days-1)") +
   # Customize legend
