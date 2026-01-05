@@ -23,7 +23,8 @@
 ##        B. Fit lf thermal responses for priors (Ae. sierrensis)
 ##        C. Fit gamma distributions to lf prior thermal responses
 ##        D. Fit lf thermal responses with data-informed priors (Ae. vexans)
-
+##
+##    4. Process and save model output for plottings
 
 ##########
 ###### 0. Set-up workspace ----
@@ -38,6 +39,8 @@ library(ggsci)
 library(RColorBrewer) # colour palette
 library(grafify)
 
+# Load functions
+source("R-scripts/00_Functions.R")
 
 # Load data
 data <- read_csv("data-processed/TraitData_lf.csv")
@@ -1532,7 +1535,7 @@ lf.arctic.prior.gamma.fits <- lf.hypers
 # # save(lf.arctic.quad.inf, file = "R-scripts/R2jags-objects/lf.arctic.quad.inf.Rdata")
 # 
 # # Read the .Rdata
-# # load("R-scripts/R2jags-objects/lf.arctic.quad.inf.Rdata")
+load("R-scripts/R2jags-objects/lf.arctic.quad.inf.Rdata")
 # 
 # 
 # ## Diagnostics ----
@@ -1819,10 +1822,10 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
 
 
 ## Save the model as Rdata 
-save(lf.alldata.quad.uni.raneff, file = "R-scripts/R2jags-objects/lf.alldata.quad.uni.raneff.Rdata")
+# save(lf.alldata.quad.uni.raneff, file = "R-scripts/R2jags-objects/lf.alldata.quad.uni.raneff.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/lf.alldata.quad.uni.raneff.Rdata")
+load("R-scripts/R2jags-objects/lf.alldata.quad.uni.raneff.Rdata")
 
 
 ## Diagnostics ----
@@ -2105,14 +2108,6 @@ plot.all
 
 ##### Plot all best fitting TPCs for comparison ----
 
-#### DIC ----
-lf.arctic.bri.uni$BUGSoutput$DIC
-lf.arctic.bri.inf.raneff$BUGSoutput$DIC
-lf.alldata.bri.uni.raneff$BUGSoutput$DIC
-lf.arctic.quad.uni$BUGSoutput$DIC
-lf.arctic.quad.inf.raneff$BUGSoutput$DIC
-lf.alldata.quad.uni.raneff$BUGSoutput$DIC
-
 
 # Combine the three dataframes
 df.all <- rbind(df.lf.arctic.bri.uni, 
@@ -2121,7 +2116,6 @@ df.all <- rbind(df.lf.arctic.bri.uni,
                 df.lf.arctic.quad.uni, 
                 df.lf.arctic.quad.inf.raneff.pop, 
                 df.lf.alldata.quad.uni.raneff.pop)
-
 
 
 ##### Plot
@@ -2150,4 +2144,24 @@ plot.all
 # ggsave("figures/lf.arctic.all.png", plot.all, width = 10.3, height = 5.6)
 
 
+#### DIC ----
+lf.arctic.bri.uni$BUGSoutput$DIC
+lf.arctic.bri.inf.raneff$BUGSoutput$DIC
+lf.alldata.bri.uni.raneff$BUGSoutput$DIC
+lf.arctic.quad.uni$BUGSoutput$DIC
+lf.arctic.quad.inf.raneff$BUGSoutput$DIC # This is the best fitting TPC
+lf.alldata.quad.uni.raneff$BUGSoutput$DIC
 
+##########
+###### 4. Process and save model output for plotting ----
+##########
+
+## Analyze TPC model
+lf.TPC.analysis <- extractTPC_raneff(lf.arctic.quad.inf.raneff, "lf", Temp.xs)
+lf.predictions.summary <- lf.TPC.analysis[[1]]
+lf.params.summary <- lf.TPC.analysis[[2]]
+lf.params.fullposts <- lf.TPC.analysis[[3]]
+
+write_csv(lf.predictions.summary, "data-processed/lf.predictions.summary.csv")
+write_csv(lf.params.summary, "data-processed/lf.params.summary.csv")
+write_csv(lf.params.fullposts, "data-processed/lf.params.fullposts.csv")

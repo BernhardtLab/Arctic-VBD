@@ -30,6 +30,8 @@
 ##        B. Fit PDR thermal responses (with random effects) for priors (non-Arctic species)
 ##        C. Fit gamma distributions to PDR prior thermal responses
 ##        D. Fit PDR thermal responses with data-informed priors (Arctic)
+##
+##    4. Process and save model output for plotting
 
 
 ##########
@@ -44,6 +46,10 @@ library(MASS)
 library(ggsci)
 library(RColorBrewer) # colour palette
 
+# Load functions
+source("R-scripts/00_Functions.R")
+
+
 # Load data
 data <- read_csv("data-processed/TraitData_PDR.csv")
 unique(data$species)
@@ -55,15 +61,14 @@ data <- data %>%
      
 # Subset data
 ## Arctic species
-data.PDR.arctic <- subset(data, species %in% c("eleguneniensis", "tundra"))
+data.PDR.arctic <- subset(data, type == "Arctic")
 
 ## Non-Arctic species
-data.PDR.nonarctic <- subset(data, !(species %in% c("eleguneniensis", "tundra")))
+data.PDR.nonarctic <- subset(data, type == "non-Arctic")
 
 
 # Plot the raw data
 plot.data.PDR <- data %>% 
-  mutate(type = c(rep("Arctic", 7), rep("non-Arctic", 18))) %>% 
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = citation)) +
   #geom_line(aes(colour = citation)) +
@@ -1313,7 +1318,7 @@ plot.all
 
 #### DIC ----
 PDR.arctic.bri.uni$BUGSoutput$DIC
-PDR.arctic.bri.inf$BUGSoutput$DIC
+PDR.arctic.bri.inf$BUGSoutput$DIC # This is the best fitting TPC
 PDR.arctic.bri.inf.raneff$BUGSoutput$DIC
 PDR.arctic.quad.uni$BUGSoutput$DIC
 PDR.arctic.quad.inf$BUGSoutput$DIC
@@ -1353,4 +1358,17 @@ plot.all
 # ggsave("figures/PDR.arctic.all.png", plot.all, width = 10.3, height = 5.6)
 
 
+##########
+###### 4. Process and save model output for plotting ----
+##########
+
+## Analyze TPC model
+PDR.TPC.analysis <- extractTPC(PDR.arctic.bri.inf, "PDR", Temp.xs)
+PDR.predictions.summary <- PDR.TPC.analysis[[1]]
+PDR.params.summary <- PDR.TPC.analysis[[2]]
+PDR.params.fullposts <- PDR.TPC.analysis[[3]]
+
+write_csv(PDR.predictions.summary, "data-processed/PDR.predictions.summary.csv")
+write_csv(PDR.params.summary, "data-processed/PDR.params.summary.csv")
+write_csv(PDR.params.fullposts, "data-processed/PDR.params.fullposts.csv")
 

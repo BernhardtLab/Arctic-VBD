@@ -18,6 +18,8 @@
 ##    3. Fitting TPC (Quadratic)
 ##        A. Fit a thermal responses with data from all species
 ##        B. Fit a thermal responses for priors (non-Arctic species)
+##
+##    4. Process and save model output for plotting
 
 
 ##########
@@ -31,6 +33,9 @@ library(mcmcplots) # Diagnostic plots for fits
 library(MASS)
 library(ggsci)
 library(RColorBrewer) # colour palette
+
+# Load functions
+source("R-scripts/00_Functions.R")
 
 # Load data
 data <- read_csv("data-processed/TraitData_a.csv")
@@ -52,7 +57,6 @@ data.a.nonarctic <- subset(data, species %in% c("aegypti", "albopictus"))
 
 ## Plot raw data
 plot.data.a <- data.a %>%
-  mutate(type = c(rep("Arctic", 13), rep("non-Arctic", 30))) %>% 
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = species
                  #, shape = citation
@@ -816,4 +820,73 @@ plot.a.alldata.quad.uni.raneff
 #        width = 10.3, height = 5.6)
 
 
+##########
+###### 3C. Plot all TPCs in the same graph (for comparison): Briere ----
+##########
+
+# Add an identifying column in each model output dataframe
+df.a.alldata.quad.uni <- df.a.alldata.quad.uni %>% 
+  mutate(type = "Quadratic uniform")
+
+df.a.alldata.quad.uni.raneff.pop <- df.a.alldata.quad.uni.raneff.pop %>% 
+  mutate(type = "Quadratic w/ random effects")
+
+
+# Combine the three dataframes
+df.all <- rbind(df.a.alldata.bri.uni, df.a.alldata.bri.uni.raneff.pop,
+                df.a.alldata.quad.uni, df.a.alldata.quad.uni.raneff.pop)
+
+df.all$type <- factor(df.all$type, levels = c("Briere uniform", 
+                                              "Briere w/ random effects",
+                                              "Quadratic uniform",
+                                              "Quadratics w/ random effects"))
+
+
+# Plot
+plot.all <- df.all %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
+  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_point(data = data.a, aes(x = temp, y = trait), size = 2) +
+  #geom_point(data = data.a.nonarctic, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Biting rate (days-1)"
+  ) +
+  # Customize the colours
+  ## ribbon
+  scale_fill_manual(values = c("Briere uniform" = "grey",
+                               "Briere w/ random effects" = "#4363d8")) +
+  
+  ## line
+  scale_color_manual(values = c("Briere uniform" = "#868686FF",
+                                "Briere w/ random effects" = "blue")) +
+  theme_bw()
+
+plot.all
+
+#ggsave("figures/a.bri.all.png", plot.all, width = 10.3, height = 5.6)
+
+a.alldata.bri.uni$BUGSoutput$DIC
+a.alldata.bri.uni.raneff$BUGSoutput$DIC # This is the best fitting TPC
+a.alldata.quad.uni$BUGSoutput$DIC
+a.alldata.quad.uni.raneff$BUGSoutput$DIC
+
+
+##########
+###### 4. Process and save model output for plotting ----
+##########
+
+## Analyze TPC model
+a.TPC.analysis <- extractTPC_raneff(a.alldata.bri.uni.raneff, "a", Temp.xs)
+a.predictions.summary <- a.TPC.analysis[[1]]
+a.params.summary <- a.TPC.analysis[[2]]
+a.params.fullposts <- a.TPC.analysis[[3]]
+
+write_csv(a.predictions.summary, "data-processed/a.predictions.summary.csv")
+write_csv(a.params.summary, "data-processed/a.params.summary.csv")
+write_csv(a.params.fullposts, "data-processed/a.params.fullposts.csv")
 

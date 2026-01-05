@@ -23,6 +23,9 @@
 ##        B. Fit MDR thermal responses for priors (non-Arctic)
 ##        C. Fit gamma distributions to MDR prior thermal responses
 ##        D. Fit MDR thermal responses with data-informed priors (Arctic)
+##
+##    4. Process and save model output for plotting
+
 
 
 ##########
@@ -36,18 +39,25 @@ library(mcmcplots) # Diagnostic plots for fits
 library(MASS)
 library(ggsci)
 
+# Load functions
+source("R-scripts/00_Functions.R")
 
 # Load data
 data <- read_csv("data-processed/TraitData_MDR.csv")
 unique(data$species)
 
+## Convert development time (1/MDR) to development rate (MDR)
+data <- data %>% 
+  mutate(trait = ifelse(trait_name == "1/MDR", 1/trait, trait)) %>% 
+  mutate(trait_name = "MDR") 
+
 # Subset data
 data.MDR.arctic <- subset(data, species == "nigripes")
 data.MDR.nonarctic <- subset(data, species == "sierrensis")
 
+
 ## Plot raw data
 plot.data.MDR <- data %>% 
-  mutate(type = c(rep("Arctic", 75), rep("non-Arctic", 788))) %>% 
   ggplot(aes(x = temp, y = trait, colour = species)) +
   
   ## Since the Ae. sierrensis has many data, I will just plot the mean±SE
@@ -59,7 +69,7 @@ plot.data.MDR <- data %>%
   scale_colour_discrete(name = "Species", labels = c("Ae. nigripes",
                                                      "Ae. sierrensis"
   )) +
-  facet_grid(rows = vars(type)) +
+  facet_grid(rows = vars(type), scales = "free_y") +
   theme_bw()
 
 plot.data.MDR
@@ -378,7 +388,7 @@ plot.MDR.arctic.bri.inf
 
 
 ##########
-###### 2E. Plot all three TPCs in the same graph (for comparison): Briere ----
+###### 2E. Plot all TPCs in the same graph (for comparison): Briere ----
 ##########
 
 # Add an identifying column in each model output dataframe
@@ -418,6 +428,8 @@ plot.all
 
 # ggsave("figures/MDR.arctic.bri.all.png", plot.all, width = 10.3, height = 5.6)
 
+MDR.arctic.bri.uni$BUGSoutput$DIC
+MDR.arctic.bri.inf$BUGSoutput$DIC
 
 
 ##########
@@ -464,7 +476,7 @@ MDR.arctic.quad.uni <- jags(data = jag.data,
 # save(MDR.arctic.quad.uni, file = "R-scripts/R2jags-objects/MDR.arctic.quad.uni.Rdata")
 
 # Read the .Rdata
-load("R-scripts/R2jags-objects/MDR.arctic.quad.uni.Rdata")
+# load("R-scripts/R2jags-objects/MDR.arctic.quad.uni.Rdata")
 
 
 ## Diagnostics ----
@@ -772,3 +784,24 @@ plot.all
 
 # ggsave("figures/MDR.all.arctic.png", plot.all,
 #        width = 10.3, height = 5.6)
+
+
+#### DIC ----
+MDR.arctic.bri.uni$BUGSoutput$DIC
+MDR.arctic.bri.inf$BUGSoutput$DIC # This is the best fitting TPC
+MDR.arctic.quad.uni$BUGSoutput$DIC
+MDR.arctic.quad.inf$BUGSoutput$DIC 
+
+##########
+###### 4. Process and save model output for plotting ----
+##########
+
+## Analyze TPC model
+MDR.TPC.analysis <- extractTPC(MDR.arctic.bri.inf, "MDR", Temp.xs)
+MDR.predictions.summary <- MDR.TPC.analysis[[1]]
+MDR.params.summary <- MDR.TPC.analysis[[2]]
+MDR.params.fullposts <- MDR.TPC.analysis[[3]]
+
+write_csv(MDR.predictions.summary, "data-processed/MDR.predictions.summary.csv")
+write_csv(MDR.params.summary, "data-processed/MDR.params.summary.csv")
+write_csv(MDR.params.fullposts, "data-processed/MDR.params.fullposts.csv")

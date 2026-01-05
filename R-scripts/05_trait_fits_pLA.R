@@ -25,6 +25,8 @@
 ##        B. Fit pLA thermal responses for priors (non-Arctic species)
 ##        C. Fit gamma distributions to pLA prior thermal responses
 ##        D. Fit pLA thermal responses with data-informed priors (Arctic)
+##
+##    4. Process and save model output for plotting
 
 
 ##########
@@ -39,6 +41,11 @@ library(MASS)
 library(ggsci)
 library(RColorBrewer) # colour palette
 
+
+# Load functions
+source("R-scripts/00_Functions.R")
+
+
 # Load data
 data <- read_csv("data-processed/TraitData_pLA.csv")
 unique(data$species)
@@ -46,15 +53,14 @@ unique(data$species)
 
 # Subset data
 ## Arctic species
-data.pLA.arctic <- subset(data, species %in% "vexans")
+data.pLA.arctic <- subset(data, type == "Arctic")
 
 ## Non-Arctic species
-data.pLA.nonarctic <- subset(data, !(species %in% "vexans"))
+data.pLA.nonarctic <- subset(data, type == "non-Arctic")
 
 
 # Plot the raw data
 plot.data.pLA <- data %>% 
-  mutate(type = c(rep("Arctic", 6), rep("non-Arctic", 31))) %>% 
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = species, shape = citation)) +
   labs(y = "Larval survival (%)", x = expression(paste("Temperature (", degree, "C)"))) +
@@ -65,7 +71,8 @@ plot.data.pLA <- data %>%
   )) +
   scale_shape_discrete(name = "Citation", labels = c("Brust 1967",
                                                      "Shelton 1973",
-                                                     "Teng 2000")) +
+                                                     "Teng 2000",
+                                                     "Trpis 1970")) +
   facet_grid(rows = vars(type)) +
   theme_bw()
 
@@ -220,7 +227,9 @@ unique.id <- as.integer(data$unique_id)
 Nids <- max(unique.id)
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id,
+                 prior = prior)
 
 ##### Run JAGS
 pLA.nonarctic.bri.uni.raneff <- jags(
@@ -408,7 +417,7 @@ pLA.arctic.bri.inf <- jags(data = jag.data,
 )
 
 ## Save the model as Rdata 
-# save(pLA.arctic.bri.inf, file = "R-scripts/R2jags-objects/pLA.arctic.bri.inf.Rdata")
+save(pLA.arctic.bri.inf, file = "R-scripts/R2jags-objects/pLA.arctic.bri.inf.Rdata")
 
 # Read the .Rdata
 # load("R-scripts/R2jags-objects/pLA.arctic.bri.inf.Rdata")
@@ -487,13 +496,11 @@ plot.all <- df.all %>%
   # Customize the colours
   ## ribbon
   scale_fill_manual(values = c("Briere uniform" = "grey",
-                               "Briere informative" = "#4363d8",
-                               "Briere informative raneff" = "pink")) +
+                               "Briere informative" = "#4363d8")) +
   
   ## line
   scale_color_manual(values = c("Briere uniform" = "#868686FF",
-                                "Briere informative" = "blue",
-                                "Briere informative raneff" = "red")) +
+                                "Briere informative" = "blue")) +
   theme_bw()
 
 plot.all
@@ -534,7 +541,8 @@ N.obs <- length(trait)
 temp <- data$temp
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs)
 
 # ##### Run JAGS -----
 # pLA.arctic.quad.uni <- jags(data = jag.data,
@@ -835,17 +843,17 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, hypers = hypers)
 
 ##### Run JAGS -----
-# pLA.arctic.quad.inf <- jags(data = jag.data,
-#                             inits = inits,
-#                             parameters.to.save = parameters,
-#                             model.file = "R-scripts/quad_inf.txt",
-#                             n.thin = nt,
-#                             n.chains = nc,
-#                             n.burnin = nb,
-#                             n.iter = ni,
-#                             DIC = T,
-#                             working.directory = getwd()
-# )
+pLA.arctic.quad.inf <- jags(data = jag.data,
+                            inits = inits,
+                            parameters.to.save = parameters,
+                            model.file = "R-scripts/quad_inf.txt",
+                            n.thin = nt,
+                            n.chains = nc,
+                            n.burnin = nb,
+                            n.iter = ni,
+                            DIC = T,
+                            working.directory = getwd()
+)
 
 ## Save the model as Rdata 
 # save(pLA.arctic.quad.inf, file = "R-scripts/R2jags-objects/pLA.arctic.quad.inf.Rdata")
@@ -938,17 +946,12 @@ plot.all
 
 ##### Plot all best fitting TPCs for comparison ----
 
-#### DIC ----
-pLA.arctic.bri.uni$BUGSoutput$DIC
-pLA.arctic.bri.inf$BUGSoutput$DIC
-pLA.arctic.quad.uni$BUGSoutput$DIC
-pLA.arctic.quad.inf$BUGSoutput$DIC
 
 # Combine the three dataframes
 df.all <- rbind(df.pLA.arctic.bri.uni, 
                 df.pLA.arctic.bri.inf, 
-                df.pLA.arctic.quad.uni
-                #df.pLA.arctic.quad.inf
+                df.pLA.arctic.quad.uni,
+                df.pLA.arctic.quad.inf
                 )
 
 
@@ -977,3 +980,24 @@ plot.all <- df.all %>%
 plot.all
 
 # ggsave("figures/pLA.arctic.all.png", plot.all, width = 10.3, height = 5.6)
+
+#### DIC ----
+pLA.arctic.bri.uni$BUGSoutput$DIC
+pLA.arctic.bri.inf$BUGSoutput$DIC
+pLA.arctic.quad.uni$BUGSoutput$DIC
+pLA.arctic.quad.inf$BUGSoutput$DIC # This is the best fitting TPC
+
+
+##########
+###### 4. Process and save model output for plotting ----
+##########
+
+## Analyze TPC model
+pLA.TPC.analysis <- extractTPC(pLA.arctic.quad.inf, "pLA", Temp.xs)
+pLA.predictions.summary <- pLA.TPC.analysis[[1]]
+pLA.params.summary <- pLA.TPC.analysis[[2]]
+pLA.params.fullposts <- pLA.TPC.analysis[[3]]
+
+write_csv(pLA.predictions.summary, "data-processed/pLA.predictions.summary.csv")
+write_csv(pLA.params.summary, "data-processed/pLA.params.summary.csv")
+write_csv(pLA.params.fullposts, "data-processed/pLA.params.fullposts.csv")

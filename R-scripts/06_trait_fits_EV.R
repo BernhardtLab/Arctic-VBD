@@ -26,6 +26,8 @@
 ##        B. Fit EV thermal responses for priors (non-Arctic species)
 ##        C. Fit gamma distributions to EV prior thermal responses
 ##        D. Fit EV thermal responses with data-informed priors (Arctic)
+##
+##    4. Process and save model output for plotting
 
 
 ##########
@@ -40,6 +42,11 @@ library(MASS)
 library(ggsci)
 library(RColorBrewer) # colour palette
 
+
+# Load functions
+source("R-scripts/00_Functions.R")
+
+
 # Load data
 data <- read_csv("data-processed/TraitData_EV.csv")
 unique(data$species)
@@ -47,20 +54,20 @@ unique(data$species)
 
 # Subset data
 ## Arctic species
-data.EV.arctic <- subset(data, species %in% c("vexans", "dorsalis"))
+data.EV.arctic <- subset(data, type == "Arctic")
 
 ## Non-Arctic species
-data.EV.nonarctic <- subset(data, !(species %in% c("vexans", "dorsalis")))
+data.EV.nonarctic <- subset(data, type == "non-Arctic")
 
 
 ## Plot raw data
 plot.data.EV <- data %>% 
-  mutate(type = c(rep("Arctic", 12), rep("non-Arctic", 29))) %>% 
   ggplot() +
   geom_point(aes(x = temp, y = trait, colour = species
   )) +
   labs(y = "Egg viability (%)", x = "Temperature ºC") +
-  scale_colour_discrete(name = "species", labels = c("Ae. dorsalis",
+  scale_colour_discrete(name = "species", labels = c("Ae. albopictus",
+                                                     "Ae. dorsalis",
                                                      "Ae. nigromaculis",
                                                      "Ae. triseriatus",
                                                      "Ae. vexans"
@@ -1101,12 +1108,6 @@ plot.all
 
 ##### Plot all best fitting TPCs for comparison ----
 
-#### DIC ----
-EV.arctic.bri.uni$BUGSoutput$DIC
-EV.arctic.bri.inf$BUGSoutput$DIC
-EV.arctic.quad.uni$BUGSoutput$DIC
-EV.arctic.quad.inf$BUGSoutput$DIC
-
 # Combine the three dataframes
 df.all <- rbind(#df.EV.arctic.bri.uni, 
                 #df.EV.arctic.bri.inf, 
@@ -1139,3 +1140,25 @@ plot.all <- df.all %>%
 plot.all
 
 # ggsave("figures/EV.arctic.all.png", plot.all, width = 10.3, height = 5.6)
+
+
+#### DIC ----
+EV.arctic.bri.uni$BUGSoutput$DIC
+EV.arctic.bri.inf$BUGSoutput$DIC
+EV.arctic.quad.uni$BUGSoutput$DIC
+EV.arctic.quad.inf$BUGSoutput$DIC # This is the best fitting TPC
+
+
+##########
+###### 4. Process and save model output for plotting ----
+##########
+
+## Analyze TPC model
+EV.TPC.analysis <- extractTPC(EV.arctic.quad.inf, "EV", Temp.xs)
+EV.predictions.summary <- EV.TPC.analysis[[1]]
+EV.params.summary <- EV.TPC.analysis[[2]]
+EV.params.fullposts <- EV.TPC.analysis[[3]]
+
+write_csv(EV.predictions.summary, "data-processed/EV.predictions.summary.csv")
+write_csv(EV.params.summary, "data-processed/EV.params.summary.csv")
+write_csv(EV.params.fullposts, "data-processed/EV.params.fullposts.csv")

@@ -1,0 +1,36 @@
+trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes
+EFGC,10,82.1,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper
+EFGC,15,112.9,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper
+EFGC,20,155.88,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper
+EFGC,25,248.62,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper
+EFGC,30,93.74,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper
+EFGC,35,40.9,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper
+EFGC,40,0,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper
+1/a,16,8.42276423,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,16,14.05691057,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,16,10.47154472,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,27,3.06646526,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,27,3.066465258,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,27,3.119335345,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,31,3.585365853,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,31,3.016260163,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,31,2.048780488,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,31,3.073170732,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,35,2.061933534,NA,NA,NA,NA,NA,NA,culex,pipiens,Ruybal_2016_Parasites&Vectors,NA,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure
+1/a,10,25.51,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Translated from Chinese paper
+1/a,15,10.69,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Translated from Chinese paper
+1/a,20,7,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Translated from Chinese paper
+1/a,25,6.33,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Translated from Chinese paper
+1/a,30,4.43,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Translated from Chinese paper
+1/a,35,3.07,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Translated from Chinese paper
+1/a,40,1000,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,0 ovipositions; Translated from Chinese paper
+1/a,25,4.5,NA,NA,NA,NA,NA,NA,culex,pipiens,Teckle_1960_AJTMH,NA,Table 9,NA
+1/a,20,8.5,NA,NA,NA,NA,NA,NA,culex,pipiens,Teckle_1960_AJTMH,NA,Table 9,NA
+1/a,15,17.5,NA,NA,NA,NA,NA,NA,culex,pipiens,Teckle_1960_AJTMH,NA,Table 9,NA
+1/a,10,32.5,NA,NA,NA,NA,NA,NA,culex,pipiens,Teckle_1960_AJTMH,NA,Table 9,NA
+1/a,5,1000,NA,NA,NA,NA,NA,NA,culex,pipiens,Teckle_1960_AJTMH,NA,Table 9,0 ovipositions
+1/a,30,3.5,1.9,1.9,NA,NA,NA,NA,culex,pipiens,Madder_1983_JMedEntom,NA,Table 11,NA
+1/a,25,4.8,0.77,0.77,NA,NA,NA,NA,culex,pipiens,Madder_1983_JMedEntom,NA,Table 11,NA
+1/a,22,5.6,0.71,0.71,NA,NA,NA,NA,culex,pipiens,Madder_1983_JMedEntom,NA,Table 11,NA
+1/a,20,6.1,0.57,0.57,NA,NA,NA,NA,culex,pipiens,Madder_1983_JMedEntom,NA,Table 11,NA
+1/a,17,15.2,1.3,1.3,NA,NA,NA,NA,culex,pipiens,Madder_1983_JMedEntom,NA,Table 11,NA

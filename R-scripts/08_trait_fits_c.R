@@ -1,7 +1,7 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian inference (JAGS) to fit TPCs for Infection efficiency
+## Purpose: use Bayesian inference (JAGS) to fit TPCs for infection efficiency
 ## (c) using data from Ae. Trivittatus (transmitting Dirofilaria immitis;
 ## Christensen and Hollander 1978) with uniform priors
 ##
@@ -10,12 +10,10 @@
 ##    0. Set-up workspace
 ##
 ##    1. MCMC settings for all models
-##
-##    2. Fitting TPC (Briere)
-##        A. Fit c thermal responses with uniform priors
-##
-##    3. Fitting TPC (Quadratic)
-##        A. Fit c thermal responses with uniform priors
+##    2. Fitting c thermal responses with uniform priors (Briere)
+##    3. Fitting c thermal responses with uniform priors (Quadratic)
+##    4. Plot all TPCs for comparison
+##    5. Process and save model output for plotting
 
 
 ##########
@@ -30,6 +28,10 @@ library(MASS)
 library(ggsci)
 library(RColorBrewer) # colour palette
 
+# Load functions
+source("R-scripts/00_Functions.R")
+
+
 # Load data
 data <- read_csv("data-processed/TraitData_c.csv")
 unique(data$species)
@@ -38,7 +40,6 @@ data.c <- data
 
 ## Plot raw data
 plot.data.c <- data.c %>% 
-  mutate(type = "non-Arctic") %>% 
   ggplot() +
   geom_point(aes(x = temp, y = trait, colour = species)) +
   labs(y = "Infection proportion", x = "Temperature ºC") +
@@ -96,7 +97,7 @@ prior <- data.frame(q = c(0, 1),
                     Tm = c(35, 50))
 
 ##########
-###### 2A. Fit c thermal responses with uniform priors (Arctic): Briere ----
+###### 2. Fitting c thermal responses with uniform priors (Briere) ----
 ##########
 
 ##### inits Function
@@ -133,7 +134,7 @@ c.nonarctic.bri.uni <- jags(
   data = jag.data,
   inits = inits,
   parameters.to.save = parameters,
-  model.file = "R-scripts/briereprob_c.txt",
+  model.file = "R-scripts/briereprob.txt",
   n.thin = nt,
   n.chains = nc,
   n.burnin = nb,
@@ -187,11 +188,6 @@ plot.c.nonarctic.bri.uni
 #        width = 10.3, height = 5.6)
 
 
-
-##########
-###### 2E. Plot all TPCs for Arctic species in the same graph (for comparison): Briere ----
-##########
-
 # Add an identifying column in each model output dataframe
 df.c.nonarctic.bri.uni <- df.c.nonarctic.bri.uni %>% 
   mutate(type = "Briere uniform")
@@ -199,7 +195,7 @@ df.c.nonarctic.bri.uni <- df.c.nonarctic.bri.uni %>%
 
 
 ##########
-###### 3A. Fit c thermal responses with uniform priors (Arctic): Quadratic ----
+###### 3. Fitting c thermal responses with uniform priors (Quadratic) ----
 ##########
 
 sink("R-scripts/quadprob_c.txt")
@@ -318,28 +314,18 @@ plot.c.nonarctic.quad.uni
 #        width = 10.3, height = 5.6)
 
 
-
-##########
-###### 3E. Plot all three TPCs in the same graph (for comparison) ----
-##########
-
 # Add an identifying column in each model output dataframe
 df.c.nonarctic.quad.uni <- df.c.nonarctic.quad.uni %>% 
   mutate(type = "Quadratic uniform")
 
 
-
-
-##### Plot all best fitting TPCs for comparison ----
-
-#### DIC ----
-c.nonarctic.bri.uni$BUGSoutput$DIC
-c.nonarctic.quad.uni$BUGSoutput$DIC
+##########
+###### 4. Plot all best fitting TPCs for comparison ----
+##########
 
 # Combine the three dataframes
 df.all <- rbind(df.c.nonarctic.bri.uni, 
                 df.c.nonarctic.quad.uni)
-
 
 
 ##### Plot
@@ -366,3 +352,22 @@ plot.all <- df.all %>%
 plot.all
 
 # ggsave("figures/c.nonarctic.all.png", plot.all, width = 10.3, height = 5.6)
+
+#### DIC ----
+c.nonarctic.bri.uni$BUGSoutput$DIC
+c.nonarctic.quad.uni$BUGSoutput$DIC ## This is the best fitting TPC
+
+
+##########
+###### 5. Process and save model output for plotting ----
+##########
+
+## Analyze TPC model
+c.TPC.analysis <- extractTPC(c.nonarctic.quad.uni, "c", Temp.xs)
+c.predictions.summary <- c.TPC.analysis[[1]]
+c.params.summary <- c.TPC.analysis[[2]]
+c.params.fullposts <- c.TPC.analysis[[3]]
+
+write_csv(c.predictions.summary, "data-processed/c.predictions.summary.csv")
+write_csv(c.params.summary, "data-processed/c.params.summary.csv")
+write_csv(c.params.fullposts, "data-processed/c.params.fullposts.csv")

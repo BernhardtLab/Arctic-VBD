@@ -91,7 +91,7 @@ a.aegypti.Goindin2015  <- a.aegypti.Goindin2015  %>%
   # Add new columns to provide more info
   mutate(trait_name = "1/a") %>% 
   mutate(citation = "Goindin_2015_PLoSOne") %>% 
-  select(trait_name, interactor1temp, trait, original_trait_def, interactor1genus, 
+  dplyr::select(trait_name, interactor1temp, trait, original_trait_def, interactor1genus, 
          interactor1species, citation, doi, figure_table, location)
 
 
@@ -176,12 +176,15 @@ TraitData_a <-  bind_rows(a.aedes,
                           a.aegypti)
 
 
+## Add a new column to indicate whether the data is Arctic or non-Arctic
+TraitData_a <- TraitData_a %>% 
+  mutate(type = c(rep("Arctic", 13), rep("non-Arctic", 30)))
+
 # write_csv(TraitData_a, "data-processed/TraitData_a.csv")
 
 ## Plot raw data
 plot.data.a <- TraitData_a %>%
   mutate(trait = ifelse(trait_name == "1/a", 1/trait, trait)) %>% 
-  mutate(type = c(rep("Arctic", 13), rep("non-Arctic", 30))) %>% 
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = species
                  #, shape = citation
@@ -242,16 +245,16 @@ c.trivittatus <- c.trivittatus %>%
   mutate(citation = "Christensen_1978_ProcHelmintholSocWash") %>% 
   mutate(doi = NA) %>% #No doi for this paper?
   mutate(data_source = "figure 2") %>% 
+  mutate(type = "non-Arctic") %>% 
   dplyr::select(trait_name, temp, trait, error_pos, error_neg, error_unit, trait_def, 
          trait2_name, trait2, genus, species, paras_genus, paras_species, 
-         citation, doi, data_source, notes)
+         citation, doi, data_source, notes, type)
 
 # write_csv(c.trivittatus, "data-processed/TraitData_c.csv")
 
 
 ## Plot raw data
 plot.data.c <- c.trivittatus %>% 
-mutate(type = "non-Arctic") %>% 
   ggplot() +
   geom_point(aes(x = temp, y = trait, colour = species)) +
   labs(y = "Infection probability", x = "Temperature ºC") +
@@ -403,8 +406,32 @@ TraitData_PDR <- TraitData_PDR %>%
   relocate(error, .after = trait) %>% 
   relocate(error_unit, .after = error)
 
+## Add a new column to indicate whether the data is Arctic or non-Arctic
+TraitData_PDR <- TraitData_PDR %>% 
+  mutate(type = c(rep("Arctic", 7), rep("non-Arctic", 18)))
+
 
 # write_csv(TraitData_PDR, "data-processed/TraitData_PDR.csv")
+
+
+# Plot the raw data
+plot.data.PDR <- TraitData_PDR %>% 
+  ggplot(aes(x = temp, y = 1/trait)) +
+  geom_point(aes(colour = citation)) +
+  #geom_line(aes(colour = citation)) +
+  labs(y = "Parasite development rate (1/days)", x = "Temperature ºC") +
+  scale_colour_discrete(name = "Species", labels = c("D. immitis (in Ae. Trivittatus)",
+                                                     "V. eleguneniensis",
+                                                     "S. tundra",
+                                                     "W. bancrofti (in Ae. polynesiensis)",
+                                                     "D. immitis (in Ae. aegypti)"
+  )) +
+  facet_grid(rows = vars(type)) +
+  theme_bw()
+
+plot.data.PDR
+
+# ggsave("figures/raw_data/plot.data.PDR.png", plot.data.PDR, , width = 9.83, height = 6.17)
 
 
 
@@ -552,11 +579,14 @@ EV.VecTrait$trait2 <- as.character(EV.VecTrait$trait2)
 
 TraitData_EV <- bind_rows(EV.vexans, EV.dorsalis, EV.nigromaculis, EV.triseriatus, EV.VecTrait)
 
+## Add a new column to indicate whether the data is Arctic or non-Arctic
+TraitData_EV <- TraitData_EV %>% 
+  mutate(type = c(rep("Arctic", 12), rep("non-Arctic", 29)))
+
 # write_csv(TraitData_EV, "data-processed/TraitData_EV.csv")
 
- ## Plot raw data
+## Plot raw data
 plot.data.EV <- TraitData_EV %>% 
-  mutate(type = c(rep("Arctic", 12), rep("non-Arctic", 29))) %>% 
   ggplot() +
   geom_point(aes(x = temp, y = trait, colour = species 
                  #                 colour = as.factor(trait_2)
@@ -581,40 +611,149 @@ plot.data.EV
 ###### 4ii. Larval survival (pLA) ----
 ##########
 
-# Aedes vexans ----
-## Read data
-pLA.vexans <- read_csv("data-raw/aedes_vexans.Brust1967.csv") %>% 
+# Ae. vexans ----
+## Read data from Marta
+pLA.vexans <- read_csv("data-raw/pLA_Data_fromShocket.csv") %>% 
   clean_names()
 
 pLA.vexans <- pLA.vexans %>% 
+  ## get data from Ae. vexans
+  filter(host_code == "Avex") %>% 
+  # select columns that we need
+  select(trait_name, t, trait, error_pos_si, error_neg_si, trait2_name, 
+         trait_2, citation, figure, notes) %>% 
   # Add new columns to provide more info
-  mutate(trait_def = "percent reaching the adult stage") %>% 
+  mutate(error_unit = NA) %>% 
+  relocate(error_unit, .after = "error_neg_si") %>% # rearrange columns
+  mutate(trait_def = NA) %>% 
+  relocate(trait_def, .after = "error_unit") %>% 
   mutate(genus = "aedes") %>% 
-  mutate(species = "vexans") %>% 
-  select(!"host_code") %>% 
   relocate(genus, .after = "trait_2") %>% 
+  mutate(species = "vexans") %>% 
   relocate(species, .after = "genus") %>% 
-  relocate(trait_def, .after = "species")
-  
-colnames(pLA.vexans) <- c("trait_name", "temp", "trait", "error_pos", 
-                          "error_neg", "trait2_name", "trait_2", "genus", 
-                          "species", "trait_def", "citation", "doi",
-                          "data_source", "notes")
-
-pLA.vexans %>% 
-  ggplot() +
-  geom_point(aes(x = temp, y = trait)) +
-  labs(y = "Larval survival (%)", x = "Temperature ºC") +
-  theme_bw()
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation")
 
 
-# Aedes spp. ----
-pLA.aedes <- read_csv("data/pLA.csv") %>% 
+## Rename columns
+colnames(pLA.vexans) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
+                         "error_unit", "trait_def", "trait2_name", "trait2",
+                         "genus", "species", "citation","doi", "data_source", 
+                         "notes")
+
+## Provide more info on the papers
+### Brust 1967
+pLA.vexans$doi[pLA.vexans$citation == "Brust_1967_TheCanadianEntomologist"] <- "10.4039/ent99986-9"
+
+
+# Ae. nigromaculis ----
+## Read data from Marta
+pLA.nigromaculis <- read_csv("data-raw/pLA_Data_fromShocket.csv") %>% 
   clean_names()
 
-TraitData_pLA <- rbind(pLA.vexans, pLA.aedes)
+pLA.nigromaculis <- pLA.nigromaculis %>% 
+  ## get data from Ae. vexans
+  filter(host_code == "Anig") %>% 
+  # select columns that we need
+  select(trait_name, t, trait, error_pos_si, error_neg_si, trait2_name, 
+         trait_2, citation, figure, notes) %>% 
+  # Add new columns to provide more info
+  mutate(error_unit = NA) %>% 
+  relocate(error_unit, .after = "error_neg_si") %>% # rearrange columns
+  mutate(trait_def = NA) %>% 
+  relocate(trait_def, .after = "error_unit") %>% 
+  mutate(genus = "aedes") %>% 
+  relocate(genus, .after = "trait_2") %>% 
+  mutate(species = "nigromaculis") %>% 
+  relocate(species, .after = "genus") %>% 
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation")
 
-# write_csv(TraitData_pLA, "data/data-processed/TraitData_pLA.csv")
+
+## Rename columns
+colnames(pLA.nigromaculis) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
+                          "error_unit", "trait_def", "trait2_name", "trait2",
+                          "genus", "species", "citation","doi", "data_source", 
+                          "notes")
+
+
+## Provide more info on the papers
+### Brust 1967
+pLA.nigromaculis$doi[pLA.nigromaculis$citation == "Brust_1967_TheCanadianEntomologist"] <- "10.4039/ent99986-9"
+
+
+
+# Ae. sollicitans ----
+## Read data from Marta
+pLA.sollicitans <- read_csv("data-raw/pLA_Data_fromShocket.csv") %>% 
+  clean_names()
+
+pLA.sollicitans <- pLA.sollicitans %>% 
+  ## get data from Ae. vexans
+  filter(host_code == "Asol") %>% 
+  # select columns that we need
+  select(trait_name, t, trait, error_pos_si, error_neg_si, trait2_name, 
+         trait_2, citation, figure, notes) %>% 
+  # Add new columns to provide more info
+  mutate(error_unit = NA) %>% 
+  relocate(error_unit, .after = "error_neg_si") %>% # rearrange columns
+  mutate(trait_def = NA) %>% 
+  relocate(trait_def, .after = "error_unit") %>% 
+  mutate(genus = "aedes") %>% 
+  relocate(genus, .after = "trait_2") %>% 
+  mutate(species = "sollicitans") %>% 
+  relocate(species, .after = "genus") %>% 
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation")
+
+
+## Rename columns
+colnames(pLA.sollicitans) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
+                                "error_unit", "trait_def", "trait2_name", "trait2",
+                                "genus", "species", "citation","doi", "data_source", 
+                                "notes")
+
+
+# Ae. triseriatus ----
+## Read data from Marta
+pLA.triseriatus <- read_csv("data-raw/pLA_Data_fromShocket.csv") %>% 
+  clean_names()
+
+pLA.triseriatus <- pLA.triseriatus %>% 
+  ## get data from Ae. vexans
+  filter(host_code == "Atri") %>% 
+  # select columns that we need
+  select(trait_name, t, trait, error_pos_si, error_neg_si, trait2_name, 
+         trait_2, citation, figure, notes) %>% 
+  # Add new columns to provide more info
+  mutate(error_unit = NA) %>% 
+  relocate(error_unit, .after = "error_neg_si") %>% # rearrange columns
+  mutate(trait_def = NA) %>% 
+  relocate(trait_def, .after = "error_unit") %>% 
+  mutate(genus = "aedes") %>% 
+  relocate(genus, .after = "trait_2") %>% 
+  mutate(species = "triseriatus") %>% 
+  relocate(species, .after = "genus") %>% 
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation")
+
+
+## Rename columns
+colnames(pLA.triseriatus) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
+                               "error_unit", "trait_def", "trait2_name", "trait2",
+                               "genus", "species", "citation","doi", "data_source", 
+                               "notes")
+
+
+TraitData_pLA <- bind_rows(pLA.vexans, pLA.nigromaculis, pLA.sollicitans, pLA.triseriatus)
+
+
+## Add a new column to indicate whether the data is Arctic or non-Arctic
+TraitData_pLA <- TraitData_pLA %>% 
+  mutate(type = c(rep("Arctic", 12), rep("non-Arctic", 31)))
+
+
+# write_csv(TraitData_pLA, "data-processed/TraitData_pLA.csv")
 
 
 ##########
@@ -627,21 +766,31 @@ MDR.nigripes <- read_excel("data-raw/aedes_nigripes.Culler2015.xlsx",
                            sheet = "Dev. Time") %>% 
   clean_names() 
 
-# Calculate development rate by 1/development time
+
 MDR.nigripes <- MDR.nigripes %>% 
   mutate(trait = development_time_in_days) %>% 
+  filter(sex == "female") %>% # Only female data is used
   # Add new columns to provide more info
   mutate(trait_name = "1/MDR") %>% 
+  mutate(error_pos = NA) %>% 
+  mutate(error_neg = NA) %>% 
+  mutate(error_unit = NA) %>% 
   mutate(trait_def = "days until emergence") %>% 
+  mutate(trait2_name = NA) %>% 
+  mutate(trait2 = NA) %>% 
   mutate(genus = "aedes") %>% 
   mutate(species = "nigripes") %>% 
   mutate(citation = "Culler_2015_ProcRSocB") %>% 
+  mutate(doi = "10.1098/rspb.2015.1549") %>% 
   mutate(data_source = "raw data") %>% 
-  select(trait_name, mean_temperature_during_development_c, trait, 
-         genus, species, trait_def, citation, data_source, sex)
+  mutate(notes = NA) %>% 
+  mutate(type = "Arctic") %>% 
+  dplyr::select(trait_name, mean_temperature_during_development_c, trait, 
+                error_pos, error_neg, error_unit, trait_def, trait2_name, trait2,
+                genus, species, citation, doi, data_source, notes, type)
+
 
 colnames(MDR.nigripes)[2] <- "temp"
-colnames(MDR.nigripes)[9] <- "notes"
 
 
 ## Aedes sierrensis (for informative priors) ----
@@ -652,15 +801,23 @@ MDR.sierrensis <- MDR.sierrensis %>%
   clean_names() %>% 
   # Add new columns to provide more info
   mutate(trait_name = "MDR") %>% 
+  mutate(error_pos = NA) %>% 
+  mutate(error_neg = NA) %>% 
+  mutate(error_unit = NA) %>% 
   mutate(trait_def = "1/days") %>% 
+  mutate(trait2_name = NA) %>% 
+  mutate(trait2 = NA) %>% 
   mutate(genus = "aedes") %>% 
   mutate(species = "sierrensis") %>% 
   mutate(citation = "Couper_2024_ProcBiolSci") %>% 
+  mutate(doi = "10.1098/rspb.2023.2457") %>% 
   mutate(data_source = "raw data") %>% # raw data from the paper
+  mutate(type = "non-Arctic") %>% 
   # Combine info from population and sample_id into a new column called "notes"
   unite(population, sample_id, sep = "_", col = "notes") %>% 
-  select(trait_name, temp_treatment, juvenile_dev_rate, genus, species, 
-         trait_def, citation, data_source, notes) %>% 
+  dplyr::select(trait_name, temp_treatment, juvenile_dev_rate, 
+                error_pos, error_neg, error_unit, trait_def, trait2_name, trait2,
+                genus, species, citation, doi, data_source, notes, type) %>% 
   filter(!is.na(juvenile_dev_rate))
 
 # Rename columns
@@ -669,14 +826,13 @@ colnames(MDR.sierrensis)[3] <- "trait"
 
 
 # Combine data from nigripes and sierrensis into a single dataframe
-TraitData_MDR <- rbind(MDR.nigripes, MDR.sierrensis)
+TraitData_MDR <- bind_rows(MDR.nigripes, MDR.sierrensis)
 
-# write_csv(TraitData_MDR, "data/data-processed/TraitData_MDR.csv")
+# write_csv(TraitData_MDR, "data-processed/TraitData_MDR.csv")
 
 
 ## Plot raw data
 plot.data.MDR <- TraitData_MDR %>% 
-  mutate(type = c(rep("Arctic", 75), rep("non-Arctic", 788))) %>% 
   ggplot(aes(x = round(temp,0), y = trait, colour = species)) +
   
   ## Since the Ae. sierrensis has many data, I will just plot the mean±SE
@@ -725,7 +881,7 @@ lf.vexans <- lf.vexans %>%
   mutate(doi = "10.1093/jee/64.1.324") %>% 
   mutate(data_source = "table 1") %>% 
   mutate(notes = NA) %>% 
-  dplyr::select(trait_name, treatment_temperature, days_to_50_percent_mortality, 
+  select(trait_name, treatment_temperature, days_to_50_percent_mortality, 
          error_pos, error_neg, error_unit, trait_def, trait2_name, trait2, 
          genus, species, citation, doi, data_source, notes)
   
@@ -772,7 +928,6 @@ lf.sierrensis <- lf.sierrensis %>%
 
 # Rename columns
 colnames(lf.sierrensis)[2] <- "temp"
-# colnames(lf.sierrensis)[3] <- "trait"
 
 
 
@@ -782,7 +937,7 @@ lf.VecTrait <- read_csv("data-raw/lf_VecTrait.csv") %>%
 
 
 lf.VecTrait <- lf.VecTrait  %>% 
-  filter(interactor1sex == "female") %>% 
+  filter(interactor1sex == "female") %>% # Only want female data
   # Add new columns to provide more info
   mutate(trait_name = "lf") %>% 
   mutate(trait2_name = ifelse(
@@ -819,6 +974,7 @@ lf.Huxley2022 <- lf.VecTrait %>%
   mutate(trait_def = "duration of life stage") %>% 
   mutate(data_source = "calculated from supplementary material")
 
+# Remove Huxley 2021 and Huxley 2022 data from lf.VecTrait
 lf.VecTrait <- lf.VecTrait %>% 
   filter(citation != "Huxley et al. 2021. The effect of resource limitation on the temperature-dependance of mosquito fitness. Proc. R. Soc. B. 288: 20203217.") %>% 
   filter(citation != "Huxley et al. 2022. Competition and resource depletion shape the thermal response of population fitness in Aedes aegypti. Commun. Biol. 5: 66.") 
@@ -858,12 +1014,15 @@ colnames(lf.aegypti) <- c("trait_name", "temp", "trait", "error_pos", "error_neg
 # Combine data from vexans and sierrensis into a single dataframe
 TraitData_lf <- bind_rows(lf.vexans, lf.aedes, lf.sierrensis, lf.aegypti, lf.VecTrait, lf.Huxley2021, lf.Huxley2022)
 
+## Add a new column to indicate whether the data is Arctic or non-Arctic
+TraitData_lf <- TraitData_lf %>% 
+  mutate(type = c(rep("Arctic", 54), rep("non-Arctic", 97)))
+
 # write_csv(TraitData_lf, "data-processed/TraitData_lf.csv")
 
 
 ## Plot raw data
 plot.data.lf <- TraitData_lf %>% 
-  mutate(type = c(rep("Arctic", 54), rep("non-Arctic", 97))) %>% 
   ggplot(aes(x = temp, y = trait, colour = species)) +
   geom_point(aes(colour = species), position = "jitter") +
   
@@ -980,4 +1139,136 @@ plot.data.B
 
 # ggsave("figures/raw_data/plot.data.fecundity.png", plot.data.B, width = 9.83, height = 6.17)
 
+## Culex pipiens ----
+## EFGC ----
+EFGC.pipiens <- read_csv("data-raw/Fecundity_Data_fromShocket.csv") %>% 
+  clean_names()
 
+
+EFGC.pipiens <- EFGC.pipiens %>% 
+  ## get data from Cx. pipiens
+  filter(host_code == "Cpip") %>% 
+  filter(trait_name == "EFOC") %>% 
+  # select columns that we need
+  dplyr::select(trait_name, t, trait, error_pos_si, error_neg_si, trait2_name, 
+                trait_2, citation, figure, notes) %>% 
+  # Add new columns to provide more info
+  mutate(trait_name = "EFGC") %>%  # Change from EFOC (eggs per female per oviposition cycle) to EFGC (gonotrophic cycle)
+  mutate(error_unit = NA) %>% 
+  relocate(error_unit, .after = "error_neg_si") %>% # rearrange columns
+  mutate(trait_def = NA) %>% 
+  relocate(trait_def, .after = "error_unit") %>% 
+  mutate(genus = "culex") %>% 
+  relocate(genus, .after = "trait_2") %>% 
+  mutate(species = "pipiens") %>% 
+  relocate(species, .after = "genus") %>% 
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation") %>% 
+  mutate(type = "non-Arctic")
+
+
+## Rename columns
+colnames(EFGC.pipiens) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
+                           "error_unit", "trait_def", "trait2_name", "trait2",
+                           "genus", "species", "citation","doi", "data_source", 
+                           "notes", "type")
+
+
+## Cx. pipiens: a ----
+# a.pipiens <- read_csv("data-raw/a_Data_fromShocket.csv") %>% 
+#   clean_names()
+# 
+# 
+# a.pipiens <- a.pipiens %>% 
+#   ## get data from Cx. pipiens
+#   filter(host_code == "Cpip") %>% 
+#   # select columns that we need
+#   select(trait_name, t_c, trait, error_pos_si, error_neg_si, trait2_name, 
+#          trait_2, citation, figure, notes) %>% 
+#   # Add new columns to provide more info
+#   mutate(error_unit = NA) %>% 
+#   relocate(error_unit, .after = "error_neg_si") %>% # rearrange columns
+#   mutate(trait_def = NA) %>% 
+#   relocate(trait_def, .after = "error_unit") %>% 
+#   mutate(genus = "culex") %>% 
+#   relocate(genus, .after = "trait_2") %>% 
+#   mutate(species = "pipiens") %>% 
+#   relocate(species, .after = "genus") %>% 
+#   mutate(doi = NA) %>% 
+#   relocate(doi, .after = "citation")
+# 
+# 
+# ## Change GCD (gonotrophic cycle duration) to 1/a
+# a.pipiens$trait_name[a.pipiens$trait_name == "GCD"] <- "1/a"
+# 
+# 
+# ## Rename columns
+# colnames(a.pipiens) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
+#                          "error_unit", "trait_def", "trait2_name", "trait2",
+#                          "genus", "species", "citation","doi", "data_source", 
+#                          "notes")
+
+
+
+## Ae. albopictus ----
+## EFGC (named TFD in the dataset) ----
+EFGC.albopictus <- read_csv("data-raw/Fecundity_Data_fromShocket.csv") %>% 
+  clean_names()
+
+
+EFGC.albopictus <- EFGC.albopictus %>% 
+  ## get data from Ae. albopictus
+  filter(host_code == "Aalb") %>% 
+  filter(trait_name == "TFD") %>% 
+  # select columns that we need
+  dplyr::select(trait_name, t, trait, error_pos_si, error_neg_si, trait2_name, 
+                trait_2, citation, figure, notes) %>% 
+  # Add new columns to provide more info
+  mutate(trait_name = "EFGC") %>%  # Change from TFD to EFGC (eggs per female per gonotrophic cycle)
+  mutate(error_unit = NA) %>% 
+  relocate(error_unit, .after = "error_neg_si") %>% # rearrange columns
+  mutate(trait_def = NA) %>% 
+  relocate(trait_def, .after = "error_unit") %>% 
+  mutate(genus = "aedes") %>% 
+  relocate(genus, .after = "trait_2") %>% 
+  mutate(species = "albopictus") %>% 
+  relocate(species, .after = "genus") %>% 
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation") %>% 
+  mutate(type = "non-Arctic")
+
+
+## Rename columns
+colnames(EFGC.albopictus) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
+                            "error_unit", "trait_def", "trait2_name", "trait2",
+                            "genus", "species", "citation","doi", "data_source", 
+                            "notes", "type")
+
+
+TraitData_EFGC <- bind_rows(EFGC.pipiens, EFGC.albopictus)
+
+# write_csv(TraitData_EFGC, "data-processed/TraitData_EFGC.csv")
+
+
+## Plot raw data
+plot.data.EFGC <- TraitData_EFGC %>% 
+  ggplot() +
+  geom_point(aes(x = temp, y = trait, colour = species, shape = citation)) +
+  # xlim(c(10,35)) +
+  labs(y = "Eggs per female per gonotrophic cycles", x = "Temperature ºC") +
+  scale_colour_discrete(name = "Species", labels = c("Ae albopictus",
+                                                     "Cx. pipiens"
+  )) +
+  scale_shape_discrete(name = "Citation", labels = c("Delatte 2009",
+                                                    "Ezeakacha 2015",
+                                                    "Ju-lin 2017",
+                                                    "Yee 2016"
+  )) +
+  facet_grid(rows = vars(type), scales = "free_y") +
+  theme_bw()
+
+
+
+plot.data.EFGC
+
+# ggsave("figures/raw_data/plot.data.EFGC.png", plot.data.EFGC, width = 9.83, height = 6.17)
