@@ -330,7 +330,7 @@ plot.traits
 params.summary <- bind_rows(a.params.summary, c.params.summary, lf.params.summary, PDR.params.summary,
           EFGC.params.summary, EV.params.summary, pLA.params.summary, MDR.params.summary)
 
-
+# write_csv(params.summary, "data-processed/params.summary.csv")
 
 params.summary <- params.summary %>% 
   filter(term %in% c("cf.T0", "Topt", "cf.Tm")) %>% 
