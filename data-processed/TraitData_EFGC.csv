@@ -1,11 +1,4 @@
 trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type
-EFGC,10,82.1,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper,non-Arctic
-EFGC,15,112.9,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper,non-Arctic
-EFGC,20,155.88,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper,non-Arctic
-EFGC,25,248.62,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper,non-Arctic
-EFGC,30,93.74,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper,non-Arctic
-EFGC,35,40.9,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper,non-Arctic
-EFGC,40,0,NA,NA,NA,NA,NA,NA,culex,pipiens,Ju-lin_2017_ChinJVectorBiol&Control,NA,Table 4,Calculated from Total eggs / total females from 1st oviposition cycle; translated from Chinese paper,non-Arctic
 EFGC,25,54.47058824,NA,NA,NA,NA,NA,NA,aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
 EFGC,25,79.75,NA,NA,NA,NA,NA,NA,aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
 EFGC,25,43.0625,NA,NA,NA,NA,NA,NA,aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
