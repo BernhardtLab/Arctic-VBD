@@ -328,7 +328,7 @@ plot.traits
 
 ############## TPC parameters ---------------------------------------------------------------
 params.summary <- bind_rows(a.params.summary, c.params.summary, lf.params.summary, PDR.params.summary,
-          EFGC.params.summary, EV.params.summary, pLA.params.summary, MDR.params.summary)
+                            EFGC.params.summary, EV.params.summary, pLA.params.summary, MDR.params.summary)
 
 # write_csv(params.summary, "data-processed/params.summary.csv")
 
@@ -343,7 +343,7 @@ plot.params <- params.summary %>%
   geom_linerange(aes(xmin = lowerCI, xmax = upperCI, y = treatment, 
                      colour = treatment),
                  linewidth = 0.8, position = position_dodge2(width = 0.6)) +
-  geom_point(aes(x = mean, y = treatment, colour = treatment), size = 2.5, 
+  geom_point(aes(x = median, y = treatment, colour = treatment), size = 2.5, 
              position = position_dodge2(width = 0.6)) +
   labs(x = expression(paste("Temperature (", degree, "C)"))) +
   scale_y_discrete(labels=c("cf.T0" = expression(paste("T"[min])),
@@ -386,12 +386,13 @@ prediction.summary <- prediction.summary %>%
   mutate(scaled_median = median / max(median)) %>% 
   ungroup()
 
+
 ## Load Suitabiliy predictions
-prediction.S <- read_csv("data-processed/S.output.median.EFGC.csv")
+prediction.S <- read_csv("data-processed/S.output.median.csv")
 
 
 plot.traits.scaled <- prediction.summary %>% 
-  ggplot(aes(x = temperature, y = scaled_mean)) +
+  ggplot(aes(x = temperature, y = scaled_median)) +
   geom_line((aes(colour = treatment)), linewidth = 0.8) +
   geom_line(data = prediction.S, aes(x = temperature, y = scaled_median, colour = "S"),
             linewidth = 1.5) +

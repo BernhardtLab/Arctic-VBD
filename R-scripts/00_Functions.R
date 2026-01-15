@@ -329,13 +329,13 @@ processTraitData <- function (data_input, trait_name) {
 ec <- 0.000001
 
 # Define S(T) with bc as one value
-S = function(a, bc, lf, PDR, B, EV, pLA, MDR){
+S.B = function(a, bc, lf, PDR, B, EV, pLA, MDR){
   (a^2 * bc * exp(-(1/(lf+ec))*(1/(PDR+ec))) * B * EV * pLA * MDR * lf^2)^0.5
 }
 
 # Define S(T) with EFGC instead of lifetime egg production (B)
 ## B = EFGC * a * lf
-S.EFGC = function(a, bc, lf, PDR, EFGC, EV, pLA, MDR){
+S = function(a, bc, lf, PDR, EFGC, EV, pLA, MDR){
   (a^3 * bc * exp(-(1/(lf+ec))*(1/(PDR+ec))) * EFGC * EV * pLA * MDR * lf^3)^0.5
 }
 

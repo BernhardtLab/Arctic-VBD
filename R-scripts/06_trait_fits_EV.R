@@ -116,13 +116,21 @@ N.Temp.xs <-length(Temp.xs)
 ##### Set data
 data <- data.EV.arctic
 
+
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 24),
+                    Tm = c(25, 50)
+)
+
+
 ##### Organize data for JAGS
 trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
 
 ##### Run JAGS
 EV.arctic.bri.uni <- jags(
@@ -139,7 +147,7 @@ EV.arctic.bri.uni <- jags(
 )
 
 ## Save the model as Rdata 
-# save(EV.arctic.bri.uni, file = "R-scripts/R2jags-objects/EV.arctic.bri.uni.Rdata")
+save(EV.arctic.bri.uni, file = "R-scripts/R2jags-objects/EV.arctic.bri.uni.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/EV.arctic.bri.uni.Rdata")
@@ -201,6 +209,14 @@ data <- data %>%
   group_by(species, citation) %>% 
   mutate(unique_id = cur_group_id())
 
+                    
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(20, 45),
+                    sigma_q = c(0, 0.001),
+                    sigma_T0 = c(0, 10),
+                    sigma_Tm = c(0, 10)
+)
 
 ##### inits Function
 inits <- function(){list(
@@ -226,14 +242,16 @@ unique.id <- as.integer(data$unique_id)
 Nids <- max(unique.id)
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, Nids = Nids, unique.id = unique.id,
+                 prior = prior)
 
 ##### Run JAGS
 EV.nonarctic.bri.uni.raneff <- jags(
   data = jag.data,
   inits = inits,
   parameters.to.save = parameters,
-  model.file = "R-scripts/briere_T_randeff.txt",
+  model.file = "R-scripts/briereprob_randeff.txt",
   n.thin = nt,
   n.chains = nc,
   n.burnin = nb,
@@ -369,6 +387,7 @@ plot.EV.nonarctic.bri.uni.raneff <- ggplot(data = df.EV.nonarctic.bri.uni.raneff
                                    "Ae. albopictus (Li et al 2021)",
                                    "Ae. albopictus (Monteiro et al 2007)",
                                    "Ae. albopictus (Zhang et al 2015)",
+                                   "Ae. dorsalis",
                                    "Ae. nigromaculis",
                                    "Ae. triseriatus")) +
   theme_bw()
@@ -456,7 +475,7 @@ EV.arctic.bri.inf <- jags(data = jag.data,
 # save(EV.arctic.bri.inf, file = "R-scripts/R2jags-objects/EV.arctic.bri.inf.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/EV.arctic.bri.inf.Rdata")
+load("R-scripts/R2jags-objects/EV.arctic.bri.inf.Rdata")
 
 
 ## Diagnostics ----
@@ -488,8 +507,7 @@ plot.EV.arctic.bri.inf <- df.EV.arctic.bri.inf %>%
     y = "Egg viability (%)"
   ) +
   scale_color_discrete(name = element_blank(),
-                     labels = c("Ae. dorsalis",
-                                "Ae. vexans")) +
+                     labels = c("Ae. vexans")) +
   theme_bw()
 
 plot.EV.arctic.bri.inf
@@ -575,24 +593,30 @@ N.Temp.xs <-length(Temp.xs)
 ##### Set data
 data <- data.EV.arctic
 
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 24),
+                    Tm = c(26, 50)
+)
+
 ##### Organize data for JAGS
 trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
 
 ##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
 
 # ##### Run JAGS -----
 EV.arctic.quad.uni <- jags(data = jag.data,
-                              inits = inits,
-                              parameters.to.save = parameters,
-                              model.file = "R-scripts/quadprob.txt",
-                              n.chains = nc,
-                              n.burnin = nb,
-                              n.iter = ni,
-                              DIC = T,
-                              working.directory = getwd()
+                           inits = inits,
+                           parameters.to.save = parameters,
+                           model.file = "R-scripts/quadprob.txt",
+                           n.chains = nc,
+                           n.burnin = nb,
+                           n.iter = ni,
+                           DIC = T,
+                           working.directory = getwd()
 )
 
 ## Save the model as Rdata 
@@ -631,8 +655,7 @@ plot.EV.arctic.quad.uni <- df.EV.arctic.quad.uni %>%
     y = "Egg viability (%)"
   ) +
   scale_color_discrete(name = element_blank(),
-                       labels = c("Ae. dorsalis",
-                                  "Ae. vexans")) +
+                       labels = c("Ae. vexans")) +
   theme_bw()
 
 plot.EV.arctic.quad.uni
@@ -642,16 +665,8 @@ plot.EV.arctic.quad.uni
 
 
 ##########
-###### 3B. Fit EV thermal responses (with random effects) for priors (non-Arctic species): Quadratic ----
+###### 3B. Fit EV thermal responses for priors (non-Arctic species): Quadratic ----
 ##########
-
-##### Temp sequence for derived quantity calculations
-# For priors - fewer temps for derived calculations makes it go faster
-Temp.xs <- seq(0, 45, 0.5)
-N.Temp.xs <-length(Temp.xs)
-
-
-# ## With random effect ----
 
 ##### Temp sequence for derived quantity calculations
 # For priors - fewer temps for derived calculations makes it go faster
@@ -706,22 +721,22 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
-# EV.nonarctic.quad.uni.raneff <- jags(
-#   data = jag.data,
-#   inits = inits,
-#   parameters.to.save = parameters,
-#   model.file = "R-scripts/quadprob_randeff.txt",
-#   n.thin = nt,
-#   n.chains = nc,
-#   n.burnin = nb,
-#   n.iter = ni,
-#   DIC = T,
-#   working.directory = getwd()
-# )
+EV.nonarctic.quad.uni.raneff <- jags(
+  data = jag.data,
+  inits = inits,
+  parameters.to.save = parameters,
+  model.file = "R-scripts/quadprob_randeff.txt",
+  n.thin = nt,
+  n.chains = nc,
+  n.burnin = nb,
+  n.iter = ni,
+  DIC = T,
+  working.directory = getwd()
+)
 
 
 ## Save the model as Rdata 
-# save(EV.nonarctic.quad.uni.raneff, file = "R-scripts/R2jags-objects/EV.nonarctic.quad.uni.raneff.Rdata")
+save(EV.nonarctic.quad.uni.raneff, file = "R-scripts/R2jags-objects/EV.nonarctic.quad.uni.raneff.Rdata")
 
 # Read the .Rdata
 load("R-scripts/R2jags-objects/EV.nonarctic.quad.uni.raneff.Rdata")
@@ -847,6 +862,7 @@ plot.EV.nonarctic.quad.uni.raneff <- ggplot(data = df.EV.nonarctic.quad.uni.rane
                                    "Ae. albopictus (Li et al 2021)",
                                    "Ae. albopictus (Monteiro et al 2007)",
                                    "Ae. albopictus (Zhang et al 2015)",
+                                   "Ae. dorsalis",
                                    "Ae. nigromaculis",
                                    "Ae. triseriatus")) +
   theme_bw()
@@ -857,94 +873,6 @@ plot.EV.nonarctic.quad.uni.raneff
 # ggsave("figures/EV.nonarctic.quad.uni.raneff.png", plot.EV.nonarctic.quad.uni.raneff,
 #        width = 10.3, height = 5.6)
 
-
-# ## Random effect END ----
-
-##### inits Function
-inits<-function(){list(
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
-
-##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
-
-
-##### Temp sequence for derived quantity calculations
-# For actual fits
-Temp.xs <- seq(0, 45, 0.1)
-N.Temp.xs <-length(Temp.xs)
-
-##### Set data
-data <- data.EV.nonarctic
-
-##### Organize data for JAGS
-trait <- data$trait
-N.obs <- length(trait)
-temp <- data$temp
-
-##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, N.Temp.xs = N.Temp.xs)
-
-# ##### Run JAGS -----
-EV.nonarctic.quad.uni <- jags(data = jag.data,
-                           inits = inits,
-                           parameters.to.save = parameters,
-                           model.file = "R-scripts/quadprob.txt",
-                           n.chains = nc,
-                           n.burnin = nb,
-                           n.iter = ni,
-                           DIC = T,
-                           working.directory = getwd()
-)
-
-## Save the model as Rdata 
-# save(EV.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/EV.nonarctic.quad.uni.Rdata")
-
-# Read the .Rdata
-load("R-scripts/R2jags-objects/EV.nonarctic.quad.uni.Rdata")
-
-
-## Diagnostics ----
-##### Examine output
-EV.nonarctic.quad.uni$BUGSoutput$summary[1:5,]
-mcmcplot(EV.nonarctic.quad.uni)
-
-# Extract the DIC for future model comparisons
-EV.nonarctic.quad.uni$BUGSoutput$DIC
-
-## Plot data + fit ----
-df.EV.nonarctic.quad.uni <- data.frame(EV.nonarctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
-  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.)
-
-head(df.EV.nonarctic.quad.uni)
-
-##### Plot
-plot.EV.nonarctic.quad.uni <- df.EV.nonarctic.quad.uni %>% 
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
-  geom_line(aes(y = mean), color = "blue", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait, colour = species), size = 2) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Egg viability (%)"
-  ) +
-  # Customize legend
-  scale_colour_discrete(name = element_blank(),
-                        labels = c("Ae. albopictus",
-                                   "Ae. nigromaculis",
-                                   "Ae. triseriatus")) +
-  theme_bw()
-
-plot.EV.nonarctic.quad.uni
-
-# ggsave("figures/EV.nonarctic.quad.uni.png", plot.EV.nonarctic.quad.uni,
-#        width = 10.3, height = 5.6)
 
 ##########
 ###### 3C. Fit gamma distributions to EV prior thermal responses: Quadratic ----
@@ -1018,7 +946,7 @@ EV.arctic.quad.inf <- jags(data = jag.data,
 # save(EV.arctic.quad.inf, file = "R-scripts/R2jags-objects/EV.arctic.quad.inf.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/EV.arctic.quad.inf.Rdata")
+load("R-scripts/R2jags-objects/EV.arctic.quad.inf.Rdata")
 
 
 ## Diagnostics ----

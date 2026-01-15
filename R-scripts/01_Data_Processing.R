@@ -581,7 +581,7 @@ TraitData_EV <- bind_rows(EV.vexans, EV.dorsalis, EV.nigromaculis, EV.triseriatu
 
 ## Add a new column to indicate whether the data is Arctic or non-Arctic
 TraitData_EV <- TraitData_EV %>% 
-  mutate(type = c(rep("Arctic", 12), rep("non-Arctic", 29)))
+  mutate(type = c(rep("Arctic", 6), rep("non-Arctic", 35)))
 
 # write_csv(TraitData_EV, "data-processed/TraitData_EV.csv")
 
@@ -1245,7 +1245,8 @@ colnames(EFGC.albopictus) <- c("trait_name", "temp", "trait", "error_pos", "erro
                             "notes", "type")
 
 
-TraitData_EFGC <- bind_rows(EFGC.pipiens, EFGC.albopictus)
+TraitData_EFGC <- bind_rows(#EFGC.pipiens, 
+  EFGC.albopictus)
 
 # write_csv(TraitData_EFGC, "data-processed/TraitData_EFGC.csv")
 
