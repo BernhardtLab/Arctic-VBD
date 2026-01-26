@@ -81,6 +81,18 @@ S.calc <- S(a.preds, c.preds, lf.preds, PDR.preds, EFGC.preds, EV.preds, pLA.pre
 Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
+# save all 15000 MCMC iterations of suitability calculation (451 row (temp), columns = temp and 15000 MCMC iterations)
+S.calc.iter <- data.frame(Temp.xs, t(S.calc))
+colnames(S.calc.iter) <- c("temp", paste0("iter", seq(1:15000)))
+
+# Save output
+# write.csv(S.calc.iter, "data-processed/S.calc.iter.csv")
+
+# Get the Tmin, Topt and Tmax for each MCMC iteration
+S.calc.iter.summary <- calcDerivedTPCParamPosteriors(S.calc, Temp.xs)
+S.calc.iter.summary$iter <- seq(1:15000)
+# write.csv(S.calc.iter.summary, "data-processed/S.calc.iter.summary.csv")
+
 
 # Get S mean, median, upper + lower CIs
 S.out <- calcPostQuants(as.data.frame(S.calc), "S", Temp.xs)
