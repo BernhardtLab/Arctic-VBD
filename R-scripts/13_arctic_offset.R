@@ -269,7 +269,7 @@ plot.MDR.all <- df.MDR.all %>%
 
 plot.MDR.all
 
-ggsave("tpc/MDR.all.png", plot.MDR.all, width = 10.3, height = 5.6)
+# ggsave("tpc/MDR.all.png", plot.MDR.all, width = 10.3, height = 5.6)
 
 
 ##############  Egg viability (EV) ---------------------------------------------------------------
@@ -368,7 +368,7 @@ plot.EV.all <- df.EV.all %>%
 
 plot.EV.all
 
-ggsave("tpc/EV.all.png", plot.EV.all, width = 10.3, height = 5.6)
+# ggsave("tpc/EV.all.png", plot.EV.all, width = 10.3, height = 5.6)
 
 ##############  Larval-to-adult survival (pLA) ---------------------------------------------------------------
 ## Arctic:
@@ -464,7 +464,7 @@ plot.pLA.all <- df.pLA.all %>%
 
 plot.pLA.all
 
-ggsave("tpc/pLA.all.png", plot.pLA.all, width = 10.3, height = 5.6)
+# ggsave("tpc/pLA.all.png", plot.pLA.all, width = 10.3, height = 5.6)
 
 ##############  Adult lifespan (lf) ---------------------------------------------------------------
 ## Arctic:
@@ -563,7 +563,7 @@ plot.lf.all <- df.lf.all %>%
 
 plot.lf.all
 
-ggsave("tpc/lf.all.png", plot.lf.all, width = 10.3, height = 5.6)
+# ggsave("tpc/lf.all.png", plot.lf.all, width = 10.3, height = 5.6)
 
 
 ##############  Infection proportion (c) ---------------------------------------------------------------
@@ -638,7 +638,7 @@ plot.c.all <- df.c.all %>%
 
 plot.c.all
 
-ggsave("tpc/c.all.png", plot.c.all, width = 10.3, height = 5.6)
+# ggsave("tpc/c.all.png", plot.c.all, width = 10.3, height = 5.6)
 
 ##############  Eggs per female per gonotrophic cycle (EFGC) ---------------------------------------------------------------
 
@@ -714,7 +714,7 @@ plot.EFGC.all <- df.all %>%
 
 plot.EFGC.all
 
-ggsave("tpc/EFGC.all.png", plot.EFGC.all, width = 10.3, height = 5.6)
+# ggsave("tpc/EFGC.all.png", plot.EFGC.all, width = 10.3, height = 5.6)
 
 #--------------------------------------------------------------------------------
 
