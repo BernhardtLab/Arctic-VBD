@@ -137,9 +137,9 @@ calcDerivedTPCParamPosteriors <- function(TPC_predictions, temp_gradient) {
   # Total number of MCMC iterations = 15000
   output_length <- nrow(TPC_predictions)
   # Create a dataframe to store the output
-  output.df <- data.frame("T0" = numeric(nrow(TPC_predictions)), 
-                          "Tmax" = numeric(nrow(TPC_predictions)),
-                          "peak" = numeric(nrow(TPC_predictions)))
+  output.df <- data.frame("cf.T0" = numeric(nrow(TPC_predictions)), 
+                          "cf.Tm" = numeric(nrow(TPC_predictions)),
+                          "Tbreadth" = numeric(nrow(TPC_predictions)))
   
   # Get length of temp gradient to compare to final index of Tmax
   length_temp_gradient <- length(temp_gradient)
