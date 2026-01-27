@@ -15,9 +15,11 @@
 ##
 ## Table of content:
 ##    0. Set-up workspace
-##    1. 
-##    2. 
-##    3. 
+##    1. Visualize the difference
+##    2. Calculate difference between Arctic and non-Arctic TPCs
+##    3. Adjusting non-Arctic TPCs
+##       a) Approach 1: hot-cold shift
+##       b) Approach 2: Adjust Tmin and q (constant Tmax)
 
 ##########
 ###### 0. Set-up workspace ----
@@ -71,7 +73,7 @@ Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
 ##########
-###### 1. Load R2jags model output ----
+###### 1. Visualize the difference ----
 ##########
 
 ##############  Parasite development rate (PDR) ---------------------------------------------------------------
@@ -173,7 +175,7 @@ plot.PDR.all <- df.PDR.all %>%
 
 plot.PDR.all
 
-ggsave("tpc/PDR.all.png", plot.PDR.all, width = 10.3, height = 5.6)
+# ggsave("tpc/PDR.all.png", plot.PDR.all, width = 10.3, height = 5.6)
 
 ############## Mosquito development rate (MDR) ---------------------------------------------------------------
 ## Arctic:
@@ -712,7 +714,7 @@ plot.EFGC.all <- df.all %>%
 
 plot.EFGC.all
 
-ggsave("tpc/Eggs per female per gonotrophic cycle.all.png", plot.EFGC.all, width = 10.3, height = 5.6)
+ggsave("tpc/EFGC.all.png", plot.EFGC.all, width = 10.3, height = 5.6)
 
 #--------------------------------------------------------------------------------
 
@@ -726,7 +728,7 @@ plot.traits <- ggarrange(plot.lf, plot.c,
 
 plot.traits
 
-ggsave("figures/trait.arctic.vs.nonarctic.png", plot.traits, width = 12, height = 15)
+# ggsave("figures/trait.arctic.vs.nonarctic.png", plot.traits, width = 12, height = 15)
                  
 plot.traits.all <- ggarrange(plot.lf.all, plot.c.all, 
                              plot.EV.all, plot.EFGC.all,
@@ -738,12 +740,14 @@ plot.traits.all <- ggarrange(plot.lf.all, plot.c.all,
 
 plot.traits.all
 
-ggsave("figures/trait.arctic.vs.nonarctic.all.png", plot.traits.all, width = 18, height = 15)
+# ggsave("figures/trait.arctic.vs.nonarctic.all.png", plot.traits.all, width = 18, height = 15)
  
 
 #--------------------------------------------------------------------------------
 
-## Calculate difference ----
+##########
+###### 2. Calculate difference between Arctic and non-Arctic TPCs ----
+##########
 
 EV.params <- cbind(EV.nonarctic.params, EV.arctic.params)
 colnames(EV.params) <- c("nonarctic", "arctic")
@@ -776,7 +780,92 @@ params.list
 params.list <- params.list %>% 
   mutate(diff = nonarctic - arctic)
 
+params.list <- params.list %>% 
+  mutate(parameter = case_when(parameter == "cf.Tm" ~ "Tmax",
+                               parameter == "cf.T0"~ "Tmin",
+                               parameter == "cf.q" ~ "q"))
 
+# Calculate the mean difference in Tmin between non-Arctic and Arctic TPCs
+T0.diff <- params.list %>% 
+  filter(parameter == "Tmin") %>% 
+  summarise(mean_Tmin_diff = mean(diff)) # mean Tmin offset is 3.68ºC
+
+T0.diff <- T0.diff$mean_Tmin_diff
+T0.diff
+
+##########
+###### 3. Adjusting non-Arctic TPCs ----
+##########
+
+## Now we have two approach to adjust the non-Arctic TPCs for c and EFGC:
+## 1. shift the whole TPC left by the offset (hot-cold shift)
+##
+##    As quadratic model fits better for both traits, this can be done by 
+##    shifting both Tmin and Tmax left by the offset
+##
+## 2. Keep Tmax the same, shift Tmin by the offset and adjust q such that the 
+##    maximum trait value remains the same
+##    
+##    No idea how to do this yet. Will come back to it
+
+
+##########
+###### 3a. Approach 1: hot-cold shift ----
+##########
+
+c.iter.param <- data.frame(T0 = c.nonarctic.quad.uni$BUGSoutput$sims.list$cf.T0,
+                           Tm = c.nonarctic.quad.uni$BUGSoutput$sims.list$cf.Tm,
+                           q = c.nonarctic.quad.uni$BUGSoutput$sims.list$cf.q
+)
+
+
+# Test if plugging params into the quadratic model will get the same pred 
+# c.iter.param[1,]
+#
+# c.iter.pred <- data.frame(pred = c.nonarctic.quad.uni$BUGSoutput$sims.list$z.trait.mu.pred)
+#
+# test.pred <- data.frame(temp = Temp.xs,
+#                         test = quad(T = Temp.xs, T0 = 9.310141, Tm = 36.78479, q = 0.004806817),
+#                         actual = t(c.iter.pred[1,]))
+# 
+# colnames(test.pred) <- c("temp", "test", "actual")
+# 
+# test.pred$equal <- ifelse(test.pred$test == test.pred2, T, F)
+# Conclusion: yes
+
+##### Perform the hot-old shift
+c.iter.param <- c.iter.param %>% 
+  mutate(new.T0 = T0 - T0.diff,
+         new.Tm = Tm - T0.diff)
+
+### Plot
+
+c.nonarctic.preds.new <- data.frame(temp = Temp.xs,
+                                    preds = quad(Temp.xs, 
+                                             T0 = c.nonarctic.params[1,],
+                                             Tm = c.nonarctic.params[2,], 
+                                             q = c.nonarctic.params[3,]),
+                                type = "non-Arctic")
+
+c.preds <- bind_rows(c.nonarctic.preds)
+
+##### Plot
+plot.c <- ggplot(data = c.preds, aes(x = temp, y = preds)) +
+  geom_line(aes(color = type), linewidth = 1) +
+  
+  scale_colour_manual(values = c("Arctic" = "red", "non-Arctic" = "black"),
+                      name = element_blank(), # No legend title
+  ) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Infection proportion") +
+  annotate("text", x = -2, y = 0.8, label = expression(paste(italic("c"))), size = 5) +
+  theme_bw()
+
+
+plot.c
 
 
 
