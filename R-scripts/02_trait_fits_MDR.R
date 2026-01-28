@@ -118,7 +118,7 @@ trait <- data$trait
 N.obs <- length(trait)
 temp <- data$temp
 
-
+##### Set priors
 prior <- data.frame(q = c(0, 1),
                     T0 = c(0, 20),
                     Tm = c(20, 45)

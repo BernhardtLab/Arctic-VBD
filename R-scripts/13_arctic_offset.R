@@ -140,14 +140,14 @@ df.PDR.nonarctic.bri.uni.raneff <- data.frame(PDR.nonarctic.bri.uni.raneff$BUGSo
 df.PDR.nonarctic.bri.uni.raneff.pop <- df.PDR.nonarctic.bri.uni.raneff %>% 
   filter(grepl("z.trait.mu.pred.pop", rownames(df.PDR.nonarctic.bri.uni.raneff))) %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "non-Arctic")
 
 Temp.xs <- seq(0, 45, 0.1)
 
 df.PDR.arctic.bri.inf <- data.frame(PDR.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "Arctic")
 
 df.PDR.all <- rbind(df.PDR.arctic.bri.inf, df.PDR.nonarctic.bri.uni.raneff.pop)
@@ -155,7 +155,7 @@ df.PDR.all <- rbind(df.PDR.arctic.bri.inf, df.PDR.nonarctic.bri.uni.raneff.pop)
 plot.PDR.all <- df.PDR.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_line(aes(y = X50., color = type), linewidth = 1) +
   #geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   #geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
@@ -234,14 +234,14 @@ Temp.xs <- seq(0, 45, 0.5)
 
 df.MDR.nonarctic.bri.uni <- data.frame(MDR.nonarctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "non-Arctic")
 
 Temp.xs <- seq(0, 45, 0.1)
 
 df.MDR.arctic.bri.inf <- data.frame(MDR.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.)%>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)%>% 
   mutate(type = "Arctic")
 
 df.MDR.all <- rbind(df.MDR.arctic.bri.inf, df.MDR.nonarctic.bri.uni)
@@ -249,7 +249,7 @@ df.MDR.all <- rbind(df.MDR.arctic.bri.inf, df.MDR.nonarctic.bri.uni)
 plot.MDR.all <- df.MDR.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_line(aes(y = X50., color = type), linewidth = 1) +
   #geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   #geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
@@ -333,14 +333,14 @@ df.EV.nonarctic.quad.uni.raneff <- data.frame(EV.nonarctic.quad.uni.raneff$BUGSo
 df.EV.nonarctic.quad.uni.raneff.pop <- df.EV.nonarctic.quad.uni.raneff %>% 
   filter(grepl("z.trait.mu.pred.pop", rownames(df.EV.nonarctic.quad.uni.raneff))) %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "non-Arctic")
 
 Temp.xs <- seq(0, 45, 0.1)
 
 df.EV.arctic.quad.inf <- data.frame(EV.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "Arctic")
 
 df.EV.all <- rbind(df.EV.arctic.quad.inf, df.EV.nonarctic.quad.uni.raneff.pop)
@@ -348,7 +348,7 @@ df.EV.all <- rbind(df.EV.arctic.quad.inf, df.EV.nonarctic.quad.uni.raneff.pop)
 plot.EV.all <- df.EV.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_line(aes(y = X50., color = type), linewidth = 1) +
   #geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   #geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
@@ -429,14 +429,14 @@ df.pLA.nonarctic.quad.uni.raneff <- data.frame(pLA.nonarctic.quad.uni.raneff$BUG
 df.pLA.nonarctic.quad.uni.raneff.pop <- df.pLA.nonarctic.quad.uni.raneff %>% 
   filter(grepl("z.trait.mu.pred.pop", rownames(df.pLA.nonarctic.quad.uni.raneff))) %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "non-Arctic")
 
 Temp.xs <- seq(0, 45, 0.1)
 
 df.pLA.arctic.quad.inf <- data.frame(pLA.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "Arctic")
 
 df.pLA.all <- rbind(df.pLA.arctic.quad.inf, df.pLA.nonarctic.quad.uni.raneff.pop)
@@ -444,7 +444,7 @@ df.pLA.all <- rbind(df.pLA.arctic.quad.inf, df.pLA.nonarctic.quad.uni.raneff.pop
 plot.pLA.all <- df.pLA.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_line(aes(y = X50., color = type), linewidth = 1) +
   #geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   #geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
@@ -525,7 +525,7 @@ df.lf.nonarctic.quad.uni.raneff <- data.frame(lf.nonarctic.quad.uni.raneff$BUGSo
 df.lf.nonarctic.quad.uni.raneff.pop <- df.lf.nonarctic.quad.uni.raneff %>% 
   filter(grepl("z.trait.mu.pred.pop", rownames(df.lf.nonarctic.quad.uni.raneff))) %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "non-Arctic")
 
 Temp.xs <- seq(0, 45, 0.1)
@@ -535,7 +535,7 @@ df.lf.arctic.quad.inf.raneff <- data.frame(lf.arctic.quad.inf.raneff$BUGSoutput$
 df.lf.arctic.quad.inf.raneff.pop <- df.lf.arctic.quad.inf.raneff %>% 
   filter(grepl("z.trait.mu.pred.pop", rownames(df.lf.arctic.quad.inf.raneff))) %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X97.5.) %>% 
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.) %>% 
   mutate(type = "Arctic")
 
 df.lf.all <- rbind(df.lf.arctic.quad.inf.raneff.pop, df.lf.nonarctic.quad.uni.raneff.pop)
@@ -543,7 +543,7 @@ df.lf.all <- rbind(df.lf.arctic.quad.inf.raneff.pop, df.lf.nonarctic.quad.uni.ra
 plot.lf.all <- df.lf.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_line(aes(y = X50., color = type), linewidth = 1) +
   #geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   #geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
@@ -618,7 +618,7 @@ df.c.all <- rbind(df.c.nonarctic.quad.uni)
 plot.c.all <- df.c.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_line(aes(y = X50., color = type), linewidth = 1) +
   #geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   #geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
@@ -694,7 +694,7 @@ df.all <- rbind(df.EFGC.nonarctic.quad.uni)
 plot.EFGC.all <- df.all %>% 
   ggplot(aes(x = temp)) +
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
-  geom_line(aes(y = mean, color = type), linewidth = 1) +
+  geom_line(aes(y = X50., color = type), linewidth = 1) +
   #geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   #geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
@@ -841,7 +841,7 @@ c.iter.param <- c.iter.param %>%
 
 ## Create a dataframe showing the TPC parameters for each iteration
 c.params.fullposts <- c.iter.param %>% 
-  select(new.T0, new.Tm, q)
+  dplyr::select(new.T0, new.Tm, q)
 
 c.params.fullposts$iteration <- seq(1:nrow(c.iter.param)) # Add a column indicating the number of MCMC iteration
 c.params.fullposts <- relocate(c.params.fullposts, iteration, .before = new.T0)
@@ -851,7 +851,7 @@ c.params.fullposts$trait <- "c" # Add a column indicating trait name
 colnames(c.params.fullposts) <- c("iteration", "cf.T0", "cf.Tm", "cf.q", "trait")
 
 ## Save output
-## write_csv(c.params.fullposts, "data-processed/c.arctic.params.fullposts.csv")
+# write_csv(c.params.fullposts, "data-processed/c.arctic.params.fullposts.csv")
 
 
 
@@ -989,7 +989,7 @@ EFGC.iter.param <- EFGC.iter.param %>%
 
 ## Create a dataframe showing the TPC parameters for each iteration
 EFGC.params.fullposts <- EFGC.iter.param %>% 
-  select(new.T0, new.Tm, q)
+  dplyr::select(new.T0, new.Tm, q)
 
 EFGC.params.fullposts$iteration <- seq(1:nrow(EFGC.iter.param)) # Add a column indicating the number of MCMC iteration
 EFGC.params.fullposts <- relocate(EFGC.params.fullposts, iteration, .before = new.T0)
