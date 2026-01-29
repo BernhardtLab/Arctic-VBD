@@ -805,8 +805,7 @@ T0.diff
 ##
 ## 2. Keep Tmax the same, shift Tmin by the offset and adjust q such that the 
 ##    maximum trait value remains the same
-##    
-##    No idea how to do this yet. Will come back to it
+
 
 
 ##########
@@ -888,7 +887,7 @@ c.T0 <- data.frame(term = "cf.T0",
                            median =  quantile(c.params.fullposts$cf.T0, 0.5)[[1]],
                            upperQ = quantile(c.params.fullposts$cf.T0, 0.75)[[1]],
                            upperCI = quantile(c.params.fullposts$cf.T0, 0.975)[[1]],
-                           treatment = "c")
+                           trait = "c")
 
 c.Tm <- data.frame(term = "cf.Tm",
                    mean = mean(c.params.fullposts$cf.Tm),
@@ -898,7 +897,7 @@ c.Tm <- data.frame(term = "cf.Tm",
                    median =  quantile(c.params.fullposts$cf.Tm, 0.5)[[1]],
                    upperQ = quantile(c.params.fullposts$cf.Tm, 0.75)[[1]],
                    upperCI = quantile(c.params.fullposts$cf.Tm, 0.975)[[1]],
-                   treatment = "c")
+                   trait = "c")
 
 c.q <- data.frame(term = "cf.q",
                   mean = mean(c.params.fullposts$cf.q),
@@ -908,7 +907,7 @@ c.q <- data.frame(term = "cf.q",
                   median =  quantile(c.params.fullposts$cf.q, 0.5)[[1]],
                   upperQ = quantile(c.params.fullposts$cf.q, 0.75)[[1]],
                   upperCI = quantile(c.params.fullposts$cf.q, 0.975)[[1]],
-                  treatment = "c")
+                  trait = "c")
 
 # Calculate Topt for each iteration and calculate summary statistics (mean, sd, & quantiles)
 c.Topt <- calcToptQuants(c.arctic.preds, "c", Temp.xs)
@@ -1045,7 +1044,7 @@ EFGC.T0 <- data.frame(term = "cf.T0",
                    median =  quantile(EFGC.params.fullposts$cf.T0, 0.5)[[1]],
                    upperQ = quantile(EFGC.params.fullposts$cf.T0, 0.75)[[1]],
                    upperCI = quantile(EFGC.params.fullposts$cf.T0, 0.975)[[1]],
-                   treatment = "EFGC")
+                   trait = "EFGC")
 
 EFGC.Tm <- data.frame(term = "cf.Tm",
                    mean = mean(EFGC.params.fullposts$cf.Tm),
@@ -1055,7 +1054,7 @@ EFGC.Tm <- data.frame(term = "cf.Tm",
                    median =  quantile(EFGC.params.fullposts$cf.Tm, 0.5)[[1]],
                    upperQ = quantile(EFGC.params.fullposts$cf.Tm, 0.75)[[1]],
                    upperCI = quantile(EFGC.params.fullposts$cf.Tm, 0.975)[[1]],
-                   treatment = "EFGC")
+                   trait = "EFGC")
 
 EFGC.q <- data.frame(term = "cf.q",
                   mean = mean(EFGC.params.fullposts$cf.q),
@@ -1065,7 +1064,7 @@ EFGC.q <- data.frame(term = "cf.q",
                   median =  quantile(EFGC.params.fullposts$cf.q, 0.5)[[1]],
                   upperQ = quantile(EFGC.params.fullposts$cf.q, 0.75)[[1]],
                   upperCI = quantile(EFGC.params.fullposts$cf.q, 0.975)[[1]],
-                  treatment = "EFGC")
+                  trait = "EFGC")
 
 # Calculate Topt for each iteration and calculate summary statistics (mean, sd, & quantiles)
 EFGC.Topt <- calcToptQuants(EFGC.arctic.preds, "EFGC", Temp.xs)
@@ -1124,3 +1123,323 @@ plot.EFGC.all <- EFGC.predictions.summary %>%
 plot.EFGC.all
 
 # ggsave("figures/EFGC.arctic.vs.nonarctic.png", plot.EFGC.all, width = 10.3, height = 5.6)
+
+
+
+
+##########
+###### 3b. Approach 2: Fixed Tm and maximum trait values ----
+##########
+
+
+## Because the maximum trait values are always at T = (Tmax + Tmin)/2 (i.e. mid-point),
+## We can substitute T = (Tmax + Tmin)/2 into the quadratic equation.
+## Pmax = -q((Tm+T0)/2 - T0)((Tm+T0)/2 - Tm) --> Pmax = q(Tm-T0)^2/4
+## Therefore, if Pmax is the same for two sets of q and T0, the relationships 
+## between q and T0 are:
+## q(Tm-T0)^2/4 = q'(Tm-T0')^2/4 (where q' and T0' are new q and Tmin)
+## --> q(Tm-T0)^2 = q'(Tm-T0')^2
+## --> q' = q(Tm-T0)^2/(Tm-T0')^2
+
+
+#### 3bi. infection proportion (c) ----
+
+## Get the original TPC parameters
+c.iter.param <- data.frame(T0 = c.nonarctic.quad.uni$BUGSoutput$sims.list$cf.T0,
+                           Tm = c.nonarctic.quad.uni$BUGSoutput$sims.list$cf.Tm,
+                           q = c.nonarctic.quad.uni$BUGSoutput$sims.list$cf.q
+                           )
+
+
+c.iter.param <- c.iter.param %>% 
+  mutate(new.T0 = T0 - T0.diff,
+         new.q = q * (Tm - T0)**2/ (Tm - new.T0)**2)
+
+
+## Create a dataframe showing the TPC parameters for each iteration
+c.params.fullposts <- c.iter.param %>% 
+  dplyr::select(new.T0, Tm, new.q)
+
+c.params.fullposts$iteration <- seq(1:nrow(c.iter.param)) # Add a column indicating the number of MCMC iteration
+c.params.fullposts <- relocate(c.params.fullposts, iteration, .before = new.T0)
+
+c.params.fullposts$trait <- "c" # Add a column indicating trait name
+
+colnames(c.params.fullposts) <- c("iteration", "cf.T0", "cf.Tm", "cf.q", "trait")
+
+## Save output
+write_csv(c.params.fullposts, "data-processed/c.arctic.params.fullposts.fixedTm.csv")
+
+
+
+##### Calculate trait values based on new TPC parameters
+c.arctic.preds <- data.frame() # Initialize an empty dataframe
+
+for (i in 1:nrow(c.iter.param)) {
+  # Calculate trait values for each MCMC iteration
+  iter.preds <- quad(Temp.xs, 
+                     T0 = c.iter.param$new.T0[i],
+                     Tm = c.iter.param$Tm[i], 
+                     q = c.iter.param$new.q[i]) 
+  
+  # Add the trait values as a column
+  if (i == 1) {
+    c.arctic.preds <- iter.preds
+  }
+  else {
+    c.arctic.preds <- bind_cols(c.arctic.preds, iter.preds)
+  }
+}
+
+# Transpose the dataset so that each row is a MCMC iteration (for calculating TPC parameters summary in the next step)
+c.arctic.preds <- as.data.frame(t(c.arctic.preds))
+colnames(c.arctic.preds) <- seq(1:ncol(c.arctic.preds))
+
+
+##### Calculate the mean, median, and CIs of the TPC parameters (Tmin, Tmax, q, Topt)
+c.T0 <- data.frame(term = "cf.T0",
+                   mean = mean(c.params.fullposts$cf.T0),
+                   sd = sd(c.params.fullposts$cf.T0),
+                   lowerCI = quantile(c.params.fullposts$cf.T0, 0.025)[[1]],
+                   lowerQ = quantile(c.params.fullposts$cf.T0, 0.25)[[1]],
+                   median =  quantile(c.params.fullposts$cf.T0, 0.5)[[1]],
+                   upperQ = quantile(c.params.fullposts$cf.T0, 0.75)[[1]],
+                   upperCI = quantile(c.params.fullposts$cf.T0, 0.975)[[1]],
+                   trait = "c")
+
+c.Tm <- data.frame(term = "cf.Tm",
+                   mean = mean(c.params.fullposts$cf.Tm),
+                   sd = sd(c.params.fullposts$cf.Tm),
+                   lowerCI = quantile(c.params.fullposts$cf.Tm, 0.025)[[1]],
+                   lowerQ = quantile(c.params.fullposts$cf.Tm, 0.25)[[1]],
+                   median =  quantile(c.params.fullposts$cf.Tm, 0.5)[[1]],
+                   upperQ = quantile(c.params.fullposts$cf.Tm, 0.75)[[1]],
+                   upperCI = quantile(c.params.fullposts$cf.Tm, 0.975)[[1]],
+                   trait = "c")
+
+c.q <- data.frame(term = "cf.q",
+                  mean = mean(c.params.fullposts$cf.q),
+                  sd = sd(c.params.fullposts$cf.q),
+                  lowerCI = quantile(c.params.fullposts$cf.q, 0.025)[[1]],
+                  lowerQ = quantile(c.params.fullposts$cf.q, 0.25)[[1]],
+                  median =  quantile(c.params.fullposts$cf.q, 0.5)[[1]],
+                  upperQ = quantile(c.params.fullposts$cf.q, 0.75)[[1]],
+                  upperCI = quantile(c.params.fullposts$cf.q, 0.975)[[1]],
+                  trait = "c")
+
+# Calculate Topt for each iteration and calculate summary statistics (mean, sd, & quantiles)
+c.Topt <- calcToptQuants(c.arctic.preds, "c", Temp.xs)
+
+# Add Topt and Tbreadth to parameters summary data frame
+c.params.summary <- bind_rows(c.T0, c.Tm, c.q, c.Topt)
+
+
+## Save output
+write_csv(c.params.summary, "data-processed/c.arctic.params.summary.fixedTm.csv")
+
+
+## Since infection efficiency is a proportion, it cannot be greater than 1
+## Replace values greater than 1 to 1
+## Do this step after calculating TPC parameters
+c.arctic.preds <- replace(c.arctic.preds, c.arctic.preds > 1, 1)
+
+## Save output
+write_csv(c.arctic.preds, "data-processed/c.arctic.predictions.fullposts.fixedTm.csv")
+
+
+##### Create a dataframe showing the mean, median and CIs of trait values at each temp
+c.predictions.summary <- calcPostQuants(c.arctic.preds, "c", Temp.xs)
+
+## Save output
+write_csv(c.predictions.summary, "data-processed/c.arctic.predictions.summary.fixedTm.csv")
+
+
+##### Plot
+c.predictions.summary <- read.csv("data-processed/c.arctic.predictions.summary.fixedTm.csv")
+c.params.summary <- read.csv("data-processed/c.arctic.params.summary.fixedTm.csv")
+
+
+plot.c <- c.predictions.summary %>% 
+  ggplot() +
+  geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#009E73", alpha = 0.5) +
+  geom_line(aes(x = temperature, y = median), color = "#009E73", linewidth = 1) +
+  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Infection proportion") +
+  annotate("text", x = 0, y = 0.95, label = expression(paste(italic("c"))), size = 5) +
+  theme_bw()
+
+plot.c
+
+ggsave("figures/c.arctic.quad.adjust.fixedTm.png", plot.c, width = 10.3, height = 5.6)
+
+## Compare original and adjusted TPC
+plot.c.all <- c.predictions.summary %>% 
+  ggplot() +
+  # Original
+  geom_ribbon(data = df.c.nonarctic.quad.uni, aes(x = temp, ymin = X2.5., ymax = X97.5.), fill = "#868686FF", alpha = 0.5) +
+  geom_line(data = df.c.nonarctic.quad.uni, aes(x = temp, y = X50.), color = "#868686FF", linewidth = 1) +
+  
+  geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#009E73", alpha = 0.5) +
+  geom_line(aes(x = temperature, y = median), color = "#009E73", linewidth = 1) +
+  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Infection proportion") +
+  annotate("text", x = 0, y = 0.95, label = expression(paste(italic("c"))), size = 5) +
+  theme_bw()
+
+plot.c.all
+
+ggsave("figures/c.arctic.vs.nonarctic.fixedTm.png", plot.c.all, width = 10.3, height = 5.6)
+
+
+
+#### 3bii. Eggs per female per gonotrophic cycle (EFGC) ----
+
+## Get the original TPC parameters
+EFGC.iter.param <- data.frame(T0 = EFGC.nonarctic.quad.uni$BUGSoutput$sims.list$cf.T0,
+                              Tm = EFGC.nonarctic.quad.uni$BUGSoutput$sims.list$cf.Tm,
+                              q = EFGC.nonarctic.quad.uni$BUGSoutput$sims.list$cf.q
+)
+
+
+##### Perform the hot-old shift
+EFGC.iter.param <- EFGC.iter.param %>% 
+  mutate(new.T0 = T0 - T0.diff,
+         new.q = q * (Tm - T0)**2/ (Tm - new.T0)**2)
+
+
+## Create a dataframe showing the TPC parameters for each iteration
+EFGC.params.fullposts <- EFGC.iter.param %>% 
+  dplyr::select(new.T0, Tm, new.q)
+
+EFGC.params.fullposts$iteration <- seq(1:nrow(EFGC.iter.param)) # Add a column indicating the number of MCMC iteration
+EFGC.params.fullposts <- relocate(EFGC.params.fullposts, iteration, .before = new.T0)
+
+EFGC.params.fullposts$trait <- "EFGC" # Add a column indicating trait name
+
+colnames(EFGC.params.fullposts) <- c("iteration", "cf.T0", "cf.Tm", "cf.q", "trait")
+
+## Save output
+write_csv(EFGC.params.fullposts, "data-processed/EFGC.arctic.params.fullposts.fixedTm.csv")
+
+
+
+##### Calculate trait values based on new TPC parameters
+EFGC.arctic.preds <- data.frame() # Initialize an empty dataframe
+
+for (i in 1:nrow(EFGC.iter.param)) {
+  # Calculate trait values for each MCMC iteration
+  iter.preds <- quad(Temp.xs, 
+                     T0 = EFGC.iter.param$new.T0[i],
+                     Tm = EFGC.iter.param$Tm[i], 
+                     q = EFGC.iter.param$new.q[i]) 
+  
+  # Add the trait values as a column
+  if (i == 1) {
+    EFGC.arctic.preds <- iter.preds
+  }
+  else {
+    EFGC.arctic.preds <- bind_cols(EFGC.arctic.preds, iter.preds)
+  }
+}
+
+# Transpose the dataset so that each row is a MCMC iteration (for calculating TPC parameters summary in the next step)
+EFGC.arctic.preds <- as.data.frame(t(EFGC.arctic.preds))
+colnames(EFGC.arctic.preds) <- seq(1:ncol(EFGC.arctic.preds))
+
+## Save output
+write_csv(EFGC.arctic.preds, "data-processed/EFGC.arctic.predictions.fullposts.fixedTm.csv")
+
+
+##### Calculate the mean, median, and CIs of the TPC parameters (Tmin, Tmax, q, Topt)
+EFGC.T0 <- data.frame(term = "cf.T0",
+                      mean = mean(EFGC.params.fullposts$cf.T0),
+                      sd = sd(EFGC.params.fullposts$cf.T0),
+                      lowerCI = quantile(EFGC.params.fullposts$cf.T0, 0.025)[[1]],
+                      lowerQ = quantile(EFGC.params.fullposts$cf.T0, 0.25)[[1]],
+                      median =  quantile(EFGC.params.fullposts$cf.T0, 0.5)[[1]],
+                      upperQ = quantile(EFGC.params.fullposts$cf.T0, 0.75)[[1]],
+                      upperCI = quantile(EFGC.params.fullposts$cf.T0, 0.975)[[1]],
+                      trait = "EFGC")
+
+EFGC.Tm <- data.frame(term = "cf.Tm",
+                      mean = mean(EFGC.params.fullposts$cf.Tm),
+                      sd = sd(EFGC.params.fullposts$cf.Tm),
+                      lowerCI = quantile(EFGC.params.fullposts$cf.Tm, 0.025)[[1]],
+                      lowerQ = quantile(EFGC.params.fullposts$cf.Tm, 0.25)[[1]],
+                      median =  quantile(EFGC.params.fullposts$cf.Tm, 0.5)[[1]],
+                      upperQ = quantile(EFGC.params.fullposts$cf.Tm, 0.75)[[1]],
+                      upperCI = quantile(EFGC.params.fullposts$cf.Tm, 0.975)[[1]],
+                      trait = "EFGC")
+
+EFGC.q <- data.frame(term = "cf.q",
+                     mean = mean(EFGC.params.fullposts$cf.q),
+                     sd = sd(EFGC.params.fullposts$cf.q),
+                     lowerCI = quantile(EFGC.params.fullposts$cf.q, 0.025)[[1]],
+                     lowerQ = quantile(EFGC.params.fullposts$cf.q, 0.25)[[1]],
+                     median =  quantile(EFGC.params.fullposts$cf.q, 0.5)[[1]],
+                     upperQ = quantile(EFGC.params.fullposts$cf.q, 0.75)[[1]],
+                     upperCI = quantile(EFGC.params.fullposts$cf.q, 0.975)[[1]],
+                     trait = "EFGC")
+
+# Calculate Topt for each iteration and calculate summary statistics (mean, sd, & quantiles)
+EFGC.Topt <- calcToptQuants(EFGC.arctic.preds, "EFGC", Temp.xs)
+
+# Add Topt and Tbreadth to parameters summary data frame
+EFGC.params.summary <- bind_rows(EFGC.T0, EFGC.Tm, EFGC.q, EFGC.Topt)
+
+
+## Save output
+write_csv(EFGC.params.summary, "data-processed/EFGC.arctic.params.summary.fixedTm.csv")
+
+
+##### Create a dataframe showing the mean, median and CIs of trait values at each temp
+EFGC.predictions.summary <- calcPostQuants(EFGC.arctic.preds, "EFGC", Temp.xs)
+
+## Save output
+write_csv(EFGC.predictions.summary, "data-processed/EFGC.arctic.predictions.summary.fixedTm.csv")
+
+
+##### Plot
+EFGC.predictions.summary <- read.csv("data-processed/EFGC.arctic.predictions.summary.fixedTm.csv")
+EFGC.params.summary <- read.csv("data-processed/EFGC.arctic.params.summary.fixedTm.csv")
+
+
+plot.EFGC <- EFGC.predictions.summary %>% 
+  ggplot() +
+  geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#0072B2", alpha = 0.5) +
+  geom_line(aes(x = temperature, y = median), color = "#0072B2", linewidth = 1) +
+  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Eggs per female per gonotrophic cycle") +
+  annotate("text", x = 2, y = 70, label = expression(paste(italic("EFGC"))), size = 5) +
+  theme_bw()
+
+plot.EFGC
+
+ggsave("figures/EFGC.arctic.quad.adjust.fixedTm.png", plot.EFGC, width = 10.3, height = 5.6)
+
+## Compare original and adjusted TPC
+plot.EFGC.all <- EFGC.predictions.summary %>% 
+  ggplot() +
+  # Original
+  geom_ribbon(data = df.EFGC.nonarctic.quad.uni, aes(x = temp, ymin = X2.5., ymax = X97.5.), fill = "#868686FF", alpha = 0.5) +
+  geom_line(data = df.EFGC.nonarctic.quad.uni, aes(x = temp, y = X50.), color = "#868686FF", linewidth = 1) +
+  
+  geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#0072B2", alpha = 0.5) +
+  geom_line(aes(x = temperature, y = median), color = "#0072B2", linewidth = 1) +
+  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Eggs per female per gonotrophic cycle") +
+  annotate("text", x = 2, y = 70, label = expression(paste(italic("EFGC"))), size = 5) +
+  theme_bw()
+
+plot.EFGC.all
+
+ggsave("figures/EFGC.arctic.vs.nonarctic.fixedTm.png", plot.EFGC.all, width = 10.3, height = 5.6)
+
