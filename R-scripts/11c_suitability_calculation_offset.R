@@ -18,7 +18,6 @@ library(tidyverse)
 library(readxl)
 library(janitor)
 library(R2jags)
-library(MASS)
 library(ggsci)
 library(ggpubr) # For ggarrange
 library(grafify)
@@ -59,15 +58,28 @@ load("R-scripts/R2jags-objects/MDR.arctic.bri.inf.Rdata")
 
 #####  Pull out the derived/predicted values:
 a.preds <- a.alldata.bri.uni.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
-c.preds <- read_csv("data-processed/c.arctic.preds.csv")
+c.preds <- read_csv("data-processed/c.arctic.predictions.fullposts.csv")
+c.preds <- as.matrix(c.preds)
+
 lf.preds <- lf.arctic.quad.inf.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
 PDR.preds <- PDR.arctic.bri.inf$BUGSoutput$sims.list$z.trait.mu.pred
-EFGC.preds <- read_csv("data-processed/EFGC.arctic.preds.csv")
+EFGC.preds <- read_csv("data-processed/EFGC.arctic.predictions.fullposts.csv")
+EFGC.preds <- as.matrix(EFGC.preds)
+
 EV.preds <- EV.arctic.quad.inf$BUGSoutput$sims.list$z.trait.mu.pred
 pLA.preds <- pLA.arctic.quad.inf$BUGSoutput$sims.list$z.trait.mu.pred
 MDR.preds <- MDR.arctic.bri.inf$BUGSoutput$sims.list$z.trait.mu.pred
 
-class(as.matrix(c.preds))
+
+## Pull out the full posterior distributions of TPC parameters
+a.params.fullposts <- read.csv("data-processed/a.params.fullposts.csv")
+c.params.fullposts <- read.csv("data-processed/c.params.fullposts.csv")
+lf.params.fullposts <- read.csv("data-processed/lf.params.fullposts.csv")
+PDR.params.fullposts <- read.csv("data-processed/PDR.params.fullposts.csv")
+EFGC.params.fullposts <- read.csv("data-processed/EFGC.params.fullposts.csv")
+EV.params.fullposts <- read.csv("data-processed/EV.params.fullposts.csv")
+pLA.params.fullposts <- read.csv("data-processed/pLA.params.fullposts.csv")
+MDR.params.fullposts <- read.csv("data-processed/MDR.params.fullposts.csv")
 
 
 ##########
@@ -77,46 +89,106 @@ class(as.matrix(c.preds))
 ## Columns = temp from 0 to 45ºC at a 0.1ºC interval, Rows = 15000 MCMC iterations
 S.calc <- S(a.preds, c.preds, lf.preds, PDR.preds, EFGC.preds, EV.preds, pLA.preds, MDR.preds)
 
-## Because of problems with the priors in some trait TPCs (T0>Tm), the predicted 
-## trait values are all zeros across temp gradient for some MCMC iteration in 
-## those traits, thus the suitability prediction is also zero
-## Now I'll just filter those problematic MCMC iterations out (ask Joey for better solution)
-
-## S.cal: 15000 rows (MCMC iterations) x 451 columns (temperature)
-## Rowsum will be 0 for those problematic iterations
-S.calc <- S.calc[rowSums(S.calc[])>0,]
-
-str(PDR.preds[rowSums(PDR.preds[])>0,])
-
 ##### Temp sequence for derived quantity calculations
 Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
+
+################ Debugging area: suitability all zeros across temp gradient #####################
+
+colnames(S.calc) <- Temp.xs
+
+output <- S.calc %>% 
+  mutate(iteration = rownames(.)) %>% # add column with iteration number 
+  pivot_longer(!iteration, names_to = "temperature", values_to = "trait_value") %>% # convert to long format (3 columns: iteration, temp, & trait value)
+  group_by(iteration) %>% 
+  slice_max(order_by = trait_value, n = 1) %>% # for each iteration, select row with highest value for the trait
+  ungroup() %>% 
+  mutate(temperature = as.numeric(temperature)) %>% 
+  mutate(iteration = as.numeric(iteration)) %>% 
+  arrange(iteration)
+
+n_distinct(output$iteration) == nrow(output)
+
+output %>% filter(trait_value == 0.1) %>% 
+  arrange(iteration) %>% 
+  distinct(iteration)
+
+
+check <- data.frame(temp = Temp.xs, 
+                    a = a.preds[637,], 
+                    c = c.preds[637,], 
+                    lf = lf.preds[637,],
+                    PDR = PDR.preds[637,],
+                    EFGC = EFGC.preds[637,],
+                    EV = EV.preds[637,],
+                    pLA = pLA.preds[637,],
+                    MDR = MDR.preds[637,]) # lf are all zeros, PDR are very low (1e-6 max)
+
+
+check <- check %>% 
+  mutate(S = S(a, c, lf, PDR, EFGC, EV, pLA, MDR))
+
+test.S <- data.frame(matrix(0, nrow = 1, ncol = 451))
+calcDerivedTPCParamPosteriors(as.data.frame(test.S), Temp.xs)
+
+#####################################################################################################
+
+## Because of problems with the priors in some trait TPCs (e.g. T0>Tm or q 
+## extremely small), the predicted trait values are basically zeros across temp 
+## gradient for some MCMC iteration in those traits, thus the suitability 
+## prediction is also zero.
+## Now I'll just filter those problematic MCMC iterations out (ask Joey for better solution)
+which(rowSums(S.calc[])==0)
+
+# which(rowSums(a.preds[])<1e-7)
+# which(rowSums(c.preds[])<1e-7)
+# which(rowSums(lf.preds[])<1e-7)
+# which(rowSums(PDR.preds[])<1e-7)
+# which(rowSums(EFGC.preds[])<1e-7)
+# which(rowSums(EV.preds[])<1e-7)
+# which(rowSums(pLA.preds[])<1e-7)
+# which(rowSums(MDR.preds[])<1e-7)
+
+## Seems like only PDR has problematic MCMC iterations
+## I'll remove problematic MCMC iterations from all traits to keep the total number of iteration consistent
+
+a.preds <- a.preds[rowSums(S.calc[])>0,]
+c.preds <- c.preds[rowSums(S.calc[])>0,]
+lf.preds <- lf.preds[rowSums(S.calc[])>0,]
+EFGC.preds <- EFGC.preds[rowSums(S.calc[])>0,]
+EV.preds <- EV.preds[rowSums(S.calc[])>0,]
+pLA.preds <- pLA.preds[rowSums(S.calc[])>0,]
+MDR.preds <- MDR.preds[rowSums(S.calc[])>0,]
+PDR.preds <- PDR.preds[rowSums(S.calc[])>0,] 
+
+S.calc <- S.calc[rowSums(S.calc[])>0,]
+
 
 # save all 15000 MCMC iterations of suitability calculation (451 row (temp), columns = temp and 15000 MCMC iterations)
 S.calc.iter <- data.frame(Temp.xs, t(S.calc))
 colnames(S.calc.iter) <- c("temp", paste0("iter", seq(1:nrow(S.calc))))
 
 # Save output
-# write.csv(S.calc.iter, "data-processed/S.offset.calc.iter.csv")
+write.csv(S.calc.iter, "data-processed/S.offset.calc.iter.csv")
 
 # Get the Tmin, Topt and Tmax for each MCMC iteration
 S.calc.iter.summary <- calcDerivedTPCParamPosteriors(S.calc, Temp.xs)
 S.calc.iter.summary$iter <- seq(1:nrow(S.calc))
-# write.csv(S.calc.iter.summary, "data-processed/S.offset.calc.iter.summary.csv")
+write.csv(S.calc.iter.summary, "data-processed/S.offset.calc.iter.summary.csv")
 
 
 # Get S mean, median, upper + lower CIs
 S.out <- calcPostQuants(as.data.frame(S.calc), "S", Temp.xs)
 
 # Save output
-# write.csv(S.out, "data-processed/S.offset.output.raw.csv")
+write.csv(S.out, "data-processed/S.offset.output.raw.csv")
 
 
 ## Calculate relative S(T)
 S.out.median <- S.out %>% 
   mutate(scaled_median = S.out$median / max(S.out$median))
 
-# write.csv(S.out.median, "data-processed/S.offset.output.median.csv")
+write.csv(S.out.median, "data-processed/S.offset.output.median.csv")
 
 S.out.upperCI <- S.out %>% 
   mutate(scaled_median = S.out$median / max(S.out$upperCI)) %>%
@@ -147,7 +219,7 @@ plot.S <- ggplot(data = S.out.upperCI) +
 
 plot.S
 
-# ggsave("figures/S.offset.CI.png", plot.S, width = 10.3, height = 5.6)
+ggsave("figures/S.offset.CI.png", plot.S, width = 10.3, height = 5.6)
 
 # plot.S <- ggplot(data = S.out.median) +
 #   geom_line(aes(x = temperature, y = scaled_median), colour = "black", linewidth = 1) +
@@ -155,10 +227,10 @@ plot.S
 #   scale_x_continuous(limits = c(10, 40)) +
 #   labs(x = expression(paste("Temperature (", degree, "C)")), y = "Suitability (S)") +
 #   theme_bw()
-# 
+#
 # plot.S
-# 
-# ggsave("figures/S.offset.png", plot.S, width = 10.3, height = 5.6)
+#
+ggsave("figures/S.offset.png", plot.S, width = 10.3, height = 5.6)
 
 
 ##########
@@ -202,44 +274,6 @@ plot.S
 #   return(output.df)
 # }
 
-
-
-
-################ Debugging area: suitability all zeros across temp gradient #####################
-
-colnames(S.calc) <- Temp.xs
-
-output <- S.calc %>% 
-  mutate(iteration = rownames(.)) %>% # add column with iteration number 
-  pivot_longer(!iteration, names_to = "temperature", values_to = "trait_value") %>% # convert to long format (3 columns: iteration, temp, & trait value)
-  group_by(iteration) %>% 
-  slice_max(order_by = trait_value, n = 1) %>% # for each iteration, select row with highest value for the trait
-  ungroup() %>% 
-  mutate(temperature = as.numeric(temperature)) %>% 
-  mutate(iteration = as.numeric(iteration)) %>% 
-  arrange(iteration)
-
-n_distinct(output$iteration) == nrow(output)
-
-output %>% filter(trait_value == 0.1) %>% 
-  arrange(iteration) %>% 
-  distinct(iteration)
-
-
-view(data.frame(temp = Temp.xs, 
-           a = a.preds[10166,], 
-           c = t(c.preds[10166,]), 
-           lf = lf.preds[10166],
-           PDR = PDR.preds[10166,],
-           EFGC = t(EFGC.preds[c(10166),]),
-           EV = EV.preds[10166,],
-           pLA = pLA.preds[10166,],
-           MDR = MDR.preds[10166,])) # lf are all zeros, PDR are very low (1e-6 max)
-
-test.S <- data.frame(matrix(0, nrow = 1, ncol = 451))
-calcDerivedTPCParamPosteriors(as.data.frame(test.S), Temp.xs)
-
-#####################################################################################################
 
 
 
@@ -338,12 +372,12 @@ ggsave("figures/S.offset.all.png", plot.S.all, width = 10.3, height = 5.6)
 # Temperature levels and # MCMC steps
 Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
-nMCMC <- 15000
+nMCMC <- nrow(S.calc)
 
 
-##### Calculate trait means
+##### Calculate trait means at each temperature
 a.m <- colMeans(a.preds)
-bc.m <- colMeans(c.preds)
+c.m <- colMeans(c.preds)
 lf.m <- colMeans(lf.preds)
 PDR.m <- colMeans(PDR.preds)
 EFGC.m <- colMeans(EFGC.preds)
@@ -359,13 +393,14 @@ dS_da <- D(R0, "a")
 dS_da
 
 
-
 # Calculate sensitivity using partial derivatives
-SA <- SensitivityAnalysis_pd(a.alldata.bri.uni.raneff, c.nonarctic.quad.uni,
-                             lf.arctic.quad.inf.raneff, PDR.arctic.bri.inf,
-                             EFGC.nonarctic.quad.uni, EV.arctic.quad.inf,
-                             pLA.arctic.quad.inf, MDR.arctic.bri.inf,
-                             a.m, bc.m, lf.m, PDR.m, EFGC.m, EV.m, pLA.m, MDR.m)
+SA <- SensitivityAnalysis_pd_offset(a.preds, c.preds, lf.preds, PDR.preds, 
+                                    EFGC.preds, EV.preds, pLA.preds, MDR.preds,
+                                    a.params.fullposts, c.params.fullposts, 
+                                    lf.params.fullposts, PDR.params.fullposts, 
+                                    EFGC.params.fullposts, EV.params.fullposts, 
+                                    pLA.params.fullposts, MDR.params.fullposts,
+                                    a.m, c.m, lf.m, PDR.m, EFGC.m, EV.m, pLA.m, MDR.m)
 
 
 # Get sensitivity posteriors for each term and summarize them
@@ -419,14 +454,14 @@ plot.SA <- ggplot() +
 
 plot.SA
 
-# ggsave("figures/SA.offset.png", plot.SA, width = 10.3, height = 5.6)
+ggsave("figures/SA.offset.png", plot.SA, width = 10.3, height = 5.6)
 
 
 plot.everything <- ggarrange(plot.S, plot.S.viz, plot.SA, nrow = 3, 
                              align = "v", heights = c(2,1,2))
 plot.everything
 
-# ggsave("figures/S.and.SA.offset.png", plot.everything, width = 10.3, height = 5.6)
+ggsave("figures/S.and.SA.offset.png", plot.everything, width = 10.3, height = 5.6)
 
 
 ##### TPC summary ----
@@ -465,4 +500,4 @@ S.output.lowerCI <- data.frame(temp = S.out$temperature,
 # Check output
 plot(scaled_lowerCI ~ temp, data = S.output.lowerCI, type = "l")
 
-# write.csv(S.output.lowerCI, "data-processed/S.offset.output.lowerCI.csv")
+write.csv(S.output.lowerCI, "data-processed/S.offset.output.lowerCI.csv")

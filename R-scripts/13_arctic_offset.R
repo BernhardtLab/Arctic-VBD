@@ -878,9 +878,6 @@ for (i in 1:nrow(c.iter.param)) {
 c.arctic.preds <- as.data.frame(t(c.arctic.preds))
 colnames(c.arctic.preds) <- seq(1:ncol(c.arctic.preds))
 
-## Save output
-# write_csv(c.arctic.preds, "data-processed/c.arctic.preds.csv")
-
 
 ##### Calculate the mean, median, and CIs of the TPC parameters (Tmin, Tmax, q, Topt)
 c.T0 <- data.frame(term = "cf.T0",
@@ -922,6 +919,15 @@ c.params.summary <- bind_rows(c.T0, c.Tm, c.q, c.Topt)
 
 ## Save output
 # write_csv(c.params.summary, "data-processed/c.arctic.params.summary.csv")
+
+
+## Since infection efficiency is a proportion, it cannot be greater than 1
+## Replace values greater than 1 to 1
+## Do this step after calculating TPC parameters
+c.arctic.preds <- replace(c.arctic.preds, c.arctic.preds > 1, 1)
+
+## Save output
+# write_csv(c.arctic.preds, "data-processed/c.arctic.predictions.fullposts.csv")
 
 
 ##### Create a dataframe showing the mean, median and CIs of trait values at each temp
@@ -1027,7 +1033,7 @@ EFGC.arctic.preds <- as.data.frame(t(EFGC.arctic.preds))
 colnames(EFGC.arctic.preds) <- seq(1:ncol(EFGC.arctic.preds))
 
 ## Save output
-# write_csv(EFGC.arctic.preds, "data-processed/EFGC.arctic.preds.csv")
+# write_csv(EFGC.arctic.preds, "data-processed/EFGC.arctic.predictions.fullposts.csv")
 
 
 ##### Calculate the mean, median, and CIs of the TPC parameters (Tmin, Tmax, q, Topt)

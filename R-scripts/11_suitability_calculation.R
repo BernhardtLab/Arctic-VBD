@@ -81,31 +81,63 @@ S.calc <- S(a.preds, c.preds, lf.preds, PDR.preds, EFGC.preds, EV.preds, pLA.pre
 Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
 
+
+## Because of problems with the priors in some trait TPCs (e.g. T0>Tm or q 
+## extremely small), the predicted trait values are basically zeros across temp 
+## gradient for some MCMC iteration in those traits, thus the suitability 
+## prediction is also zero.
+## Now I'll just filter those problematic MCMC iterations out (ask Joey for better solution)
+which(rowSums(S.calc[])==0)
+
+# which(rowSums(a.preds[])<1e-7)
+# which(rowSums(c.preds[])<1e-7)
+# which(rowSums(lf.preds[])<1e-7)
+# which(rowSums(PDR.preds[])<1e-7)
+# which(rowSums(EFGC.preds[])<1e-7)
+# which(rowSums(EV.preds[])<1e-7)
+# which(rowSums(pLA.preds[])<1e-7)
+# which(rowSums(MDR.preds[])<1e-7)
+
+## Seems like only PDR has problematic MCMC iterations
+## I'll remove problematic MCMC iterations from all traits to keep the total number of iteration consistent
+
+a.preds <- a.preds[rowSums(S.calc[])>0,]
+c.preds <- c.preds[rowSums(S.calc[])>0,]
+lf.preds <- lf.preds[rowSums(S.calc[])>0,]
+EFGC.preds <- EFGC.preds[rowSums(S.calc[])>0,]
+EV.preds <- EV.preds[rowSums(S.calc[])>0,]
+pLA.preds <- pLA.preds[rowSums(S.calc[])>0,]
+MDR.preds <- MDR.preds[rowSums(S.calc[])>0,]
+PDR.preds <- PDR.preds[rowSums(S.calc[])>0,] 
+
+S.calc <- S.calc[rowSums(S.calc[])>0,]
+
+
 # save all 15000 MCMC iterations of suitability calculation (451 row (temp), columns = temp and 15000 MCMC iterations)
 S.calc.iter <- data.frame(Temp.xs, t(S.calc))
-colnames(S.calc.iter) <- c("temp", paste0("iter", seq(1:15000)))
+colnames(S.calc.iter) <- c("temp", paste0("iter", seq(1:nrow(S.calc))))
 
 # Save output
-# write.csv(S.calc.iter, "data-processed/S.calc.iter.csv")
+write.csv(S.calc.iter, "data-processed/S.calc.iter.csv")
 
 # Get the Tmin, Topt and Tmax for each MCMC iteration
 S.calc.iter.summary <- calcDerivedTPCParamPosteriors(S.calc, Temp.xs)
-S.calc.iter.summary$iter <- seq(1:15000)
-# write.csv(S.calc.iter.summary, "data-processed/S.calc.iter.summary.csv")
+S.calc.iter.summary$iter <- seq(1:nrow(S.calc))
+write.csv(S.calc.iter.summary, "data-processed/S.calc.iter.summary.csv")
 
 
 # Get S mean, median, upper + lower CIs
 S.out <- calcPostQuants(as.data.frame(S.calc), "S", Temp.xs)
 
 # Save output
-# write.csv(S.out, "data-processed/S.output.raw.csv")
+write.csv(S.out, "data-processed/S.output.raw.csv")
 
 
 ## Calculate relative S(T)
 S.out.median <- S.out %>% 
   mutate(scaled_median = S.out$median / max(S.out$median))
 
-# write.csv(S.out.median, "data-processed/S.output.median.csv")
+write.csv(S.out.median, "data-processed/S.output.median.csv")
 
 S.out.upperCI <- S.out %>% 
   mutate(scaled_median = S.out$median / max(S.out$upperCI)) %>%
@@ -136,7 +168,7 @@ plot.S <- ggplot(data = S.out.upperCI) +
 
 plot.S
 
-# ggsave("figures/S.CI.png", plot.S, width = 10.3, height = 5.6)
+ggsave("figures/S.CI.png", plot.S, width = 10.3, height = 5.6)
 
 plot.S <- ggplot(data = S.out.median) +
   geom_line(aes(x = temperature, y = scaled_median), colour = "black", linewidth = 1) +
@@ -147,7 +179,7 @@ plot.S <- ggplot(data = S.out.median) +
 
 plot.S
 
-# ggsave("figures/S.png", plot.S, width = 10.3, height = 5.6)
+ggsave("figures/S.png", plot.S, width = 10.3, height = 5.6)
 
 
 ##########
@@ -241,7 +273,7 @@ S.viz.out$term <- factor(S.viz.out$term,
                          levels = c("Tmax", "Topt", "Tmin", "Tbreadth"))
 
 # Save output
-# write.csv(S.viz.out, "data-processed/S.vizout.csv")
+write.csv(S.viz.out, "data-processed/S.vizout.csv")
 
 # Plot
 plot.S.viz <- S.viz.out %>% 
@@ -269,7 +301,7 @@ plot.S.viz <- S.viz.out %>%
 
 plot.S.viz
 
-# ggsave("figures/S.viz.png", plot.S.viz, width = 10.3, height = 5.6)
+ggsave("figures/S.viz.png", plot.S.viz, width = 10.3, height = 5.6)
 
 
 ## Put the S and S.viz together
@@ -277,7 +309,7 @@ plot.S.all <- ggarrange(plot.S, plot.S.viz, nrow = 2, align = "v", heights = c(2
 
 plot.S.all
 
-# ggsave("figures/S.all.png", plot.S.all, width = 10.3, height = 5.6)
+ggsave("figures/S.all.png", plot.S.all, width = 10.3, height = 5.6)
 
 
 ##########
@@ -287,7 +319,7 @@ plot.S.all
 # Temperature levels and # MCMC steps
 Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
-nMCMC <- 15000
+nMCMC <- nrow(S.calc)
 
 
 ##### Calculate trait means
@@ -368,14 +400,14 @@ plot.SA <- ggplot() +
 
 plot.SA
 
-# ggsave("figures/SA.png", plot.SA, width = 10.3, height = 5.6)
+ggsave("figures/SA.png", plot.SA, width = 10.3, height = 5.6)
 
 
 plot.everything <- ggarrange(plot.S, plot.S.viz, plot.SA, nrow = 3, 
                              align = "v", heights = c(2,1,2))
 plot.everything
 
-# ggsave("figures/S.and.SA.png", plot.everything, width = 10.3, height = 5.6)
+ggsave("figures/S.and.SA.png", plot.everything, width = 10.3, height = 5.6)
 
 
 ##### TPC summary ----
@@ -414,4 +446,4 @@ S.output.lowerCI <- data.frame(temp = S.out$temperature,
 # Check output
 plot(scaled_lowerCI ~ temp, data = S.output.lowerCI, type = "l")
 
-# write.csv(S.output.lowerCI, "data-processed/S.output.lowerCI.csv")
+write.csv(S.output.lowerCI, "data-processed/S.output.lowerCI.csv")
