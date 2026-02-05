@@ -95,41 +95,41 @@ N.Temp.xs <-length(Temp.xs)
 
 ################ Debugging area: suitability all zeros across temp gradient #####################
 
-colnames(S.calc) <- Temp.xs
-
-output <- S.calc %>% 
-  mutate(iteration = rownames(.)) %>% # add column with iteration number 
-  pivot_longer(!iteration, names_to = "temperature", values_to = "trait_value") %>% # convert to long format (3 columns: iteration, temp, & trait value)
-  group_by(iteration) %>% 
-  slice_max(order_by = trait_value, n = 1) %>% # for each iteration, select row with highest value for the trait
-  ungroup() %>% 
-  mutate(temperature = as.numeric(temperature)) %>% 
-  mutate(iteration = as.numeric(iteration)) %>% 
-  arrange(iteration)
-
-n_distinct(output$iteration) == nrow(output)
-
-output %>% filter(trait_value == 0.1) %>% 
-  arrange(iteration) %>% 
-  distinct(iteration)
-
-
-check <- data.frame(temp = Temp.xs, 
-                    a = a.preds[637,], 
-                    c = c.preds[637,], 
-                    lf = lf.preds[637,],
-                    PDR = PDR.preds[637,],
-                    EFGC = EFGC.preds[637,],
-                    EV = EV.preds[637,],
-                    pLA = pLA.preds[637,],
-                    MDR = MDR.preds[637,]) # lf are all zeros, PDR are very low (1e-6 max)
-
-
-check <- check %>% 
-  mutate(S = S(a, c, lf, PDR, EFGC, EV, pLA, MDR))
-
-test.S <- data.frame(matrix(0, nrow = 1, ncol = 451))
-calcDerivedTPCParamPosteriors(as.data.frame(test.S), Temp.xs)
+# colnames(S.calc) <- Temp.xs
+# 
+# output <- S.calc %>% 
+#   mutate(iteration = rownames(.)) %>% # add column with iteration number 
+#   pivot_longer(!iteration, names_to = "temperature", values_to = "trait_value") %>% # convert to long format (3 columns: iteration, temp, & trait value)
+#   group_by(iteration) %>% 
+#   slice_max(order_by = trait_value, n = 1) %>% # for each iteration, select row with highest value for the trait
+#   ungroup() %>% 
+#   mutate(temperature = as.numeric(temperature)) %>% 
+#   mutate(iteration = as.numeric(iteration)) %>% 
+#   arrange(iteration)
+# 
+# n_distinct(output$iteration) == nrow(output)
+# 
+# output %>% filter(trait_value == 0.1) %>% 
+#   arrange(iteration) %>% 
+#   distinct(iteration)
+# 
+# 
+# check <- data.frame(temp = Temp.xs, 
+#                     a = a.preds[637,], 
+#                     c = c.preds[637,], 
+#                     lf = lf.preds[637,],
+#                     PDR = PDR.preds[637,],
+#                     EFGC = EFGC.preds[637,],
+#                     EV = EV.preds[637,],
+#                     pLA = pLA.preds[637,],
+#                     MDR = MDR.preds[637,]) # lf are all zeros, PDR are very low (1e-6 max)
+# 
+# 
+# check <- check %>% 
+#   mutate(S = S(a, c, lf, PDR, EFGC, EV, pLA, MDR))
+# 
+# test.S <- data.frame(matrix(0, nrow = 1, ncol = 451))
+# calcDerivedTPCParamPosteriors(as.data.frame(test.S), Temp.xs)
 
 #####################################################################################################
 

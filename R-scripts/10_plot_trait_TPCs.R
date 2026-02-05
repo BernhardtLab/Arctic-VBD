@@ -56,8 +56,8 @@ a.params.summary <- read.csv("data-processed/a.params.summary.csv")
 ############## Infection efficiency (c) ---------------------------------------------------------------
 ## Load data
 data.c <- read_csv("data-processed/TraitData_c.csv")
-c.predictions.summary <- read.csv("data-processed/c.predictions.summary.csv")
-c.params.summary <- read.csv("data-processed/c.params.summary.csv")
+c.predictions.summary <- read.csv("data-processed/c.arctic.predictions.summary.csv")
+c.params.summary <- read.csv("data-processed/c.arctic.params.summary.csv")
 
 # Process trait data for plotting
 data.c.summary <- processTraitData(data.c, "c")
@@ -107,8 +107,8 @@ data.PDR.summary <- processTraitData(data.PDR.arctic, "PDR")
 ############## Eggs per female per gonotrophic cycle (EFGC) ---------------------------------------------------------------
 ## Load data
 data.EFGC <- read_csv("data-processed/TraitData_EFGC.csv")
-EFGC.predictions.summary <- read.csv("data-processed/EFGC.predictions.summary.csv")
-EFGC.params.summary <- read.csv("data-processed/EFGC.params.summary.csv")
+EFGC.predictions.summary <- read.csv("data-processed/EFGC.arctic.predictions.summary.csv")
+EFGC.params.summary <- read.csv("data-processed/EFGC.arctic.params.summary.csv")
 
 data.EFGC.summary <- processTraitData(data.EFGC, "EFGC")
 
@@ -188,9 +188,9 @@ plot.a <- a.predictions.summary %>%
   geom_pointrange(data = data.a.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
-  labs(x = expression(paste("Temperature (", degree, "C)")), 
+  labs(title = "A", x = expression(paste("Temperature (", degree, "C)")), 
        y = parse(text = "Bite~rate~(day^-1)")) +
-  annotate("text", x = 0, y = 0.45, label = expression(paste(italic("a"))), size = 5) +
+  annotate("text", x = 1, y = 0.44, label = expression(paste(italic("a"))), size = 5) +
   theme_bw()
 
 plot.a
@@ -203,12 +203,12 @@ plot.c <- c.predictions.summary %>%
   geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#009E73", alpha = 0.5) +
   geom_line(aes(x = temperature, y = median), color = "#009E73", linewidth = 1) +
   #geom_point(data = data.c, aes(x = temp, y = trait), size = 2) +
-  geom_pointrange(data = data.c.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
+  #geom_pointrange(data = data.c.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(x = expression(paste("Temperature (", degree, "C)")), 
        y = "Infection proportion") +
-  annotate("text", x = 0, y = 0.95, label = expression(paste(italic("c"))), size = 5) +
+  annotate("text", x = 1, y = 0.97, label = expression(paste(italic("c"))), size = 5) +
   theme_bw()
 
 plot.c
@@ -225,7 +225,7 @@ plot.lf <- lf.predictions.summary %>%
   scale_x_continuous(limits = c(0, 46)) + 
   labs(x = expression(paste("Temperature (", degree, "C)")), 
        y = "Mosquito adult lifespan (days)") +
-  annotate("text", x = 0, y = 72, label = expression(paste(italic("lf"))), size = 5) +
+  annotate("text", x = 1, y = 72, label = expression(paste(italic("lf"))), size = 5) +
   theme_bw()
 
 plot.lf
@@ -242,7 +242,7 @@ plot.PDR <- PDR.predictions.summary %>%
   scale_x_continuous(limits = c(0, 46)) + 
   labs(x = expression(paste("Temperature (", degree, "C)")), 
        y = parse(text = "Parasite~development~rate~(day^-1)")) +
-  annotate("text", x = 2, y = 0.24, label = expression(paste(italic("PDR"))), size = 5) +
+  annotate("text", x = 1, y = 0.22, label = expression(paste(italic("PDR"))), size = 5) +
   theme_bw()
 
 plot.PDR
@@ -254,12 +254,12 @@ plot.EFGC <- EFGC.predictions.summary %>%
   geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#56B4E9", alpha = 0.5) +
   geom_line(aes(x = temperature, y = median), colour = "#56B4E9", linewidth = 1) +
   #geom_point(data = data.EFGC.arctic, aes(x = temp, y = trait, color = species), size = 2) +
-  geom_pointrange(data = data.EFGC.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
+  #geom_pointrange(data = data.EFGC.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(x = expression(paste("Temperature (", degree, "C)")), 
        y = "Eggs per female per gonotrophic cycle") +
-  annotate("text", x = 2, y = 150, label = expression(paste(italic("EFGC"))), size = 5) +
+  annotate("text", x = 2, y = 68, label = expression(paste(italic("EFGC"))), size = 5) +
   theme_bw()
 
 plot.EFGC
@@ -310,7 +310,7 @@ plot.MDR <- MDR.predictions.summary %>%
   scale_x_continuous(limits = c(0, 46)) + 
   labs(x = expression(paste("Temperature (", degree, "C)")), 
        y = parse(text = "Mosquito~development~rate~(day^-1)")) +
-  annotate("text", x = 2, y = 0.15, label = expression(paste(italic("MDR"))), size = 5) +
+  annotate("text", x = 1, y = 0.15, label = expression(paste(italic("MDR"))), size = 5) +
   theme_bw()
 
 plot.MDR
@@ -323,7 +323,7 @@ plot.traits <- ggarrange(plot.a, plot.lf, plot.MDR,
 
 plot.traits
 
-#ggsave("figures/trait.TPCs.png", plot.traits, width = 15, height = 9)
+ggsave("figures/trait.TPCs.png", plot.traits, width = 15, height = 9)
 
 
 ############## TPC parameters ---------------------------------------------------------------
@@ -334,18 +334,19 @@ params.summary <- bind_rows(a.params.summary, c.params.summary, lf.params.summar
 
 params.summary <- params.summary %>% 
   filter(term %in% c("cf.T0", "Topt", "cf.Tm")) %>% 
-  mutate(treatment = factor(treatment, levels = c("a", "PDR", "EFGC", "pLA",
-                                                  "c", "lf", "EV", "MDR"))) %>% 
+  mutate(trait = factor(trait, levels = c("a", "PDR", "pLA", "EFGC",
+                                                  "lf", "c", "EV", "MDR"))) %>% 
   mutate(term = factor(term, levels = c("cf.Tm", "Topt", "cf.T0"))) 
   
 plot.params <- params.summary %>%
   ggplot() +
-  geom_linerange(aes(xmin = lowerCI, xmax = upperCI, y = treatment, 
-                     colour = treatment),
+  geom_linerange(aes(xmin = lowerCI, xmax = upperCI, y = trait, 
+                     colour = trait),
                  linewidth = 0.8, position = position_dodge2(width = 0.6)) +
-  geom_point(aes(x = median, y = treatment, colour = treatment), size = 2.5, 
+  geom_point(aes(x = median, y = trait, colour = trait), size = 2.5, 
              position = position_dodge2(width = 0.6)) +
-  labs(x = expression(paste("Temperature (", degree, "C)"))) +
+  labs(title = "B",
+       x = expression(paste("Temperature (", degree, "C)"))) +
   scale_y_discrete(labels=c("cf.T0" = expression(paste("T"[min])),
                             "Topt" = expression(paste("T"[opt])),
                             "cf.Tm" = expression(paste("T"[max]))),
@@ -359,8 +360,8 @@ plot.params <- params.summary %>%
                       #breaks = c("a", "c", "lf", "PDR", "EFGC", "EV", "pLA", "MDR"),
                       #labels = c("a", "c", "lf", "PDR", "EFGC", "EV", "pLA", "MDR")
                       # Sort by Tmin:
-                      breaks = c("MDR", "EV", "lf", "c","pLA", "EFGC", "PDR", "a"),
-                      labels = c("MDR", "EV", "lf", "c","pLA", "EFGC", "PDR", "a")) +
+                      breaks = c("MDR", "EV", "c", "lf","EFGC", "pLA", "PDR", "a"),
+                      labels = c("MDR", "EV", "c", "lf","EFG", "CpLA", "PDR", "a")) +
   theme(axis.ticks.y = element_blank(),
         axis.title.y = element_blank(),
         panel.grid.major = element_blank(),
@@ -381,7 +382,7 @@ prediction.summary <- bind_rows(a.predictions.summary, c.predictions.summary,
 
 
 prediction.summary <- prediction.summary %>% 
-  group_by(treatment) %>% 
+  group_by(trait) %>% 
   mutate(scaled_mean = mean / max(mean)) %>% 
   mutate(scaled_median = median / max(median)) %>% 
   ungroup()
@@ -393,10 +394,11 @@ prediction.S <- read_csv("data-processed/S.output.median.csv")
 
 plot.traits.scaled <- prediction.summary %>% 
   ggplot(aes(x = temperature, y = scaled_median)) +
-  geom_line((aes(colour = treatment)), linewidth = 0.8) +
+  geom_line((aes(colour = trait)), linewidth = 0.8) +
   geom_line(data = prediction.S, aes(x = temperature, y = scaled_median, colour = "S"),
             linewidth = 1.5) +
-  labs(x = expression(paste("Temperature (", degree, "C)")), 
+  labs(title = "C",
+       x = expression(paste("Temperature (", degree, "C)")), 
        y = "Trait value (scaled)") +
   scale_colour_manual(values = c("S" = "#000000", "a" = "#E69F00", "c" = "#009E73",
                                  "lf" = "#0072B2", "PDR" = "#CC79A7", "EFGC" = "#56B4E9", 
@@ -411,7 +413,7 @@ plot.traits.scaled <- prediction.summary %>%
 
 plot.traits.scaled
 
-# ggsave("figures/trait.TPCs.scaled.png", plot.traits.scaled, width = 10.3, height = 5.6)
+ggsave("figures/trait.TPCs.scaled.png", plot.traits.scaled, width = 10.3, height = 5.6)
 
 
 plot.summary <- ggarrange(plot.params, plot.traits.scaled, align = "hv",
@@ -423,4 +425,4 @@ plot.all <- ggarrange(plot.traits, plot.summary,
                       nrow = 2, heights = c(3,4)) + bgcolor("white")
 plot.all
 
-# ggsave("figures/trait.TPCs.summary.png", plot.all, width = 15, height = 18)
+ggsave("figures/trait.TPCs.summary.png", plot.all, width = 15, height = 18)
