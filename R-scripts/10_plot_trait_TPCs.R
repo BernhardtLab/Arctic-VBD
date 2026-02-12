@@ -20,7 +20,6 @@ library(tidyverse)
 library(readxl)
 library(janitor)
 library(R2jags)
-library(mcmcplots) # Diagnostic plots for fits
 library(MASS)
 library(ggsci)
 library(ggpubr) # For ggarrange
