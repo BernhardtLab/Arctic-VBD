@@ -396,7 +396,7 @@ plot.traits.scaled <- prediction.summary %>%
   geom_line((aes(colour = trait)), linewidth = 0.8) +
   geom_line(data = prediction.S, aes(x = temperature, y = scaled_median, colour = "S"),
             linewidth = 1.5) +
-  labs(title = "C",
+  labs(title = "B",
        x = expression(paste("Temperature (", degree, "C)")), 
        y = "Trait value (scaled)") +
   scale_colour_manual(values = c("S" = "#000000", "a" = "#E69F00", "c" = "#009E73",
@@ -420,8 +420,8 @@ plot.summary <- ggarrange(plot.params, plot.traits.scaled, align = "hv",
 
 plot.summary
 
-plot.all <- ggarrange(plot.traits, plot.summary,
-                      nrow = 2, heights = c(3,4)) + bgcolor("white")
+plot.all <- ggarrange(plot.traits, plot.traits.scaled,
+                      nrow = 2, heights = c(3,2)) + bgcolor("white")
 plot.all
 
 ggsave("figures/trait.TPCs.summary.png", plot.all, width = 15, height = 18)

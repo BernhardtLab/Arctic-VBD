@@ -12,33 +12,9 @@ trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait
 1/a,18,13,20,10,min/max,days between consecutive blood meals,meal count,01-Feb,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_15,Arctic
 1/a,18,10,22,2,min/max,days between consecutive blood meals,meal count,02-Mar,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_11,Arctic
 1/a,18,11,13,6,min/max,days between consecutive blood meals,meal count,03-Apr,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_8,Arctic
-1/a,20,8.1,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte_2009_JMedEntomol,10.1603/033.046.0105,table 5,Saint-Pierre Reunion Island,non-Arctic
-1/a,25,4.5,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte_2009_JMedEntomol,10.1603/033.046.0105,table 5,Saint-Pierre Reunion Island,non-Arctic
-1/a,30,3.5,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte_2009_JMedEntomol,10.1603/033.046.0105,table 5,Saint-Pierre Reunion Island,non-Arctic
-1/a,35,4.4,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte_2009_JMedEntomol,10.1603/033.046.0105,table 5,Saint-Pierre Reunion Island,non-Arctic
-1/a,25,3.8,0.1,0.1,se,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Marini_2020_Insects,10.3390/insects11110808,table 4,Trento Italy,non-Arctic
-1/a,30,3.3,0.1,0.1,se,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Marini_2020_Insects,10.3390/insects11110808,table 4,Trento Italy,non-Arctic
-1/a,24,10.530689655172413,NA,NA,NA,individual-level duration of first gonotrophic cycle,NA,NA,Aedes,aegypti,Goindin_2015_PLoSOne,10.1371/journal.pone.0135489,supplementary file 1,Guadeloupe French West Indies,non-Arctic
-1/a,24,7.60375,NA,NA,NA,individual-level duration of second gonotrophic cycle,NA,NA,Aedes,aegypti,Goindin_2015_PLoSOne,10.1371/journal.pone.0135489,supplementary file 1,Guadeloupe French West Indies,non-Arctic
-1/a,27,9.099166666666667,NA,NA,NA,individual-level duration of first gonotrophic cycle,NA,NA,Aedes,aegypti,Goindin_2015_PLoSOne,10.1371/journal.pone.0135489,supplementary file 1,Guadeloupe French West Indies,non-Arctic
-1/a,27,7.164444444444444,NA,NA,NA,individual-level duration of second gonotrophic cycle,NA,NA,Aedes,aegypti,Goindin_2015_PLoSOne,10.1371/journal.pone.0135489,supplementary file 1,Guadeloupe French West Indies,non-Arctic
-1/a,30,5.592786885245902,NA,NA,NA,individual-level duration of first gonotrophic cycle,NA,NA,Aedes,aegypti,Goindin_2015_PLoSOne,10.1371/journal.pone.0135489,supplementary file 1,Guadeloupe French West Indies,non-Arctic
-1/a,30,5.100833333333333,NA,NA,NA,individual-level duration of second gonotrophic cycle,NA,NA,Aedes,aegypti,Goindin_2015_PLoSOne,10.1371/journal.pone.0135489,supplementary file 1,Guadeloupe French West Indies,non-Arctic
-1/a,22,7.3,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,table 5,NA,non-Arctic
-1/a,24,6.1,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,table 5,NA,non-Arctic
-1/a,26,4.2,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,table 5,NA,non-Arctic
-1/a,28,3.5,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,table 5,NA,non-Arctic
-1/a,30,2.9,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,table 5,NA,non-Arctic
-1/a,32,2.4,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_2006_Research&TrainingTropicalDis_Geneva_Paper,NA,table 5,NA,non-Arctic
-a,21.68742415,0.167518059,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,22.2943022,0.144213433,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,22.38953929,0.168599215,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,22.92476429,0.168082804,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,24.39558634,0.25167012,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,25.01425641,0.251952493,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,25.87751143,0.202140476,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,26.16176525,0.202270215,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,27.47748918,0.307846963,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,28.18628204,0.27698188,NA,NA,NA,NA,NA,NA,aedes,aegypti,Focks_1993_JMedEntomol,10.1093/jmedent/30.6.1003,figure 9,NA,non-Arctic
-a,16,0,NA,NA,NA,NA,NA,NA,aedes,aegypti,Morin_et_al_2015,NA,NA,NA,non-Arctic
-a,40,0,NA,NA,NA,NA,NA,NA,aedes,aegypti,Morin_et_al_2015,NA,NA,NA,non-Arctic
+1/a,20,8.1,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 5,NA,non-Arctic
+1/a,25,4.5,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 5,NA,non-Arctic
+1/a,30,3.5,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 5,NA,non-Arctic
+1/a,35,4.4,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 5,NA,non-Arctic
+1/a,25,3.8,0.1,0.1,se,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 4,cow blood was offered twice a week to each female via Hemotek,non-Arctic
+1/a,30,3.3,0.1,0.1,se,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 4,cow blood was offered twice a week to each female via Hemotek,non-Arctic

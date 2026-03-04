@@ -57,16 +57,17 @@ quad <- quadratic(Temp.xs, T0 = 0, Tm = 25, q = 0.08)
 
 ##### Generate data points
 set.seed(50) # Set a random seed for reproducibility of the simulation
-temp1 <- c(2, 5, 7, 10, 13, 16, 18)
+temp1 <- c(2, 5, 7, 10, 13, 16, 19, 22)
 mean1 <- quadratic(temp1, T0 = 0, Tm = 25, q = 0.08)
 sigma <- 0.8
 data1 <- rnorm(length(temp1), mean = mean1, sd = sigma)
 
 set.seed(50) # Set a random seed for reproducibility of the simulation
-temp2 <- c(13, 16, 19, 21, 24, 26, 29)
+temp2 <- c(13, 16, 19, 21, 24, 26, 29, 30)
 mean2 <- briere(temp2, T0 = 10, Tm = 30, q = 0.01)
 sigma <- 0.8
 data2 <- rnorm(length(temp2), mean = mean2, sd = sigma)
+data2 <- ifelse(data2 < 0, 0, data2)
 
 lines <- data.frame(temp = Temp.xs, trait1 = quad, trait2 = bri)
 lines <- pivot_longer(lines, cols = 2:3, names_to = "trait", values_to = "value")
@@ -129,3 +130,141 @@ panel_b <-suitability %>% ggplot(aes(x = temp)) +
                                  size = 0.9, linetype = "solid"))
 panel_b
 ggsave("figures/conceptual_figure_panelB.png", panel_b, width = 3, height = 2.5)
+
+
+##########
+###### 2. Transforming Non-Arctic data to Arctic data ----
+##########
+
+##### Non-Arctic TPC ----
+nonarctic <- briere(Temp.xs, T0 = 15, Tm = 35, q = 0.008)
+nonarctic_tpc <- data.frame(temp = Temp.xs, trait = nonarctic)
+
+set.seed(456) # Set a random seed for reproducibility of the simulation
+nonarctic_temp <- c(18, 19, 21, 24, 26, 29, 32, 34, 35)
+nonarctic_mean <- briere(nonarctic_temp, T0 = 15, Tm = 35, q = 0.008)
+sigma <- 0.8
+nonarctic_data <- rnorm(length(nonarctic_temp), mean = nonarctic_mean, sd = sigma)
+
+nonarctic_data <- data.frame(temp = nonarctic_temp, data = nonarctic_data)
+
+
+plot.nonarctic <- nonarctic_tpc %>% ggplot(aes(x = temp)) +
+  geom_line(aes(y = trait), colour = "azure4", size = 1) +
+  geom_point(data = nonarctic_data, aes(y = data), colour = "azure4", size = 2) +
+  xlim(5,40) +
+  ylim(0, 11) +
+  labs(x = "Temperature", y = "Traits") +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black", 
+                                 size = 0.9, linetype = "solid"))
+plot.nonarctic
+
+ggsave("figures/conceptual_figure_nonarctic.png", plot.nonarctic, width = 3, height = 2)
+
+
+##### Arctic and Non-Arctic TPCs ----
+arctic <- briere(Temp.xs, T0 = 11, Tm = 33, q = 0.01)
+arctic_tpc <- data.frame(temp = Temp.xs, trait = arctic)
+
+
+set.seed(50) # Set a random seed for reproducibility of the simulation
+arctic_temp <- c(16, 18, 20, 22, 24)
+arctic_mean <- briere(arctic_temp,  T0 = 11, Tm = 33, q = 0.01)
+sigma <- 0.8
+arctic_data <- rnorm(length(arctic_temp), mean = arctic_mean, sd = sigma)
+
+arctic_data <- data.frame(temp = arctic_temp, data = arctic_data)
+
+plot.both <- nonarctic_tpc %>% ggplot(aes(x = temp)) +
+  geom_line(aes(y = trait), colour = "azure4", size = 1) +
+  geom_line(data = arctic_tpc, aes(y = trait), colour = "#4363d8", size = 1) +
+  geom_point(data = arctic_data, aes(y = data), colour = "#4363d8", size = 2) +
+  xlim(5,40) +
+  ylim(0, 11) +
+  labs(x = "Temperature", y = "Traits") +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black", 
+                                 size = 0.9, linetype = "solid"))
+plot.both
+
+ggsave("figures/conceptual_figure_nonarctic_vs_arctic.png", plot.both, width = 3, height = 2)
+
+
+##### Combining Arctic and non-Arctic data ----
+
+alldata <- briere(Temp.xs, T0 = 14, Tm = 34.5, q = 0.008)
+alldata_tpc <- data.frame(temp = Temp.xs, trait = alldata)
+
+
+set.seed(456) # Set a random seed for reproducibility of the simulation
+alldata_temp <- c(17, 20)
+alldata_mean <- briere(alldata_temp, T0 = 14, Tm = 35, q = 0.01)
+sigma <- 0.8
+alldata_data <- rnorm(length(alldata_temp), mean = alldata_mean, sd = sigma)
+alldata_data <- ifelse(alldata_data < 0, 0, alldata_data)
+
+alldata_data <- data.frame(temp = alldata_temp, data = alldata_data)
+
+alldata_data <- bind_rows(nonarctic_data, alldata_data)
+alldata_data$type <- c(rep("non-Arctic", 9), rep("Arctic", 2))
+  
+plot.alldata <- alldata_tpc %>% ggplot(aes(x = temp)) +
+  geom_line(aes(y = trait), colour = "#4363d8", size = 1) +
+  geom_point(data = alldata_data, aes(y = data, colour = type), size = 2) +
+  xlim(5,40) +
+  ylim(0, 11) +
+  labs(x = "Temperature", y = "Traits") +
+  scale_colour_manual(values = c("Arctic" = "#4363d8", "non-Arctic" = "azure4"),
+                      name = element_blank()) + # No legend title
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        legend.position = "none",
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black", 
+                                 size = 0.9, linetype = "solid"))
+plot.alldata
+
+ggsave("figures/conceptual_figure_alldata.png", plot.alldata, width = 3, height = 2)
+
+
+
+##### Hot-cold shift ----
+
+hc_shift <- briere(Temp.xs, T0 = 11, Tm = 31, q = 0.00924)
+hc_shift_tpc <- data.frame(temp = Temp.xs, trait = hc_shift)
+
+plot.hc_shift <- hc_shift_tpc %>% ggplot(aes(x = temp, y = trait)) +
+  geom_line(data = nonarctic_tpc, colour = "azure4", size = 1) +
+  geom_line(colour = "#4363d8", size = 1) +
+  xlim(5, 40) +
+  ylim(0, 11) +
+  labs(x = "Temperature", y = "Traits") +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black", 
+                                 size = 0.9, linetype = "solid"))
+plot.hc_shift
+
+ggsave("figures/conceptual_figure_hot_cold_shift.png", plot.hc_shift, width = 3, height = 2)

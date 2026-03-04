@@ -53,29 +53,11 @@ lf,18,40,NA,NA,NA,average days alive,total meals per specimen,3,aedes,punctor,so
 lf,18,49,NA,NA,NA,average days alive,total meals per specimen,4,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 5,Arctic
 lf,18,57,NA,NA,NA,average days alive,total meals per specimen,5,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic
 lf,18,56,NA,NA,NA,average days alive,total meals per specimen,6,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,13.35,11.24031007751938,NA,NA,NA,days,NA,NA,aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,17.12,7.176470588235294,NA,NA,NA,days,NA,NA,aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,23.75,5.968197879858657,NA,NA,NA,days,NA,NA,aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,27.5,4.812765957446809,NA,NA,NA,days,NA,NA,aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,32.18,0.25,NA,NA,NA,days,NA,NA,aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,18,21.9,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,22,27.52,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,26,25.46,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,28,13.81,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,32,13.44,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,34,13.48,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,18,15.71,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,22,27.3,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,26,40.54,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,28,21.44,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,32,16.76,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,34,12.16,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,18,22.67,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,22,24.74,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,26,38.36,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,28,22.36,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,32,11.22,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
-lf,34,10.92,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,13.35,11.24031007751938,NA,NA,NA,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+lf,17.12,7.176470588235294,NA,NA,NA,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+lf,23.75,5.968197879858657,NA,NA,NA,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+lf,27.5,4.812765957446809,NA,NA,NA,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+lf,32.18,0.25,NA,NA,NA,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
 lf,15,19.45,11.11,11.11,sd,mean duration of life stage,NA,NA,Aedes,albopictus,Calado and Navarro-Silva. 2002. Influencia da temperatura sobre a longevidade fecundidade eatividade hematofagica de Aedes (Stegomyia) albopictus Skuse 1894 (Diptera: Culicidae) sob condicoes de laboratorio. Revista Brasileira de Entomologia 46: 93-98.,10.1590/S0085-56262002000100011,table 1,NA,non-Arctic
 lf,20,59.35,27.44,27.44,sd,mean duration of life stage,NA,NA,Aedes,albopictus,Calado and Navarro-Silva. 2002. Influencia da temperatura sobre a longevidade fecundidade eatividade hematofagica de Aedes (Stegomyia) albopictus Skuse 1894 (Diptera: Culicidae) sob condicoes de laboratorio. Revista Brasileira de Entomologia 46: 93-98.,10.1590/S0085-56262002000100011,table 1,NA,non-Arctic
 lf,25,61.55,22.57,22.57,sd,mean duration of life stage,NA,NA,Aedes,albopictus,Calado and Navarro-Silva. 2002. Influencia da temperatura sobre a longevidade fecundidade eatividade hematofagica de Aedes (Stegomyia) albopictus Skuse 1894 (Diptera: Culicidae) sob condicoes de laboratorio. Revista Brasileira de Entomologia 46: 93-98.,10.1590/S0085-56262002000100011,table 1,NA,non-Arctic
@@ -150,3 +132,21 @@ lf,34,5.509803921568627,NA,NA,NA,duration of life stage,resource concentration (
 lf,34,5.916666666666667,NA,NA,NA,duration of life stage,resource concentration (mg ml-1),165,Aedes,aegypti,Huxley et al. 2022. Competition and resource depletion shape the thermal response of population fitness in Aedes aegypti. Commun. Biol. 5: 66.,10.1038/s42003-022-03030-7,calculated from supplementary material,NA,non-Arctic
 lf,34,4.366666666666666,NA,NA,NA,duration of life stage,resource concentration (mg ml-1),220,Aedes,aegypti,Huxley et al. 2022. Competition and resource depletion shape the thermal response of population fitness in Aedes aegypti. Commun. Biol. 5: 66.,10.1038/s42003-022-03030-7,calculated from supplementary material,NA,non-Arctic
 lf,34,3.764705882352941,NA,NA,NA,duration of life stage,resource concentration (mg ml-1),55,Aedes,aegypti,Huxley et al. 2022. Competition and resource depletion shape the thermal response of population fitness in Aedes aegypti. Commun. Biol. 5: 66.,10.1038/s42003-022-03030-7,calculated from supplementary material,NA,non-Arctic
+lf,18,21.9,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,22,27.52,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,26,25.46,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,28,13.81,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,32,13.44,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,34,13.48,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,18,15.71,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,22,27.3,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,26,40.54,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,28,21.44,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,32,16.76,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,34,12.16,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,18,22.67,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,22,24.74,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,26,38.36,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,28,22.36,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,32,11.22,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic
+lf,34,10.92,NA,NA,NA,NA,NA,NA,aedes,aegypti,Beserra_2009,NA,NA,NA,non-Arctic

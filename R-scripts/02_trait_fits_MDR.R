@@ -2,9 +2,8 @@
 ## Arctic vector-borne disease transmission suitability model
 ##
 ## Purpose: use Bayesian inference (JAGS) to fit TPCs for mosquito development 
-## rate (MDR) for Aedes arctic (Culler et al. 2015)
-##     1) with uniform priors; and 
-##     2) with data-informed priors from Aedes nonarctic data (Couper et al. 2024)
+## rate (MDR) for Aedes nigripes (Culler et al. 2015) with data-informed priors 
+## generated from Aedes sierrensis data (Couper et al. 2024)
 ## 
 ## Table of content:
 ##    0. Set-up workspace
@@ -12,19 +11,17 @@
 ##    1. MCMC settings for all models
 ##
 ##    2. Fitting TPC (Briere)
-##        A. Fit MDR thermal responses with uniform priors (Arctic species)
-##        B. Fit MDR thermal responses for priors (non-Arctic)
-##        C. Fit gamma distributions to MDR prior thermal responses
-##        D. Fit MDR thermal responses with data-informed priors (Arctic)
-##        E. Plot all three TPCs in the same graph (for comparison)
+##        A. Fit MDR thermal responses for priors (non-Arctic)
+##        B. Fit gamma distributions to MDR prior thermal responses
+##        C. Fit MDR thermal responses with data-informed priors (Arctic)
 ##
 ##    3. Fitting TPC (Quadratic)
-##        A. Fit MDR thermal responses with uniform priors (Arctic)
-##        B. Fit MDR thermal responses for priors (non-Arctic)
-##        C. Fit gamma distributions to MDR prior thermal responses
-##        D. Fit MDR thermal responses with data-informed priors (Arctic)
+##        A. Fit MDR thermal responses for priors (non-Arctic)
+##        B. Fit gamma distributions to MDR prior thermal responses
+##        C. Fit MDR thermal responses with data-informed priors (Arctic)
 ##
-##    4. Process and save model output for plotting
+##    4. Compare model fit between Quadratic and Briere
+##    5. Process and save model output for plotting
 
 
 
