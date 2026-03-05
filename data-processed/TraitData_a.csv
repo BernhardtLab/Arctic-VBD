@@ -1,17 +1,17 @@
 trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type
-1/a,18,25,51,4,min/max,days between consecutive blood meals,meal count,01-Feb,aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_25,Arctic
-1/a,18,14,31,7,min/max,days between consecutive blood meals,meal count,02-Mar,aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_18,Arctic
-1/a,18,18,74,5,min/max,days between consecutive blood meals,meal count,03-Apr,aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_15,Arctic
-1/a,18,13,35,5,min/max,days between consecutive blood meals,meal count,04-May,aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_12,Arctic
-1/a,18,17,35,4,min/max,days between consecutive blood meals,meal count,01-Feb,aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_19,Arctic
-1/a,18,11,22,2,min/max,days between consecutive blood meals,meal count,02-Mar,aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_9,Arctic
-1/a,18,9,10,8,min/max,days between consecutive blood meals,meal count,03-Apr,aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_25,Arctic
-1/a,18,20,62,4,min/max,days between consecutive blood meals,meal count,01-Feb,aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_26,Arctic
-1/a,18,13,46,2,min/max,days between consecutive blood meals,meal count,02-Mar,aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_15,Arctic
-1/a,18,10,19,2,min/max,days between consecutive blood meals,meal count,03-Apr,aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_9,Arctic
-1/a,18,13,20,10,min/max,days between consecutive blood meals,meal count,01-Feb,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_15,Arctic
-1/a,18,10,22,2,min/max,days between consecutive blood meals,meal count,02-Mar,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_11,Arctic
-1/a,18,11,13,6,min/max,days between consecutive blood meals,meal count,03-Apr,aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_8,Arctic
+1/a,18,25,51,4,min/max,days between consecutive blood meals,meal count,01-Feb,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_25,Arctic
+1/a,18,14,31,7,min/max,days between consecutive blood meals,meal count,02-Mar,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_18,Arctic
+1/a,18,18,74,5,min/max,days between consecutive blood meals,meal count,03-Apr,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_15,Arctic
+1/a,18,13,35,5,min/max,days between consecutive blood meals,meal count,04-May,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_12,Arctic
+1/a,18,17,35,4,min/max,days between consecutive blood meals,meal count,01-Feb,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_19,Arctic
+1/a,18,11,22,2,min/max,days between consecutive blood meals,meal count,02-Mar,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_9,Arctic
+1/a,18,9,10,8,min/max,days between consecutive blood meals,meal count,03-Apr,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_25,Arctic
+1/a,18,20,62,4,min/max,days between consecutive blood meals,meal count,01-Feb,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_26,Arctic
+1/a,18,13,46,2,min/max,days between consecutive blood meals,meal count,02-Mar,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_15,Arctic
+1/a,18,10,19,2,min/max,days between consecutive blood meals,meal count,03-Apr,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_9,Arctic
+1/a,18,13,20,10,min/max,days between consecutive blood meals,meal count,01-Feb,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_15,Arctic
+1/a,18,10,22,2,min/max,days between consecutive blood meals,meal count,02-Mar,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_11,Arctic
+1/a,18,11,13,6,min/max,days between consecutive blood meals,meal count,03-Apr,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 2,n_8,Arctic
 1/a,20,8.1,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 5,NA,non-Arctic
 1/a,25,4.5,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 5,NA,non-Arctic
 1/a,30,3.5,NA,NA,NA,mean duration of gonotrophic cycle,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 5,NA,non-Arctic

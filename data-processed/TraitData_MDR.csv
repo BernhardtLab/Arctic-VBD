@@ -1,46 +1,161 @@
 trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type
-1/MDR,11.1,20,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,11.1,20,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.32,15,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.31,16,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.25,18,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.25,18,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,19,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,13.27,19,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,15.78,11,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,15.78,11,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,15.78,13,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,15.78,13,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,15.78,14,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,15.78,14,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,15.78,14,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,15.78,14,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.41,9,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.57,10,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.67,11,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.67,11,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.67,11,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.67,11,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.8,13,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.79,8,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-1/MDR,18.91,10,NA,NA,NA,days until emergence,NA,NA,aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
-MDR,13.35,0.028104606899224806,0.001253542984864863,0.001253542984864863,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-MDR,17.12,0.040922247955882354,0.0017529454436136882,0.0017529454436136882,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-MDR,23.75,0.06637306586925795,0.0032313496863253795,0.0032313496863253795,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-MDR,27.5,0.06954747700847458,0.0040155464420031945,0.0040155464420031945,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-MDR,32.18,0.06125992075,0.0037640713646173818,0.0037640713646173818,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+1/MDR,11.1,20,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,11.1,20,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,11.19,22,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.32,15,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.31,16,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,17,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.25,18,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.25,18,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,19,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,13.27,19,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,15.78,11,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,15.78,11,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,15.78,13,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,15.78,13,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,15.78,14,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,15.78,14,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,15.78,14,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,15.78,14,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.41,9,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.57,10,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.67,11,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.67,11,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.67,11,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.67,11,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.8,13,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.79,8,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,18.91,10,NA,NA,NA,days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,NA,Arctic
+1/MDR,21,31.88,0.6,0.6,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,Arctic
+1/MDR,26.5,16.06,0.54,0.54,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,Arctic
+1/MDR,32,13.02,0.46,0.46,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,Arctic
+1/MDR,5,1000,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Results text,All larvae died in 1st instar,Arctic
+1/MDR,10,43,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 1,Median time to pupation,Arctic
+1/MDR,15,17,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 2,Median time to pupation,Arctic
+1/MDR,20,8,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 3,Median time to pupation,Arctic
+1/MDR,25,6,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 4,Median time to pupation,Arctic
+1/MDR,30,6,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 5,Median time to pupation,Arctic
+MDR,22,0.048077455,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b_JMedEnto,NA,NA,NA,non-Arctic
+MDR,26,0.054535139,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.058846719,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b_JMedEnto,NA,NA,NA,non-Arctic
+MDR,12,0.01818,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Briegel_etal_2001_JMedEnto,NA,NA,NA,non-Arctic
+MDR,17,0.02941,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Briegel_etal_2001_JMedEnto,NA,NA,NA,non-Arctic
+MDR,27,0.07143,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Briegel_etal_2001_JMedEnto,NA,NA,NA,non-Arctic
+MDR,32,0.03125,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Briegel_etal_2001_JMedEnto,NA,NA,NA,non-Arctic
+MDR,15,0.012539185,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002b_RevSaudaPublica,NA,NA,NA,non-Arctic
+MDR,20,0.025510204,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002b_RevSaudaPublica,NA,NA,NA,non-Arctic
+MDR,25,0.042087542,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002b_RevSaudaPublica,NA,NA,NA,non-Arctic
+MDR,30,0.054112554,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002b_RevSaudaPublica,NA,NA,NA,non-Arctic
+MDR,15,0.032876712,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,15,0.027952481,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,15,0.029813665,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,15,0.032476319,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,15,0.028985507,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,15,0.03033367,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,15,0.033333333,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,15,0.029739777,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.104347826,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.082379863,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.089241448,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.092273892,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.071319409,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.071784646,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.106904232,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.082987552,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.14457831300000001,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.145228216,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.131004367,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.176322418,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.122511485,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.108583247,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.128824477,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.10552763800000001,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.211764706,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.199445983,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.162162162,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.171428571,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.154340836,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.115226337,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.147239264,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.151679307,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,35,0.190800681,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,35,0.181818182,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.062663185,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,20,0.060913091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,20,0.054318904,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,27,0.12064632,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,27,0.112511735,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,27,0.095997154,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,34,0.101061142,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,34,0.095663265,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,34,0.084262451,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+MDR,20,0.063694268,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,non-Arctic
+MDR,20,0.064102564,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.101626016,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,non-Arctic
+MDR,25,0.035335689000000003,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.121506683,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,non-Arctic
+MDR,30,0.063291139,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,non-Arctic
+MDR,18,0.040816327,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_et_al_2010_VecBorn&ZooDis,NA,NA,NA,non-Arctic
+MDR,24,0.090909091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_et_al_2010_VecBorn&ZooDis,NA,NA,NA,non-Arctic
+MDR,32,0.111111111,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_et_al_2010_VecBorn&ZooDis,NA,NA,NA,non-Arctic
+MDR,22,0.075543232,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_Thesis_2010,NA,NA,NA,non-Arctic
+MDR,22,0.091743119,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_Thesis_2010,NA,NA,NA,non-Arctic
+MDR,27,0.10843753,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_Thesis_2010,NA,NA,NA,non-Arctic
+MDR,27,0.135869565,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_Thesis_2010,NA,NA,NA,non-Arctic
+MDR,32,0.121396268,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_Thesis_2010,NA,NA,NA,non-Arctic
+MDR,32,0.158227848,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_Thesis_2010,NA,NA,NA,non-Arctic
+MDR,25,0.094382022,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Witwatana_Kittayaong_2006_Med&VetEnt,NA,NA,NA,non-Arctic
+MDR,37,0.130508475,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Witwatana_Kittayaong_2006_Med&VetEnt,NA,NA,NA,non-Arctic
+MDR,21,0.04376784,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,21,0.048780488,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,21,0.058541257,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,21,0.063263832,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,21,0.060371526,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,21,0.062151408,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,21,0.058823529,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,21,0.063636346,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,25,0.072192523,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,25,0.065246341,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,25,0.090329422,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,25,0.09185444,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,25,0.089051081,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,25,0.084905644,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,25,0.08349148,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+MDR,25,0.085127176,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
+1/MDR,21,36.52,0.71,0.71,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,non-Arctic
+1/MDR,26.5,15.46,0.48,0.48,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,non-Arctic
+1/MDR,32,18.19,0.52,0.52,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,non-Arctic
+MDR,13.35,0.028104606899224806,0.002507085969729726,NA,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+MDR,17.12,0.040922247955882354,0.0035058908872273764,NA,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+MDR,23.75,0.06637306586925795,0.006462699372650759,NA,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+MDR,27.5,0.06954747700847458,0.008031092884006389,NA,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+MDR,32.18,0.06125992075,0.0075281427292347635,NA,sd,1/days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
+1/MDR,12,1000,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,Did not complete development,non-Arctic
+1/MDR,15,19.3,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,20,12.1,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,23,7.7,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,26,6,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,29,5.2,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,32,4.8,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,35,4.8,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,12,1000,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 7,Did not complete development,non-Arctic
+1/MDR,15,19.3,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,20,12.1,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,23,7.7,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,26,6,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,29,5.2,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,32,4.8,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+1/MDR,35,4.8,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic

@@ -1,44 +1,44 @@
 trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type
-pLA,5,0,NA,NA,NA,NA,NA,NA,aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,10,0.04,NA,NA,NA,NA,NA,NA,aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,15.5,0.43,NA,NA,NA,NA,NA,NA,aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,21,0.78,NA,NA,NA,NA,NA,NA,aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,26.5,0.85,NA,NA,NA,NA,NA,NA,aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,32,0.7,NA,NA,NA,NA,NA,NA,aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,5,0,NA,NA,NA,NA,NA,NA,aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Results text,All larvae died in 1st instar,Arctic
-pLA,10,0.17,NA,NA,NA,NA,NA,NA,aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 1,NA,Arctic
-pLA,15,0.56,NA,NA,NA,NA,NA,NA,aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 2,NA,Arctic
-pLA,20,0.74,NA,NA,NA,NA,NA,NA,aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 3,NA,Arctic
-pLA,25,0.86,NA,NA,NA,NA,NA,NA,aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 4,NA,Arctic
-pLA,30,0.71,NA,NA,NA,NA,NA,NA,aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 5,NA,Arctic
-pLA,5,0,NA,NA,NA,NA,NA,NA,aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,10,0,NA,NA,NA,NA,NA,NA,aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,15.5,0.35,NA,NA,NA,NA,NA,NA,aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,21,0.82,NA,NA,NA,NA,NA,NA,aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,26.5,0.77,NA,NA,NA,NA,NA,NA,aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,32,0.72,NA,NA,NA,NA,NA,NA,aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,12,0,NA,NA,NA,NA,NA,NA,aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,15,0.5,NA,NA,NA,NA,NA,NA,aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,20,0.62,NA,NA,NA,NA,NA,NA,aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,23,0.76,NA,NA,NA,NA,NA,NA,aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,26,0.75,NA,NA,NA,NA,NA,NA,aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,29,0.78,NA,NA,NA,NA,NA,NA,aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,32,0.7,NA,NA,NA,NA,NA,NA,aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,35,0.5,NA,NA,NA,NA,NA,NA,aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,12,0,NA,NA,NA,NA,NA,NA,aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,15,1,NA,NA,NA,NA,NA,NA,aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,20,0.95,NA,NA,NA,NA,NA,NA,aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,23,0.97,NA,NA,NA,NA,NA,NA,aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,26,0.94,NA,NA,NA,NA,NA,NA,aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,29,0.4,NA,NA,NA,NA,NA,NA,aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,32,0.2,NA,NA,NA,NA,NA,NA,aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,35,0,NA,NA,NA,NA,NA,NA,aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,15,0.276,0.037,0.043,NA,NA,Proportion conspecific larvae,0.75,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,15,0.243,0.065,0.07,NA,NA,Proportion conspecific larvae,1,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,23,0.331,0.062,0.068,NA,NA,Proportion conspecific larvae,0.75,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,23,0.357,0.065,0.065,NA,NA,Proportion conspecific larvae,1,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,31,0.184,0.04,0.045,NA,NA,Proportion conspecific larvae,0.75,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,31,0.143,0.04,0.038,NA,NA,Proportion conspecific larvae,1,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,15,0.48,0.07,0.07,NA,NA,NA,NA,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
-pLA,23,0.62,0.09,0.09,NA,NA,NA,NA,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
-pLA,31,0.2,0.05,0.05,NA,NA,NA,NA,aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
+pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
+pLA,10,0.04,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
+pLA,15.5,0.43,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
+pLA,21,0.78,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
+pLA,26.5,0.85,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
+pLA,32,0.7,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
+pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Results text,All larvae died in 1st instar,Arctic
+pLA,10,0.17,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 1,NA,Arctic
+pLA,15,0.56,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 2,NA,Arctic
+pLA,20,0.74,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 3,NA,Arctic
+pLA,25,0.86,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 4,NA,Arctic
+pLA,30,0.71,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 5,NA,Arctic
+pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
+pLA,10,0,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
+pLA,15.5,0.35,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
+pLA,21,0.82,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
+pLA,26.5,0.77,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
+pLA,32,0.72,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
+pLA,12,0,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+pLA,15,0.5,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+pLA,20,0.62,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+pLA,23,0.76,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+pLA,26,0.75,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+pLA,29,0.78,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+pLA,32,0.7,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+pLA,35,0.5,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
+pLA,12,0,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
+pLA,15,1,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
+pLA,20,0.95,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
+pLA,23,0.97,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
+pLA,26,0.94,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
+pLA,29,0.4,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
+pLA,32,0.2,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
+pLA,35,0,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
+pLA,15,0.276,0.037,0.043,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
+pLA,15,0.243,0.065,0.07,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
+pLA,23,0.331,0.062,0.068,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
+pLA,23,0.357,0.065,0.065,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
+pLA,31,0.184,0.04,0.045,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
+pLA,31,0.143,0.04,0.038,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
+pLA,15,0.48,0.07,0.07,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
+pLA,23,0.62,0.09,0.09,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
+pLA,31,0.2,0.05,0.05,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
