@@ -1,0 +1,214 @@
+seriesID,trait.name,T,trait,ErrorPosSI,ErrorNegSI,Trait2.name,Trait,host.code,paras.code,Citation,Figure,Notes
+Shocket,1/mu,16,86.9,,,Population,Field-derived,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,20,112.2,,,Population,Field-derived,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,24,43,,,Population,Field-derived,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,28,34.7,,,Population,Field-derived,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,32,23.8,,,Population,Field-derived,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,16,72.4,,,Population,Lab colony,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,20,43.6,,,Population,Lab colony,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,24,26,,,Population,Lab colony,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,28,7.3,,,Population,Lab colony,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,32,3.5,,,Population,Lab colony,Cpip,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,16,94.2,,,Population,Field-derived,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,20,80.3,,,Population,Field-derived,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,24,44.7,,,Population,Field-derived,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,28,22.8,,,Population,Field-derived,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,32,7.4,,,Population,Field-derived,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,16,57,,,Population,Lab colony,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,20,61.4,,,Population,Lab colony,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,24,27.8,,,Population,Lab colony,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,28,23.8,,,Population,Lab colony,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,32,7.7,,,Population,Lab colony,Cqui,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,16,76,,,Population,Field-derived,Cres,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,20,43.9,,,Population,Field-derived,Cres,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,24,16.6,,,Population,Field-derived,Cres,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,28,10.6,,,Population,Field-derived,Cres,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Shocket,1/mu,32,6.4,,,Population,Field-derived,Cres,,Ciota_2014_JMedEntom,Figure 2B,Difficult to distinguish some symbols - used medians (in Fig 4) as a key
+Moye_26,1/mu,21,54.3,,,Sex,Female,Cmol,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Moye_26,1/mu,25,29,,,Sex,Female,Cmol,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Moye_26,1/mu,30,14.2,,,Sex,Female,Cmol,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,21,54.3,,,Sex,Female,Cqui,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,25,64.4,,,Sex,Female,Cqui,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,30,30.1,,,Sex,Female,Cqui,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,21,33.4,,,Sex,Female,Cmol,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,25,27.6,,,Sex,Male,Cmol,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,30,6.9,,,Sex,Male,Cmol,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,21,41.1,,,Sex,Male,Cqui,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,25,39.8,,,Sex,Male,Cqui,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Shocket,1/mu,30,24.7,,,Sex,Male,Cqui,,Oda_1999_JAMMosqControlAssoc,Table 2,
+Numazu_4,1/mu,15,58.1,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,20,66.7,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,25,32.6,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,30,22.8,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,35,12.8,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,15,58,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,20,58.3,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,25,16.9,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,30,14.1,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,35,8.8,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,Coachella Valley population; median
+Numazu_4,1/mu,15,59.1,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,20,45.3,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,25,23.4,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,30,18.4,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,35,12.9,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,15,60.2,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,20,27.4,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,25,16.5,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,30,14.9,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_4,1/mu,35,8.3,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 1,San Joaquin Valley population; median
+Numazu_7,1/mu,14,46,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,20,59,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,26,35,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,32,15,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,14,32,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,20,28,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,26,17,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,32,14,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,14,37,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,20,19,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,26,21,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,32,18,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,14,55,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,20,17,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,26,16,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,32,6,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,14,38,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,20,24,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,26,11,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,32,8,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,14,40,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,20,21,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,26,19,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,32,12,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,Coachella Valley population; median
+Numazu_7,1/mu,14,43,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,20,32,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,26,19,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,32,8,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,20,27,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,26,24,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,32,12,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,14,48,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,20,17,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,26,26,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,32,21,,,Sex,Female,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,14,43,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,20,49,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,26,36,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,32,14,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,20,31,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,26,11,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,32,11,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,14,47,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,20,25,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,26,25,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_7,1/mu,32,15,,,Sex,Male,Ctar,,Reisen_1995_JMedEntomol,Table 2,San Joaquin Valley population; median
+Numazu_21,1/mu,22,41.2,,,Sex,Female,Atae,,Nayar_1972_J.Insect.Physiol.,Table 3,
+Numazu_21,1/mu,27,31,,,Sex,Female,Atae,,Nayar_1972_J.Insect.Physiol.,Table 3,
+Numazu_21,1/mu,32,22,,,Sex,Female,Atae,,Nayar_1972_J.Insect.Physiol.,Table 3,
+Numazu_21,1/mu,22,21.9,,,Sex,Male,Atae,,Nayar_1972_J.Insect.Physiol.,Table 3,
+Numazu_21,1/mu,27,17.1,,,Sex,Male,Atae,,Nayar_1972_J.Insect.Physiol.,Table 3,
+Numazu_21,1/mu,32,12.05,,,Sex,Male,Atae,,Nayar_1972_J.Insect.Physiol.,Table 3,
+Shocket_111,1/mu,15,92.3,,,Sex,Female,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,20,55.7,,,Sex,Female,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,25,29.4,,,Sex,Female,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,27.5,22.8,,,Sex,Female,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,30,11.3,,,Sex,Female,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,15,65.9,,,Sex,Male,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,20,45.1,,,Sex,Male,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,25,21.9,,,Sex,Male,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,27.5,17.9,,,Sex,Male,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket_111,1/mu,30,8.2,,,Sex,Male,Cpip,,Andreadis_2014_ParasRes,Table 1,
+Shocket,1/mu,16,94.65,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; low elevation population; females only
+Shocket,1/mu,24,62.47,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; low elevation population; females only
+Shocket,1/mu,27,45.93,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; low elevation population; females only
+Shocket,1/mu,31,17.27,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; low elevation population; females only
+Shocket,1/mu,35,8.59,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; low elevation population; females only
+Shocket,1/mu,16,124.06,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; mid latitude population; females only
+Shocket,1/mu,27,45.59,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; mid latitude population; females only
+Shocket,1/mu,31,15.21,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; mid latitude population; females only
+Shocket,1/mu,35,7.44,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; mid latitude population; females only
+Shocket,1/mu,16,99.95,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; mid elevation population; females only
+Shocket,1/mu,27,41.51,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; mid elevation population; females only
+Shocket,1/mu,31,19.11,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; mid elevation population; females only
+Shocket,1/mu,35,6.04,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; mid elevation population; females only
+Shocket,1/mu,16,144.82,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; high elevation population; females only
+Shocket,1/mu,27,40.25,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; high elevation population; females only
+Shocket,1/mu,31,17.21,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; high elevation population; females only
+Shocket,1/mu,35,8.38,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure S4,Means calculated from published survival curves; high elevation population; females only
+Shocket,1/mu,20,18.9,1.6,1.6,,,Cpal,,KiarieMakura_2015_Jpharm&BioSciences,Table 4,
+Shocket,1/mu,24,13.5,4.1,4.1,,,Cpal,,KiarieMakura_2015_Jpharm&BioSciences,Table 4,
+Shocket,1/mu,28,7.7,1.1,1.1,,,Cpal,,KiarieMakura_2015_Jpharm&BioSciences,Table 4,
+Shocket,1/mu,20,29.2,9.3,9.3,,,Cmol,,KiarieMakura_2015_Jpharm&BioSciences,Table 4,
+Shocket,1/mu,24,9.7,2.2,2.2,,,Cmol,,KiarieMakura_2015_Jpharm&BioSciences,Table 4,
+Shocket,1/mu,28,8.6,0.7,0.7,,,Cmol,,KiarieMakura_2015_Jpharm&BioSciences,Table 4,
+MordecaiPub,1/mu,18,21.9,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,22,27.52,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,26,25.46,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,28,13.81,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,32,13.44,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,34,13.48,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,18,15.71,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,22,27.3,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,26,40.54,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,28,21.44,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,32,16.76,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,34,12.16,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,18,22.67,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,22,24.74,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,26,38.36,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,28,22.36,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,32,11.22,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,1/mu,34,10.92,,,,,Aaeg,,Beserra_2009,,
+MordecaiPub,p/days,10.82372552,0.091759667,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,10.60066603,0.075675353,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,15.3309921,0.035920552,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,16.55244216,0.032425471,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,20.04602109,0.042145005,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,21.77042116,0.037210774,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,25.61629688,0.030438368,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,27.62920948,0.027156001,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,31.34186139,0.044093837,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,31.66115353,0.034199563,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,32.56507293,0.044516297,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p/days,33.39482457,0.049883965,,,,,Aaeg,,Yang_et_al_2008_EpidInfect,,Double check this
+MordecaiPub,p,26,0.8,,,,,Aaeg,,Rohani_et_al_2009_SEJTropMedPH,,
+MordecaiPub,p,28,0.7,,,,,Aaeg,,Rohani_et_al_2009_SEJTropMedPH,,
+MordecaiPub,p,30,0.6,,,,,Aaeg,,Rohani_et_al_2009_SEJTropMedPH,,
+MordecaiPub,p,26,0.75,,,,,Aaeg,,Rohani_et_al_2009_SEJTropMedPH,,
+MordecaiPub,p,28,0.7,,,,,Aaeg,,Rohani_et_al_2009_SEJTropMedPH,,
+MordecaiPub,p,30,0.55,,,,,Aaeg,,Rohani_et_al_2009_SEJTropMedPH,,
+MordecaiPub,1/mu,15,19.45,,,,,Aalb,,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,,
+MordecaiPub,1/mu,20,59.35,,,,,Aalb,,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,,
+MordecaiPub,1/mu,25,61.55,,,,,Aalb,,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,,
+MordecaiPub,1/mu,30,42.72,,,,,Aalb,,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,,
+MordecaiPub,prop.dead,22,0.00632987,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,22,0.007067138,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,22,0.007984312,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,26,0.012573964,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,26,0.013379872,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,26,0.01698036,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,30,0.026805424,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,30,0.031273837,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,30,0.023961063,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,prop.dead,22,0.007263355,,,,,Aalb,,Alto_et_al_2001b,,
+MordecaiPub,1/mu,20,12,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,20,9,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,20,11,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,27,7,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,27,7,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,27,6,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,34,6,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,34,5,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,34,6,,,starved,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,20,141,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,20,102,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,20,98,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,27,98,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,27,76,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,27,84,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,34,35,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,34,42,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+MordecaiPub,1/mu,34,24,,,sugar-fed,feeding condition,Aalb,,Ezeakacha_Dissertation_2015,,
+ShocketPub,1/mu,20,23.4,,,,,Cann,,McDonald_1980_AusJofEco,,
+ShocketPub,1/mu,25,25.3,,,,,Cann,,McDonald_1980_AusJofEco,,
+ShocketPub,1/mu,30,14.7,,,,,Cann,,McDonald_1980_AusJofEco,,

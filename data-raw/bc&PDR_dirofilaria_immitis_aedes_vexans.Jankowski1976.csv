@@ -1,0 +1,7 @@
+﻿trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,paras_genus,paras_species,host_genus,host_species,citation,doi,data_source,notes
+bc,18,0.75,,,,Percent positive,,,Dirofilaria,immitis,Aedes,canadensis,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,table 1,Infective 3rd stage larvae in head and mouthparts only
+bc,18,0.739,,,,Percent positive,,,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,table 1,Infective 3rd stage larvae in head and mouthparts only
+bc,26,0.668,,,,Percent positive,,,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,table 1,Infective 3rd stage larvae in head and mouthparts only
+1/PDR,18,27,,,,days L3 larvae first observed,,,Dirofilaria,immitis,Aedes,canadensis,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,
+1/PDR,18,27,,,,days L3 larvae first observed,,,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,
+1/PDR,26,14,,,,days L3 larvae first observed,,,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,
