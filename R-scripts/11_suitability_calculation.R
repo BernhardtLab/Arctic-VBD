@@ -10,107 +10,78 @@
 ##    3. Sensitivity analysis - partial derivatives
 
 
-##########
-###### 0. Set-up workspace ----
-##########
+# 0. Set-up workspace ----------------------------------------------------------
 
 library(tidyverse)
 library(readxl)
 library(janitor)
 library(R2jags)
-library(mcmcplots) # Diagnostic plots for fits
-library(MASS)
 library(ggsci)
-library(ggpubr) # For ggarrange
+library(cowplot)
 library(grafify)
 
 ##### Load functions
 source("R-scripts/00_Functions.R")
 
 
-##########
-###### 1. Load R2jags model output ----
-##########
+# 1. Load R2jags model output ----------------------------------------------------------
 
 ## biting rate (a)
-load("R-scripts/R2jags-objects/a.alldata.bri.uni.raneff.Rdata")
-
-## c
-load("R-scripts/R2jags-objects/c.nonarctic.quad.uni.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata")
 
 ## Adult lifespan (lf)
-load("R-scripts/R2jags-objects/lf.arctic.quad.inf.raneff.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/lf.alldata.mod.Rdata")
 
 ## Parasite development rate (PDR)
-load("R-scripts/R2jags-objects/PDR.arctic.bri.inf.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata")
 
 ## Eggs per female per gonotrophic cycle (EFGC)
-load("R-scripts/R2jags-objects/EFGC.nonarctic.quad.uni.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata")
 
 ## Egg viability (EV)
-load("R-scripts/R2jags-objects/EV.arctic.quad.inf.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/EV.arctic.mod.Rdata")
 
 ## Larval-to-adult survival (pLA)
-load("R-scripts/R2jags-objects/pLA.arctic.quad.inf.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/pLA.arctic.mod.Rdata")
 
 ## Mosquito development rate (MDR)
-load("R-scripts/R2jags-objects/MDR.arctic.bri.inf.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata")
 
 
 #####  Pull out the derived/predicted values:
-a.preds <- a.alldata.bri.uni.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
-c.preds <- c.nonarctic.quad.uni$BUGSoutput$sims.list$z.trait.mu.pred
-lf.preds <- lf.arctic.quad.inf.raneff$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
-PDR.preds <- PDR.arctic.bri.inf$BUGSoutput$sims.list$z.trait.mu.pred
-EFGC.preds <- EFGC.nonarctic.quad.uni$BUGSoutput$sims.list$z.trait.mu.pred
-EV.preds <- EV.arctic.quad.inf$BUGSoutput$sims.list$z.trait.mu.pred
-pLA.preds <- pLA.arctic.quad.inf$BUGSoutput$sims.list$z.trait.mu.pred
-MDR.preds <- MDR.arctic.bri.inf$BUGSoutput$sims.list$z.trait.mu.pred
+a.preds <- a.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
+bc.preds <- read_csv("data-processed/bc/bc.arctic.predictions.fullposts.csv")
+bc.preds <- as.matrix(bc.preds)
+
+lf.preds <- lf.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
+PDR.preds <- PDR.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
+EFGC.preds <- EFGC.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
+EV.preds <- EV.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
+pLA.preds <- pLA.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
+MDR.preds <- MDR.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
+
+
+## Pull out the full posterior distributions of TPC parameters
+a.params.fullposts <- read.csv("data-processed/a/a.alldata.params.fullposts.csv")
+bc.params.fullposts <- read.csv("data-processed/bc/bc.arctic.params.fullposts.csv")
+lf.params.fullposts <- read.csv("data-processed/lf/lf.alldata.params.fullposts.csv")
+PDR.params.fullposts <- read.csv("data-processed/PDR/PDR.arctic.params.fullposts.csv")
+EFGC.params.fullposts <- read.csv("data-processed/EFGC/EFGC.alldata.params.fullposts.csv")
+EV.params.fullposts <- read.csv("data-processed/EV/EV.arctic.params.fullposts.csv")
+pLA.params.fullposts <- read.csv("data-processed/pLA/pLA.arctic.params.fullposts.csv")
+MDR.params.fullposts <- read.csv("data-processed/MDR/MDR.arctic.params.fullposts.csv")
 
 
 
-
-##########
-###### 2. Calculate S(T) ----
-##########
+# 2.  Calculate S(T) -----------------------------------------------------------
 
 ## Columns = temp from 0 to 45ºC at a 0.1ºC interval, Rows = 15000 MCMC iterations
-S.calc <- S(a.preds, c.preds, lf.preds, PDR.preds, EFGC.preds, EV.preds, pLA.preds, MDR.preds)
+S.calc <- S(a.preds, bc.preds, lf.preds, PDR.preds, EFGC.preds, EV.preds, 
+            pLA.preds, MDR.preds)
 
 ##### Temp sequence for derived quantity calculations
 Temp.xs <- seq(0, 45, 0.1)
 N.Temp.xs <-length(Temp.xs)
-
-
-## Because of problems with the priors in some trait TPCs (e.g. T0>Tm or q 
-## extremely small), the predicted trait values are basically zeros across temp 
-## gradient for some MCMC iteration in those traits, thus the suitability 
-## prediction is also zero.
-## Now I'll just filter those problematic MCMC iterations out (ask Joey for better solution)
-which(rowSums(S.calc[])==0)
-
-# which(rowSums(a.preds[])<1e-7)
-# which(rowSums(c.preds[])<1e-7)
-# which(rowSums(lf.preds[])<1e-7)
-# which(rowSums(PDR.preds[])<1e-7)
-# which(rowSums(EFGC.preds[])<1e-7)
-# which(rowSums(EV.preds[])<1e-7)
-# which(rowSums(pLA.preds[])<1e-7)
-# which(rowSums(MDR.preds[])<1e-7)
-
-## Seems like only PDR has problematic MCMC iterations
-## I'll remove problematic MCMC iterations from all traits to keep the total number of iteration consistent
-
-a.preds <- a.preds[rowSums(S.calc[])>0,]
-c.preds <- c.preds[rowSums(S.calc[])>0,]
-lf.preds <- lf.preds[rowSums(S.calc[])>0,]
-EFGC.preds <- EFGC.preds[rowSums(S.calc[])>0,]
-EV.preds <- EV.preds[rowSums(S.calc[])>0,]
-pLA.preds <- pLA.preds[rowSums(S.calc[])>0,]
-MDR.preds <- MDR.preds[rowSums(S.calc[])>0,]
-PDR.preds <- PDR.preds[rowSums(S.calc[])>0,] 
-
-S.calc <- S.calc[rowSums(S.calc[])>0,]
 
 
 # save all 15000 MCMC iterations of suitability calculation (451 row (temp), columns = temp and 15000 MCMC iterations)
@@ -133,12 +104,14 @@ S.out <- calcPostQuants(as.data.frame(S.calc), "S", Temp.xs)
 write.csv(S.out, "data-processed/S.output.raw.csv")
 
 
-## Calculate relative S(T)
+## Calculate relative S(T) 
+# by scaling to the maximum median
 S.out.median <- S.out %>% 
   mutate(scaled_median = S.out$median / max(S.out$median))
 
 write.csv(S.out.median, "data-processed/S.output.median.csv")
 
+# by scaling to the maximum upper CI
 S.out.upperCI <- S.out %>% 
   mutate(scaled_median = S.out$median / max(S.out$upperCI)) %>%
   mutate(scaled_lowerCI = S.out$lowerCI / max(S.out$upperCI)) %>%
@@ -157,72 +130,23 @@ plot.S <- ggplot(data = S.out.upperCI) +
               fill = "grey",
               alpha = 0.7) +
   geom_line(aes(x = temperature, y = scaled_median), colour = "black", linewidth = 1) +
-  # geom_line(aes(x = temp, y = scaled_lowerQuartile), colour = "black", linetype = "dotted", linewidth = 1) +
-  # geom_line(aes(x = temp, y = scaled_upperQuartile), colour = "black", linetype = "dotted", linewidth = 1) +
+
   # scale_x_continuous(limits = c(10, 35)) +
   scale_x_continuous(limits = c(10, 40)) +
-  labs(title = "A",
-       x = expression(paste("Temperature (", degree, "C)")), 
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
        y = "Suitability (S)") +
-  theme_bw()
+  theme_bw() +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12))
+  
 
 plot.S
 
-ggsave("figures/S.CI.png", plot.S, width = 10.3, height = 5.6)
-
-plot.S <- ggplot(data = S.out.median) +
-  geom_line(aes(x = temperature, y = scaled_median), colour = "black", linewidth = 1) +
-  # scale_x_continuous(limits = c(10, 35)) +
-  scale_x_continuous(limits = c(10, 40)) +
-  labs(x = expression(paste("Temperature (", degree, "C)")), y = "Suitability (S)") +
-  theme_bw()
-
-plot.S
-
-ggsave("figures/S.png", plot.S, width = 10.3, height = 5.6)
+ggsave("figures/suitability.png", plot.S, width = 10.3, height = 5.6)
 
 
-##########
-###### 3. Calculate T0, Tm and peak S (and CI) ----
-##########
 
-# calcT0TmPeak = function(input, temp.list) {
-#   # Create a dataframe to store the output
-#   output.df <- data.frame("T0" = numeric(nrow(input)), 
-#                        "Tmax" = numeric(nrow(input)),
-#                        "peak" = numeric(nrow(input)))
-#   
-#   for (i in 1:nrow(input)) { # loop through each row of the input (MCMC step)
-#     
-#     ## Create vector of list of indices where S > 0
-#     index.list <- which(input[i,] > 0)
-#     length.index.list <- length(index.list) ## should be 451
-#     
-#     # Store T0
-#     ifelse(
-#       # If S > 0 at the lowest temp (should be 0.0ºC, or index 1), then 0ºC will be T0
-#       index.list[1] == 1, output.df$T0[i] <- temp.list[1], 
-#       # Otherwise, store the corresponding temp of the index before the first value of index.list
-#       output.df$T0[i] <- temp.list[index.list[1] - 1])
-#     
-#     # Store Tm 
-#     ifelse(
-#       # If S > 0 at the highest temp (should be 45.0ºC, or index 451), then 45.0ºC will be Tmax
-#       temp.list[index.list[length.index.list]] == length.index.list, output.df$Tmax[i] <- length.index.list, 
-#       # Otherwise, store the corresponding temp of the index after the last value of index.list
-#       output.df$Tmax[i] <- temp.list[index.list[length.index.list] + 1])
-#     
-#     # Calculate Tbreadth from Tmin and Tmax
-#     output.df$Tbreadth[i] <- output.df$Tmax[i] - output.df$T0[i]
-#     
-#     # Store Peak
-#     max.S <- which.max(input[i,]) # index with the max S
-#     output.df$peak[i] <- temp.list[max.S] # Store the corresponding temp
-#   }
-# 
-#   return(output.df)
-# }
-
+# 3. Calculate Tmin, Tmax and Topt (and CIs) for suitability --------------------------------------
 
 S.viz.out <- extractDerivedTPC(as.data.frame(S.calc), "S", Temp.xs)
 
@@ -232,48 +156,12 @@ S.viz.out <- S.viz.out %>%
                           term == "Topt" ~ "Topt",
                           term == "Tbreadth" ~ "Tbreadth"))
 
-# ## Calculate the median and CI of T0, Tmax, and peak
-# 
-# # Create output df
-# S.viz.out <- data.frame(term = c("Tmin", "Tmax", "peak"),
-#                         mean = numeric(3),
-#                         med = numeric(3), 
-#                         lowerCI = numeric(3), 
-#                         upperCI = numeric(3), 
-#                         lowerQ = numeric(3), 
-#                         upperQ = numeric(3))
-# 
-# 
-# # Tmin
-# S.viz.out$mean[1] <- mean(S.dist$T0)
-# S.viz.out$med[1] <- median(S.dist$T0)
-# S.viz.out$lowerCI[1] <- quantile(S.dist$T0, 0.025)
-# S.viz.out$upperCI[1] <- quantile(S.dist$T0, 0.975)
-# S.viz.out$lowerQ[1] <- quantile(S.dist$T0, 0.25)
-# S.viz.out$upperQ[1] <- quantile(S.dist$T0, 0.75)
-# 
-# # Tmax
-# S.viz.out$mean[2] <- mean(S.dist$Tmax)
-# S.viz.out$med[2] <- median(S.dist$Tmax)
-# S.viz.out$lowerCI[2] <- quantile(S.dist$Tmax, 0.025)
-# S.viz.out$upperCI[2] <- quantile(S.dist$Tmax, 0.975)
-# S.viz.out$lowerQ[2] <- quantile(S.dist$Tmax, 0.25)
-# S.viz.out$upperQ[2] <- quantile(S.dist$Tmax, 0.75)
-# 
-# # peak
-# S.viz.out$mean[3] <- mean(S.dist$peak)
-# S.viz.out$med[3] <- median(S.dist$peak)
-# S.viz.out$lowerCI[3] <- quantile(S.dist$peak, 0.025)
-# S.viz.out$upperCI[3] <- quantile(S.dist$peak, 0.975)
-# S.viz.out$lowerQ[3] <- quantile(S.dist$peak, 0.25)
-# S.viz.out$upperQ[3] <- quantile(S.dist$peak, 0.75)
-
 
 S.viz.out$term <- factor(S.viz.out$term,
                          levels = c("Tmax", "Topt", "Tmin", "Tbreadth"))
 
 # Save output
-write.csv(S.viz.out, "data-processed/S.vizout.csv")
+write.csv(S.viz.out, "data-processed/S.summary.csv")
 
 # Plot
 plot.S.viz <- S.viz.out %>% 
@@ -284,15 +172,15 @@ plot.S.viz <- S.viz.out %>%
   geom_linerange(aes(xmin = lowerCI, xmax = upperCI, y = term, colour = term), 
                  linewidth = 0.5) + #default size = 0.5
   geom_point(aes(x = median, y = term, colour = term)) +
-  # scale_x_continuous(limits = c(10, 35)) +
   scale_x_continuous(limits = c(10, 40)) +
-  labs(title = "B",
-       x = expression(paste("Temperature (", degree, "C)"))) +
+  labs(x = expression(paste("Temperature (", degree, "C)"))) +
   scale_y_discrete(labels=c("Tmin" = expression(paste("T"[min])), 
                             "Topt" = expression(paste("T"[opt])), 
                             "Tmax" = expression(paste("T"[max])))) +
   theme(axis.ticks.y = element_blank(),
         axis.title.y = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
         legend.position = "none",
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -301,20 +189,9 @@ plot.S.viz <- S.viz.out %>%
 
 plot.S.viz
 
-ggsave("figures/S.viz.png", plot.S.viz, width = 10.3, height = 5.6)
 
 
-## Put the S and S.viz together
-plot.S.all <- ggarrange(plot.S, plot.S.viz, nrow = 2, align = "v", heights = c(2,1))
-
-plot.S.all
-
-ggsave("figures/S.all.png", plot.S.all, width = 10.3, height = 5.6)
-
-
-##########
-###### 3. Sensitivity Analysis - partial derivatives
-##########
+# 4. Sensitivity Analysis - partial derivatives --------------------------------
 
 # Temperature levels and # MCMC steps
 Temp.xs <- seq(0, 45, 0.1)
@@ -322,9 +199,9 @@ N.Temp.xs <-length(Temp.xs)
 nMCMC <- nrow(S.calc)
 
 
-##### Calculate trait means
+##### Calculate trait means at each temperature
 a.m <- colMeans(a.preds)
-bc.m <- colMeans(c.preds)
+bc.m <- colMeans(bc.preds)
 lf.m <- colMeans(lf.preds)
 PDR.m <- colMeans(PDR.preds)
 EFGC.m <- colMeans(EFGC.preds)
@@ -333,25 +210,23 @@ pLA.m <- colMeans(pLA.preds)
 MDR.m <- colMeans(MDR.preds)
 
 
-# R0 <- expression((a^2 * bc * exp(-(1/(lf+ec))*(1/(PDR+ec))) * B * EV * pLA * MDR * lf^2)^0.5)
 R0 <- expression((a^3 * bc * exp(-(1/(lf+ec))*(1/(PDR+ec))) * EFGC * EV * pLA * MDR * lf^3)^0.5)
-
-dS_da <- D(R0, "a")
-dS_da
 
 
 
 # Calculate sensitivity using partial derivatives
-SA <- SensitivityAnalysis_pd(a.alldata.bri.uni.raneff, c.nonarctic.quad.uni,
-                             lf.arctic.quad.inf.raneff, PDR.arctic.bri.inf,
-                             EFGC.nonarctic.quad.uni, EV.arctic.quad.inf,
-                             pLA.arctic.quad.inf, MDR.arctic.bri.inf,
+SA <- SensitivityAnalysis_pd(a.preds, bc.preds, lf.preds, PDR.preds, 
+                             EFGC.preds, EV.preds, pLA.preds, MDR.preds,
+                             a.params.fullposts, bc.params.fullposts, 
+                             lf.params.fullposts, PDR.params.fullposts, 
+                             EFGC.params.fullposts, EV.params.fullposts, 
+                             pLA.params.fullposts, MDR.params.fullposts,
                              a.m, bc.m, lf.m, PDR.m, EFGC.m, EV.m, pLA.m, MDR.m)
 
 
 # Get sensitivity posteriors for each term and summarize them
 dS.da		<- calcPostQuants(as.data.frame(SA[[1]]), "a", Temp.xs)
-dS.dc		<- calcPostQuants(as.data.frame(SA[[2]]), "c", Temp.xs)
+dS.dbc		<- calcPostQuants(as.data.frame(SA[[2]]), "bc", Temp.xs)
 dS.dlf		<- calcPostQuants(as.data.frame(SA[[3]]), "lf", Temp.xs)
 dS.dPDR	<- calcPostQuants(as.data.frame(SA[[4]]), "PDR", Temp.xs)
 dS.dEFGC		<- calcPostQuants(as.data.frame(SA[[5]]), "EFGC", Temp.xs)
@@ -365,7 +240,7 @@ dS.dT		<- calcPostQuants(as.data.frame(SA[[9]]), "S", Temp.xs)
 ##### Plot results
 plot.SA <- ggplot() +
   geom_line(data = dS.da, aes(x = temperature, y = median, colour = "a")) +
-  geom_line(data = dS.dc, aes(x = temperature, y = median, colour = "c")) +
+  geom_line(data = dS.dbc, aes(x = temperature, y = median, colour = "bc")) +
   geom_line(data = dS.dlf, aes(x = temperature, y = median, colour = "lf")) +
   geom_line(data = dS.dPDR, aes(x = temperature, y = median, colour = "PDR")) +
   geom_line(data = dS.dEFGC, aes(x = temperature, y = median, , colour = "EFGC")) +
@@ -373,59 +248,61 @@ plot.SA <- ggplot() +
   geom_line(data = dS.dpLA, aes(x = temperature, y = median, colour = "pLA")) +
   geom_line(data = dS.dMDR, aes(x = temperature, y = median, colour = "MDR")) +
   geom_line(data = dS.dT, aes(x = temperature, y = median, , colour = "S"), linewidth = 1) +
-  # geom_vline(aes(xintercept = 15.4), linetype = "dashed") +
-  # geom_vline(aes(xintercept = 22.1), linetype = "dashed") +
-  # geom_vline(aes(xintercept = 20.0), linetype = "dashed") +
   # scale_x_continuous(limits = c(10, 35)) +
   scale_x_continuous(limits = c(10, 40)) +
-  labs(title = "C",
-       x = expression(paste("Temperature (", degree, "C)")),
+  labs(x = expression(paste("Temperature (", degree, "C)")),
        y = "Relative sensitivity") +
-  # scale_colour_grafify(palette = "okabe_ito",
-  #                      name = element_blank(), # No legend title
-  #                      breaks = c("S", "a", "bc", "lf", "PDR", "EFGC", "EV", "pLA", "MDR"),
-  #                      labels = c("S", "a", "bc", "lf", "PDR", "EFGC", "EV", "pLA", "MDR")) +
-  scale_colour_manual(values = c("S" = "#000000", "a" = "#E69F00", "c" = "#009E73",
-                                 "lf" = "#0072B2", "PDR" = "#CC79A7", 
-                                 "EFGC" = "#56B4E9", "EV" = "#F5C710", 
-                                 "pLA" = "#999999", "MDR" = "#D55E00"),
+  
+  scale_colour_manual(values = c("S" = "#000000", "a" = "#E69F00", 
+                                 "bc" = "#009E73","lf" = "#0072B2", 
+                                 "PDR" = "#CC79A7", "EFGC" = "#56B4E9", 
+                                 "EV" = "#F5C710", "pLA" = "#999999", 
+                                 "MDR" = "#D55E00"),
                        name = element_blank(), # No legend title
-                       breaks = c("S", "a", "c", "lf", "PDR", "EFGC", "EV", "pLA", "MDR"),
-                       labels = c("S", "a", "c", "lf", "PDR", "EFGC",  "EV", "pLA", "MDR")) +
-  # theme(panel.grid.major = element_blank(),
-  #       panel.grid.minor = element_blank(),
-  #       panel.background = element_blank(),
-  #       panel.border = element_rect(colour = "black", fill = NA))
-  theme_bw()
+                       breaks = c("S", "a", "bc", "lf", "PDR", "EFGC", "EV", "pLA", "MDR"),
+                       labels = c("S", "a", "bc", "lf", "PDR", "EFGC",  "EV", "pLA", "MDR")) +
+  theme_bw() +
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),,
+        legend.text = element_text(size = 14),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA))
+
 
 plot.SA
 
-ggsave("figures/SA.png", plot.SA, width = 10.3, height = 5.6)
+ggsave("figures/sensitivity.analysis.png", plot.SA, width = 10.3, height = 5.6)
 
 
-plot.everything <- ggarrange(plot.S, plot.S.viz, plot.SA, nrow = 3, 
-                             align = "v", heights = c(2,1,2))
+plot.everything <- plot_grid(plot.S, plot.S.viz, plot.SA,
+                             ncol = 1,
+                             labels = c(LETTERS[1:3]), 
+                             rel_heights = c(2,1,2),
+                             align = "hv"
+                             ) +
+  theme(panel.background = element_rect(fill = "white", color = NA))
+
 plot.everything
 
-ggsave("figures/S.and.SA.png", plot.everything, width = 10.3, height = 5.6)
+ggsave("figures/suitability.sensitivity.analysis.png", plot.everything, 
+       width = 8, height = 10)
 
 
-##### TPC summary ----
+##### TPC summary
 
-a.alldata.bri.uni.raneff$BUGSoutput$summary[1:8,]
-c.nonarctic.quad.uni$BUGSoutput$summary[1:5,]
-lf.arctic.quad.inf.raneff$BUGSoutput$summary[1:8,]
-PDR.arctic.bri.inf$BUGSoutput$summary[1:5,]
-EFGC.nonarctic.quad.uni$BUGSoutput$summary[1:5,]
-EV.arctic.quad.inf$BUGSoutput$summary[1:5,]
-pLA.arctic.quad.inf$BUGSoutput$summary[1:5,]
-MDR.arctic.bri.inf$BUGSoutput$summary[1:5,]
-
+a.alldata.mod$BUGSoutput$summary[1:8,]
+lf.alldata.mod$BUGSoutput$summary[1:8,]
+PDR.arctic.mod$BUGSoutput$summary[1:5,]
+EFGC.alldata.mod$BUGSoutput$summary[1:8,]
+EV.arctic.mod$BUGSoutput$summary[1:5,]
+pLA.arctic.mod$BUGSoutput$summary[1:5,]
+MDR.arctic.mod$BUGSoutput$summary[1:5,]
 
 
-##########
-###### 8. Packaging output for mapping
-##########
+
+# 5. Packaging output for mapping ----------------------------------------------
 
 head(S.out)
 
