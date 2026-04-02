@@ -1,0 +1,10 @@
+trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,paras_genus,paras_species,host_genus,host_species,citation,doi,data_source,notes,type
+bc,18,0.75,NA,NA,NA,Percent positive,NA,NA,Dirofilaria,immitis,Aedes,canadensis,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,table 1,Infective 3rd stage larvae in head and mouthparts only,non-Arctic
+bc,18,0.739,NA,NA,NA,Percent positive,NA,NA,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,table 1,Infective 3rd stage larvae in head and mouthparts only,non-Arctic
+bc,26,0.668,NA,NA,NA,Percent positive,NA,NA,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,table 1,Infective 3rd stage larvae in head and mouthparts only,non-Arctic
+c,14.5,0.5538083538,NA,NA,NA,infection rate %,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA,non-Arctic
+c,18.5,0.8977886977999999,NA,NA,NA,infection rate %,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA,non-Arctic
+c,22.5,0.8938574939,NA,NA,NA,infection rate %,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA,non-Arctic
+c,26.5,0.7444717445000001,NA,NA,NA,infection rate %,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA,non-Arctic
+c,30.5,0.4968058968,NA,NA,NA,infection rate %,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA,non-Arctic
+c,34.5,0.36314496310000005,NA,NA,NA,infection rate %,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,figure 2,NA,non-Arctic

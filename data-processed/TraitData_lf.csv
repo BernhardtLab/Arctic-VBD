@@ -53,48 +53,41 @@ lf,18,40,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,punctor,so
 lf,18,49,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 5,Arctic
 lf,18,57,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic
 lf,18,56,NA,NA,NA,average days alive,total meals per specimen,6,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,13.35,11.24031007751938,9.078455948183082,NA,sd,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,17.12,7.176470588235294,7.445488171882825,NA,sd,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,23.75,5.968197879858657,5.953339184866457,NA,sd,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,27.5,4.812765957446809,5.103945893551992,NA,sd,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,32.18,0.25,0.5,NA,sd,days,NA,NA,Aedes,sierrensis,Couper_2024_ProcBiolSci,10.1098/rspb.2023.2457,calculated from raw data,NA,non-Arctic
-lf,15,19.45,11.11,11.11,sd,mean duration of life stage,NA,NA,Aedes,albopictus,Calado and Navarro-Silva. 2002. Influencia da temperatura sobre a longevidade fecundidade eatividade hematofagica de Aedes (Stegomyia) albopictus Skuse 1894 (Diptera: Culicidae) sob condicoes de laboratorio. Revista Brasileira de Entomologia 46: 93-98.,10.1590/S0085-56262002000100011,table 1,NA,non-Arctic
-lf,20,59.35,27.44,27.44,sd,mean duration of life stage,NA,NA,Aedes,albopictus,Calado and Navarro-Silva. 2002. Influencia da temperatura sobre a longevidade fecundidade eatividade hematofagica de Aedes (Stegomyia) albopictus Skuse 1894 (Diptera: Culicidae) sob condicoes de laboratorio. Revista Brasileira de Entomologia 46: 93-98.,10.1590/S0085-56262002000100011,table 1,NA,non-Arctic
-lf,25,61.55,22.57,22.57,sd,mean duration of life stage,NA,NA,Aedes,albopictus,Calado and Navarro-Silva. 2002. Influencia da temperatura sobre a longevidade fecundidade eatividade hematofagica de Aedes (Stegomyia) albopictus Skuse 1894 (Diptera: Culicidae) sob condicoes de laboratorio. Revista Brasileira de Entomologia 46: 93-98.,10.1590/S0085-56262002000100011,table 1,NA,non-Arctic
-lf,30,40.72,21.8,21.8,sd,mean duration of life stage,NA,NA,Aedes,albopictus,Calado and Navarro-Silva. 2002. Influencia da temperatura sobre a longevidade fecundidade eatividade hematofagica de Aedes (Stegomyia) albopictus Skuse 1894 (Diptera: Culicidae) sob condicoes de laboratorio. Revista Brasileira de Entomologia 46: 93-98.,10.1590/S0085-56262002000100011,table 1,NA,non-Arctic
 lf,10,5.7,0.4,0.4,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
 lf,15,27.9,2,2,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,10,2,NA,NA,NA,minimum duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,15,8,NA,NA,NA,minimum duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,25,32,NA,NA,NA,minimum duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,30,14,NA,NA,NA,minimum duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,10,10,NA,NA,NA,maximum duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,15,45,NA,NA,NA,maximum duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,25,92,NA,NA,NA,maximum duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,30,86,NA,NA,NA,maximum duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
 lf,25,64.5,3.8,3.8,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
 lf,30,53.5,4.7,4.7,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
 lf,27,30,15.8,15.8,NA,mean duration of life stage,NA,NA,Aedes,albopictus,Tsuda et al. 1994. A comparative study on life table characteristics of two strains of Aedes albopictus from Japan and Thailand. Trop. Med. 36: 1,NA,table 3,NA,non-Arctic
 lf,27,31.7,16.3,16.3,NA,mean duration of life stage,NA,NA,Aedes,albopictus,Tsuda et al. 1994. A comparative study on life table characteristics of two strains of Aedes albopictus from Japan and Thailand. Trop. Med. 36: 1,NA,table 3,NA,non-Arctic
-1/mu,15,19.45,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
-1/mu,20,59.35,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
-1/mu,25,61.55,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
-1/mu,30,42.72,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
-1/mu,20,12,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,20,9,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,20,11,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,27,7,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,27,7,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,27,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,34,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,34,5,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,34,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,20,141,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,20,102,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,20,98,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,27,98,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,27,76,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,27,84,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,34,35,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,34,42,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-1/mu,34,24,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,15,19.45,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
+lf,20,59.35,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
+lf,25,61.55,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
+lf,30,42.72,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
+lf,22,157.98112757449996,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,22,141.4999961795001,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,22,125.24560663461047,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,26,79.52941490845687,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,26,74.73913053876748,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,26,58.89156649211206,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,30,37.30588257063197,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,30,31.97560951667044,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,30,41.73437547407642,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,22,137.6774231742769,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
+lf,20,12,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,20,9,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,20,11,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,27,7,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,27,7,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,27,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,34,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,34,5,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,34,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,20,141,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,20,102,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,20,98,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,27,98,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,27,76,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,27,84,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,34,35,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,34,42,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+lf,34,24,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
