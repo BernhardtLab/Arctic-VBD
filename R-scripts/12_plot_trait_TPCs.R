@@ -207,7 +207,7 @@ plot.a <- a.alldata.predictions.summary %>%
                       name = "Dataset"
                       ) +
   theme_bw() +
-  theme(title = element_text(size = 16),
+  theme(title = element_text(size = 14),
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 18),
         legend.text = element_text(size = 14),
