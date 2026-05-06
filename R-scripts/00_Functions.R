@@ -1,71 +1,42 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Functions to load for use in other scripts
+## Purpose: Functions to load for use in other scripts
+## 
 ## Code adapted from https://github.com/JoeyBernhardt/anopheles-rate-summation/blob/master/R-scripts/working-versions-code/00_RSProjectFunctions.R
 
 ##	Table of contents:
-##
+##  0. Set-up workspace
 ##	1. Functions to process TPC model output
 ##			A. Function to calculate TPC posterior summary statistics across a temperature gradient
 ##			B. Function to extract full posterior distributions for 3 mean-defining TPC parameters & calculate Tbreadth
 ##			C. Function to calculate Topt
 ##			D. Function to calculate Tmin, Max, and Tbreadth for derived TPCs 
 ##			E. Wrapper function to calculate summary data for and extract parameter posteriors from JAGS fitted TPCs
-##			F. Wrapper function to calculate summary data for derived TPCs 
-
-
-##  5. Function to calculate relative suitability
-##  6. Functions for Sensitivity Analysis
+##			F. Wrapper function to calculate summary data for derived TPCs
+##  2. Function to process trait data for plotting
+##  3. Function to calculate relative suitability
+##  4. Functions for Sensitivity Analysis
 ##			A. Function for derivative of Briere thermal response
 ##			B. Function for derivative of quadratic thermal response
-##			C. Function for sensitivity analysis #1 - partial derivatives
+##			C. Function for sensitivity analysis - partial derivatives
 
 
 
 
-##########
-###### 0. Set-up workspace ----
-##########
+# 0. Set-up workspace ----------------------------------------------------------
 
 library(tidyverse)
 
 
 
-########################################### 1. Functions to process TPC model output
+# 1. Functions to process TPC model output -------------------------------------
 
-###### A. Function to calculate TPC posterior summary statistics across a temperature gradient
-# calcPostQuants = function(input, grad.xs) {
-#   
-#   # Get length of gradient
-#   N.grad.xs <- length(grad.xs)
-#   
-#   # Create output dataframe
-#   output.df <- data.frame("mean" = numeric(N.Temp.xs), "median" = numeric(N.Temp.xs), 
-#                           "lowerCI" = numeric(N.Temp.xs), "upperCI" = numeric(N.Temp.xs), 
-#                           "lowerQuartile" = numeric(N.Temp.xs), "upperQuartile" = numeric(N.Temp.xs), temp = grad.xs)
-#   
-#   # Calculate mean & quantiles
-#   for(i in 1:N.grad.xs){
-#     output.df$mean[i] <- mean(input[ ,i])
-#     output.df$median[i] <- quantile(input[ ,i], 0.5, na.rm = TRUE)
-#     output.df$lowerCI[i] <- quantile(input[ ,i], 0.025, na.rm = TRUE)
-#     output.df$upperCI[i] <- quantile(input[ ,i], 0.975, na.rm = TRUE)
-#     output.df$lowerQuartile[i] <- quantile(input[ ,i], 0.25, na.rm = TRUE)
-#     output.df$upperQuartile[i] <- quantile(input[ ,i], 0.75, na.rm = TRUE)
-#   }
-#   
-#   output.df # return output
-#   
-# }
+## A. Function to calculate TPC posterior summary statistics across a temperature gradient ----
 
-
-########################################### 1. Functions to process TPC model output
-
-###### A. Function to calculate TPC posterior summary statistics across a temperature gradient
 calcPostQuants <- function(TPC_predictions, trait_name, temp_gradient) {
   # TPC_predictions: 15000 rows (MCMC iterations) x 451 cols (temp_gradient, 0-45C at 0.1C interval)
-  # output: 5 cols (temperature, lowerCI, upperCI, mean, median) x 451 cols
+  # output: 8 cols (temperature, lowerCI, upperCI, lowerQ, upperQ, mean, median, trait_name) x 451 cols
   
   # Reassign column names to the temperature gradient
   colnames(TPC_predictions) <- temp_gradient
@@ -88,8 +59,11 @@ calcPostQuants <- function(TPC_predictions, trait_name, temp_gradient) {
   
 }
 
-###### B. Function to extract full posterior distributions for 3 mean-defining TPC parameters & calculate Tbreadth
+## B. Function to extract full posterior distributions for 3 mean-defining TPC parameters (q, Tmin, Tmax) & calculate Tbreadth ----
+
 getTPCParamFullPosts <- function (TPC_model, trait_name) {
+  # TPC_model is the output from JAGS fitted TPCs
+  
   # Extract the Tmin, Tmax, q, and Tbreadth (Tmax - Tmin) of each iteration
   output <- data.frame(iteration = seq(1,length(TPC_model$BUGSoutput$sims.list$cf.T0),1),
                        cf.T0 = TPC_model$BUGSoutput$sims.list$cf.T0[,1],
@@ -102,8 +76,9 @@ getTPCParamFullPosts <- function (TPC_model, trait_name) {
 }
 
 
-###### C. Function to calculate Topt
+## C. Function to calculate Topt ----
 calcToptQuants <- function(TPC_predictions, trait_name, temp_gradient) {
+  # TPC_predictions: 15000 rows (MCMC iterations) x 451 cols (temp_gradient, 0-45C at 0.1C interval)
   
   # Reassign column names to the temperature gradient
   colnames(TPC_predictions) <- temp_gradient
@@ -130,7 +105,10 @@ calcToptQuants <- function(TPC_predictions, trait_name, temp_gradient) {
 }
 
 
-###### D. Function to calculate posteriors for Tmin, Tmax, and Tbreadth for derived TPCs 
+## D. Function to calculate posteriors for Tmin, Tmax, and Tbreadth for derived TPCs ----
+
+# Use this function for TPCs that are not from JAGS fitted TPCs (e.g. output from the suitability model)
+
 calcDerivedTPCParamPosteriors <- function(TPC_predictions, temp_gradient) {
   # TPC_predictions: 15000 rows (MCMC iterations) x 451 cols (temp_gradient, 0-45C at 0.1C interval)
   
@@ -176,7 +154,13 @@ calcDerivedTPCParamPosteriors <- function(TPC_predictions, temp_gradient) {
 }
 
 
-###### E. Wrapper function to calculate summary data for and extract parameter posteriors from JAGS fitted TPCs
+## E. Wrapper function to calculate summary data for and extract parameter posteriors from JAGS fitted TPCs ----
+
+## Output: a list of 3 items
+##   i. TPC_pred_summary: Posterior summary of TPC predictions across temperatures (output from calcPostQuants)
+##  ii. TPC_param_summary_all: Summary statistics of TPC parameters
+## iii. TPC_param_full_posts: Full posterior distributions for q, Tmin, Tmax, and Tbreadth (output from getTPCParamFullPosts)
+
 extractTPC <- function(TPC_model, trait_name, temp_gradient) {
   
   # Extract predicted trait values over the temperature gradient
@@ -185,7 +169,7 @@ extractTPC <- function(TPC_model, trait_name, temp_gradient) {
   # Calculate TPC posterior summary statistics (means & quantiles)
   TPC_pred_summary <- calcPostQuants(TPC_predictions, trait_name, temp_gradient)
   
-  # Extract full posterior distribution for 3 mean-defining TPC parameters + calculate Tbreadth for each iteration
+  # Extract full posterior distribution for 3 mean-defining TPC parameters (q, Tmin, Tmax) + calculate Tbreadth for each iteration
   TPC_param_full_posts <- getTPCParamFullPosts(TPC_model, trait_name)
   
   # Calculate Tbreadth summary statistics (mean, sd, & quantiles)
@@ -220,11 +204,11 @@ extractTPC <- function(TPC_model, trait_name, temp_gradient) {
   
 }
 
-
+## Use the following function if the JAGS fitted TPC includes random effects
 extractTPC_raneff <- function(TPC_model, trait_name, temp_gradient) {
   
   # Extract predicted trait values over the temperature gradient
-  TPC_predictions <- as.data.frame(TPC_model$BUGSoutput$sims.list$z.trait.mu.pred.pop)
+  TPC_predictions <- as.data.frame(TPC_model$BUGSoutput$sims.list$z.trait.mu.pred.pop) # extract the global-level TPC
   
   # Calculate TPC posterior summary statistics (means & quantiles)
   TPC_pred_summary <- calcPostQuants(TPC_predictions, trait_name, temp_gradient)
@@ -264,8 +248,10 @@ extractTPC_raneff <- function(TPC_model, trait_name, temp_gradient) {
   
 }
 
-###### F. Wrapper function to calculate summary data for derived TPCs 
+
+## F. Wrapper function to calculate summary data for derived TPCs ----
 extractDerivedTPC <- function(TPC_predictions, trait_name, temp_gradient) {
+  # TPC_predictions: 15000 rows (MCMC iterations) x 451 cols (temp_gradient, 0-45C at 0.1C interval)
   
   # Calculate Tmin, Tmax, and Tbreadth posteriors
   TPC_param_full_posts <- calcDerivedTPCParamPosteriors(TPC_predictions, temp_gradient)
@@ -312,7 +298,7 @@ extractDerivedTPC <- function(TPC_predictions, trait_name, temp_gradient) {
 }
 
 
-########################################### 2. Function to process trait data for plotting
+# 2. Function to process trait data for plotting -------------------------------
 processTraitData <- function (data_input, trait_name) {
   
   output <- data_input %>%
@@ -326,19 +312,20 @@ processTraitData <- function (data_input, trait_name) {
 }
 
 
+# 3. Function to calculate relative suitability --------------------------------
+
 # Creating a small constant to keep denominators from being zero
 ec <- 0.000001
 
-# Define S(T) with EFGC instead of lifetime egg production (B)
-## B = EFGC * a * lf
 S = function(a, bc, lf, PDR, EFGC, EV, pLA, MDR){
   (a^3 * bc * exp(-(1/(lf+ec))*(1/(PDR+ec))) * EFGC * EV * pLA * MDR * lf^3)^0.5
 }
 
 
-########################################### 6. Functions for Sensitivity Analysis
+# 4. Functions for Sensitivity Analysis ----------------------------------------
 
-###### A. Function for derivative of Briere thermal response
+## A. Function for derivative of Briere thermal response ----
+
 d_briere = function(T, T0, Tm, q) {
   
   b <- c()
@@ -353,7 +340,7 @@ d_briere = function(T, T0, Tm, q) {
   
 }
 
-###### B. Function for derivative of quadratic thermal response
+## B. Function for derivative of quadratic thermal response ----
 d_quad = function(T, T0, Tm, q){
   
   b <- c()
@@ -369,11 +356,13 @@ d_quad = function(T, T0, Tm, q){
 }
 
 
-###### C. Function for sensitivity analysis #1 - partial derivatives
+## C. Function for sensitivity analysis - partial derivatives ----
 
-# Arguments: mod_x_pred = the JAGS model for each trait (for the fitted TPC parameters - T0, Tm, and q);
+# Arguments: 
+#      x_preds = full posterior distribution for TPC predicted values at each temp interval. 
+#                15000 rows (MCMC iterations) x 451 cols (temp_gradient, 0-45C at 0.1C interval);
+#			 m_param = full posterior distribution for q, Tmin, and Tmax;
 #			 m_x = the mean value for each trait over the temperature gradient
-
 
 SensitivityAnalysis_pd = function(# predicted trait values:
                                   a_preds, bc_preds, lf_preds, PDR_preds, 
@@ -404,7 +393,7 @@ SensitivityAnalysis_pd = function(# predicted trait values:
                      bc_param$cf.Tm[i], # Tm
                      bc_param$cf.q[i]) # q
     
-    dlf.dT <- d_briere(Temp.xs,
+    dlf.dT <- d_quad(Temp.xs,
                        lf_param$cf.T0[i], # T0
                        lf_param$cf.Tm[i], # Tm
                        lf_param$cf.q[i]) # q
@@ -414,7 +403,7 @@ SensitivityAnalysis_pd = function(# predicted trait values:
                         PDR_param$cf.Tm[i], # Tm
                         PDR_param$cf.q[i]) # q
     
-    dEFGC.dT <- d_briere(Temp.xs,
+    dEFGC.dT <- d_quad(Temp.xs,
                          EFGC_param$cf.T0[i], # T0
                          EFGC_param$cf.Tm[i], # Tm
                          EFGC_param$cf.q[i]) # q

@@ -207,7 +207,7 @@ plot.a <- a.alldata.predictions.summary %>%
                       name = "Dataset"
                       ) +
   theme_bw() +
-  theme(title = element_text(size = 14),
+  theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 18),
         legend.text = element_text(size = 14),
@@ -229,7 +229,7 @@ plot.bc <- bc.arctic.predictions.summary %>%
        x = expression(paste("Temperature (", degree, "C)")), 
        y = "Proportion") +
   theme_bw() +
-  theme(title = element_text(size = 14),
+  theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 18))
 
@@ -253,7 +253,7 @@ plot.lf <- lf.alldata.predictions.summary %>%
        y = "Time (days)") +
   scale_colour_manual(values = c("Arctic" = "black", "non-Arctic" = "azure4")) +
   theme_bw() +
-  theme(title = element_text(size = 14),
+  theme(title = element_text(size = 12),
         legend.position="none",
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 18))
@@ -275,7 +275,7 @@ plot.PDR <- PDR.arctic.predictions.summary %>%
        x = expression(paste("Temperature (", degree, "C)")), 
        y = parse(text = "Development~rate~(day^-1)")) +
   theme_bw() +
-  theme(title = element_text(size = 14),
+  theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 18))
 
@@ -299,7 +299,7 @@ plot.EFGC <- EFGC.alldata.predictions.summary %>%
        y = "Eggs") +
   scale_colour_manual(values = c("Arctic" = "black", "non-Arctic" = "azure4")) +
   theme_bw() +
-  theme(title = element_text(size = 14),
+  theme(title = element_text(size = 12),
         legend.position="none",
         plot.margin = margin(20,5.5,5.5,5.5),
         axis.text = element_text(size = 12),
@@ -323,7 +323,7 @@ plot.EV <- EV.arctic.predictions.summary %>%
        x = expression(paste("Temperature (", degree, "C)")), 
        y = "Proportion hatching") +
   theme_bw() +
-  theme(title = element_text(size = 14),
+  theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 18))
 
@@ -344,7 +344,7 @@ plot.pLA <- pLA.arctic.predictions.summary %>%
        x = expression(paste("Temperature (", degree, "C)")), 
        y = "Survival probability") +
   theme_bw() +
-  theme(title = element_text(size = 14),
+  theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 18))
 
@@ -365,7 +365,7 @@ plot.MDR <- MDR.arctic.predictions.summary %>%
        x = expression(paste("Temperature (", degree, "C)")), 
        y = parse(text = "Development~rate~(day^-1)")) +
   theme_bw() +
-  theme(title = element_text(size = 14),
+  theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 18))
 
@@ -386,6 +386,7 @@ plot.traits <- plot_grid(plot.a + theme(legend.position="none"), plot.lf, plot.E
                          plot.EV, plot.pLA, plot.MDR, 
                          plot.PDR, plot.bc, legend_panel, 
                          ncol = 3,
+                         align = "hv",
                          labels = LETTERS[1:8])
 plot.traits
 
@@ -450,4 +451,4 @@ plot.all <- plot_grid(plot.traits, plot.traits.scaled,
 
 plot.all
 
-ggsave("figures/trait.TPCs.summary.png", plot.all, width = 12, height = 12)
+ggsave("figures/trait.TPCs.summary.png", plot.all, width = 12.5, height = 12)

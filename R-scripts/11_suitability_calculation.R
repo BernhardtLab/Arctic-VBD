@@ -49,13 +49,13 @@ load("R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata")
 
 
 #####  Pull out the derived/predicted values:
-a.preds <- a.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
+a.preds <- a.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
 bc.preds <- read_csv("data-processed/bc/bc.arctic.predictions.fullposts.csv")
 bc.preds <- as.matrix(bc.preds)
 
-lf.preds <- lf.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
+lf.preds <- lf.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
 PDR.preds <- PDR.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
-EFGC.preds <- EFGC.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the population-level fit
+EFGC.preds <- EFGC.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
 EV.preds <- EV.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
 pLA.preds <- pLA.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
 MDR.preds <- MDR.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
@@ -137,7 +137,7 @@ plot.S <- ggplot(data = S.out.upperCI) +
        y = "Suitability (S)") +
   theme_bw() +
   theme(axis.text = element_text(size = 12),
-        axis.title = element_text(size = 12))
+        axis.title = element_text(size = 14))
   
 
 plot.S
@@ -180,7 +180,7 @@ plot.S.viz <- S.viz.out %>%
   theme(axis.ticks.y = element_blank(),
         axis.title.y = element_blank(),
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 12),
+        axis.title = element_text(size = 14),
         legend.position = "none",
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -189,6 +189,14 @@ plot.S.viz <- S.viz.out %>%
 
 plot.S.viz
 
+plot.suitability <- plot_grid(plot.S, plot.S.viz,
+                              ncol = 1,
+                              rel_heights = c(2,1),
+                              align = "hv"
+) +
+  theme(panel.background = element_rect(fill = "white", color = NA))
+
+plot.suitability
 
 
 # 4. Sensitivity Analysis - partial derivatives --------------------------------
@@ -208,10 +216,6 @@ EFGC.m <- colMeans(EFGC.preds)
 EV.m <- colMeans(EV.preds)
 pLA.m <- colMeans(pLA.preds)
 MDR.m <- colMeans(MDR.preds)
-
-
-R0 <- expression((a^3 * bc * exp(-(1/(lf+ec))*(1/(PDR+ec))) * EFGC * EV * pLA * MDR * lf^3)^0.5)
-
 
 
 # Calculate sensitivity using partial derivatives
@@ -239,15 +243,15 @@ dS.dT		<- calcPostQuants(as.data.frame(SA[[9]]), "S", Temp.xs)
 
 ##### Plot results
 plot.SA <- ggplot() +
-  geom_line(data = dS.da, aes(x = temperature, y = median, colour = "a")) +
-  geom_line(data = dS.dbc, aes(x = temperature, y = median, colour = "bc")) +
-  geom_line(data = dS.dlf, aes(x = temperature, y = median, colour = "lf")) +
-  geom_line(data = dS.dPDR, aes(x = temperature, y = median, colour = "PDR")) +
-  geom_line(data = dS.dEFGC, aes(x = temperature, y = median, , colour = "EFGC")) +
-  geom_line(data = dS.dEV, aes(x = temperature, y = median, , colour = "EV")) +
-  geom_line(data = dS.dpLA, aes(x = temperature, y = median, colour = "pLA")) +
-  geom_line(data = dS.dMDR, aes(x = temperature, y = median, colour = "MDR")) +
-  geom_line(data = dS.dT, aes(x = temperature, y = median, , colour = "S"), linewidth = 1) +
+  geom_line(data = dS.da, aes(x = temperature, y = median, colour = "a"), linewidth = 1) +
+  geom_line(data = dS.dbc, aes(x = temperature, y = median, colour = "bc"), linewidth = 1) +
+  geom_line(data = dS.dlf, aes(x = temperature, y = median, colour = "lf"), linewidth = 1) +
+  geom_line(data = dS.dPDR, aes(x = temperature, y = median, colour = "PDR"), linewidth = 1) +
+  geom_line(data = dS.dEFGC, aes(x = temperature, y = median, , colour = "EFGC"), linewidth = 1) +
+  geom_line(data = dS.dEV, aes(x = temperature, y = median, , colour = "EV"), linewidth = 1) +
+  geom_line(data = dS.dpLA, aes(x = temperature, y = median, colour = "pLA"), linewidth = 1) +
+  geom_line(data = dS.dMDR, aes(x = temperature, y = median, colour = "MDR"), linewidth = 1) +
+  geom_line(data = dS.dT, aes(x = temperature, y = median, , colour = "S"), linewidth = 1.2) +
   # scale_x_continuous(limits = c(10, 35)) +
   scale_x_continuous(limits = c(10, 40)) +
   labs(x = expression(paste("Temperature (", degree, "C)")),
@@ -263,7 +267,7 @@ plot.SA <- ggplot() +
                        labels = c("S", "a", "bc", "lf", "PDR", "EFGC",  "EV", "pLA", "MDR")) +
   theme_bw() +
   theme(axis.text = element_text(size = 12),
-        axis.title = element_text(size = 12),,
+        axis.title = element_text(size = 14),,
         legend.text = element_text(size = 14),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -273,7 +277,7 @@ plot.SA <- ggplot() +
 
 plot.SA
 
-ggsave("figures/sensitivity.analysis.png", plot.SA, width = 10.3, height = 5.6)
+ggsave("figures/sensitivity.analysis.png", plot.SA, width = 10, height = 5)
 
 
 plot.everything <- plot_grid(plot.S, plot.S.viz, plot.SA,

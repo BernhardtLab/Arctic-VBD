@@ -1,9 +1,9 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian inference (JAGS) to fit TPCs for mosquito development 
-## rate (MDR) for Arctic species with data-informed priors generated from 
-## non-Arctic species data.
+## Purpose: Fit thermal performance curves (TPCs) for mosquito development rate 
+## (MDR) using Bayesian inference (JAGS). Arctic species models are fit 
+## using data-informed priors derived from non-Arctic species.
 ## 
 ## Table of content:
 ##    0. Set-up workspace
@@ -11,19 +11,40 @@
 ##    1. MCMC settings for all models
 ##
 ##    2. Fitting TPC (Briere)
-##        A. Fit non-Arctic TPC for priors
+##        A. Fit non-Arctic TPC to generate priors
 ##        B. Fit gamma distributions to non-Arctic TPC parameters
 ##        C. Fit Arctic TPC using data-informed priors
 ##
 ##    3. Fitting TPC (Quadratic)
-##        A. Fit non-Arctic TPC for priors
+##        A. Fit non-Arctic TPC to generate priors
 ##        B. Fit gamma distributions to non-Arctic TPC parameters
 ##        C. Fit Arctic TPC using data-informed priors
 ##
-##    4. Compare model fit between Quadratic and Briere models
-##    5. Process and save model output for plotting
-
-
+##    4. Compare model fit between Briere and Quadratic models
+##    5. Process and save model output for visualization
+##
+##
+## Inputs:
+## data-processed/TraitData_MDR.csv - Synthesized published trait data for MDR
+##
+## Outputs: 
+## data-processed/MDR/MDR.arctic.predictions.summary.csv - Posterior summary of
+## TPC predictions for Arctic species across temperatures
+##
+## data-processed/MDR/MDR.arctic.params.summary.csv - Summary statistics of TPC 
+## parameters (Arctic TPC)
+##
+## data-processed/MDR/MDR.arctic.params.fullposts.csv - Full posterior 
+## distributions for q, Tmin, Tmax, and Tbreadth (Arctic TPC)
+##
+## data-processed/MDR/MDR.nonarctic.predictions.summary.csv - Posterior summary 
+## of TPC predictions for non-Arctic species
+##
+## data-processed/MDR/MDR.nonarctic.params.summary.csv -  Summary statistics of 
+## TPC parameters (non-Arctic TPC)
+##
+## data-processed/MDR/MDR.nonarctic.params.fullposts.csv - Full posterior 
+## distributions for q, Tmin, Tmax, and Tbreadth (non-Arctic TPC)
 
 
 # 0. Set-up workspace ----------------------------------------------------------
@@ -76,7 +97,7 @@ set.seed(123) # for reproducibility
 
 # 2. Fitting TPC (Briere) ------------------------------------------------------
 
-## 2A. Fit non-Arctic TPC for priors -------------------------------------------
+## 2A. Fit non-Arctic TPC to generate priors -----------------------------------
 
 ##### Temp sequence for derived quantity calculations
 # For priors - fewer temps for derived calculations makes it go faster
@@ -476,7 +497,7 @@ ggsave("figures/MDR.arctic.bri.inf.png", plot.MDR.arctic.bri.inf,
 
 # 3. Fitting TPC (quadratic) ---------------------------------------------------
 
-## 3A. Fit non-Arctic TPC for priors -------------------------------------------
+## 3A. Fit non-Arctic TPC to generate priors -----------------------------------
 
 
 ##### Temp sequence for derived quantity calculations
@@ -867,7 +888,7 @@ ggsave("figures/MDR.arctic.quad.inf.png", plot.MDR.arctic.quad.inf,
 
 
 
-# 4. Compare model fit between Quadratic and Briere models ---------------------
+# 4. Compare model fit between Briere and Quadratic models ---------------------
 
 ##### Find best fitting model #####
 # Add an identifying column in each model output dataframe
@@ -952,7 +973,7 @@ save(MDR.arctic.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/MDR.arct
 save(MDR.nonarctic.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/MDR.nonarctic.mod.Rdata")
 
 
-# 5. Process and save model output for plotting -------------------------------
+# 5. Process and save model output for visualization ---------------------------
 
 ## Analyze TPC model
 # We will create 3 files: 

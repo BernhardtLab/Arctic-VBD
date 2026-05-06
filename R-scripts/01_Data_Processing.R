@@ -1,19 +1,43 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: Process the raw data and save each trait as it own csv file
+## Purpose: Clean and process raw trait data, then export each trait as a separate CSV file.
 ## 
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. Biting rate (a)
 ##    2. Vector Competence (bc)
-##    3. Parasite development rate (PDR)
+##    3. Pathogen development rate (PDR)
 ##    4. Egg viavility (EV)
 ##    5. Larval survival (pLA)
 ##    6. Mosquito egg-to-adult development rate (MDR)
 ##    7. Adult mosquito lifespan (lf)
 ##    8. Eggs per female per gonotrophic cycle (EFGC)
-
+##
+##
+## Inputs:
+## csv and Excel files located in 'data-raw', containing published trait estimates
+## across temperature gradients. Each file corresponds to a specific study or data source.
+##
+## Files include: a&EFGC&lf_aedes_spp.Sommerman1969.csv, a_Data_Mordecai2019.csv, 
+## a_VecTrait.csv, bc&PDR_dirofilaria_immitis_aedes_vexans.Jankowski1976.csv,
+## c&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv, 
+## EFGC_aedes_hexodontus.Barlow1955.csv, EV_aedes_triseriatus.Zimmerman2025.csv,
+## EV_TraitData_Shocket2020.csv, EV_VecTrait.csv, Fecundity_Data_Mordecai2019.csv,
+## lf_aedes_vexans.Costello1971.csv, lf_Data_Mordecai2019.csv, lf_VecTrait.csv,
+## MDR&pLA_aedes_flavescens.Trpis1969.csv, MDR_aedes_nigripes.Culler2015.xlsx, 
+## MDR_Data_Mordecai2019.csv, PDR_dirofilaria_immitis_aedes_triseriatus_vexans.Fortin1981.csv, 
+## PDR_setaria_tundra.Laaksonen2009.csv, PDR_varestrongylus_eleguneniensis.Kafle2018.csv,
+## PDR_wuchereria_bancrofti_aedes_polynesiensis.Lardeux1997.csv, pLA_Data_Mordecai2019.csv
+##
+##
+## Outputs:
+## Processed trait datasets saved in 'data-processed/', organized by trait.
+## Each output file follows the naming convention: TraitData_<trait>.csv
+##
+## Generated files:
+## TraitData_a.csv, TraitData_bc.csv, TraitData_EFGC.csv, TraitData_EV.csv, 
+## TraitData_lf.csv, TraitData_MDR.csv, TraitData_PDR.csv, TraitData_pLA.csv
 
 
 # 0. Set-up workspace ----------------------------------------------------------

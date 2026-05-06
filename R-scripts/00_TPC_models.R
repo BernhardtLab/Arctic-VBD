@@ -1,8 +1,17 @@
+## Lilian Chan, University of Guelph
+## Arctic vector-borne disease transmission suitability model
+##
+## Purpose: script with JAGS models for fitting TPCs
+## 
+## Code adapted from https://github.com/mshocket/Six-Viruses-Temp/tree/master
+## 
+## NOTES:
+## Running the code below writes a .txt file for each model to 'R-scripts/'.
+## It must be saved there in order for JAGS to find it
 
 
-##########
-###### Briere model (truncated) ----
-##########
+
+# Truncated normally-distributed Briere ----------------------------------------
 
 sink("R-scripts/briere_T.txt")
 cat("
@@ -32,40 +41,11 @@ sink()
 
 
 
-##########
-###### Briere model Probability (truncated) ----
-##########
+# Truncated normally-distributed Briere (with random effects)-------------------
 
-sink("R-scripts/briereprob.txt")
-cat("
-    model{
-    
-    ## Priors
-    cf.q ~ dunif(prior[1,1], prior[2,1])
-    cf.T0 ~ dunif(prior[1,2], prior[2,2])
-    cf.Tm ~ dunif(prior[1,3], prior[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- cf.q * temp[i] * (temp[i] - cf.T0) * sqrt((cf.Tm - temp[i]) * (cf.Tm > temp[i])) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)
-    }
-    
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i]) * (cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) < 1) + (cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) > 1)
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
-
-
-##########
-###### Briere model (with random effects) ----
-##########
+## unique_id = species-study combination
+## Use this function for datasets comprising multiple species or multiple studies
+## of the same species
 
 sink("R-scripts/briere_T_randeff.txt")
 cat("
@@ -117,9 +97,41 @@ cat("
 sink()
 
 
-##########
-###### Briere model Probability (truncated) (with random effects) ----
-##########
+
+
+# Truncated normally-distributed Briere (for probability traits)----------------
+
+## For proportion and probability traits: maximum trait value set to 1
+
+sink("R-scripts/briereprob.txt")
+cat("
+    model{
+    
+    ## Priors
+    cf.q ~ dunif(prior[1,1], prior[2,1])
+    cf.T0 ~ dunif(prior[1,2], prior[2,2])
+    cf.Tm ~ dunif(prior[1,3], prior[2,3])
+    cf.sigma ~ dunif(0, 1000)
+    cf.tau <- 1 / (cf.sigma * cf.sigma)
+    
+    ## Likelihood
+    for(i in 1:N.obs){
+    trait.mu[i] <- cf.q * temp[i] * (temp[i] - cf.T0) * sqrt((cf.Tm - temp[i]) * (cf.Tm > temp[i])) * (cf.T0 < temp[i])
+    trait[i] ~ dnorm(trait.mu[i], cf.tau)
+    }
+    
+    ## Derived Quantities and Predictions
+    for(i in 1:N.Temp.xs){
+    z.trait.mu.pred[i] <- cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) * (cf.T0 < Temp.xs[i]) * (cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) < 1) + (cf.q * Temp.xs[i] * (Temp.xs[i] - cf.T0) * sqrt((cf.Tm - Temp.xs[i]) * (cf.Tm > Temp.xs[i])) > 1)
+    }
+    
+    } # close model
+    ",fill=T)
+sink()
+
+
+
+# Truncated normally-distributed Briere (for probability traits with random effects)----------------
 
 sink("R-scripts/briereprob_randeff.txt")
 cat("
@@ -173,9 +185,7 @@ cat("
 sink()
 
 
-##########
-###### Briere Model with gamma priors (except sigma) ----
-##########
+# Truncated Briere with gamma priors (except sigma) ----------------------------
 
 sink("R-scripts/briere_inf.txt")
 cat("
@@ -204,9 +214,10 @@ cat("
 sink()
 
 
-##########
-###### Briere Model Probability with gamma priors (except sigma) ----
-##########
+
+# Truncated Briere with gamma priors (for probability traits) ----------------------------
+
+## For proportion and probability traits: maximum trait value set to 1
 
 sink("R-scripts/briereprob_inf.txt")
 cat("
@@ -235,9 +246,8 @@ cat("
 sink()
 
 
-##########
-###### Briere Model with random effect and gamma priors (except sigma) ----
-##########
+
+# Truncated Briere with gamma priors (with random effects) ---------------------
 
 sink("R-scripts/briere_inf_raneff.txt")
 cat("
@@ -290,9 +300,8 @@ cat("
 sink()
 
 
-##########
-###### Quadratic model (truncated) ----
-##########
+
+# Truncated normally-distributed Quadratic -------------------------------------
 
 sink("R-scripts/quad_T.txt")
 cat("
@@ -322,9 +331,11 @@ sink()
 
 
 
-##########
-###### Quadratic model (with random effects) ----
-##########
+# Truncated normally-distributed Quadratic (with random effects)-------------------
+
+## unique_id = species-study combination
+## Use this function for datasets comprising multiple species or multiple studies
+## of the same species
 
 sink("R-scripts/quad_T_randeff.txt")
 cat("
@@ -377,41 +388,9 @@ sink()
 
 
 
-##########
-###### Quadratic Model with gamma priors (except sigma) ----
-##########
 
-sink("R-scripts/quad_inf.txt")
-cat("
-    model{
-    
-    ## Priors
-    cf.q ~ dgamma(hypers[1,1], hypers[2,1])
-    cf.T0 ~ dgamma(hypers[1,2], hypers[2,2])
-    cf.Tm ~ dgamma(hypers[1,3], hypers[2,3])
-    cf.sigma ~ dunif(0, 1000)
-    cf.tau <- 1 / (cf.sigma * cf.sigma)
-    
-    ## Likelihood
-    for(i in 1:N.obs){
-    trait.mu[i] <- -1 * cf.q * (temp[i] - cf.T0) * (temp[i] - cf.Tm) * (cf.Tm > temp[i]) * (cf.T0 < temp[i])
-    trait[i] ~ dnorm(trait.mu[i], cf.tau)
-    }
-    
-    ## Derived Quantities and Predictions
-    for(i in 1:N.Temp.xs){
-    z.trait.mu.pred[i] <- -1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i])
-    }
-    
-    } # close model
-    ",fill=T)
-sink()
+# Truncated normally-distributed Quadratic (for probability traits)----------------
 
-
-
-##########
-###### Quadratic model Probability (truncated) ----
-##########
 ## For proportion and probability traits: maximum trait value set to 1
 
 sink("R-scripts/quadprob.txt")
@@ -441,9 +420,9 @@ cat("
 sink()
 
 
-##########
-###### Quadratic model Probability (with random effects) ----
-##########
+
+# Truncated normally-distributed Briere (for probability traits with random effects)----------------
+
 
 sink("R-scripts/quadprob_randeff.txt")
 cat("
@@ -496,9 +475,41 @@ sink()
 
 
 
-##########
-###### Quadratic Model with gamma priors (except sigma) ----
-##########
+
+# Truncated Quadratic with gamma priors (except sigma) --------------------------
+
+sink("R-scripts/quad_inf.txt")
+cat("
+    model{
+    
+    ## Priors
+    cf.q ~ dgamma(hypers[1,1], hypers[2,1])
+    cf.T0 ~ dgamma(hypers[1,2], hypers[2,2])
+    cf.Tm ~ dgamma(hypers[1,3], hypers[2,3])
+    cf.sigma ~ dunif(0, 1000)
+    cf.tau <- 1 / (cf.sigma * cf.sigma)
+    
+    ## Likelihood
+    for(i in 1:N.obs){
+    trait.mu[i] <- -1 * cf.q * (temp[i] - cf.T0) * (temp[i] - cf.Tm) * (cf.Tm > temp[i]) * (cf.T0 < temp[i])
+    trait[i] ~ dnorm(trait.mu[i], cf.tau)
+    }
+    
+    ## Derived Quantities and Predictions
+    for(i in 1:N.Temp.xs){
+    z.trait.mu.pred[i] <- -1 * cf.q * (Temp.xs[i] - cf.T0) * (Temp.xs[i] - cf.Tm) * (cf.Tm > Temp.xs[i]) * (cf.T0 < Temp.xs[i])
+    }
+    
+    } # close model
+    ",fill=T)
+sink()
+
+
+
+
+# Truncated Quadratic with gamma priors (for probability traits) ----------------------------
+
+## For proportion and probability traits: maximum trait value set to 1
 
 sink("R-scripts/quadprob_inf.txt")
 cat("
@@ -527,9 +538,9 @@ cat("
 sink()
 
 
-##########
-###### Quadratic Model with random effect and gamma priors (except sigma) ----
-##########
+
+
+# Truncated Quadratic with gamma priors (with random effects) ---------------------
 
 sink("R-scripts/quad_inf_raneff.txt")
 cat("
