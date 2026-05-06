@@ -7,10 +7,11 @@
 ##    0. Set-up workspace
 ##    1. Load data and model output
 ##  	2. Plot panels for each trait
-##  	4. Manuscript Figure 2
-##  	5. Load, process, and plot data for other traits (bc, EIP50, pEA, MDR, gamma)
-##	  6. Manuscript Figure S1
-
+##
+##
+## Outputs: 
+## figures/Fig3-trait.TPCs.png -
+##     Main text figure 4
 
 # 0. Set-up workspace ----------------------------------------------------------#
 
@@ -217,7 +218,7 @@ plot.a
 
 
 
-##### Infection efficiency (c) #####
+##### Vector competence (bc) #####
 plot.bc <- bc.arctic.predictions.summary %>% 
   ggplot() +
   geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#009E73", alpha = 0.5) +
@@ -451,4 +452,4 @@ plot.all <- plot_grid(plot.traits, plot.traits.scaled,
 
 plot.all
 
-ggsave("figures/trait.TPCs.summary.png", plot.all, width = 12.5, height = 12)
+ggsave("figures/Fig3-trait.TPCs.png", plot.all, width = 12.5, height = 12)

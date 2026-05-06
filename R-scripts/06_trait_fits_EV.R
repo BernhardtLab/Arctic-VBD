@@ -1,10 +1,9 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian inference (JAGS) to fit TPCs for egg viability (EV)
-## for Arctic species with data-informed priors generated from non-Arctic 
-## species data.
-##
+## Purpose: Fit thermal performance curves (TPCs) for egg viability (EV) using 
+## Bayesian inference (JAGS). Arctic species models are fit using data-informed 
+## priors derived from non-Arctic species.
 ## 
 ## Table of content:
 ##    0. Set-up workspace
@@ -12,17 +11,47 @@
 ##    1. MCMC settings for all models
 ##
 ##    2. Fitting TPC (Briere)
-##        A. Fit non-Arctic TPC for priors
+##        A. Fit non-Arctic TPC to generate priors
 ##        B. Fit gamma distributions to non-Arctic TPC parameters
 ##        C. Fit Arctic TPC using data-informed priors
 ##
 ##    3. Fitting TPC (Quadratic)
-##        A. Fit non-Arctic TPC for priors
+##        A. Fit non-Arctic TPC to generate priors
 ##        B. Fit gamma distributions to non-Arctic TPC parameters
 ##        C. Fit Arctic TPC using data-informed priors
 ##
-##    4. Compare model fit between Quadratic and Briere models
-##    5. Process and save model output for plottingng
+##    4. Compare model fit between Briere and Quadratic models
+##    5. Process and save model output for visualization
+##
+##
+## Inputs:
+## data-processed/TraitData_EV.csv - 
+##     Synthesized published trait data for EV
+##
+## Outputs: 
+## R-scripts/R2jags-objects/best-fitting-mods/EV.arctic.mod.Rdata - 
+##     Best-fitting TPC models for Arctic species
+##
+## R-scripts/R2jags-objects/best-fitting-mods/EV.nonarctic.mod.Rdata -
+##     Best-fitting TPC models for non-Arctic species
+##
+## data-processed/EV/EV.arctic.predictions.summary.csv -
+##     Posterior summary of TPC predictions for Arctic species across temperatures
+##
+## data-processed/EV/EV.arctic.params.summary.csv -
+##     Summary statistics of TPC parameters (Arctic TPC)
+##
+## data-processed/EV/EV.arctic.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters (Arctic TPC)
+##
+## data-processed/EV/EV.nonarctic.predictions.summary.csv -
+##     Posterior summary of TPC predictions for non-Arctic species
+##
+## data-processed/EV/EV.nonarctic.params.summary.csv -
+##     Summary statistics of TPC parameters (non-Arctic TPC)
+##
+## data-processed/EV/EV.nonarctic.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters (non-Arctic TPC)
 
 
 # 0. Set-up workspace -----------------------------------------------------
@@ -84,7 +113,7 @@ set.seed(123) # for reproducibility
 
 # 2. Fitting TPC (Briere) ------------------------------------------------------
 
-## 2A. Fit non-Arctic TPC for priors -------------------------------------------
+## 2A. Fit non-Arctic TPC to generate priors -----------------------------------
 
 
 ##### Temp sequence for derived quantity calculations
@@ -417,7 +446,7 @@ ggsave("figures/EV.arctic.bri.inf.png", plot.EV.arctic.bri.inf,
 
 # 3. Fitting TPC (quadratic) ---------------------------------------------------
 
-## 3A. Fit non-Arctic TPC for priors -------------------------------------------
+## 3A. Fit non-Arctic TPC to generate priors -----------------------------------
 
 
 ##### Temp sequence for derived quantity calculations
@@ -747,7 +776,7 @@ ggsave("figures/EV.arctic.quad.inf.png", plot.EV.arctic.quad.inf,
 
 
 
-# 4. Compare model fit between Quadratic and Briere models ---------------------
+# 4. Compare model fit between Briere and Quadratic models ---------------------
 
 ##### Find best fitting model #####
 # Add an identifying column in each model output dataframe
@@ -833,7 +862,7 @@ save(EV.nonarctic.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/EV.non
 
 
 
-# 5. Process and save model output for plotting -------------------------------
+# 5. Process and save model output for visualization ---------------------------
 
 ## Analyze TPC model
 # We will create 3 files: 

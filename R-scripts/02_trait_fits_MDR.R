@@ -25,26 +25,33 @@
 ##
 ##
 ## Inputs:
-## data-processed/TraitData_MDR.csv - Synthesized published trait data for MDR
+## data-processed/TraitData_MDR.csv - 
+##     Synthesized published trait data for MDR
 ##
 ## Outputs: 
-## data-processed/MDR/MDR.arctic.predictions.summary.csv - Posterior summary of
-## TPC predictions for Arctic species across temperatures
+## R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata - 
+##     Best-fitting TPC models for Arctic species
 ##
-## data-processed/MDR/MDR.arctic.params.summary.csv - Summary statistics of TPC 
-## parameters (Arctic TPC)
+## R-scripts/R2jags-objects/best-fitting-mods/MDR.nonarctic.mod.Rdata -
+##     Best-fitting TPC models for non-Arctic species
 ##
-## data-processed/MDR/MDR.arctic.params.fullposts.csv - Full posterior 
-## distributions for q, Tmin, Tmax, and Tbreadth (Arctic TPC)
+## data-processed/MDR/MDR.arctic.predictions.summary.csv -
+##     Posterior summary of TPC predictions for Arctic species across temperatures
 ##
-## data-processed/MDR/MDR.nonarctic.predictions.summary.csv - Posterior summary 
-## of TPC predictions for non-Arctic species
+## data-processed/MDR/MDR.arctic.params.summary.csv -
+##     Summary statistics of TPC parameters (Arctic TPC)
 ##
-## data-processed/MDR/MDR.nonarctic.params.summary.csv -  Summary statistics of 
-## TPC parameters (non-Arctic TPC)
+## data-processed/MDR/MDR.arctic.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters (Arctic TPC)
 ##
-## data-processed/MDR/MDR.nonarctic.params.fullposts.csv - Full posterior 
-## distributions for q, Tmin, Tmax, and Tbreadth (non-Arctic TPC)
+## data-processed/MDR/MDR.nonarctic.predictions.summary.csv -
+##     Posterior summary of TPC predictions for non-Arctic species
+##
+## data-processed/MDR/MDR.nonarctic.params.summary.csv -
+##     Summary statistics of TPC parameters (non-Arctic TPC)
+##
+## data-processed/MDR/MDR.nonarctic.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters (non-Arctic TPC)
 
 
 # 0. Set-up workspace ----------------------------------------------------------

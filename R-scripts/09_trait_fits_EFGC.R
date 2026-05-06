@@ -1,18 +1,34 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian inference (JAGS) to fit TPCs for eggs per female per 
-## gonotrophic cycle (EFGC) using data from non-Arctic species.
+## Purpose: Fit thermal performance curves (TPCs) for eggs per female per 
+## gonotrophic cycle (EFGC) using Bayesian inference (JAGS).
 ## 
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. MCMC settings for all models
 ##    2. Fitting TPC (Briere)
 ##    3. Fitting TPC (Quadratic)
-##    4. Compare model fit between Quadratic and Briere models
-##    5. Process and save model output for plotting
-
-
+##    4. Compare model fit between Briere and Quadratic models
+##    5. Process and save model output for visualization
+##
+##
+## Inputs:
+## data-processed/TraitData_EFGC.csv - 
+##     Synthesized published trait data for EFGC
+##
+## Outputs: 
+## R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata -
+##     Best-fitting TPC models 
+##
+## data-processed/EFGC/EFGC.alldata.predictions.summary.csv -
+##     Posterior summary of TPC predictions across temperatures
+##
+## data-processed/EFGC/EFGC.alldata.params.summary.csv -
+##     Summary statistics of TPC parameters
+##
+## data-processed/EFGC/EFGC.alldata.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters
 
 
 # 0. Set-up workspace ----------------------------------------------------------
@@ -512,7 +528,7 @@ ggsave("figures/EFGC.alldata.quad.uni.png", plot.EFGC.alldata.quad.uni,
        width = 10.3, height = 5.6)
 
 
-# 4. Compare model fit between Quadratic and Briere models ---------------------
+# 4. Compare model fit between Briere and Quadratic models ---------------------
 
 ##### Find best fitting model #####
 # Add an identifying column in each model output dataframe
@@ -561,7 +577,7 @@ EFGC.alldata.mod <- EFGC.alldata.quad.uni
 save(EFGC.alldata.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata")
 
 
-# 5. Process and save model output for plotting -------------------------------
+# 5. Process and save model output for visualization ---------------------------
 
 ## Analyze TPC model
 # We will create 3 files: 

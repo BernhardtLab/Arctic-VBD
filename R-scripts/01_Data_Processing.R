@@ -21,7 +21,7 @@
 ##
 ## Files include: a&EFGC&lf_aedes_spp.Sommerman1969.csv, a_Data_Mordecai2019.csv, 
 ## a_VecTrait.csv, bc&PDR_dirofilaria_immitis_aedes_vexans.Jankowski1976.csv,
-## c&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv, 
+## bc&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv, 
 ## EFGC_aedes_hexodontus.Barlow1955.csv, EV_aedes_triseriatus.Zimmerman2025.csv,
 ## EV_TraitData_Shocket2020.csv, EV_VecTrait.csv, Fecundity_Data_Mordecai2019.csv,
 ## lf_aedes_vexans.Costello1971.csv, lf_Data_Mordecai2019.csv, lf_VecTrait.csv,
@@ -161,18 +161,18 @@ bc.vexans <- bc.vexans %>%
 
 ###### Ae. Trivittatus (transmitting Dirofilaria immitis) ######
 # This data is infection efficiency (c)
-c.trivittatus <- read_csv("data-raw/c&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
+bc.trivittatus <- read_csv("data-raw/bc&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
   clean_names()
   
 
-c.trivittatus <- c.trivittatus %>% 
-  filter(trait_name == "c") %>% 
+bc.trivittatus <- bc.trivittatus %>% 
+  filter(trait_name == "bc") %>% 
   # Add new columns to provide more info
   mutate(trait = trait/100) %>% # convert from % to proportion
   mutate(trait_def = "infection rate %") %>% 
   mutate(type = "non-Arctic")
 
-TraitData_bc <- bind_rows(bc.vexans, c.trivittatus)
+TraitData_bc <- bind_rows(bc.vexans, bc.trivittatus)
 
 write_csv(TraitData_bc, "data-processed/TraitData_bc.csv")
 

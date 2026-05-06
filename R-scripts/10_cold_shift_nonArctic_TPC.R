@@ -11,7 +11,7 @@
 
 ## 
 ## Traits with both Arctic and non-Arctic data: MR, PDR, pLA, EV
-## Traits without Arctic species data: c
+## Traits without Arctic species data: bc
 ##
 ## Since we used the combined data approach (combine Arctic and non-Arctic data)
 ## for biting rate (a), eggs per female per gonotrophic cycle (EFGC), and adult 
@@ -22,6 +22,32 @@
 ##    1. Load data and the TPCs
 ##    2. Quantify the difference between Arctic and non-Arctic TPCs
 ##    3. Cold-shift
+##
+##
+## Inputs:
+## Summary statistics of TPC parameters from Arctic and non-Arctic TPCs:
+## data-processed/MDR/MDR.nonarctic.params.summary.csv
+## data-processed/MDR/MDR.arctic.params.summary.csv
+## data-processed/PDR/PDR.nonarctic.params.summary.csv
+## data-processed/PDR/PDR.arctic.params.summary.csv
+## data-processed/pLA/pLA.nonarctic.params.summary.csv
+## data-processed/pLA/pLA.arctic.params.summary.csv
+## data-processed/EV/EV.nonarctic.params.summary.csv
+## data-processed/EV/EV.arctic.params.summary.csv
+##
+##
+## Outputs: 
+## data-processed/bc/bc.arctic.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters
+##
+## data-processed/bc/bc.arctic.params.summary.csv -
+##     Summary statistics of TPC parameters
+##
+## data-processed/bc/bc.arctic.predictions.fullposts.csv -
+##     Full posterior distributions for TPC predictions
+##
+## data-processed/bc/bc.arctic.predictions.summary.csv -
+##     Posterior summary of TPC predictions across temperatures
 
 
 
@@ -36,7 +62,7 @@ library(janitor)
 source("R-scripts/00_Functions.R")
 
 
-###### Function plot TPC based on parameters
+##### Function plot TPC using TPC parameters #####
 briere = function(T, T0, Tm, q){
 
   b <- c()

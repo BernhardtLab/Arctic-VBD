@@ -1,17 +1,34 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian inference (JAGS) to fit TPCs for infection efficiency
-## (c) using data from non-Arctic species.
+## Purpose: Fit thermal performance curves (TPCs) for vector competence (bc) 
+## using Bayesian inference (JAGS).
 ## 
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. MCMC settings for all models
 ##    2. Fitting TPC (Briere)
 ##    3. Fitting TPC (Quadratic)
-##    4. Compare model fit between Quadratic and Briere models
-##    5. Process and save model output for plotting
-
+##    4. Compare model fit between Briere and Quadratic models
+##    5. Process and save model output for visualization
+##
+##
+## Inputs:
+## data-processed/TraitData_bc.csv -
+##     Synthesized published trait data for bc
+##
+## Outputs: 
+## R-scripts/R2jags-objects/best-fitting-mods/bc.nonarctic.mod.Rdata -
+##     Best-fitting TPC models 
+##
+## data-processed/bc/bc.nonarctic.predictions.summary.csv - 
+##     Posterior summary of TPC predictions across temperatures
+##
+## data-processed/bc/bc.nonarctic.params.summary.csv -
+##     Summary statistics of TPC parameters
+##
+## data-processed/bc/bc.nonarctic.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters
 
 
 
@@ -252,7 +269,7 @@ ggsave("figures/bc.nonarctic.quad.uni.png", plot.bc.nonarctic.quad.uni,
 
 
 
-# 4. Compare model fit between Quadratic and Briere models ---------------------
+# 4. Compare model fit between Briere and Quadratic models ---------------------
 
 ##### Find best fitting model #####
 # Add an identifying column in each model output dataframe
@@ -301,7 +318,7 @@ bc.nonarctic.mod <- bc.nonarctic.quad.uni
 save(bc.nonarctic.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/bc.nonarctic.mod.Rdata")
 
 
-# 5. Process and save model output for plotting -------------------------------
+# 5. Process and save model output for visualization ---------------------------
 
 ## Analyze TPC model
 # We will create 3 files: 

@@ -1,9 +1,9 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian inference (JAGS) to fit TPCs for parasite development 
-## rate (PDR) for Arctic species with data-informed priors generated from 
-## non-Arctic species data.
+## Purpose: Fit thermal performance curves (TPCs) for pathogen development rate 
+## (PDR) using Bayesian inference (JAGS). Arctic species models are fit 
+## using data-informed priors derived from non-Arctic species.
 ##
 ## 
 ## Table of content:
@@ -12,17 +12,47 @@
 ##    1. MCMC settings for all models
 ##
 ##    2. Fitting TPC (Briere)
-##        A. Fit non-Arctic TPC for priors
+##        A. Fit non-Arctic TPC to generate priors
 ##        B. Fit gamma distributions to non-Arctic TPC parameters
 ##        C. Fit Arctic TPC using data-informed priors
 ##
 ##    3. Fitting TPC (Quadratic)
-##        A. Fit non-Arctic TPC for priors
+##        A. Fit non-Arctic TPC to generate priors
 ##        B. Fit gamma distributions to non-Arctic TPC parameters
 ##        C. Fit Arctic TPC using data-informed priors
 ##
-##    4. Compare model fit between Quadratic and Briere models
-##    5. Process and save model output for plotting
+##    4. Compare model fit between Briere and Quadratic models
+##    5. Process and save model output for visualization
+##
+##
+## Inputs:
+## data-processed/TraitData_PDR.csv -
+##     Synthesized published trait data for PDR
+##
+## Outputs: 
+## R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata - 
+##     Best-fitting TPC models for Arctic species
+##
+## R-scripts/R2jags-objects/best-fitting-mods/PDR.nonarctic.mod.Rdata -
+##     Best-fitting TPC models for non-Arctic species
+##
+## data-processed/PDR/PDR.arctic.predictions.summary.csv -
+##     Posterior summary of TPC predictions for Arctic species across temperatures
+##
+## data-processed/PDR/PDR.arctic.params.summary.csv -
+##     Summary statistics of TPC parameters (Arctic TPC)
+##
+## data-processed/PDR/PDR.arctic.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters (Arctic TPC)
+##
+## data-processed/PDR/PDR.nonarctic.predictions.summary.csv -
+##     Posterior summary of TPC predictions for non-Arctic species
+##
+## data-processed/PDR/PDR.nonarctic.params.summary.csv -
+##     Summary statistics of TPC parameters (non-Arctic TPC)
+##
+## data-processed/PDR/PDR.nonarctic.params.fullposts.csv - 
+##     Full posterior distributions for TPC parameters (non-Arctic TPC)
 
 
 # 0. Set-up workspace -----------------------------------------------------
@@ -85,7 +115,7 @@ set.seed(123) # for reproducibility
 
 # 2. Fitting TPC (Briere) ------------------------------------------------------
 
-## 2A. Fit non-Arctic TPC for priors -------------------------------------------
+## 2A. Fit non-Arctic TPC to generate priors -----------------------------------
 
 ##### Temp sequence for derived quantity calculations
 # For priors - fewer temps for derived calculations makes it go faster
@@ -392,9 +422,9 @@ ggsave("figures/PDR.arctic.bri.inf.png", plot.PDR.arctic.bri.inf,
 
 
 
-# 3. Fitting TPC (quadratic) ----------------------------------------------------
+# 3. Fitting TPC (quadratic) ---------------------------------------------------
 
-## 3A. Fit non-Arctic TPC for priors -------------------------------------------
+## 3A. Fit non-Arctic TPC to generate priors -----------------------------------
 
 ##### Temp sequence for derived quantity calculations
 # For priors - fewer temps for derived calculations makes it go faster
@@ -702,7 +732,7 @@ ggsave("figures/PDR.arctic.quad.inf.png", plot.PDR.arctic.quad.inf,
 
 
 
-# 4. Compare model fit between Quadratic and Briere models ---------------------
+# 4. Compare model fit between Briere and Quadratic models ---------------------
 
 ##### Find best fitting model #####
 # Add an identifying column in each model output dataframe
@@ -792,7 +822,7 @@ save(PDR.nonarctic.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/PDR.n
 
 
 
-# 5. Process and save model output for plotting -------------------------------
+# 5. Process and save model output for visualization ---------------------------
 
 ## Analyze TPC model
 # We will create 3 files: 

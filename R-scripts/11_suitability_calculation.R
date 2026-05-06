@@ -1,14 +1,46 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: Use trait thermal response posterior distributions from JAGS to calculate suitability S(T)
+## Purpose: Use trait thermal response posterior distributions from JAGS to 
+## calculate suitability S(T)
 ## 
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. Load R2jags model output
 ##    2. Calculate S(T)
 ##    3. Sensitivity analysis - partial derivatives
-
+##
+##
+## Inputs:
+## Best-fitting TPC models for Arctic species:
+## R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/lf.alldata.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/EV.arctic.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/pLA.arctic.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata
+##
+## data-processed/bc/bc.arctic.predictions.fullposts.csv - 
+##     Full posterior distributions for bc TPC predictions after cold-shift
+## 
+## Full posterior distributions for TPC parameters:
+## data-processed/a/a.alldata.params.fullposts.csv
+## data-processed/bc/bc.arctic.params.fullposts.csv
+## data-processed/lf/lf.alldata.params.fullposts.csv
+## data-processed/PDR/PDR.arctic.params.fullposts.csv
+## data-processed/EFGC/EFGC.alldata.params.fullposts.csv
+## data-processed/EV/EV.arctic.params.fullposts.csv
+## data-processed/pLA/pLA.arctic.params.fullposts.csv
+## data-processed/MDR/MDR.arctic.params.fullposts.csv
+## 
+##
+## Outputs: 
+## figures/Fig4-suitability.sensitivity.png -
+##     Main text figure 4
+## 
+## data-processed/S.output.lowerCI.csv -
+##     Suitability for mapping
 
 # 0. Set-up workspace ----------------------------------------------------------
 
@@ -290,7 +322,7 @@ plot.everything <- plot_grid(plot.S, plot.S.viz, plot.SA,
 
 plot.everything
 
-ggsave("figures/suitability.sensitivity.analysis.png", plot.everything, 
+ggsave("figures/Fig4-suitability.sensitivity.png", plot.everything, 
        width = 8, height = 10)
 
 
@@ -319,7 +351,7 @@ head(S.out)
 ## can minimize type I error (inclusion of inclusion of unsuitable areas and 
 ## prevent overestimation of potential risk)
 
-## We will do that by scale the lower CI contour to itself get relative R0/S(T) for mapping
+## We will do that by scale the lower CI contour to itself get S(T) for mapping
 S.output.lowerCI <- data.frame(temp = S.out$temperature,
                                scaled_lowerCI = S.out$lowerCI/max(S.out$lowerCI))
 

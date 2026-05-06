@@ -7,7 +7,7 @@
 ## Here, for traits without Arctic species data (EFGC, c), use the non-Arctic TPC
 ## to calculate suitability to show how much the cold shift approach affects the 
 ## results.
-## We will put the results in supplementary
+## We will put the results in the supplementary
 
 ## 
 ## Table of content:
@@ -15,6 +15,33 @@
 ##    1. Load R2jags model output
 ##    2. Calculate S(T)
 ##    3. Sensitivity analysis - partial derivatives
+##
+##
+## Inputs:
+## Best-fitting TPC models for Arctic species:
+## R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/bc.nonarctic.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/lf.alldata.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/EV.arctic.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/pLA.arctic.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata
+## 
+## Full posterior distributions for TPC parameters:
+## data-processed/a/a.alldata.params.fullposts.csv
+## data-processed/bc/bc.nonarctic.params.fullposts.csv
+## data-processed/lf/lf.alldata.params.fullposts.csv
+## data-processed/PDR/PDR.arctic.params.fullposts.csv
+## data-processed/EFGC/EFGC.alldata.params.fullposts.csv
+## data-processed/EV/EV.arctic.params.fullposts.csv
+## data-processed/pLA/pLA.arctic.params.fullposts.csv
+## data-processed/MDR/MDR.arctic.params.fullposts.csv
+## 
+##
+## Outputs: 
+## figures/FigS4-suitability.sensitivity.png -
+##     Supplementary figure 4
 
 
 # 0. Set-up workspace ----------------------------------------------------------
@@ -98,19 +125,19 @@ S.calc.iter <- data.frame(Temp.xs, t(S.calc))
 colnames(S.calc.iter) <- c("temp", paste0("iter", seq(1:nrow(S.calc))))
 
 # Save output
-write.csv(S.calc.iter, "data-processed/supplementary/S.calc.iter.csv")
+write.csv(S.calc.iter, "data-processed/supplemental-analysis/S.calc.iter.csv")
 
 # Get the Tmin, Topt and Tmax for each MCMC iteration
 S.calc.iter.summary <- calcDerivedTPCParamPosteriors(S.calc, Temp.xs)
 S.calc.iter.summary$iter <- seq(1:nrow(S.calc))
-write.csv(S.calc.iter.summary, "data-processed/supplementary/S.calc.iter.summary.csv")
+write.csv(S.calc.iter.summary, "data-processed/supplemental-analysis/S.calc.iter.summary.csv")
 
 
 # Get S mean, median, upper + lower CIs
 S.out <- calcPostQuants(as.data.frame(S.calc), "S", Temp.xs)
 
 # Save output
-write.csv(S.out, "data-processed/supplementary/S.output.raw.csv")
+write.csv(S.out, "data-processed/supplemental-analysis/S.output.raw.csv")
 
 
 ## Calculate relative S(T) 
@@ -118,7 +145,7 @@ write.csv(S.out, "data-processed/supplementary/S.output.raw.csv")
 S.out.median <- S.out %>% 
   mutate(scaled_median = S.out$median / max(S.out$median))
 
-write.csv(S.out.median, "data-processed/supplementary/S.output.median.csv")
+write.csv(S.out.median, "data-processed/supplemental-analysis/S.output.median.csv")
 
 # by scaling to the maximum upper CI
 S.out.upperCI <- S.out %>% 
@@ -150,8 +177,6 @@ plot.S <- ggplot(data = S.out.upperCI) +
 
 plot.S
 
-ggsave("figures/supplementary/suitability.png", plot.S, width = 10.3, height = 5.6)
-
 
 
 # 3. Calculate Tmin, Tmax and Topt (and CIs) for suitability --------------------------------------
@@ -169,7 +194,7 @@ S.viz.out$term <- factor(S.viz.out$term,
                          levels = c("Tmax", "Topt", "Tmin", "Tbreadth"))
 
 # Save output
-write.csv(S.viz.out, "data-processed/supplementary/S.summary.csv")
+write.csv(S.viz.out, "data-processed/supplemental-analysis/S.summary.csv")
 
 # Plot
 plot.S.viz <- S.viz.out %>% 
@@ -281,7 +306,6 @@ plot.SA <- ggplot() +
 
 plot.SA
 
-ggsave("figures/supplementary/sensitivity.analysis.png", plot.SA, width = 10.3, height = 5.6)
 
 
 plot.everything <- plot_grid(plot.S, plot.S.viz, plot.SA,
@@ -294,7 +318,7 @@ plot.everything <- plot_grid(plot.S, plot.S.viz, plot.SA,
 
 plot.everything
 
-ggsave("figures/suitability.sensitivity.analysis.png", plot.everything, 
+ggsave("figures/FigS4-suitability.sensitivity.png", plot.everything, 
        width = 8, height = 10)
 
 
@@ -332,4 +356,4 @@ S.output.lowerCI <- data.frame(temp = S.out$temperature,
 # Check output
 plot(scaled_lowerCI ~ temp, data = S.output.lowerCI, type = "l")
 
-write.csv(S.output.lowerCI, "data-processed/supplementary/S.output.lowerCI.csv")
+write.csv(S.output.lowerCI, "data-processed/supplemental-analysis/S.output.lowerCI.csv")

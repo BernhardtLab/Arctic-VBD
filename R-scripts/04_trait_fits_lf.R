@@ -1,30 +1,34 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian unierence (JAGS) to fit TPCs for mosquito adult 
-## lifespan (lf) for Arctic species with data-uniormed priors generated from 
-## non-Arctic species data.
-
-
+## Purpose: Fit thermal performance curves (TPCs) for adult mosquito lifespan
+## (lf) using Bayesian inference (JAGS).
 ## 
 ## Table of content:
 ##    0. Set-up workspace
-##
 ##    1. MCMC settings for all models
-##
 ##    2. Fitting TPC (Briere)
-##        A. Fit non-Arctic TPC for priors
-##        B. Fit gamma distributions to non-Arctic TPC parameters
-##        C. Fit Arctic TPC using data-uniormed priors
-##
 ##    3. Fitting TPC (Quadratic)
-##        A. Fit non-Arctic TPC for priors
-##        B. Fit gamma distributions to non-Arctic TPC parameters
-##        C. Fit Arctic TPC using data-uniormed priors
+##    4. Compare model fit between Briere and Quadratic models
+##    5. Process and save model output for visualization
 ##
-##    4. Compare model fit between Quadratic and Briere models
-##    5. Process and save model output for plotting
-
+##
+## Inputs:
+## data-processed/TraitData_lf.csv - 
+##     Synthesized published trait data for lf
+##
+## Outputs: 
+## R-scripts/R2jags-objects/best-fitting-mods/lf.alldata.mod.Rdata -
+##     Best-fitting TPC models 
+##
+## data-processed/lf/lf.alldata.predictions.summary.csv -
+##     Posterior summary of TPC predictions across temperatures
+##
+## data-processed/lf/lf.alldata.params.summary.csv -
+##     Summary statistics of TPC parameters
+##
+## data-processed/lf/lf.alldata.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters
 
 
 # 0. Set-up workspace ----------------------------------------------------------
@@ -570,7 +574,7 @@ ggsave("figures/lf.alldata.quad.uni.png", plot.lf.alldata.quad.uni,
 
 
 
-# 4. Compare model fit between Quadratic and Briere models ---------------------
+# 4. Compare model fit between Briere and Quadratic models ---------------------
 
 ##### Find best fitting model #####
 # Add an identifying column in each model output dataframe
@@ -620,7 +624,7 @@ lf.alldata.mod <- lf.alldata.quad.uni
 save(lf.alldata.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/lf.alldata.mod.Rdata")
 
 
-# 5. Process and save model output for plotting -------------------------------
+# 5. Process and save model output for visualization ---------------------------
 
 ## Analyze TPC model
 # We will create 3 files: 

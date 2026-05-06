@@ -1,16 +1,34 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: use Bayesian inference (JAGS) to fit TPCs for biting rate (a). 
-##
+## Purpose: Fit thermal performance curves (TPCs) for biting rate (a) using 
+## Bayesian inference (JAGS).
 ## 
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. MCMC settings for all models
 ##    2. Fitting TPC (Briere)
 ##    3. Fitting TPC (Quadratic)
-##    4. Compare model fit between Quadratic and Briere models
-##    5. Process and save model output for plotting
+##    4. Compare model fit between Briere and Quadratic models
+##    5. Process and save model output for visualization
+##
+##
+## Inputs:
+## data-processed/TraitData_a.csv - 
+##     Synthesized published trait data for biting rate (a)
+##
+## Outputs: 
+## R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata -
+##     Best-fitting TPC models 
+##
+## data-processed/a/a.alldata.predictions.summary.csv - 
+##     Posterior summary of TPC predictions across temperatures
+##
+## data-processed/a/a.alldata.params.summary.csv -
+##     Summary statistics of TPC parameters
+##
+## data-processed/a/a.alldata.params.fullposts.csv -
+##     Full posterior distributions for TPC parameters
 
 
 
@@ -480,7 +498,7 @@ ggsave("figures/a.alldata.quad.uni.png", plot.a.alldata.quad.uni,
 
 
 
-# 4. Compare model fit between Quadratic and Briere models ---------------------
+# 4. Compare model fit between Briere and Quadratic models ---------------------
 
 ##### Find best fitting model #####
 # Add an identifying column in each model output dataframe
@@ -537,7 +555,7 @@ save(a.alldata.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/a.alldata
 
 
 
-# 5. Process and save model output for plotting -------------------------------
+# 5. Process and save model output for visualization -------------------------------
 
 ## Analyze TPC model
 # We will create 3 files: 
