@@ -1,93 +1,93 @@
-trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,17.2,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,25.5,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,18.8,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,19.3,NA,NA,NA,days to 50% mortality,adult food; RH,water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,27.9,NA,NA,NA,days to 50% mortality,adult food; RH,water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,13.9,NA,NA,NA,days to 50% mortality,adult food; RH,water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,4.6,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,4,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,13,11.6,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,16.7,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,12.3,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,16.9,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,37.4,NA,NA,NA,days to 50% mortality,adult food; RH,water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,19.5,NA,NA,NA,days to 50% mortality,adult food; RH,water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,12.1,NA,NA,NA,days to 50% mortality,adult food; RH,water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,1.4,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,2.1,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,21,1.9,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic
-lf,18,97,NA,NA,NA,average days alive,total meals per specimen,1,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,18,52,NA,NA,NA,average days alive,total meals per specimen,2,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 7,Arctic
-lf,18,61,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 3,Arctic
-lf,18,77,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 3,Arctic
-lf,18,89,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 5,Arctic
-lf,18,53,NA,NA,NA,average days alive,total meals per specimen,6,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,18,131,NA,NA,NA,average days alive,total meals per specimen,7,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,18,120,NA,NA,NA,average days alive,total meals per specimen,8,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic
-lf,18,100,NA,NA,NA,average days alive,total meals per specimen,9,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic
-lf,18,122,NA,NA,NA,average days alive,total meals per specimen,10,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,18,26,NA,NA,NA,average days alive,total meals per specimen,1,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 30,Arctic
-lf,18,36,NA,NA,NA,average days alive,total meals per specimen,2,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 10,Arctic
-lf,18,34,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 7,Arctic
-lf,18,52,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,18,50,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,18,23,NA,NA,NA,average days alive,total meals per specimen,1,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 6,Arctic
-lf,18,36,NA,NA,NA,average days alive,total meals per specimen,2,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 11,Arctic
-lf,18,49,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 6,Arctic
-lf,18,53,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 7,Arctic
-lf,18,47,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic
-lf,18,71,NA,NA,NA,average days alive,total meals per specimen,0,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,18,14,NA,NA,NA,average days alive,total meals per specimen,1,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 6,Arctic
-lf,18,24,NA,NA,NA,average days alive,total meals per specimen,2,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 4,Arctic
-lf,18,40,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 3,Arctic
-lf,18,49,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 5,Arctic
-lf,18,57,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic
-lf,18,56,NA,NA,NA,average days alive,total meals per specimen,6,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic
-lf,10,5.7,0.4,0.4,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,15,27.9,2,2,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,25,64.5,3.8,3.8,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,30,53.5,4.7,4.7,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic
-lf,27,30,15.8,15.8,NA,mean duration of life stage,NA,NA,Aedes,albopictus,Tsuda et al. 1994. A comparative study on life table characteristics of two strains of Aedes albopictus from Japan and Thailand. Trop. Med. 36: 1,NA,table 3,NA,non-Arctic
-lf,27,31.7,16.3,16.3,NA,mean duration of life stage,NA,NA,Aedes,albopictus,Tsuda et al. 1994. A comparative study on life table characteristics of two strains of Aedes albopictus from Japan and Thailand. Trop. Med. 36: 1,NA,table 3,NA,non-Arctic
-lf,15,19.45,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
-lf,20,59.35,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
-lf,25,61.55,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
-lf,30,42.72,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic
-lf,22,157.98112757449996,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,22,141.4999961795001,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,22,125.24560663461047,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,26,79.52941490845687,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,26,74.73913053876748,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,26,58.89156649211206,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,30,37.30588257063197,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,30,31.97560951667044,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,30,41.73437547407642,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,22,137.6774231742769,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic
-lf,20,12,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,20,9,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,20,11,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,27,7,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,27,7,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,27,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,34,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,34,5,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,34,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,20,141,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,20,102,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,20,98,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,27,98,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,27,76,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,27,84,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,34,35,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,34,42,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-lf,34,24,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
+trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type,latitude,longitude
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,4,0,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,17.2,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,25.5,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,18.8,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,19.3,NA,NA,NA,days to 50% mortality,adult food; RH,water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,27.9,NA,NA,NA,days to 50% mortality,adult food; RH,water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,13.9,NA,NA,NA,days to 50% mortality,adult food; RH,water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,4.6,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,4,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,13,11.6,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,16.7,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,12.3,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,16.9,NA,NA,NA,days to 50% mortality,adult food; RH,honey+water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,37.4,NA,NA,NA,days to 50% mortality,adult food; RH,water; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,19.5,NA,NA,NA,days to 50% mortality,adult food; RH,water; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,12.1,NA,NA,NA,days to 50% mortality,adult food; RH,water; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,1.4,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 20,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,2.1,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 50,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,21,1.9,NA,NA,NA,days to 50% mortality,adult food; RH,starved; 80,Aedes,vexans,Costello_1971_JEconEntomol,10.1093/jee/64.1.324,table 1,NA,Arctic,49.9,-97.1
+lf,18,97,NA,NA,NA,average days alive,total meals per specimen,1,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic,64.8,-147.7
+lf,18,52,NA,NA,NA,average days alive,total meals per specimen,2,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 7,Arctic,64.8,-147.7
+lf,18,61,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 3,Arctic,64.8,-147.7
+lf,18,77,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 3,Arctic,64.8,-147.7
+lf,18,89,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 5,Arctic,64.8,-147.7
+lf,18,53,NA,NA,NA,average days alive,total meals per specimen,6,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic,64.8,-147.7
+lf,18,131,NA,NA,NA,average days alive,total meals per specimen,7,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic,64.8,-147.7
+lf,18,120,NA,NA,NA,average days alive,total meals per specimen,8,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic,64.8,-147.7
+lf,18,100,NA,NA,NA,average days alive,total meals per specimen,9,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic,64.8,-147.7
+lf,18,122,NA,NA,NA,average days alive,total meals per specimen,10,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic,64.8,-147.7
+lf,18,26,NA,NA,NA,average days alive,total meals per specimen,1,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 30,Arctic,64.8,-147.7
+lf,18,36,NA,NA,NA,average days alive,total meals per specimen,2,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 10,Arctic,64.8,-147.7
+lf,18,34,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 7,Arctic,64.8,-147.7
+lf,18,52,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic,64.8,-147.7
+lf,18,50,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic,64.8,-147.7
+lf,18,23,NA,NA,NA,average days alive,total meals per specimen,1,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 6,Arctic,64.8,-147.7
+lf,18,36,NA,NA,NA,average days alive,total meals per specimen,2,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 11,Arctic,64.8,-147.7
+lf,18,49,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 6,Arctic,64.8,-147.7
+lf,18,53,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 7,Arctic,64.8,-147.7
+lf,18,47,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic,64.8,-147.7
+lf,18,71,NA,NA,NA,average days alive,total meals per specimen,0,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic,64,-145.7
+lf,18,14,NA,NA,NA,average days alive,total meals per specimen,1,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 6,Arctic,64,-145.7
+lf,18,24,NA,NA,NA,average days alive,total meals per specimen,2,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 4,Arctic,64,-145.7
+lf,18,40,NA,NA,NA,average days alive,total meals per specimen,3,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 3,Arctic,64,-145.7
+lf,18,49,NA,NA,NA,average days alive,total meals per specimen,4,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 5,Arctic,64,-145.7
+lf,18,57,NA,NA,NA,average days alive,total meals per specimen,5,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 2,Arctic,64,-145.7
+lf,18,56,NA,NA,NA,average days alive,total meals per specimen,6,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 1,n = 1,Arctic,64,-145.7
+lf,10,5.7,0.4,0.4,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic,46.074879,11.1194085
+lf,15,27.9,2,2,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic,46.074879,11.1194085
+lf,25,64.5,3.8,3.8,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic,46.074879,11.1194085
+lf,30,53.5,4.7,4.7,se,mean duration of life stage,NA,NA,Aedes,albopictus,Marini et al. 2020. Influence of temperature on the life-cycle dynamics of Aedes albopictus population established at temperate latitudes: A laboratory experiment. Insects. 11: 1-17.,10.3390/insects11110808,table 3,NA,non-Arctic,46.074879,11.1194085
+lf,27,30,15.8,15.8,NA,mean duration of life stage,NA,NA,Aedes,albopictus,Tsuda et al. 1994. A comparative study on life table characteristics of two strains of Aedes albopictus from Japan and Thailand. Trop. Med. 36: 1,NA,table 3,NA,non-Arctic,18.795278,98.998611
+lf,27,31.7,16.3,16.3,NA,mean duration of life stage,NA,NA,Aedes,albopictus,Tsuda et al. 1994. A comparative study on life table characteristics of two strains of Aedes albopictus from Japan and Thailand. Trop. Med. 36: 1,NA,table 3,NA,non-Arctic,32.744722,129.873611
+lf,15,19.45,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic,-24.5,-47.9
+lf,20,59.35,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic,-24.5,-47.9
+lf,25,61.55,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic,-24.5,-47.9
+lf,30,42.72,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia,NA,NA,NA,non-Arctic,-24.5,-47.9
+lf,22,157.98112757449996,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,22,141.4999961795001,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,22,125.24560663461047,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,26,79.52941490845687,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,26,74.73913053876748,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,26,58.89156649211206,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,30,37.30588257063197,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,30,31.97560951667044,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,30,41.73437547407642,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,22,137.6774231742769,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b,NA,NA,converted from mortality rate,non-Arctic,38.6,-90.1
+lf,20,12,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,20,9,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,20,11,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,27,7,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,27,7,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,27,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,34,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,34,5,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,34,6,NA,NA,NA,NA,feeding condition,starved,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,20,141,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,20,102,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,20,98,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,27,98,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,27,76,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,27,84,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,34,35,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,34,42,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+lf,34,24,NA,NA,NA,NA,feeding condition,sugar-fed,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3

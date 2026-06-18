@@ -1,44 +1,44 @@
-trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type
-EFGC,18,50,114,2,min/max,eggs per batch,batch category,1st,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=23,Arctic
-EFGC,18,33,74,3,min/max,eggs per batch,batch category,2nd,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=18,Arctic
-EFGC,18,30,60,12,min/max,eggs per batch,batch category,3rd,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=14,Arctic
-EFGC,18,25,51,4,min/max,eggs per batch,batch category,4th,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=8,Arctic
-EFGC,18,40,110,1,min/max,eggs per batch,batch category,1st,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=36,Arctic
-EFGC,18,32,90,3,min/max,eggs per batch,batch category,1st,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=27,Arctic
-EFGC,18,39,96,2,min/max,eggs per batch,batch category,1st,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=19,Arctic
-EFGC,18,38,108,13,min/max,eggs per batch,batch category,2nd,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=12,Arctic
-EFGC,18,28,55,6,min/max,eggs per batch,batch category,3rd,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=10,Arctic
-EFGC,20,59.17,2.91,2.91,sd,the mean number of eggs laid,diet,single blood meal and 15% solution of table sucrose,aedes,hexodontus,barlow_1955_CanJZool,10.1139/z55-024,table 1,n=106,Arctic
-EFGC,20,64.96,3,3,sd,the mean number of eggs laid,diet,single blood meal and raisins,aedes,hexodontus,barlow_1955_CanJZool,10.1139/z55-024,table 1,n=103,Arctic
-EFGC,25,54.47058824,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
-EFGC,25,79.75,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
-EFGC,25,43.0625,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
-EFGC,25,55.09091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_et al_2016 JAE_in_review,NA,NA,NA,non-Arctic
-EFGC,20,77.8,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-EFGC,20,73.9,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-EFGC,27,58.2,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-EFGC,27,30.4,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-EFGC,34,35.7,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-EFGC,34,7.2,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic
-EFGC,15,20,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,20,42.63636364,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,20,51.8,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,20,80,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,20,77,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,25,68.61538462,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,25,70.85714286,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,25,74.30769231,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,25,53.66666667,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,25,39.66666667,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,25,101.5,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,25,35,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,25,18,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,30,77.19047619,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,30,98.68421053,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,30,60.3125,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,30,67.90909091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,30,67.66666667,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,30,41.75,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,30,14.5,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,35,47.93333333,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
-EFGC,35,51.5,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic
+trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type,latitude,longitude
+EFGC,18,50,114,2,min/max,eggs per batch,batch category,1st,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=23,Arctic,64.8,-147.7
+EFGC,18,33,74,3,min/max,eggs per batch,batch category,2nd,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=18,Arctic,64.8,-147.7
+EFGC,18,30,60,12,min/max,eggs per batch,batch category,3rd,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=14,Arctic,64.8,-147.7
+EFGC,18,25,51,4,min/max,eggs per batch,batch category,4th,Aedes,cinereus,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=8,Arctic,64.8,-147.7
+EFGC,18,40,110,1,min/max,eggs per batch,batch category,1st,Aedes,communis,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=36,Arctic,64.8,-147.7
+EFGC,18,32,90,3,min/max,eggs per batch,batch category,1st,Aedes,impiger,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=27,Arctic,64.8,-147.7
+EFGC,18,39,96,2,min/max,eggs per batch,batch category,1st,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=19,Arctic,64,-145.7
+EFGC,18,38,108,13,min/max,eggs per batch,batch category,2nd,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=12,Arctic,64,-145.7
+EFGC,18,28,55,6,min/max,eggs per batch,batch category,3rd,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=10,Arctic,64,-145.7
+EFGC,20,59.17,2.91,2.91,sd,the mean number of eggs laid,diet,single blood meal and 15% solution of table sucrose,aedes,hexodontus,barlow_1955_CanJZool,10.1139/z55-024,table 1,n=106,Arctic,58.8,-94.1
+EFGC,20,64.96,3,3,sd,the mean number of eggs laid,diet,single blood meal and raisins,aedes,hexodontus,barlow_1955_CanJZool,10.1139/z55-024,table 1,n=103,Arctic,58.8,-94.1
+EFGC,25,54.47058824,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,NA,NA
+EFGC,25,79.75,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,NA,NA
+EFGC,25,43.0625,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,NA,NA
+EFGC,25,55.09091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,NA,NA
+EFGC,20,77.8,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+EFGC,20,73.9,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+EFGC,27,58.2,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+EFGC,27,30.4,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+EFGC,34,35.7,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+EFGC,34,7.2,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
+EFGC,15,20,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,20,42.63636364,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,20,51.8,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,20,80,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,20,77,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,25,68.61538462,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,25,70.85714286,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,25,74.30769231,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,25,53.66666667,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,25,39.66666667,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,25,101.5,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,25,35,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,25,18,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,30,77.19047619,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,30,98.68421053,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,30,60.3125,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,30,67.90909091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,30,67.66666667,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,30,41.75,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,30,14.5,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,35,47.93333333,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85
+EFGC,35,51.5,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,10.1603/033.046.0105,table 6,NA,non-Arctic,-55.483333333333334,-47.85

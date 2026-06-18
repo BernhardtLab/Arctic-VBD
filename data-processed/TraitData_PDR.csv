@@ -1,32 +1,32 @@
-trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,paras_genus,paras_species,host_genus,host_species,citation,doi,data_source,notes,type
-PDR,24,0.083333,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,NA,Arctic
-PDR,20,0.0625,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,NA,Arctic
-PDR,15,0.032258,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,NA,Arctic
-PDR,12.5,0.016393,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,NA,Arctic
-PDR,8.5,0.001,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,did not develop after 101 days,Arctic
-PDR,14.1,0.001,NA,NA,NA,1/days first L3 observed,NA,NA,Setaria,tundra,see notes,NA,Laaksonen_2009_ParasitVectors,10.1186/1756-3305-2-3,result text,development was not completed; outdoor conditions; parasites a mixture of aedes spp.,Arctic
-PDR,21,0.07142857142857142,NA,NA,NA,1/days first L3 observed,NA,NA,Setaria,tundra,see notes,NA,Laaksonen_2009_ParasitVectors,10.1186/1756-3305-2-3,result text,laboratory conditions; parasites in a mixture of aedes and anopheles spp.,Arctic
-PDR,12,0.001,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,did not develop to L3,non-Arctic
-PDR,14,0.001,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,did not develop to L3,non-Arctic
-PDR,16,0.001,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,did not develop to L3,non-Arctic
-PDR,18,0.034482758620689655,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic
-PDR,22,0.058823529411764705,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic
-PDR,26,0.09090909090909091,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic
-PDR,30,0.125,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic
-PDR,26,0.08333333333333333,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,vexans,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic
-PDR,14.5,0.001,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic
-PDR,18.5,0.023255813953488372,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic
-PDR,22.5,0.0625,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic
-PDR,26.5,0.09090909090909091,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic
-PDR,30.5,0.1111111111111111,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic
-PDR,34.5,0.1111111111111111,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic
-PDR,18,0.037037037037037035,NA,NA,NA,1/days L3 larvae first observed,NA,NA,Dirofilaria,immitis,Aedes,canadensis,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,NA,non-Arctic
-PDR,18,0.037037037037037035,NA,NA,NA,1/days L3 larvae first observed,NA,NA,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,NA,non-Arctic
-PDR,26,0.07142857142857142,NA,NA,NA,1/days L3 larvae first observed,NA,NA,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,NA,non-Arctic
-PDR,20,0.035373187124159884,0.002552575229334495,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Ladeaux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic
-PDR,22.5,0.056211354693648116,0.0034756880361446287,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Ladeaux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic
-PDR,25,0.08257638315441784,0.005455087243892178,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Ladeaux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic
-PDR,27.5,0.08561643835616438,0.008722907674985927,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Ladeaux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic
-PDR,30,0.10493179433368312,0.008808545169669097,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Ladeaux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic
-PDR,32,0.10111223458038422,0.006338684068739961,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Ladeaux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic
-PDR,34,0.001,NA,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Ladeaux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic
+trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,paras_genus,paras_species,host_genus,host_species,citation,doi,data_source,notes,type,latitude,longitude
+PDR,24,0.083333,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,NA,Arctic,58.75,-68.55
+PDR,20,0.0625,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,NA,Arctic,58.75,-68.55
+PDR,15,0.032258,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,NA,Arctic,58.75,-68.55
+PDR,12.5,0.016393,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,NA,Arctic,58.75,-68.55
+PDR,8.5,0.001,NA,NA,NA,1/days first L3 observed,NA,NA,Varestrongylus,eleguneniensis,deroceras,laeve,Kafle_2018_ParasitVectors,10.1186/s13071-018-2946-x,table 1,did not develop after 101 days,Arctic,58.75,-68.55
+PDR,14.1,0.001,NA,NA,NA,1/days first L3 observed,NA,NA,Setaria,tundra,see notes,NA,Laaksonen_2009_ParasitVectors,10.1186/1756-3305-2-3,result text,development was not completed; outdoor conditions; parasites a mixture of aedes spp.,Arctic,65,25.5
+PDR,21,0.07142857142857142,NA,NA,NA,1/days first L3 observed,NA,NA,Setaria,tundra,see notes,NA,Laaksonen_2009_ParasitVectors,10.1186/1756-3305-2-3,result text,laboratory conditions; parasites in a mixture of aedes and anopheles spp.,Arctic,65,25.5
+PDR,12,0.001,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,did not develop to L3,non-Arctic,43.5,-80.2
+PDR,14,0.001,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,did not develop to L3,non-Arctic,43.5,-80.2
+PDR,16,0.001,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,did not develop to L3,non-Arctic,43.5,-80.2
+PDR,18,0.034482758620689655,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic,43.5,-80.2
+PDR,22,0.058823529411764705,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic,43.5,-80.2
+PDR,26,0.09090909090909091,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic,43.5,-80.2
+PDR,30,0.125,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,triseriatus,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic,43.5,-80.2
+PDR,26,0.08333333333333333,NA,NA,NA,1/days L3 larvae first observed in mouthparts,NA,NA,Dirofilaria,immitis,Aedes,vexans,Fortin_1981_MosqNews,NA,result text,NA,non-Arctic,43.5,-80.2
+PDR,14.5,0.001,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic,42,-93.6
+PDR,18.5,0.023255813953488372,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic,42,-93.6
+PDR,22.5,0.0625,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic,42,-93.6
+PDR,26.5,0.09090909090909091,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic,42,-93.6
+PDR,30.5,0.1111111111111111,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic,42,-93.6
+PDR,34.5,0.1111111111111111,NA,NA,NA,1/days first L3 observed,NA,NA,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,NA,table 1,NA,non-Arctic,42,-93.6
+PDR,18,0.037037037037037035,NA,NA,NA,1/days L3 larvae first observed,NA,NA,Dirofilaria,immitis,Aedes,canadensis,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,NA,non-Arctic,39,-76.9
+PDR,18,0.037037037037037035,NA,NA,NA,1/days L3 larvae first observed,NA,NA,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,NA,non-Arctic,39,-76.9
+PDR,26,0.07142857142857142,NA,NA,NA,1/days L3 larvae first observed,NA,NA,Dirofilaria,immitis,Aedes,vexans,Jankowski_1976_AnnEntomolSocAm,10.1093/aesa/69.5.781,result text,NA,non-Arctic,39,-76.9
+PDR,20,0.035373187124159884,0.002552575229334495,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Lardeux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic,-17.6,-149.5
+PDR,22.5,0.056211354693648116,0.0034756880361446287,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Lardeux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic,-17.6,-149.5
+PDR,25,0.08257638315441784,0.005455087243892178,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Lardeux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic,-17.6,-149.5
+PDR,27.5,0.08561643835616438,0.008722907674985927,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Lardeux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic,-17.6,-149.5
+PDR,30,0.10493179433368312,0.008808545169669097,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Lardeux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic,-17.6,-149.5
+PDR,32,0.10111223458038422,0.006338684068739961,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Lardeux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic,-17.6,-149.5
+PDR,34,0.001,NA,NA,sd,1/days to appearance of L3 after experimental infection,NA,NA,Wuchereria,bancrofti,Aedes,polynesiensis,Lardeux_1997_Parasitology,10.1017/s0031182096008359,table 1,NA,non-Arctic,-17.6,-149.5

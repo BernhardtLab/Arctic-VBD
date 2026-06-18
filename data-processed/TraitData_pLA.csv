@@ -1,50 +1,61 @@
-trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type
-pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,10,0.04,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,15.5,0.43,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,21,0.78,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,26.5,0.85,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,32,0.7,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic
-pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Results text,All larvae died in 1st instar,Arctic
-pLA,10,0.17,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 1,NA,Arctic
-pLA,15,0.56,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 2,NA,Arctic
-pLA,20,0.74,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 3,NA,Arctic
-pLA,25,0.86,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 4,NA,Arctic
-pLA,30,0.71,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 5,NA,Arctic
-pLA,5,0,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-8,result text,All larvae died in 1st instar,Arctic
-pLA,10,0.06,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-9,result text,NA,Arctic
-pLA,15,0.54,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-10,result text,NA,Arctic
-pLA,20,0.74,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-11,result text,NA,Arctic
-pLA,25,0.07,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-12,result text,NA,Arctic
-pLA,30,0,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-13,result text,All larvae died in 1st instar,Arctic
-pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,10,0,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,15.5,0.35,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,21,0.82,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,26.5,0.77,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,32,0.72,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic
-pLA,12,0,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,15,0.5,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,20,0.62,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,23,0.76,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,26,0.75,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,29,0.78,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,32,0.7,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,35,0.5,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic
-pLA,12,0,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,15,1,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,20,0.95,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,23,0.97,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,26,0.94,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,29,0.4,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,32,0.2,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,35,0,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic
-pLA,15,0.276,0.037,0.043,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,15,0.243,0.065,0.07,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,23,0.331,0.062,0.068,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,23,0.357,0.065,0.065,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,31,0.184,0.04,0.045,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,31,0.143,0.04,0.038,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 5,NA,non-Arctic
-pLA,15,0.48,0.07,0.07,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
-pLA,23,0.62,0.09,0.09,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
-pLA,31,0.2,0.05,0.05,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,NA,Figure 3,NA,non-Arctic
+trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,type,latitude,longitude
+pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic,49.9,-97.1
+pLA,10,0.04,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic,49.9,-97.1
+pLA,15.5,0.43,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic,49.9,-97.1
+pLA,21,0.78,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic,49.9,-97.1
+pLA,26.5,0.85,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic,49.9,-97.1
+pLA,32,0.7,NA,NA,NA,NA,NA,NA,Aedes,vexans,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,Arctic,49.9,-97.1
+pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Results text,All larvae died in 1st instar,Arctic,49.7,-112.8
+pLA,10,0.17,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 1,NA,Arctic,49.7,-112.8
+pLA,15,0.56,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 2,NA,Arctic,49.7,-112.8
+pLA,20,0.74,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 3,NA,Arctic,49.7,-112.8
+pLA,25,0.86,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 4,NA,Arctic,49.7,-112.8
+pLA,30,0.71,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,10.4039/ent1021048-8,Figure 5,NA,Arctic,49.7,-112.8
+pLA,5,0,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-8,result text,All larvae died in 1st instar,Arctic,49.7,-112.8
+pLA,10,0.06,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-9,result text,NA,Arctic,49.7,-112.8
+pLA,15,0.54,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-10,result text,NA,Arctic,49.7,-112.8
+pLA,20,0.74,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-11,result text,NA,Arctic,49.7,-112.8
+pLA,25,0.07,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-12,result text,NA,Arctic,49.7,-112.8
+pLA,30,0,NA,NA,NA,survival %,NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-13,result text,All larvae died in 1st instar,Arctic,49.7,-112.8
+pLA,5,0,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic,49.9,-97.1
+pLA,10,0,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic,49.9,-97.1
+pLA,15.5,0.35,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic,49.9,-97.1
+pLA,21,0.82,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic,49.9,-97.1
+pLA,26.5,0.77,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic,49.9,-97.1
+pLA,32,0.72,NA,NA,NA,NA,NA,NA,Aedes,nigromaculis,Brust_1967_TheCanadianEntomologist,10.4039/ent99986-9,Table 4,NA,non-Arctic,49.9,-97.1
+pLA,12,0,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic,30.2,-93.2
+pLA,15,0.5,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic,30.2,-93.2
+pLA,20,0.62,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic,30.2,-93.2
+pLA,23,0.76,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic,30.2,-93.2
+pLA,26,0.75,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic,30.2,-93.2
+pLA,29,0.78,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic,30.2,-93.2
+pLA,32,0.7,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic,30.2,-93.2
+pLA,35,0.5,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,non-Arctic,30.2,-93.2
+pLA,12,0,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic,30.2,-93.2
+pLA,15,1,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic,30.2,-93.2
+pLA,20,0.95,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic,30.2,-93.2
+pLA,23,0.97,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic,30.2,-93.2
+pLA,26,0.94,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic,30.2,-93.2
+pLA,29,0.4,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic,30.2,-93.2
+pLA,32,0.2,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic,30.2,-93.2
+pLA,35,0,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,non-Arctic,30.2,-93.2
+pLA,15,0.276,0.037,0.043,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 5,NA,non-Arctic,35.5,-83.3
+pLA,15,0.243,0.065,0.07,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 5,NA,non-Arctic,35.5,-83.3
+pLA,23,0.331,0.062,0.068,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 5,NA,non-Arctic,35.5,-83.3
+pLA,23,0.357,0.065,0.065,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 5,NA,non-Arctic,35.5,-83.3
+pLA,31,0.184,0.04,0.045,NA,NA,Proportion conspecific larvae,0.75,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 5,NA,non-Arctic,35.5,-83.3
+pLA,31,0.143,0.04,0.038,NA,NA,Proportion conspecific larvae,1,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 5,NA,non-Arctic,35.5,-83.3
+pLA,15,0.48,0.07,0.07,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 3,NA,non-Arctic,35.5,-83.3
+pLA,23,0.62,0.09,0.09,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 3,NA,non-Arctic,35.5,-83.3
+pLA,31,0.2,0.05,0.05,NA,NA,NA,NA,Aedes,triseriatus,TengApperson_2000_J.Med.Entomol.,10.1603/0022-2585-37.1.40,Figure 3,NA,non-Arctic,35.5,-83.3
+pLA,10,0,NA,NA,NA,proportion,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 1,NA,non-Arctic,-21.3419,55.4778
+pLA,15,0.5,NA,NA,NA,proportion,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 1,NA,non-Arctic,-21.3419,55.4778
+pLA,20,0.775,NA,NA,NA,proportion,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 1,NA,non-Arctic,-21.3419,55.4778
+pLA,25,0.763,NA,NA,NA,proportion,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 1,NA,non-Arctic,-21.3419,55.4778
+pLA,30,0.675,NA,NA,NA,proportion,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 1,NA,non-Arctic,-21.3419,55.4778
+pLA,35,0.025,NA,NA,NA,proportion,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 1,NA,non-Arctic,-21.3419,55.4778
+pLA,40,0,NA,NA,NA,proportion,NA,NA,Aedes,albopictus,Delatte et al. 2009. Influence of temperature on immature development survival longevity fecundity and gonotrophic cycles of Aedes albopictus vector of chikungunya and dengue in the Indian Ocean. J Med Entomol. 46: 33-41.,10.1603/033.046.0105,table 1,NA,non-Arctic,-21.3419,55.4778
+pLA,25,0.96,0.025,0.03,SE,proportion of individuals surviving life stage (emergence rate),NA,NA,Aedes,albopictus,Giatropoulos et al 2022. Laboratory study on larval competition between two related mosquito species: Aedes (Stegomyia) albopictus and Aedes (Stegomyia) cretinus. Acta Tropica 23,10.1016/j.actatropica.2022.106389,figure 2,laboratory colonies of Ae. albopictus and Ae. cretinus were established from eggs collected using ovitraps from areas of Athens Greece in 2011.,non-Arctic,37.993785,23.728037
+pLA,25,0.96,0.022,0.03,SE,proportion of individuals surviving life stage (emergence rate),NA,NA,Aedes,albopictus,Giatropoulos et al 2022. Laboratory study on larval competition between two related mosquito species: Aedes (Stegomyia) albopictus and Aedes (Stegomyia) cretinus. Acta Tropica 23,10.1016/j.actatropica.2022.106389,figure 2,laboratory colonies of Ae. albopictus and Ae. cretinus were established from eggs collected using ovitraps from areas of Athens Greece in 2011.,non-Arctic,37.993785,23.728037
+pLA,25,0.92,0.024,0.01,SE,proportion of individuals surviving life stage (emergence rate),NA,NA,Aedes,albopictus,Giatropoulos et al 2022. Laboratory study on larval competition between two related mosquito species: Aedes (Stegomyia) albopictus and Aedes (Stegomyia) cretinus. Acta Tropica 23,10.1016/j.actatropica.2022.106389,figure 2,field-strain mosquitoes were established from larvae and eggs collected from around the area of Aman Damai Universiti Sains Malaysia. The F2 generation of field-strain Ae. albopictus was used in these experiments.,non-Arctic,37.993785,23.728037
+pLA,25,0.94,0.04,0.01,SE,proportion of individuals surviving life stage (emergence rate),NA,NA,Aedes,albopictus,Giatropoulos et al 2022. Laboratory study on larval competition between two related mosquito species: Aedes (Stegomyia) albopictus and Aedes (Stegomyia) cretinus. Acta Tropica 23,10.1016/j.actatropica.2022.106389,figure 2,field-strain mosquitoes were established from larvae and eggs collected from around the area of Aman Damai Universiti Sains Malaysia. The F2 generation of field-strain Ae. albopictus was used in these experiments.,non-Arctic,37.993785,23.728037
