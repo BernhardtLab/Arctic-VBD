@@ -1,13 +1,13 @@
-﻿trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,paras_genus,paras_species,host_genus,host_species,citation,doi,data_source,notes
-1/PDR,14.5,NA,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,
-1/PDR,18.5,43,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,
-1/PDR,22.5,16,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,
-1/PDR,26.5,11,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,
-1/PDR,30.5,9,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,
-1/PDR,34.5,9,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,
-bc,14.5,55.38083538,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,
-bc,18.5,89.77886978,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,
-bc,22.5,89.38574939,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,
-bc,26.5,74.44717445,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,
-bc,30.5,49.68058968,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,
-bc,34.5,36.31449631,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,
+﻿trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,paras_genus,paras_species,host_genus,host_species,citation,doi,data_source,notes,latitude,longitude
+1/PDR,14.5,NA,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,,42,-93.6
+1/PDR,18.5,43,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,,42,-93.6
+1/PDR,22.5,16,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,,42,-93.6
+1/PDR,26.5,11,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,,42,-93.6
+1/PDR,30.5,9,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,,42,-93.6
+1/PDR,34.5,9,,,,days first L3 observed,,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,table 1,,42,-93.6
+bc,14.5,55.38083538,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,,42,-93.6
+bc,18.5,89.77886978,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,,42,-93.6
+bc,22.5,89.38574939,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,,42,-93.6
+bc,26.5,74.44717445,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,,42,-93.6
+bc,30.5,49.68058968,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,,42,-93.6
+bc,34.5,36.31449631,,,,Infection rate (%),,,Dirofilaria,immitis,Aedes,trivittatus,Christensen_1978_ProcHelmintholSocWash,,figure 2,,42,-93.6

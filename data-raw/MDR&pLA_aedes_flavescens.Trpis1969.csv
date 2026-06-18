@@ -1,13 +1,13 @@
-trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes
-1/MDR,5,NA,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-2,result text,All larvae died in 1st instar
-1/MDR,10,71.43748261,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-3,figure 1,
-1/MDR,15,33.14767157,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-4,figure 3,
-1/MDR,20,17.50011917,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-5,figure 7,
-1/MDR,25,15.95803697,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-6,figure 9,
-1/MDR,30,NA,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-7,result text,All larvae died in 1st instar
-pLA,5,0,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-8,result text,All larvae died in 1st instar
-pLA,10,0.06,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-9,result text,
-pLA,15,0.54,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-10,result text,
-pLA,20,0.74,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-11,result text,
-pLA,25,0.07,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-12,result text,
-pLA,30,0,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-13,result text,All larvae died in 1st instar
+trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,latitude,longitude
+1/MDR,5,NA,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-2,result text,All larvae died in 1st instar,49.7,-112.8
+1/MDR,10,71.43748261,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-3,figure 1,,49.7,-112.8
+1/MDR,15,33.14767157,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-4,figure 3,,49.7,-112.8
+1/MDR,20,17.50011917,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-5,figure 7,,49.7,-112.8
+1/MDR,25,15.95803697,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-6,figure 9,,49.7,-112.8
+1/MDR,30,NA,,,,median pre-adult development time (days),,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-7,result text,All larvae died in 1st instar,49.7,-112.8
+pLA,5,0,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-8,result text,All larvae died in 1st instar,49.7,-112.8
+pLA,10,0.06,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-9,result text,,49.7,-112.8
+pLA,15,0.54,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-10,result text,,49.7,-112.8
+pLA,20,0.74,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-11,result text,,49.7,-112.8
+pLA,25,0.07,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-12,result text,,49.7,-112.8
+pLA,30,0,,,,survival %,,,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-13,result text,All larvae died in 1st instar,49.7,-112.8
