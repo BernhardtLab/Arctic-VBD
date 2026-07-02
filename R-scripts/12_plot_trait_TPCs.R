@@ -7,13 +7,14 @@
 ##    0. Set-up workspace
 ##    1. Load data and model output
 ##  	2. Plot panels for each trait
+##    3. Summary table for TPC parameters
 ##
 ##
 ## Outputs: 
 ## figures/Fig3-trait.TPCs.png -
 ##     Main text figure 4
 
-# 0. Set-up workspace ----------------------------------------------------------#
+# 0. Set-up workspace ----------------------------------------------------------
 
 library(tidyverse)
 library(readxl)
@@ -21,6 +22,7 @@ library(janitor)
 library(ggsci)
 library(cowplot)
 library(grafify)
+library(flextable)
 
 ##### Load functions
 source("R-scripts/00_Functions.R")
@@ -33,13 +35,6 @@ source("R-scripts/00_Functions.R")
 ## Load data
 data.a <- read_csv("data-processed/TraitData_a.csv")
 
-# Process trait data for plotting
-data.a.alldata.summary <- data.a %>% 
-  group_by(temp, type) %>% 
-  summarise(mean = mean(trait),
-            std_error = sd(trait)/sqrt(n())) %>% 
-  mutate(trait = "a")
-
 a.alldata.predictions.summary <- read.csv("data-processed/a/a.alldata.predictions.summary.csv")
 a.alldata.params.summary <- read.csv("data-processed/a/a.alldata.params.summary.csv")
 
@@ -47,9 +42,6 @@ a.alldata.params.summary <- read.csv("data-processed/a/a.alldata.params.summary.
 ##### Vector competence (bc) #####
 ## Load data
 data.bc <- read_csv("data-processed/TraitData_bc.csv")
-
-# Process trait data for plotting
-data.bc.nonarctic.summary <- processTraitData(data.bc, "bc")
 
 ## Arctic
 bc.arctic.predictions.summary <- read.csv("data-processed/bc/bc.arctic.predictions.summary.csv")
@@ -64,19 +56,23 @@ bc.nonarctic.params.summary <- read.csv("data-processed/bc/bc.nonarctic.params.s
 ## Load data
 data.lf <- read_csv("data-processed/TraitData_lf.csv")
 
-# Process trait data for plotting
-data.lf.alldata.summary <- data.lf %>% 
-  group_by(temp, type) %>% 
-  summarise(mean = mean(trait),
-            std_error = sd(trait)/sqrt(n())) %>% 
-  mutate(trait = "lf")
+# Subset data
+## Arctic species
+data.lf.arctic <- subset(data.lf, type == "Arctic")
 
-lf.alldata.predictions.summary <- read.csv("data-processed/lf/lf.alldata.predictions.summary.csv")
-lf.alldata.params.summary <- read.csv("data-processed/lf/lf.alldata.params.summary.csv")
+## Non-Arctic species
+data.lf.nonarctic <- subset(data.lf, type == "non-Arctic")
+
+## Arctic
+lf.arctic.predictions.summary <- read.csv("data-processed/lf/lf.arctic.predictions.summary.csv")
+lf.arctic.params.summary <- read.csv("data-processed/lf/lf.arctic.params.summary.csv")
+
+# Non-Arctic
+lf.nonarctic.predictions.summary <- read.csv("data-processed/lf/lf.nonarctic.predictions.summary.csv")
+lf.nonarctic.params.summary <- read.csv("data-processed/lf/lf.nonarctic.params.summary.csv")
 
 
-
-##### Parasite development rate (PDR) ##### 
+##### Pathogen development rate (PDR) ##### 
 ## Load data
 data.PDR <- read_csv("data-processed/TraitData_PDR.csv")
 
@@ -87,8 +83,6 @@ data.PDR.arctic <- subset(data.PDR, type == "Arctic")
 ## Non-Arctic species
 data.PDR.nonarctic <- subset(data.PDR, type == "non-Arctic")
 
-data.PDR.arctic.summary <- processTraitData(data.PDR.arctic, "PDR")
-data.PDR.nonarctic.summary <- processTraitData(data.PDR.nonarctic, "PDR")
 
 ## Arctic
 PDR.arctic.predictions.summary <- read.csv("data-processed/PDR/PDR.arctic.predictions.summary.csv")
@@ -104,12 +98,6 @@ PDR.nonarctic.params.summary <- read.csv("data-processed/PDR/PDR.nonarctic.param
 ## Load data
 data.EFGC <- read_csv("data-processed/TraitData_EFGC.csv")
 
-# Process trait data for plotting
-data.EFGC.alldata.summary <- data.EFGC %>% 
-  group_by(temp, type) %>% 
-  summarise(mean = mean(trait),
-            std_error = sd(trait)/sqrt(n())) %>% 
-  mutate(trait = "EFGC")
 
 EFGC.alldata.predictions.summary <- read.csv("data-processed/EFGC/EFGC.alldata.predictions.summary.csv")
 EFGC.alldata.params.summary <- read.csv("data-processed/EFGC/EFGC.alldata.params.summary.csv")
@@ -119,16 +107,12 @@ EFGC.alldata.params.summary <- read.csv("data-processed/EFGC/EFGC.alldata.params
 ## Load data
 data.EV <- read_csv("data-processed/TraitData_EV.csv")
 
-
 # Subset data
 ## Arctic species
 data.EV.arctic <- subset(data.EV, type == "Arctic")
 
 ## Non-Arctic species
 data.EV.nonarctic <- subset(data.EV, type == "non-Arctic")
-
-data.EV.arctic.summary <- processTraitData(data.EV.arctic, "EV")
-data.EV.nonarctic.summary <- processTraitData(data.EV.nonarctic, "EV")
 
 ## Arctic
 EV.arctic.predictions.summary <- read.csv("data-processed/EV/EV.arctic.predictions.summary.csv")
@@ -149,8 +133,6 @@ data.pLA.arctic <- subset(data.pLA, type == "Arctic")
 ## Non-Arctic species
 data.pLA.nonarctic <- subset(data.pLA, type == "non-Arctic")
 
-data.pLA.arctic.summary <- processTraitData(data.pLA.arctic, "pLA")
-data.pLA.nonarctic.summary <- processTraitData(data.pLA.nonarctic, "pLA")
 
 ## Arctic
 pLA.arctic.predictions.summary <- read.csv("data-processed/pLA/pLA.arctic.predictions.summary.csv")
@@ -172,8 +154,6 @@ data.MDR.arctic <- subset(data.MDR, type == "Arctic")
 ## Non-Arctic species
 data.MDR.nonarctic <- subset(data.MDR, type == "non-Arctic")
 
-data.MDR.arctic.summary <- processTraitData(data.MDR.arctic, "MDR")
-data.MDR.nonarctic.summary <- processTraitData(data.MDR.nonarctic, "MDR")
 
 ## Arctic
 MDR.arctic.predictions.summary <- read.csv("data-processed/MDR/MDR.arctic.predictions.summary.csv")
@@ -195,10 +175,7 @@ plot.a <- a.alldata.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), color = "#E69F00", linewidth = 1) +
   
   # Arctic data
-  geom_pointrange(data = data.a.alldata.summary,
-                  aes(x = temp, ymin = mean - std_error, ymax = mean + std_error,
-                      y = mean, colour = type),
-                  size = 0.5) +
+  geom_point(data = data.a, aes(x = temp, y = trait, colour = type), size = 2) +
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Biting Rate (",italic(a),")")),
@@ -210,7 +187,7 @@ plot.a <- a.alldata.predictions.summary %>%
   theme_bw() +
   theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 18),
+        axis.title = element_text(size = 16),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14))
 
@@ -232,32 +209,28 @@ plot.bc <- bc.arctic.predictions.summary %>%
   theme_bw() +
   theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 18))
+        axis.title = element_text(size = 16))
 
 plot.bc
 
 
 ##### Adult lifespan (lf) #####
-plot.lf <- lf.alldata.predictions.summary %>% 
+plot.lf <- lf.arctic.predictions.summary %>% 
   ggplot() +
   geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#0072B2", alpha = 0.5) +
   geom_line(aes(x = temperature, y = median), colour = "#0072B2", linewidth = 1) +
 
   # Arctic data
-  geom_pointrange(data = data.lf.alldata.summary, 
-                  aes(x = temp, ymin = mean - std_error, ymax = mean + std_error,
-                      y = mean, colour = type), size = 0.5) +
-  # Customize the axes and labels
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2) +  # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Adult Lifespan (",italic(lf),")")),
        x = expression(paste("Temperature (", degree, "C)")), 
        y = "Time (days)") +
-  scale_colour_manual(values = c("Arctic" = "black", "non-Arctic" = "azure4")) +
   theme_bw() +
   theme(title = element_text(size = 12),
         legend.position="none",
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 18))
+        axis.title = element_text(size = 16))
 
 plot.lf
 
@@ -269,16 +242,15 @@ plot.PDR <- PDR.arctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "#CC79A7", linewidth = 1) +
 
   # Arctic data
-  geom_pointrange(data = data.PDR.arctic.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
-  # Customize the axes and labels
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2) +  # Customize the axes and labels  # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Pathogen Development Rate (",italic(PDR),")")),
        x = expression(paste("Temperature (", degree, "C)")), 
-       y = parse(text = "Development~rate~(day^-1)")) +
+       y = parse(text = "Rate~(day^-1)")) +
   theme_bw() +
   theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 18))
+        axis.title = element_text(size = 16))
 
 plot.PDR
 
@@ -290,9 +262,8 @@ plot.EFGC <- EFGC.alldata.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "#56B4E9", linewidth = 1) +
   
   # Arctic data
-  geom_pointrange(data = data.EFGC.alldata.summary, 
-                  aes(x = temp, ymin = mean - std_error, ymax = mean + std_error,
-                      y = mean, colour = type), size = 0.5) +
+  geom_point(data = data.EFGC, 
+                  aes(x = temp, y = trait, colour = type), size = 2) +
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Eggs per Female \nper Gonotrophic Cycle (",italic(EFGC),")")),
@@ -304,7 +275,7 @@ plot.EFGC <- EFGC.alldata.predictions.summary %>%
         legend.position="none",
         plot.margin = margin(20,5.5,5.5,5.5),
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 18)
+        axis.title = element_text(size = 16)
         )
 
 plot.EFGC
@@ -317,7 +288,7 @@ plot.EV <- EV.arctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "#F5C710", linewidth = 1) +
 
   # Arctic data
-  geom_pointrange(data = data.EV.arctic.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2) +  # Customize the axes and labels  # Customize the axes and labels
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Egg Viability (",italic(EV),")")),
@@ -326,7 +297,7 @@ plot.EV <- EV.arctic.predictions.summary %>%
   theme_bw() +
   theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 18))
+        axis.title = element_text(size = 16))
 
 plot.EV
 
@@ -338,7 +309,7 @@ plot.pLA <- pLA.arctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "#999999", linewidth = 1) +
   
   # Arctic data
-  geom_pointrange(data = data.pLA.arctic.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2) +  # Customize the axes and labels  # Customize the axes and labels
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Larval-to-Adult Survival (",italic(pLA),")")),
@@ -347,7 +318,7 @@ plot.pLA <- pLA.arctic.predictions.summary %>%
   theme_bw() +
   theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 18))
+        axis.title = element_text(size = 16))
 
 plot.pLA
 
@@ -359,16 +330,16 @@ plot.MDR <- MDR.arctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "#D55E00", linewidth = 1) +
   
   # Arctic data
-  geom_pointrange(data = data.MDR.arctic.summary, aes(x = temp, ymin = mean - std_error, ymax = mean + std_error, y = mean), size = 0.5) +
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +  # Customize the axes and labels  # Customize the axes and labels
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Mosquito Development Rate (",italic(MDR),")")),
        x = expression(paste("Temperature (", degree, "C)")), 
-       y = parse(text = "Development~rate~(day^-1)")) +
+       y = parse(text = "Rate~(day^-1)")) +
   theme_bw() +
   theme(title = element_text(size = 12),
         axis.text = element_text(size = 12),
-        axis.title = element_text(size = 18))
+        axis.title = element_text(size = 16))
 
 plot.MDR
 
@@ -383,9 +354,9 @@ legend_panel <- ggdraw() +
 
 legend_panel
 
-plot.traits <- plot_grid(plot.a + theme(legend.position="none"), plot.lf, plot.EFGC,
-                         plot.EV, plot.pLA, plot.MDR, 
-                         plot.PDR, plot.bc, legend_panel, 
+plot.traits <- plot_grid(plot.pLA, plot.MDR, plot.lf, 
+                         plot.PDR, plot.EV, plot.bc,
+                         plot.a + theme(legend.position="none"), plot.EFGC, legend_panel, 
                          ncol = 3,
                          align = "hv",
                          labels = LETTERS[1:8])
@@ -398,7 +369,7 @@ plot.traits
 #### Compare the position of TPCs curves and suitability along temperature gradient #####
 prediction.summary <- bind_rows(a.alldata.predictions.summary, 
                                 bc.arctic.predictions.summary, 
-                                lf.alldata.predictions.summary, 
+                                lf.arctic.predictions.summary, 
                                 PDR.arctic.predictions.summary,
                                 EFGC.alldata.predictions.summary, 
                                 EV.arctic.predictions.summary,
@@ -414,7 +385,7 @@ prediction.summary <- prediction.summary %>%
 
 
 ## Load Suitabiliy predictions
-prediction.S <- read_csv("data-processed/S.output.median.csv")
+prediction.S <- read_csv("data-processed/suitability/S.predictions.summary.csv")
 
 
 plot.traits.scaled <- prediction.summary %>% 
@@ -431,10 +402,18 @@ plot.traits.scaled <- prediction.summary %>%
                                  "MDR" = "#D55E00"),
                       name = element_blank(), # No legend title
                       breaks = c("S", "a", "bc", "lf", "PDR", "EFGC", "EV", "pLA", "MDR"),
-                      labels = c("Suitability", "a", "bc", "lf", "PDR", "EFGC",  "EV", "pLA", "MDR")) +
+                      labels = c("Suitability (S)",
+                                 "Biting rate (a)", 
+                                 "Vector competence (bc)", 
+                                 "Adult lifespan (lf)", 
+                                 "Pathogen development\nrate (PDR)", 
+                                 "Eggs per gonotrophic\ncycle (EFGC)",  
+                                 "Egg viability (EV)", 
+                                 "Larval-to-adult\nsurvival (pLA)", 
+                                 "Mosquito development\nrate (MDR)")) + 
   theme(axis.text = element_text(size = 12),
         axis.title = element_text(size = 18),,
-        legend.text = element_text(size = 16),
+        legend.text = element_text(size = 12),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
@@ -452,4 +431,105 @@ plot.all <- plot_grid(plot.traits, plot.traits.scaled,
 
 plot.all
 
-ggsave("figures/Fig3-trait.TPCs.png", plot.all, width = 12.5, height = 12)
+ggsave("figures/Fig3-trait.TPCs.png", plot.all, width = 14, height = 12)
+
+
+
+
+# 3. Summary table for TPC parameters ------------------------------------------
+##### TPC summary
+## biting rate (a)
+load("R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/lf.arctic.mod.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/EV.arctic.mod.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/pLA.arctic.mod.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata")
+
+a.alldata.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+lf.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+PDR.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+EFGC.alldata.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+EV.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+pLA.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+MDR.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+
+
+# Create metadata for each trait
+trait_info <- tribble(~trait, ~func, ~raneff, ~params_summary, ~case,
+                      "Biting rate (a)", "B", "Yes", a.alldata.params.summary, "moderate-case",
+                      "Vector competence (bc)", "Q", "No", bc.arctic.params.summary, "worst-case",
+                      "Mosquito adult lifespan (lf)", "Q", "Yes", lf.arctic.params.summary, "best-case",
+                      "Pathogen development rate (PDR)", "B", "No", PDR.arctic.params.summary, "best-case",
+                      "Eggs per female per gonotrophic cycle (EFGC)", "Q", "Yes", EFGC.alldata.params.summary, "moderate-case",
+                      "Egg viability (EV)", "Q", "No", EV.arctic.params.summary, "best-case",
+                      "Larval-to-adult survival (pLA)", "Q", "No", pLA.arctic.params.summary, "best-case",
+                      "Mosquito development rate (MDR)", "Q", "No", MDR.arctic.params.summary, "best-case"
+                      )
+
+# Function to format TPC parameter estimates into "median (lowerCI - upperCI)" format
+# Use scientific notation for small values and fixed decimals for 
+# larger values
+format_estimate <- function(median, lower, upper){
+  
+  fmt <- function(x){
+    
+    if(abs(x) < 0.01){
+      formatC(x, format = "e", digits = 1)
+    } else if (abs(x) < 0.1){
+      formatC(x, format = "f", digits = 2)
+    }
+    else {
+      formatC(x, format = "f", digits = 1)
+    }
+    
+  }
+  
+  paste0(
+    fmt(median), " (",
+    fmt(lower), "–",
+    fmt(upper), ")"
+  )
+}
+
+
+make_row <- function(trait, func, raneff, params_summary, case){
+  tibble(Trait = trait,
+         `F(x)` = func,
+         `Random effects` = raneff,
+         q = format_estimate(
+           median = params_summary$median[params_summary$term == "cf.q"],
+           lower = params_summary$lowerCI[params_summary$term == "cf.q"],
+           upper = params_summary$upperCI[params_summary$term == "cf.q"]
+           ),
+         `Tmin (C)` = format_estimate(
+           median = params_summary$median[params_summary$term == "cf.T0"],
+           lower = params_summary$lowerCI[params_summary$term == "cf.T0"],
+           upper = params_summary$upperCI[params_summary$term == "cf.T0"]
+         ),
+         `Topt (C)` = format_estimate(
+           median = params_summary$median[params_summary$term == "Topt"],
+           lower = params_summary$lowerCI[params_summary$term == "Topt"],
+           upper = params_summary$upperCI[params_summary$term == "Topt"]
+         ),
+         `Tmax (C)` = format_estimate(
+           median = params_summary$median[params_summary$term == "cf.Tm"],
+           lower = params_summary$lowerCI[params_summary$term == "cf.Tm"],
+           upper = params_summary$upperCI[params_summary$term == "cf.Tm"]
+         ),
+         Case = case
+  )
+  }
+
+table <- pmap_dfr(trait_info,
+                  make_row)
+
+
+table1 <- flextable(table)
+
+
+save_as_docx(
+  "Table 1" = table1,
+  path = "figures/table1.docx"
+)

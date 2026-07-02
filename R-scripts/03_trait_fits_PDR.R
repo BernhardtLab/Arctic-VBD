@@ -12,14 +12,16 @@
 ##    1. MCMC settings for all models
 ##
 ##    2. Fitting TPC (Briere)
-##        A. Fit non-Arctic TPC to generate priors
-##        B. Fit gamma distributions to non-Arctic TPC parameters
-##        C. Fit Arctic TPC using data-informed priors
+##        A. Fit Arctic TPC using uniform priors
+##        B. Fit non-Arctic TPC to generate priors
+##        C. Fit gamma distributions to non-Arctic TPC parameters
+##        D. Fit Arctic TPC using data-informed priors
 ##
 ##    3. Fitting TPC (Quadratic)
-##        A. Fit non-Arctic TPC to generate priors
-##        B. Fit gamma distributions to non-Arctic TPC parameters
-##        C. Fit Arctic TPC using data-informed priors
+##        A. Fit Arctic TPC using uniform priors
+##        B. Fit non-Arctic TPC to generate priors
+##        C. Fit gamma distributions to non-Arctic TPC parameters
+##        D. Fit Arctic TPC using data-informed priors
 ##
 ##    4. Compare model fit between Briere and Quadratic models
 ##    5. Process and save model output for visualization
@@ -64,6 +66,7 @@ library(R2jags)
 library(mcmcplots) # Diagnostic plots for fits
 library(MASS)
 library(ggsci)
+library(cowplot)
 
 # Load functions
 source("R-scripts/00_Functions.R")
@@ -86,7 +89,7 @@ data.PDR.nonarctic <- subset(data.all, type == "non-Arctic")
 plot.data.PDR <- data.all %>% 
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = host_species)) +
-  labs(y = "Parasite development rate (1/days)", x = "Temperature ºC") +
+  labs(y = "Development rate (1/days)", x = "Temperature ºC") +
   scale_colour_discrete(name = "Species", labels = c("D. immitis (in Ae. canadensis)",
                                                      "V. eleguneniensis",
                                                      "W. bancrofti (in Ae. polynesiensis)",
@@ -104,18 +107,116 @@ plot.data.PDR
 
 # 1. MCMC Settings for all models ----------------------------------------------
 
-# Number of posterior dist elements = [(ni - nb) / nt] * nc = [(45000 - 5000) / 8] * 3 = 15000
-ni <- 45000 # number of iterations in each chain
-nb <- 5000 # number of 'burn in' iterations to discard
-nt <- 8 # thinning rate - jags saves every nt iterations in each chain
+# Number of posterior dist elements = [(ni - nb) / nt] * nc = [(450000 - 50000) / 100] * 3 = 12000
+ni <- 450000 # number of iterations in each chain
+nb <- 50000 # number of 'burn in' iterations to discard
+nt <- 100 # thinning rate - jags saves every nt iterations in each chain
 nc <- 3 # number of chains
 
-set.seed(123) # for reproducibility
 
 
 # 2. Fitting TPC (Briere) ------------------------------------------------------
 
-## 2A. Fit non-Arctic TPC to generate priors -----------------------------------
+## 2A. Fit Arctic TPC using uniform priors -------------------------------------
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
+
+
+##### Set data
+data <- data.PDR.arctic
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(20, 45)
+                    )
+
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
+
+##### Run JAGS
+set.seed(123) # for reproducibility
+PDR.arctic.bri.uni <- jags(data = jag.data,
+                           inits = inits,
+                           parameters.to.save = parameters,
+                           model.file = "R-scripts/briere_T.txt",
+                           n.thin = nt,
+                           n.chains = nc,
+                           n.burnin = nb,
+                           n.iter = ni,
+                           DIC = T,
+                           working.directory = getwd()
+)
+
+## Save the model as Rdata 
+save(PDR.arctic.bri.uni, file = "R-scripts/R2jags-objects/PDR.arctic.bri.uni.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/PDR.arctic.bri.uni.Rdata")
+
+
+## Diagnostics
+##### Examine output
+PDR.arctic.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(PDR.arctic.bri.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
+
+# Extract the DIC for future model comparisons
+PDR.arctic.bri.uni$BUGSoutput$DIC
+
+## Plot data + fit
+df.PDR.arctic.bri.uni <- data.frame(PDR.arctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+head(df.PDR.arctic.bri.uni)
+
+##### Plot
+plot.PDR.arctic.bri.uni <- df.PDR.arctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Development rate (days-1)",
+    title = "A) PDR, arctic sp., briere, uniform priors"
+  ) +
+  theme_bw()
+
+plot.PDR.arctic.bri.uni
+
+ggsave("figures/PDR.arctic.bri.uni.png", plot.PDR.arctic.bri.uni,
+       width = 10.3, height = 5.6)
+
+
+## 2B. Fit non-Arctic TPC to generate priors -----------------------------------
 
 ##### Temp sequence for derived quantity calculations
 # For priors - fewer temps for derived calculations makes it go faster
@@ -138,7 +239,7 @@ data <- data %>%
 ##### Set priors
 prior <- data.frame(q = c(0, 1),
                     T0 = c(0, 20),
-                    Tm = c(25, 45),
+                    Tm = c(30, 45),
                     sigma_q = c(0, 0.001),
                     sigma_T0 = c(0, 10),
                     sigma_Tm = c(0, 10)
@@ -157,7 +258,8 @@ inits <- function(){list(
 
 
 ##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", 
+                "q", "T0", "Tm", "sigma_q", "sigma_T0", 
                 "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
 
 
@@ -175,6 +277,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 PDR.nonarctic.bri.uni <- jags(data = jag.data,
                               inits = inits,
                               parameters.to.save = parameters,
@@ -196,8 +299,9 @@ save(PDR.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/all-mods/PDR.nonarc
 
 ## Diagnostics
 ##### Examine output
-PDR.nonarctic.bri.uni$BUGSoutput$summary[1:8,]
-mcmcplot(PDR.nonarctic.bri.uni)
+PDR.nonarctic.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]
+mcmcplot(PDR.nonarctic.bri.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"))
+
 
 # Extract the DIC for future model comparisons
 PDR.nonarctic.bri.uni$BUGSoutput$DIC
@@ -302,11 +406,11 @@ plot.PDR.nonarctic.bri.uni <- ggplot() +
   # Customize legend
   scale_colour_discrete(name = "",
                         labels = c("Wuchereria bancrofti",
-                                   "Dirofilaria immitis (in Aedes canadensis)",
-                                   "Dirofilaria immitis (in Aedes triseriatus)",
-                                   "Dirofilaria immitis (in Aedes trivittatus)",
-                                   "Dirofilaria immitis (in Aedes vexans 1)",
-                                   "Dirofilaria immitis (in Aedes vexans 2)")) +
+                                   "Dirofilaria immitis (in Ae. canadensis)",
+                                   "Dirofilaria immitis (in Ae. triseriatus)",
+                                   "Dirofilaria immitis (in Ae. trivittatus)",
+                                   "Dirofilaria immitis (in Ae. vexans 1)",
+                                   "Dirofilaria immitis (in Ae. vexans 2)")) +
   theme_bw()
 
 
@@ -317,7 +421,7 @@ ggsave("figures/PDR.nonarctic.bri.uni.png", plot.PDR.nonarctic.bri.uni,
 
 
 
-## 2B. Fit gamma distributions to non-Arctic TPC parameters --------------------
+## 2C. Fit gamma distributions to non-Arctic TPC parameters --------------------
 
 # Get the posterior dists for 3 main parameters (not sigma) into a data frame
 PDR.bri.prior.cf.dists <- data.frame(q = as.vector(PDR.nonarctic.bri.uni$BUGSoutput$sims.list$cf.q),
@@ -332,7 +436,7 @@ save(PDR.bri.prior.gamma.fits, file = "R-scripts/R2jags-objects/priors/PDR.bri.p
 
 
 
-## 2C. Fit Arctic TPC using data-informed priors -------------------------------
+## 2D. Fit Arctic TPC using data-informed priors -------------------------------
 
 # load("R-scripts/R2jags-objects/priors/PDR.bri.priors.Rsave")
 
@@ -346,6 +450,38 @@ N.Temp.xs <-length(Temp.xs)
 ##### Set data
 data <- data.PDR.arctic
 hypers <- PDR.bri.prior.gamma.fits * 0.1
+
+# Gamma prior density for Tm
+
+df.PDR.Tm.prior <- tibble(
+  temp = seq(0, 45, 0.1),
+  density = dgamma(
+    temp,
+    shape = hypers["shape", "Tm"],
+    rate  = hypers["rate", "Tm"]
+  )
+)
+
+TPC.apex <- max(df.PDR.nonarctic.bri.uni.pop$X50., na.rm = TRUE)
+
+df.PDR.Tm.prior <- df.PDR.Tm.prior %>%
+  mutate(
+    density.scaled = density / max(density, na.rm = TRUE) * TPC.apex * 0.5
+  )
+
+df.PDR.T0.prior <- tibble(
+  temp = seq(0, 45, 0.1),
+  density = dgamma(
+    temp,
+    shape = hypers["shape", "T0"],
+    rate  = hypers["rate", "T0"]
+  )
+)
+
+df.PDR.T0.prior <- df.PDR.T0.prior %>%
+  mutate(
+    density.scaled = density / max(density, na.rm = TRUE) * TPC.apex * 0.5
+  )
 
 
 ##### inits Function
@@ -368,6 +504,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, hypers = hypers)
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 PDR.arctic.bri.inf <- jags(data = jag.data,
                            inits = inits,
                            parameters.to.save = parameters,
@@ -389,8 +526,8 @@ save(PDR.arctic.bri.inf, file = "R-scripts/R2jags-objects/all-mods/PDR.arctic.br
 
 ## Diagnostics
 ##### Examine output
-PDR.arctic.bri.inf$BUGSoutput$summary[1:5,]
-mcmcplot(PDR.arctic.bri.inf)
+PDR.arctic.bri.inf$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(PDR.arctic.bri.inf, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
 
 # Extract the DIC for future model comparisons
 PDR.arctic.bri.inf$BUGSoutput$DIC
@@ -408,9 +545,27 @@ plot.PDR.arctic.bri.inf <- df.PDR.arctic.bri.inf %>%
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
   geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
   geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  
+  geom_line(
+    data = df.PDR.Tm.prior,
+    aes(x = temp, y = density.scaled),
+    colour = "firebrick3",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
+  geom_line(
+    data = df.PDR.T0.prior,
+    aes(x = temp, y = density.scaled),
+    colour = "skyblue",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Parasite development rate (days-1)"
+    y = "Development rate (days-1)",
+    title = "C) PDR, arctic sp. briere w/ gamma post"
   ) +
   theme_bw()
 
@@ -424,7 +579,107 @@ ggsave("figures/PDR.arctic.bri.inf.png", plot.PDR.arctic.bri.inf,
 
 # 3. Fitting TPC (quadratic) ---------------------------------------------------
 
-## 3A. Fit non-Arctic TPC to generate priors -----------------------------------
+## 3A. Fit Arctic TPC using uniform priors -------------------------------------
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
+
+
+##### Set data
+data <- data.PDR.arctic
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(25, 45)
+)
+
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
+
+##### Run JAGS
+set.seed(123) # for reproducibility
+PDR.arctic.quad.uni <- jags(data = jag.data,
+                            inits = inits,
+                            parameters.to.save = parameters,
+                            model.file = "R-scripts/quad_T.txt",
+                            n.thin = nt,
+                            n.chains = nc,
+                            n.burnin = nb,
+                            n.iter = ni,
+                            DIC = T,
+                            working.directory = getwd()
+                            )
+
+## Save the model as Rdata 
+save(PDR.arctic.quad.uni, file = "R-scripts/R2jags-objects/PDR.arctic.quad.uni.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/PDR.arctic.quad.uni.Rdata")
+
+
+## Diagnostics
+##### Examine output
+PDR.arctic.quad.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(PDR.arctic.quad.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
+
+
+# Extract the DIC for future model comparisons
+PDR.arctic.quad.uni$BUGSoutput$DIC
+
+## Plot data + fit
+df.PDR.arctic.quad.uni <- data.frame(PDR.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+head(df.PDR.arctic.quad.uni)
+
+##### Plot
+plot.PDR.arctic.quad.uni <- df.PDR.arctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Development rate (days-1)",
+    title = "B) PDR, arctic sp., quadratic, uniform priors"
+  ) +
+  theme_bw()
+
+plot.PDR.arctic.quad.uni
+
+ggsave("figures/PDR.arctic.quad.uni.png", plot.PDR.arctic.quad.uni,
+       width = 10.3, height = 5.6)
+
+
+## 3B. Fit non-Arctic TPC to generate priors -----------------------------------
 
 ##### Temp sequence for derived quantity calculations
 # For priors - fewer temps for derived calculations makes it go faster
@@ -447,8 +702,8 @@ data <- data %>%
 ##### Set priors
 prior <- data.frame(q = c(0, 1),
                     T0 = c(0, 20),
-                    Tm = c(25, 45),
-                    sigma_q = c(0, 0.01),
+                    Tm = c(30, 45),
+                    sigma_q = c(0, 0.001),
                     sigma_T0 = c(0, 10),
                     sigma_Tm = c(0, 10)
 )
@@ -466,7 +721,8 @@ inits <- function(){list(
 
 
 ##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", 
+                "q", "T0", "Tm", "sigma_q", "sigma_T0", 
                 "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
 
 
@@ -484,6 +740,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 PDR.nonarctic.quad.uni <- jags(data = jag.data,
                               inits = inits,
                               parameters.to.save = parameters,
@@ -505,8 +762,9 @@ save(PDR.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/all-mods/PDR.nonar
 
 ## Diagnostics
 ##### Examine output
-PDR.nonarctic.quad.uni$BUGSoutput$summary[1:8,]
-mcmcplot(PDR.nonarctic.quad.uni)
+PDR.nonarctic.quad.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]
+mcmcplot(PDR.nonarctic.quad.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"))
+
 
 # Extract the DIC for future model comparisons
 PDR.nonarctic.quad.uni$BUGSoutput$DIC
@@ -625,7 +883,7 @@ ggsave("figures/PDR.nonarctic.quad.uni.png", plot.PDR.nonarctic.quad.uni,
        width = 10.3, height = 5.6)
 
 
-## 3B. Fit gamma distributions to non-Arctic TPC parameters --------------------
+## 3C. Fit gamma distributions to non-Arctic TPC parameters --------------------
 
 # Get the posterior dists for 3 main parameters (not sigma) into a data frame
 PDR.quad.prior.cf.dists <- data.frame(q = as.vector(PDR.nonarctic.quad.uni$BUGSoutput$sims.list$cf.q),
@@ -640,7 +898,7 @@ PDR.quad.prior.gamma.fits = apply(PDR.quad.prior.cf.dists, 2,
 save(PDR.quad.prior.gamma.fits, file = "R-scripts/R2jags-objects/priors/PDR.quad.priors.Rsave")
 
 
-## 3C. Fit Arctic TPC using data-informed priors -------------------------------
+## 3D. Fit Arctic TPC using data-informed priors -------------------------------
 
 # load("R-scripts/R2jags-objects/priors/PDR.quad.priors.Rsave")
 
@@ -654,6 +912,37 @@ N.Temp.xs <-length(Temp.xs)
 data <- data.PDR.arctic
 hypers <- PDR.quad.prior.gamma.fits * 0.1
 
+# Gamma prior density for Tm
+
+df.PDR.Tm.prior <- tibble(
+  temp = seq(0, 45, 0.1),
+  density = dgamma(
+    temp,
+    shape = hypers["shape", "Tm"],
+    rate  = hypers["rate", "Tm"]
+  )
+)
+
+TPC.apex <- max(df.PDR.nonarctic.bri.uni.pop$X50., na.rm = TRUE)
+
+df.PDR.Tm.prior <- df.PDR.Tm.prior %>%
+  mutate(
+    density.scaled = density / max(density, na.rm = TRUE) * TPC.apex * 0.5
+  )
+
+df.PDR.T0.prior <- tibble(
+  temp = seq(0, 45, 0.1),
+  density = dgamma(
+    temp,
+    shape = hypers["shape", "T0"],
+    rate  = hypers["rate", "T0"]
+  )
+)
+
+df.PDR.T0.prior <- df.PDR.T0.prior %>%
+  mutate(
+    density.scaled = density / max(density, na.rm = TRUE) * TPC.apex * 0.5
+  )
 
 ##### inits Function
 inits<-function(){list(
@@ -678,6 +967,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
 
 
 ##### Run JAGS 
+set.seed(123) # for reproducibility
 PDR.arctic.quad.inf <- jags(data = jag.data,
                               inits = inits,
                               parameters.to.save = parameters,
@@ -699,8 +989,8 @@ save(PDR.arctic.quad.inf, file = "R-scripts/R2jags-objects/all-mods/PDR.arctic.q
 
 ## Diagnostics
 ##### Examine output
-PDR.arctic.quad.inf$BUGSoutput$summary[1:5,]
-mcmcplot(PDR.arctic.quad.inf)
+PDR.arctic.quad.inf$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(PDR.arctic.quad.inf, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
 
 # Extract the DIC for future model comparisons
 PDR.arctic.quad.inf$BUGSoutput$DIC
@@ -719,9 +1009,27 @@ plot.PDR.arctic.quad.inf <- df.PDR.arctic.quad.inf %>%
   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
   geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
   geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  
+  geom_line(
+    data = df.PDR.Tm.prior,
+    aes(x = temp, y = density.scaled),
+    colour = "firebrick3",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
+  geom_line(
+    data = df.PDR.T0.prior,
+    aes(x = temp, y = density.scaled),
+    colour = "skyblue",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
-    y = "Development rate (days-1)"
+    y = "Development rate (days-1)",
+    title = "D) PDR, arctic sp. quadratic w/ gamma post"
   ) +
   theme_bw()
 
@@ -733,6 +1041,15 @@ ggsave("figures/PDR.arctic.quad.inf.png", plot.PDR.arctic.quad.inf,
 
 
 # 4. Compare model fit between Briere and Quadratic models ---------------------
+
+plot.PDR.arctic <- plot_grid(plot.PDR.arctic.bri.uni, plot.PDR.arctic.quad.uni,
+                             plot.PDR.arctic.bri.inf, plot.PDR.arctic.quad.inf, ncol = 2)
+
+plot.PDR.arctic
+
+ggsave("figures/PDR.arctic.png", plot.PDR.arctic,
+       width = 10.3, height = 5.6)
+
 
 ##### Find best fitting model #####
 # Add an identifying column in each model output dataframe
@@ -774,8 +1091,10 @@ ggsave("figures/PDR.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 
 
 ## DIC
+PDR.arctic.bri.uni$BUGSoutput$DIC
 PDR.arctic.bri.inf$BUGSoutput$DIC # This is the best fitting TPC
 PDR.arctic.quad.inf$BUGSoutput$DIC 
+PDR.arctic.quad.uni$BUGSoutput$DIC 
 
 
 ##### Plot Arctic vs. non-Arctic TPCs for the best fitting TPC #####

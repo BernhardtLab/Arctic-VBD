@@ -8,7 +8,7 @@
 ##    1. Biting rate (a)
 ##    2. Vector Competence (bc)
 ##    3. Pathogen development rate (PDR)
-##    4. Egg viavility (EV)
+##    4. Egg viability (EV)
 ##    5. Larval survival (pLA)
 ##    6. Mosquito egg-to-adult development rate (MDR)
 ##    7. Adult mosquito lifespan (lf)
@@ -28,8 +28,8 @@
 ## MDR&pLA_aedes_flavescens.Trpis1969.csv, MDR_aedes_nigripes.Culler2015.xlsx, 
 ## MDR_Data_Mordecai2019.csv, PDR_dirofilaria_immitis_aedes_triseriatus_vexans.Fortin1981.csv, 
 ## PDR_setaria_tundra.Laaksonen2009.csv, PDR_varestrongylus_eleguneniensis.Kafle2018.csv,
-## PDR_wuchereria_bancrofti_aedes_polynesiensis.Lardeux1997.csv, pLA_Data_Mordecai2019.csv
-##
+## PDR_wuchereria_bancrofti_aedes_polynesiensis.Lardeux1997.csv, pLA_Data_Mordecai2019.csv,
+## pLA_VecTrait.csv
 ##
 ## Outputs:
 ## Processed trait datasets saved in 'data-processed/', organized by trait.
@@ -44,6 +44,7 @@
 library(tidyverse)
 library(readxl)
 library(janitor)
+library(sp) # For converting latitude and longitude from DMS to decimal
 
 
 # 1. Biting rate (a) -----------------------------------------------------------
@@ -63,7 +64,8 @@ a.aedes <- a.aedes %>%
   filter(rep >= 8) %>% 
   # Combine n and rep back together
   unite(n, rep, col = "notes", sep = "=") %>% 
-  mutate(type = "Arctic")
+  mutate(type = "Arctic") %>% 
+  relocate(type, .after = "longitude")
 
 
 ## Non-Arctic species (for informing priors) -------------------------------
@@ -98,13 +100,13 @@ a.aalb <- a.VecTrait  %>%
   select(trait_name, interactor1temp, original_trait_value, original_error_pos, 
          original_error_neg, original_error_unit, original_trait_def, 
          interactor1genus, interactor1species, citation, doi, figure_table, 
-         notes, type)
+         notes, type, latitude, longitude)
 
 
 colnames(a.aalb) <- c("trait_name", "temp", "trait", "error_pos", 
                       "error_neg", "error_unit", "trait_def", "genus", 
                       "species", "citation", "doi", "data_source", "notes",
-                      "type")
+                      "type", "latitude", "longitude")
   
 
 
@@ -135,7 +137,7 @@ plot.data.a <- TraitData_a %>%
                                                      "Ae. impiger",
                                                      "Ae. punctor"
   )) +
-  # facet_grid(rows = vars(type)) +
+  facet_grid(rows = vars(type)) +
   theme_bw()
 
 plot.data.a
@@ -220,9 +222,12 @@ PDR.eleguneniensis <- PDR.eleguneniensis %>%
   mutate(data_source = "table 1") %>% 
   mutate(notes = NA) %>% 
   mutate(type = "Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA) %>% 
   select(trait_name, temp, trait, error_pos, error_neg, error_unit, trait_def,
          trait2_name, trait2, paras_genus, paras_species, host_genus, 
-         host_species, citation, doi, data_source, notes, type)
+         host_species, citation, doi, data_source, notes, type, latitude, 
+         longitude) 
 
 
 
@@ -230,6 +235,12 @@ PDR.eleguneniensis <- PDR.eleguneniensis %>%
 ## Change development rate to 1/1000 days
 PDR.eleguneniensis[5,"trait"] <- 1/1000
 PDR.eleguneniensis[5,"notes"] <- "did not develop after 101 days"
+
+# First-stage larvae of V. eleguneniensis were collected from northern Quebec (58.75°N, 68.55°W)
+lat_quebec <- 58.75
+lon_quebec <- -68.55
+PDR.eleguneniensis$latitude <- lat_quebec
+PDR.eleguneniensis$longitude <- lon_quebec
 
 
 ###### Setaria tundra ######
@@ -249,11 +260,10 @@ PDR.tundra <- PDR.tundra %>%
 PDR.tundra[1, "trait"] <- 1/1000
 
 
-
 ## Non-Arctic species (for informing priors) -------------------------------
 
 ###### Dirofilaria immitis (in Ae. Trivittatus) ######
-PDR.immitis.trivittatus <- read_csv("data-raw/c&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
+PDR.immitis.trivittatus <- read_csv("data-raw/bc&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
   clean_names() 
 
 PDR.immitis.trivittatus <- PDR.immitis.trivittatus %>% 
@@ -301,29 +311,6 @@ PDR.immitis.triseriatus <- PDR.immitis.triseriatus %>%
 PDR.immitis.triseriatus[1:3, "trait"] <- 1/1000
 
 
-###### Dirofilaria immitis (in Ae. aegypti) ###### 
-# PDR.immitis.aegypti <- read_csv("data-raw/dirofilaria_immitis_aedes_aegypti.Ledesma2015.csv") %>%
-#   clean_names()
-# 
-# PDR.immitis.aegypti <- PDR.immitis.aegypti %>%
-#   # Convert development time to development rate
-#   mutate(trait_name = "PDR") %>%
-#   mutate(trait_def = "1/days first L3 in Malpighian tubules") %>%
-#   mutate(trait = 1/days_post_infection_heads) %>%
-#   # Add new columns to provide more info
-#   mutate(paras_genus = "Dirofilaria") %>%
-#   mutate(paras_species = "immitis") %>%
-#   mutate(host_genus = "Aedes") %>%
-#   mutate(host_species = "aegypti") %>%
-#   mutate(citation = "Ledesma_2015_VetParasitol") %>%
-#   mutate(doi = "10.1016/j.vetpar.2015.02.003") %>%
-#   mutate(data_source = "table 1") %>%
-#   mutate(notes = NA) %>%
-#   mutate(type = "non-Arctic") %>%
-#   select(trait_name, temp, trait, paras_genus, paras_species, host_genus, 
-#          host_species, trait_def, citation, doi, data_source, notes, type)
-# 
-# PDR.immitis.aegypti[c(1,5), "trait"] <- 1/1000
 
 ######  lymphatic filarisis worms (in Ae. polynesiensis) ###### 
 PDR.bancrofti <- read_csv("data-raw/PDR_wuchereria_bancrofti_aedes_polynesiensis.Lardeux1997.csv") %>% 
@@ -341,14 +328,23 @@ PDR.bancrofti <- PDR.bancrofti %>%
   mutate(paras_species = "bancrofti") %>% 
   mutate(host_genus = "Aedes") %>% 
   mutate(host_species = "polynesiensis") %>% 
-  mutate(citation = "Ladeaux_1997_Parasitology") %>% 
+  mutate(citation = "Lardeux_1997_Parasitology") %>% 
   mutate(doi = "10.1017/s0031182096008359") %>% 
   mutate(data_source = "table 1") %>% 
   mutate(notes = NA) %>% 
   mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA) %>% 
   select(trait_name, temp, trait, error_pos, error_unit, paras_genus, 
          paras_species, host_genus, host_species, trait_def, citation, doi, 
-         data_source, notes, type)
+         data_source, notes, type, latitude, longitude) 
+
+# First-stage larvae of Wuchereria bancrofti were collected from French Polynesia
+lat_frpolynesia <- -17.6
+lon_frpolynesia <- -149.5
+PDR.bancrofti$latitude <- lat_frpolynesia
+PDR.bancrofti$longitude <- lon_frpolynesia
+
 
 TraitData_PDR <- bind_rows(PDR.eleguneniensis, PDR.tundra, 
                            PDR.immitis.triseriatus, PDR.immitis.trivittatus,
@@ -406,13 +402,24 @@ EV.vexans <- EV.Shocket2020 %>%
   mutate(citation = "McHaffey_1972_JMedEntomol") %>% 
   mutate(doi = "10.1093/jmedent/9.6.564") %>% 
   mutate(type = "Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA) %>% 
   select(trait_name, t, trait, error_pos_si, error_neg_si, error_unit, trait_def,
-         trait2_name, trait_2, genus, species, citation, doi, figure, notes, type) 
+         trait2_name, trait_2, genus, species, citation, doi, figure, notes, 
+         type, latitude, longitude) 
+
+
 
 colnames(EV.vexans) <- c("trait_name", "temp", "trait", "error_pos", 
                          "error_neg", "error_unit", "trait_def", "trait2_name", 
                          "trait2", "genus", "species", "citation", "doi", 
-                         "data_source", "notes", "type")
+                         "data_source", "notes", "type", "latitude", "longitude")
+
+# Mosquitoes from McHaffey 1972 were collected from central Washington, USA
+lat_washington <- 46
+lon_washington <- -119
+EV.vexans$latitude[EV.vexans$citation == "McHaffey_1972_JMedEntomol"] <- lat_washington
+EV.vexans$longitude[EV.vexans$citation == "McHaffey_1972_JMedEntomol"] <- lon_washington
 
 
 ## Non-Arctic species (for informing priors) -----------------------------------
@@ -430,16 +437,21 @@ EV.dorsalis <- EV.Shocket2020 %>%
   mutate(citation = "McHaffey_1970_JMedEntomol") %>% 
   mutate(doi = "10.1093/jmedent/7.6.631") %>% 
   mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA) %>% 
   select(trait_name, t, trait, error_pos_si, error_neg_si, error_unit, trait_def,
-         trait2_name, trait_2, genus, species, citation, doi, figure, notes, type) 
+         trait2_name, trait_2, genus, species, citation, doi, figure, notes, 
+         type, latitude, longitude) 
 
 colnames(EV.dorsalis) <- c("trait_name", "temp", "trait", "error_pos", 
                            "error_neg", "error_unit", "trait_def", "trait2_name", 
                            "trait2", "genus", "species", "citation", "doi", 
-                           "data_source", "notes", "type")
+                           "data_source", "notes", "type", "latitude", "longitude")
 
 
-
+# Mosquitoes from McHaffey 1970 were collected in central Washington, USA
+EV.dorsalis$latitude[EV.dorsalis$citation == "McHaffey_1970_JMedEntomol"] <- lat_washington
+EV.dorsalis$longitude[EV.dorsalis$citation == "McHaffey_1970_JMedEntomol"] <- lon_washington
 
 
 ###### Ae. nigromaculis ######
@@ -454,15 +466,21 @@ EV.nigromaculis <- EV.Shocket2020 %>%
   mutate(citation = "McHaffey_1972_MosqNews") %>% 
   mutate(doi = "10.5281/zenodo.16126961") %>% 
   mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA) %>% 
   select(trait_name, t, trait, error_pos_si, error_neg_si, error_unit, trait_def,
-         trait2_name, trait_2, genus, species, citation, doi, figure, notes, type) 
+         trait2_name, trait_2, genus, species, citation, doi, figure, notes, 
+         type, latitude, longitude) 
 
 colnames(EV.nigromaculis) <- c("trait_name", "temp", "trait", "error_pos", 
                                "error_neg", "error_unit", "trait_def", "trait2_name", 
                                "trait2", "genus", "species", "citation", "doi", 
-                               "data_source", "notes", "type")
+                               "data_source", "notes", "type", "latitude", "longitude")
 
 
+# Mosquitoes from McHaffey 1972 were collected in central Washington, USA
+EV.nigromaculis$latitude[EV.nigromaculis$citation == "McHaffey_1972_MosqNews"] <- lat_washington
+EV.nigromaculis$longitude[EV.nigromaculis$citation == "McHaffey_1972_MosqNews"] <- lon_washington
 
 
 ###### Ae. triseriatus ######
@@ -478,8 +496,18 @@ EV.triseriatus <- EV.triseriatus %>%
   mutate(doi = "10.52707/1081-1710-50.1-s1") %>% 
   mutate(data_source = "figure 1 insert") %>% 
   mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA) %>% 
   select(trait_name, temp, trait, error_pos, error_neg, error_unit, trait_def,
-         genus, species, citation, doi, data_source, notes, type) 
+         genus, species, citation, doi, data_source, notes, type, latitude, 
+         longitude) 
+
+
+# Mosquitoes from Zimmerman 2025 were collected from Mercer County, NJ, USA
+lat_mercer <- 40.3
+lon_mercer <- -74.7
+EV.triseriatus$latitude[EV.triseriatus$citation == "Zimmerman_2025_JVectorEcol"] <- lat_mercer
+EV.triseriatus$longitude[EV.triseriatus$citation == "Zimmerman_2025_JVectorEcol"] <- lon_mercer
 
 
 ###### Ae. albopictus (from VecTrait database) ######
@@ -500,13 +528,14 @@ EV.VecTrait <- EV.VecTrait  %>%
   select(trait_name, interactor1temp, original_trait_value, original_error_pos, 
          original_error_neg, original_error_unit, original_trait_def, 
          trait2_name, second_stressor_value, interactor1genus, 
-         interactor1species, citation, doi, figure_table, notes, type)
+         interactor1species, citation, doi, figure_table, notes, type, 
+         latitude, longitude)
 
 
 colnames(EV.VecTrait) <- c("trait_name", "temp", "trait", "error_pos", 
                            "error_neg", "error_unit", "trait_def", "trait2_name", 
                            "trait2", "genus", "species", "citation", "doi", 
-                           "data_source", "notes", "type")
+                           "data_source", "notes", "type", "latitude", "longitude")
 
 ## Convert percentage to proportion
 EV.VecTrait <- EV.VecTrait %>% 
@@ -521,6 +550,12 @@ EV.VecTrait <- EV.VecTrait %>%
 ## Change the trait2 column to character (so that it can combine with other dataset)
 EV.VecTrait$trait2 <- as.character(EV.VecTrait$trait2) 
 
+
+# Mosquitoes from Blagrove et al 2013 were from the Ascoli strain (Italy), where were was colonized from San Benedetto del Tronto, Italy (Blagrove et al. 2011)
+lat_italy <- 42.9
+lon_italy <- 13.9
+EV.VecTrait$latitude[EV.VecTrait$doi == "10.1371/journal.pntd.0002152"] <- lat_italy
+EV.VecTrait$longitude[EV.VecTrait$doi == "10.1371/journal.pntd.0002152"] <- lon_italy
 
 TraitData_EV <- bind_rows(EV.vexans, EV.dorsalis, EV.nigromaculis, 
                           EV.triseriatus, EV.VecTrait)
@@ -581,14 +616,16 @@ pLA.vexans <- pLA.Mordecai2019 %>%
   relocate(species, .after = "genus") %>% 
   mutate(doi = NA) %>% 
   relocate(doi, .after = "citation") %>% 
-  mutate(type = "Arctic")
+  mutate(type = "Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(pLA.vexans) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
                          "error_unit", "trait_def", "trait2_name", "trait2",
                          "genus", "species", "citation","doi", "data_source", 
-                         "notes", "type")
+                         "notes", "type", "latitude", "longitude")
 
 ## Provide more info on the papers
 ### Brust 1967
@@ -598,6 +635,20 @@ pLA.vexans$doi[pLA.vexans$citation == "Brust_1967_TheCanadianEntomologist"] <-
 ## Trpis and Shemanchuk 1970
 pLA.vexans$doi[pLA.vexans$citation == "Trpis&Shemanchuk_1970_TheCanadianEntomologist"] <-
   "10.4039/ent1021048-8"
+
+
+# Mosquitoes from Brust 1967 were collected near Winnipeg, Manitoba;
+lat_winnipeg <- 49.9
+lon_winnipeg <- -97.1
+pLA.vexans$latitude[pLA.vexans$citation == "Brust_1967_TheCanadianEntomologist"] <- lat_winnipeg
+pLA.vexans$longitude[pLA.vexans$citation == "Brust_1967_TheCanadianEntomologist"] <- lon_winnipeg
+
+
+# Mosquitoes from Trpis and Shemanchuk 1970 were collected near Lethbridge, Alberta
+lat_lethbridge <- 49.7
+long_lethbridge <- -112.8
+pLA.vexans$latitude[pLA.vexans$citation == "Trpis&Shemanchuk_1970_TheCanadianEntomologist"] <- lat_lethbridge
+pLA.vexans$longitude[pLA.vexans$citation == "Trpis&Shemanchuk_1970_TheCanadianEntomologist"] <- long_lethbridge
 
 
 ###### Ae. flavescens ######
@@ -623,20 +674,30 @@ pLA.nigromaculis <- pLA.Mordecai2019 %>%
   relocate(genus, .after = "trait_2") %>% 
   mutate(species = "nigromaculis") %>% 
   relocate(species, .after = "genus") %>% 
-  mutate(type = "non-Arctic")
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation") %>% 
+  mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(pLA.nigromaculis) <- c("trait_name", "temp", "trait", "error_pos", 
                                 "error_neg","trait2_name", "trait2", "genus", 
-                                "species", "citation", "data_source", "notes",
-                                "type")
+                                "species", "citation", "doi", "data_source", 
+                                "notes", "type", "latitude", "longitude")
 
 
 ## Provide more info on the papers
 ### Brust 1967
 pLA.nigromaculis$doi[pLA.nigromaculis$citation == "Brust_1967_TheCanadianEntomologist"] <-
   "10.4039/ent99986-9"
+
+# Mosquitoes from Brust 1967 were collected near Winnipeg, Manitoba;
+lat_winnipeg <- 49.9
+lon_winnipeg <- -97.1
+pLA.nigromaculis$latitude[pLA.nigromaculis$citation == "Brust_1967_TheCanadianEntomologist"] <- lat_winnipeg
+pLA.nigromaculis$longitude[pLA.nigromaculis$citation == "Brust_1967_TheCanadianEntomologist"] <- lon_winnipeg
 
 
 
@@ -651,14 +712,25 @@ pLA.sollicitans <- pLA.Mordecai2019 %>%
   relocate(genus, .after = "trait_2") %>% 
   mutate(species = "sollicitans") %>% 
   relocate(species, .after = "genus") %>% 
-  mutate(type = "non-Arctic")
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation") %>% 
+  mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(pLA.sollicitans) <- c("trait_name", "temp", "trait", "error_pos", 
-                               "error_neg", "trait2_name", "trait2", "genus", 
-                               "species", "citation", "data_source", "notes", 
-                               "type")
+                                "error_neg","trait2_name", "trait2", "genus", 
+                                "species", "citation", "doi", "data_source", 
+                                "notes", "type", "latitude", "longitude")
+
+
+# Shelton 1973 was conducted in Lake Charles, Louisiana
+lat_lakecharles <- 30.2
+lon_lakecharles <- -93.2
+pLA.sollicitans$latitude[pLA.sollicitans$citation == "Shelton_1973_MosquitoNews"] <- lat_lakecharles
+pLA.sollicitans$longitude[pLA.sollicitans$citation == "Shelton_1973_MosquitoNews"] <- lon_lakecharles
 
 
 ###### Ae. triseriatus ######
@@ -672,18 +744,69 @@ pLA.triseriatus <- pLA.Mordecai2019 %>%
   relocate(genus, .after = "trait_2") %>% 
   mutate(species = "triseriatus") %>% 
   relocate(species, .after = "genus") %>% 
-  mutate(type = "non-Arctic")
+  mutate(doi = NA) %>% 
+  relocate(doi, .after = "citation") %>% 
+  mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(pLA.triseriatus) <- c("trait_name", "temp", "trait", "error_pos", 
                                "error_neg", "trait2_name", "trait2", "genus", 
-                               "species", "citation", "data_source", "notes", 
-                               "type")
+                               "species", "citation", "doi", "data_source", "notes", 
+                               "type", "latitude", "longitude")
+
+
+## Provide more info on the papers
+### Teng and Apperson 2000
+pLA.triseriatus$doi[pLA.triseriatus$citation == "TengApperson_2000_J.Med.Entomol."] <-
+  "10.1603/0022-2585-37.1.40"
+
+# Mosquitoes from Teng and Apperson 2000 were collected near the town of Cherokee, Jackson County, NC, USA
+lat_cherokee <- 35.5
+lon_cherokee <- -83.3
+pLA.triseriatus$latitude[pLA.triseriatus$citation == "TengApperson_2000_J.Med.Entomol."] <- lat_cherokee
+pLA.triseriatus$longitude[pLA.triseriatus$citation == "TengApperson_2000_J.Med.Entomol."] <- lon_cherokee
+
+
+# Shelton 1973 was conducted in Lake Charles, Louisiana
+pLA.triseriatus$latitude[pLA.triseriatus$citation == "Shelton_1973_MosquitoNews"] <- lat_lakecharles
+pLA.triseriatus$longitude[pLA.triseriatus$citation == "Shelton_1973_MosquitoNews"] <- lon_lakecharles
+
+# From VecTrait database
+pLA.VecTrait <- read_csv("data-raw/pLA_VecTrait.csv") %>% 
+  clean_names()
+
+unique(pLA.VecTrait$interactor1) 
+
+
+###### Ae. albopictus ######
+pLA.albopictus <- pLA.VecTrait  %>% 
+  filter(interactor1species == "albopictus") %>%
+  filter(str_detect(interactor1stage, "juvenile")) %>% 
+  # Add new columns to provide more info
+  mutate(trait_name = "pLA") %>% 
+  mutate(type = "non-Arctic") %>% 
+  select(trait_name, interactor1temp, original_trait_value, original_error_pos, 
+         original_error_neg, original_error_unit, original_trait_def, 
+         interactor1genus, interactor1species, citation, doi, figure_table, 
+         notes, type, latitude, longitude)
+
+colnames(pLA.albopictus) <- c("trait_name", "temp", "trait", "error_pos", 
+                              "error_neg", "error_unit", "trait_def", "genus", 
+                              "species", "citation", "doi", "data_source", 
+                              "notes", "type", "latitude", "longitude")
+
+# Convert percentage to proportion
+pLA.albopictus <- pLA.albopictus %>% 
+  mutate(trait = ifelse(trait_def == "percent surviving life stage", trait/100, trait))
+pLA.albopictus$trait_def[pLA.albopictus$trait_def == "percent surviving life stage"] = "proportion" 
 
 
 TraitData_pLA <- bind_rows(pLA.vexans, pLA.flavescens,
-                           pLA.nigromaculis, pLA.sollicitans, pLA.triseriatus)
+                           pLA.nigromaculis, pLA.sollicitans, pLA.triseriatus, 
+                           pLA.albopictus)
 
 
 write_csv(TraitData_pLA, "data-processed/TraitData_pLA.csv")
@@ -694,7 +817,8 @@ plot.data.pLA <- TraitData_pLA %>%
   ggplot(aes(x = temp, y = trait)) +
   geom_point(aes(colour = species)) +
   labs(y = "Larval survival (%)", x = expression(paste("Temperature (", degree, "C)"))) +
-  scale_colour_discrete(name = "Species", labels = c("Ae. flavescens",
+  scale_colour_discrete(name = "Species", labels = c("Ae. albopictus",
+                                                     "Ae. flavescens",
                                                      "Ae. nigromaculis",
                                                      "Ae. sollicitans",
                                                      "Ae. triseriatus",
@@ -744,6 +868,18 @@ MDR.nigripes <- MDR.nigripes %>%
 
 colnames(MDR.nigripes)[2] <- "temp"
 
+read_excel("data-raw/MDR_aedes_nigripes.Culler2015.xlsx", 
+                           sheet = "Pond Locations")
+  
+# Mosquitoes were collected in Black pond, 
+lat_greenland <- as.numeric(char2dms("67d0'33.6\"N"))
+lon_greenland <- as.numeric(char2dms("50d40'17.9\"W"))
+
+
+MDR.nigripes <- MDR.nigripes %>% 
+  mutate(latitude = lat_greenland) %>% 
+  mutate(longitude = lon_greenland) 
+
 
 ###### Ae. flavescens ######
 MDR.flavescens <- read_csv("data-raw/MDR&pLA_aedes_flavescens.Trpis1969.csv") %>% 
@@ -789,13 +925,30 @@ MDR.vexans <- MDR.Mordecai2019 %>%
   mutate(species = "vexans") %>% 
   relocate(species, .after = "genus") %>% 
   mutate(type = "Arctic") %>% 
-  select(!host_code)
+  select(!host_code) %>%   
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
+  
 
 
 ## Rename columns
 colnames(MDR.vexans) <- c("trait_name", "temp", "trait", "error_pos", 
                           "error_neg","trait2_name", "trait2", "genus", 
-                          "species", "citation", "data_source", "notes", "type")
+                          "species", "citation", "data_source", "notes", 
+                          "type", "latitude", "longitude")
+
+
+# Mosquitoes from Brust 1967 were collected near Winnipeg, Manitoba;
+lat_winnipeg <- 49.9
+lon_winnipeg <- -97.1
+MDR.vexans$latitude[MDR.vexans$citation == "Brust_1967_CanEntomol"] <- lat_winnipeg
+MDR.vexans$longitude[MDR.vexans$citation == "Brust_1967_CanEntomol"] <- lon_winnipeg
+
+# Mosquitoes from Trpis and Shemanchuk 1970 were collected near Lethbridge, Alberta
+lat_lethbridge <- 49.7
+long_lethbridge <- -112.8
+MDR.vexans$latitude[MDR.vexans$citation == "Trpis&Shemanchuk_1970_TheCanadianEntomologist"] <- lat_lethbridge
+MDR.vexans$longitude[MDR.vexans$citation == "Trpis&Shemanchuk_1970_TheCanadianEntomologist"] <- long_lethbridge
 
 
 
@@ -810,13 +963,77 @@ MDR.albopictus <- MDR.Mordecai2019 %>%
   mutate(species = "albopictus") %>% 
   relocate(species, .after = "genus") %>% 
   mutate(type = "non-Arctic") %>% 
-  select(!host_code)
+  select(!host_code) %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(MDR.albopictus) <- c("trait_name", "temp", "trait", "error_pos", 
                               "error_neg","trait2_name", "trait2", "genus", 
-                              "species", "citation", "data_source", "notes", "type")
+                              "species", "citation", "data_source", "notes", 
+                              "type", "latitude", "longitude")
+
+
+# Mosquitoes from Alto 2001 were collected from East St. Louis, IL
+lat_stlouis <- 38.6
+lon_stlouis <- -90.1
+MDR.albopictus$latitude[MDR.albopictus$citation == "Alto_et_al_2001b_JMedEnto"] <- lat_stlouis
+MDR.albopictus$longitude[MDR.albopictus$citation == "Alto_et_al_2001b_JMedEnto"] <- lon_stlouis
+
+# Mosquitoes from Briegel 2001 were collected from Louisiana USA
+lat_LA <- 30.7
+lon_LA <- -92.1
+MDR.albopictus$latitude[MDR.albopictus$citation == "Briegel_etal_2001_JMedEnto"] <- lat_LA
+MDR.albopictus$longitude[MDR.albopictus$citation == "Briegel_etal_2001_JMedEnto"] <- lon_LA
+
+
+# Mosquitoes from Calado 2002 were collected from Registro, São Paulo State, Brazil
+lat_registro <- -24.5
+lon_registro <- -47.9
+MDR.albopictus$latitude[MDR.albopictus$citation == "Calado_Navarro-Silva_2002b_RevSaudaPublica"] <- lat_registro
+MDR.albopictus$longitude[MDR.albopictus$citation == "Calado_Navarro-Silva_2002b_RevSaudaPublica"] <- lon_registro
+
+# Mosquitoes from Delatte 2009 were collected from Saint Pierre, La Reunion Island, France
+lat_stpierre <- -21.3
+lon_stpierre <- 55.5
+MDR.albopictus$latitude[MDR.albopictus$citation == "Delatte_etal_2009_JMedEnto"] <- lat_stpierre
+MDR.albopictus$longitude[MDR.albopictus$citation == "Delatte_etal_2009_JMedEnto"] <- lon_stpierre
+
+# Mosquitoes from Ezeakacha 2015 were collected in and around Hattiesburg, MS, USA
+lat_Hattiesburg <- 31.3
+lon_Hattiesburg <- -89.3
+MDR.albopictus$latitude[MDR.albopictus$citation == "Ezeakacha_Dissertation_2015"] <- lat_Hattiesburg
+MDR.albopictus$longitude[MDR.albopictus$citation == "Ezeakacha_Dissertation_2015"] <- lon_Hattiesburg
+
+
+# Mosquitoes from Muturi 2011 were collected from Jacksonville, FL, USA
+lat_jacksonville <- 30.4
+lon_jacksonville <- -81.6
+MDR.albopictus$latitude[MDR.albopictus$citation == "Muturi_et_al_2011_JMedEnto"] <- lat_jacksonville
+MDR.albopictus$longitude[MDR.albopictus$citation == "Muturi_et_al_2011_JMedEnto"] <- lon_jacksonville
+
+
+# Mosquitoes from Westbrook 2010 and thesis 2010 were collected from Palm Beach County, FL, USA
+lat_palmbeach <- 26.7
+lon_palmbeach <- -80.4
+MDR.albopictus$latitude[MDR.albopictus$citation == "Westbrook_et_al_2010_VecBorn&ZooDis"] <- lat_palmbeach
+MDR.albopictus$longitude[MDR.albopictus$citation == "Westbrook_et_al_2010_VecBorn&ZooDis"] <- lon_palmbeach
+MDR.albopictus$latitude[MDR.albopictus$citation == "Westbrook_Thesis_2010"] <- lat_palmbeach
+MDR.albopictus$longitude[MDR.albopictus$citation == "Westbrook_Thesis_2010"] <- lon_palmbeach
+
+
+# Mosquitoes from Wiwatanaratanabutr 2006 were collected from Kanchanaburi  Province, western Thailand
+lat_thai <- 14.8
+lon_thai <- 99.0
+MDR.albopictus$latitude[MDR.albopictus$citation == "Witwatana_Kittayaong_2006_Med&VetEnt"] <- lat_thai
+MDR.albopictus$longitude[MDR.albopictus$citation == "Witwatana_Kittayaong_2006_Med&VetEnt"] <- lon_thai
+
+
+# Mosquitoes from Yee 2017 (citation was wrong in the data) were collected from various locations
+MDR.albopictus$citation[MDR.albopictus$citation == "Yee_et al_2016 JAE_in_review"] <- "Yee_etal_2017_Oikos"
+MDR.albopictus$data_source[MDR.albopictus$citation == "Yee_etal_2017_Oikos"] <- "figure 3"
+
 
 
 ###### Ae. nigromaculis ######
@@ -833,13 +1050,20 @@ MDR.nigromaculis <- MDR.Mordecai2019 %>%
   mutate(species = "nigromaculis") %>% 
   relocate(species, .after = "genus") %>% 
   mutate(type = "non-Arctic") %>% 
-  select(!host_code)
+  select(!host_code) %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(MDR.nigromaculis) <- c("trait_name", "temp", "trait", "error_pos", 
                               "error_neg","trait2_name", "trait2", "genus", 
-                              "species", "citation", "data_source", "notes", "type")
+                              "species", "citation", "data_source", "notes", 
+                              "type", "latitude", "longitude")
+
+# Mosquitoes from Brust 1967 were collected from Winnipeg, Manitoba
+MDR.nigromaculis$latitude[MDR.nigromaculis$citation == "Brust_1967_CanEntomol"] <- lat_winnipeg
+MDR.nigromaculis$longitude[MDR.nigromaculis$citation == "Brust_1967_CanEntomol"] <- lon_winnipeg
 
 
 ###### Ae. sollicitans ######
@@ -856,13 +1080,22 @@ MDR.sollicitans <- MDR.Mordecai2019 %>%
   mutate(species = "sollicitans") %>% 
   relocate(species, .after = "genus") %>% 
   mutate(type = "non-Arctic") %>% 
-  select(!host_code)
+  select(!host_code) %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(MDR.sollicitans) <- c("trait_name", "temp", "trait", "error_pos", 
                                 "error_neg","trait2_name", "trait2", "genus", 
-                                "species", "citation", "data_source", "notes", "type")
+                                "species", "citation", "data_source", "notes", 
+                               "type", "latitude", "longitude")
+
+# Shelton 1973 was conducted in Lake Charles, Louisiana
+lat_lakecharles <- 30.2
+lon_lakecharles <- -93.2
+MDR.sollicitans$latitude[MDR.sollicitans$citation == "Shelton_1973_MosquitoNews"] <- lat_lakecharles
+MDR.sollicitans$longitude[MDR.sollicitans$citation == "Shelton_1973_MosquitoNews"] <- lon_lakecharles
 
 
 ###### Ae. triseriatus ######
@@ -874,13 +1107,16 @@ MDR.triseriatus <- MDR.Mordecai2019 %>%
   mutate(species = "triseriatus") %>% 
   relocate(species, .after = "genus") %>% 
   mutate(type = "non-Arctic") %>% 
-  select(!host_code)
+  select(!host_code) %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(MDR.triseriatus) <- c("trait_name", "temp", "trait", "error_pos", 
                                "error_neg","trait2_name", "trait2", "genus", 
-                               "species", "citation", "data_source", "notes", "type")
+                               "species", "citation", "data_source", "notes", 
+                               "type", "latitude", "longitude")
 
 
 # Convert from development time to development rate
@@ -888,6 +1124,15 @@ MDR.triseriatus <- MDR.triseriatus %>%
   mutate(trait = ifelse(trait_name == "1/MDR", 1/trait, trait)) %>% 
   mutate(trait_name = "MDR")
 
+# Mosquitoes from Jalil 1972 were Alabama strain
+lat_columbus <- 33.1
+lon_columbus <- -86.6
+MDR.triseriatus$latitude[MDR.triseriatus$citation == "Jalil 1972"] <- lat_columbus
+MDR.triseriatus$longitude[MDR.triseriatus$citation == "Jalil 1972"] <- lon_columbus
+
+
+MDR.triseriatus$latitude[MDR.triseriatus$citation == "Shelton_1973_MosquitoNews"] <- lat_lakecharles
+MDR.triseriatus$longitude[MDR.triseriatus$citation == "Shelton_1973_MosquitoNews"] <- lon_lakecharles
 
 
 # Combine data into a single dataframe
@@ -934,8 +1179,8 @@ lf.vexans <- read_csv("data-raw/lf_aedes_vexans.Costello1971.csv") %>%
   clean_names() 
 
 lf.vexans <- lf.vexans %>% 
-  # Only select female mosquitoes
-  filter(sex == "F") %>% 
+  filter(sex == "F") %>% # Only select female mosquitoes
+  filter(adult_food != "starved") %>% 
   # Add new columns to provide more info
   mutate(trait_name = "lf") %>% 
   mutate(error_pos = NA) %>% 
@@ -951,13 +1196,22 @@ lf.vexans <- lf.vexans %>%
   mutate(data_source = "table 1") %>% 
   mutate(notes = NA) %>% 
   mutate(type = "Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA) %>% 
   select(trait_name, treatment_temperature, days_to_50_percent_mortality, 
          error_pos, error_neg, error_unit, trait_def, trait2_name, trait2, 
-         genus, species, citation, doi, data_source, notes, type)
+         genus, species, citation, doi, data_source, notes, type, latitude, 
+         longitude)
   
   
 colnames(lf.vexans)[2] <- "temp"
 colnames(lf.vexans)[3] <- "trait"
+
+# Mosquitoes from Brust 1967 were collected near Winnipeg, Manitoba;
+lat_winnipeg <- 49.9
+lon_winnipeg <- -97.1
+lf.vexans$latitude[lf.vexans$citation == "Costello_1971_JEconEntomol"] <- lat_winnipeg
+lf.vexans$longitude[lf.vexans$citation == "Costello_1971_JEconEntomol"] <- lon_winnipeg
 
 
 ###### Ae. cinereus, Ae. communis, Ae. impiger, Ae. punctor in Alaska ######
@@ -993,13 +1247,15 @@ lf.VecTrait <- lf.VecTrait  %>%
   select(trait_name, interactor1temp, original_trait_value, original_error_pos, 
          original_error_neg, original_error_unit, original_trait_def, 
          trait2_name, second_stressor_value, interactor1genus, 
-         interactor1species, citation, doi, figure_table, notes, type)
+         interactor1species, citation, doi, figure_table, notes, type, 
+         latitude, longitude)
 
 
 colnames(lf.VecTrait) <- c("trait_name", "temp", "trait", "error_pos", 
                           "error_neg", "error_unit", "trait_def", "trait2_name", 
                           "trait2", "genus", "species", "citation", "doi", 
-                          "data_source", "notes", "type")
+                          "data_source", "notes", "type", "latitude", 
+                          "longitude")
 
 lf.VecTrait$trait2 <- as.character(lf.VecTrait$trait2) ## Change the trait2 column to character (so that it can combine with other dataset)
 
@@ -1025,14 +1281,17 @@ lf.aalb <- lf.Mordecai2019 %>%
   mutate(genus = "Aedes") %>% 
   mutate(species = "albopictus") %>% 
   mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA) %>%   
   select(trait_name, t, trait, error_pos_si, error_neg_si, trait_2, trait2_name,
-         genus, species, citation, figure, notes, type)
+         genus, species, citation, figure, notes, type, latitude, longitude)
 
 
 ## Rename columns
 colnames(lf.aalb) <- c("trait_name", "temp", "trait", "error_pos", 
                        "error_neg","trait2_name", "trait2", "genus", # The values of trait2_name and trait2 are swapped for some reasons
-                       "species", "citation", "data_source", "notes", "type")
+                       "species", "citation", "data_source", "notes", 
+                       "type", "latitude", "longitude")
 
 ## Change trait_name from 1/mu to lf (1/mu = lf), and from prop.dead to 1/lf
 lf.aalb <- lf.aalb %>% 
@@ -1041,6 +1300,27 @@ lf.aalb <- lf.aalb %>%
     "lf",
     ifelse(trait_name == "prop.dead", "1/lf", trait_name)))
 
+## Remove mosquitoes that were starved
+lf.aalb <- lf.aalb %>% 
+  filter(is.na(trait2) | trait2 != "starved")
+
+# Mosquitoes from Calado 2002 were collected from Registro, São Paulo State, Brazil
+lat_registro <- -24.5
+lon_registro <- -47.9
+lf.aalb$latitude[lf.aalb$citation == "Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia"] <- lat_registro
+lf.aalb$longitude[lf.aalb$citation == "Calado_Navarro-Silva_2002_RevistaBrasileraDeEntomologia"] <- lon_registro
+
+# Mosquitoes from Alto 2001 were collected from East St. Louis, IL, USA
+lat_stlouis <- 38.6
+lon_stlouis <- -90.1
+lf.aalb$latitude[lf.aalb$citation == "Alto_et_al_2001b"] <- lat_stlouis
+lf.aalb$longitude[lf.aalb$citation == "Alto_et_al_2001b"] <- lon_stlouis
+
+# Mosquitoes from Ezeakacha 2015 were collected in and around Hattiesburg, MS, USA
+lat_Hattiesburg <- 31.3
+lon_Hattiesburg <- -89.3
+lf.aalb$latitude[lf.aalb$citation == "Ezeakacha_Dissertation_2015"] <- lat_Hattiesburg
+lf.aalb$longitude[lf.aalb$citation == "Ezeakacha_Dissertation_2015"] <- lon_Hattiesburg
 
 ## Since both VecTrait and Mordecai et al. 2019 database contains data from 
 ## Calado and Navarro-Silva 2002, we will remove the same data from VecTrait 
@@ -1081,7 +1361,7 @@ plot.data.lf <- TraitData_lf %>%
                                                      "Ae. punctor",
                                                      "Ae. vexans"
   )) +
-  #facet_grid(rows = vars(type)) +
+  facet_grid(rows = vars(type)) +
   theme_bw()
 
 plot.data.lf
@@ -1117,7 +1397,8 @@ EFGC.aedes <- EFGC.aedes %>%
   # Combine n and rep back together
   unite(n, rep, col = "notes", sep = "=") %>% 
   # Add new columns to provide more info
-  mutate(type = "Arctic")
+  mutate(type = "Arctic") %>% 
+  relocate(type, .before = "latitude") 
 
 
 ## Non-Arctic species (for informing priors) -----------------------------------
@@ -1148,23 +1429,41 @@ EFGC.albopictus <- EFGC.Mordecai2019 %>%
   relocate(species, .after = "genus") %>% 
   mutate(doi = NA) %>% 
   relocate(doi, .after = "citation") %>% 
-  mutate(type = "non-Arctic")
+  mutate(type = "non-Arctic") %>% 
+  mutate(latitude = NA) %>% 
+  mutate(longitude = NA)
 
 
 ## Rename columns
 colnames(EFGC.albopictus) <- c("trait_name", "temp", "trait", "error_pos", "error_neg",
                             "error_unit", "trait_def", "trait2_name", "trait2",
                             "genus", "species", "citation","doi", "data_source", 
-                            "notes", "type")
+                            "notes", "type", "latitude", "longitude")
 
 
 ## Provide more info on the papers
-##Delatte et al. 2009
+## Delatte et al. 2009
 EFGC.albopictus$doi[EFGC.albopictus$citation == "Delatte_etal_2009_JMedEnto"] <-
   "10.1603/033.046.0105"
 
 EFGC.albopictus$data_source[EFGC.albopictus$citation == "Delatte_etal_2009_JMedEnto"] <-
   "table 6"
+
+# Mosquitoes from Delatte 2009 were collected from Saint Pierre, La Reunion Island, France
+lat_stpierre <- -21.3
+lon_stpierre <- 55.5
+EFGC.albopictus$latitude[EFGC.albopictus$citation == "Delatte_etal_2009_JMedEnto"] <- lat_stpierre
+EFGC.albopictus$longitude[EFGC.albopictus$citation == "Delatte_etal_2009_JMedEnto"] <- lon_stpierre
+
+
+# Mosquitoes from Ezeakacha 2015 were collected in and around Hattiesburg, MS, USA
+lat_Hattiesburg <- 31.3
+lon_Hattiesburg <- -89.3
+EFGC.albopictus$latitude[EFGC.albopictus$citation == "Ezeakacha_Dissertation_2015"] <- lat_Hattiesburg
+EFGC.albopictus$longitude[EFGC.albopictus$citation == "Ezeakacha_Dissertation_2015"] <- lon_Hattiesburg
+
+# Mosquitoes from Yee 2017 (citation was wrong in the data) were collected from various locations
+EFGC.albopictus$citation[EFGC.albopictus$citation == "Yee_et al_2016 JAE_in_review"] <- "Yee_etal_2017_Oikos"
 
 
 TraitData_EFGC <- bind_rows(EFGC.aedes, EFGC.hexodontus, EFGC.albopictus)
@@ -1185,6 +1484,7 @@ plot.data.EFGC <- TraitData_EFGC %>%
                                                      "Ae. impiger",
                                                      "Ae. punctor"
   )) +
+  facet_grid(rows = vars(type)) +
   theme_bw()
 
 

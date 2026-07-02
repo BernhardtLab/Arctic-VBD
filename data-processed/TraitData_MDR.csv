@@ -1,59 +1,59 @@
 trait_name,temp,trait,error_pos,error_neg,error_unit,trait_def,trait2_name,trait2,genus,species,citation,doi,data_source,notes,latitude,longitude,type
 MDR,5,0.001,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-2,result text,All larvae died in 1st instar,49.7,-112.8,Arctic
-MDR,10,0.013998254,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-3,figure 1,NA,49.7,-112.8,Arctic
-MDR,15,0.030168031,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-4,figure 3,NA,49.7,-112.8,Arctic
-MDR,20,0.057142468,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-5,figure 7,NA,49.7,-112.8,Arctic
-MDR,25,0.062664349,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-6,figure 9,NA,49.7,-112.8,Arctic
+MDR,10,0.013998253626311538,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-3,figure 1,NA,49.7,-112.8,Arctic
+MDR,15,0.030168031497724894,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-4,figure 3,NA,49.7,-112.8,Arctic
+MDR,20,0.05714246801897635,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-5,figure 7,NA,49.7,-112.8,Arctic
+MDR,25,0.06266434912263523,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-6,figure 9,NA,49.7,-112.8,Arctic
 MDR,30,0.001,NA,NA,NA,1/median pre-adult development time (days),NA,NA,Aedes,flavescens,Trpis&Shemanchuk_1969_CanEntomol,10.4039/ent101128-7,result text,All larvae died in 1st instar,49.7,-112.8,Arctic
-MDR,11.1,0.05,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,11.1,0.05,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,11.19,0.045454545,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,11.19,0.045454545,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,11.19,0.045454545,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,11.19,0.045454545,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,11.19,0.045454545,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.32,0.066666667,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.31,0.0625,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.058823529,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.25,0.055555556,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.25,0.055555556,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.052631579,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,13.27,0.052631579,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,15.78,0.090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,15.78,0.090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,15.78,0.076923077,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,15.78,0.076923077,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,15.78,0.071428571,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,15.78,0.071428571,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,15.78,0.071428571,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,15.78,0.071428571,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.41,0.111111111,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.57,0.1,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.67,0.090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.67,0.090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.67,0.090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.67,0.090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.8,0.076923077,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.79,0.125,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,18.91,0.1,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333,-50.67163889,Arctic
-MDR,21,0.031367629,5.90E-04,5.90E-04,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,49.9,-97.1,Arctic
-MDR,26.5,0.062266501,0.002093643,0.002093643,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,49.9,-97.1,Arctic
-MDR,32,0.076804916,0.002713538,0.002713538,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,49.9,-97.1,Arctic
+MDR,11.1,0.05,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,11.1,0.05,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,11.19,0.045454545454545456,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,11.19,0.045454545454545456,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,11.19,0.045454545454545456,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,11.19,0.045454545454545456,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,11.19,0.045454545454545456,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.32,0.06666666666666667,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.31,0.0625,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.058823529411764705,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.25,0.05555555555555555,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.25,0.05555555555555555,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.05263157894736842,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,13.27,0.05263157894736842,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,15.78,0.09090909090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,15.78,0.09090909090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,15.78,0.07692307692307693,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,15.78,0.07692307692307693,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,15.78,0.07142857142857142,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,15.78,0.07142857142857142,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,15.78,0.07142857142857142,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,15.78,0.07142857142857142,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.41,0.1111111111111111,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.57,0.1,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.67,0.09090909090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.67,0.09090909090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.67,0.09090909090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.67,0.09090909090909091,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.8,0.07692307692307693,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.79,0.125,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,18.91,0.1,NA,NA,NA,1/days until emergence,NA,NA,Aedes,nigripes,Culler_2015_ProcRSocB,10.1098/rspb.2015.1549,raw data,converted from development time,67.00933333333333,-50.671638888888886,Arctic
+MDR,21,0.03136762860727729,5.903568746664483e-4,5.903568746664483e-4,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,49.9,-97.1,Arctic
+MDR,26.5,0.06226650062266501,0.002093643233887865,0.002093643233887865,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,49.9,-97.1,Arctic
+MDR,32,0.07680491551459294,0.002713537721713729,0.002713537721713729,NA,NA,Sex,Female,Aedes,vexans,Brust_1967_CanEntomol,NA,Table 1,Converted from hours to days,49.9,-97.1,Arctic
 MDR,5,0.001,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Results text,All larvae died in 1st instar,49.7,-112.8,Arctic
-MDR,10,0.023255814,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 1,Median time to pupation,49.7,-112.8,Arctic
-MDR,15,0.058823529,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 2,Median time to pupation,49.7,-112.8,Arctic
+MDR,10,0.023255813953488372,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 1,Median time to pupation,49.7,-112.8,Arctic
+MDR,15,0.058823529411764705,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 2,Median time to pupation,49.7,-112.8,Arctic
 MDR,20,0.125,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 3,Median time to pupation,49.7,-112.8,Arctic
-MDR,25,0.166666667,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 4,Median time to pupation,49.7,-112.8,Arctic
-MDR,30,0.166666667,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 5,Median time to pupation,49.7,-112.8,Arctic
+MDR,25,0.16666666666666666,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 4,Median time to pupation,49.7,-112.8,Arctic
+MDR,30,0.16666666666666666,NA,NA,NA,NA,NA,NA,Aedes,vexans,Trpis&Shemanchuk_1970_TheCanadianEntomologist,NA,Figure 5,Median time to pupation,49.7,-112.8,Arctic
 MDR,22,0.048077455,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b_JMedEnto,NA,NA,NA,38.6,-90.1,non-Arctic
 MDR,26,0.054535139,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b_JMedEnto,NA,NA,NA,38.6,-90.1,non-Arctic
 MDR,30,0.058846719,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Alto_et_al_2001b_JMedEnto,NA,NA,NA,38.6,-90.1,non-Arctic
@@ -65,40 +65,40 @@ MDR,15,0.012539185,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002b
 MDR,20,0.025510204,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002b_RevSaudaPublica,NA,NA,NA,-24.5,-47.9,non-Arctic
 MDR,25,0.042087542,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002b_RevSaudaPublica,NA,NA,NA,-24.5,-47.9,non-Arctic
 MDR,30,0.054112554,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Calado_Navarro-Silva_2002b_RevSaudaPublica,NA,NA,NA,-24.5,-47.9,non-Arctic
-MDR,15,0.032876712,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,15,0.027952481,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,15,0.029813665,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,15,0.032476319,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,15,0.028985507,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,15,0.03033367,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,15,0.033333333,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,15,0.029739777,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,20,0.104347826,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,20,0.082379863,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,20,0.089241448,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,20,0.092273892,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,20,0.071319409,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,20,0.071784646,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,20,0.106904232,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,20,0.082987552,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,25,0.144578313,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,25,0.145228216,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,25,0.131004367,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,25,0.176322418,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,25,0.122511485,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,25,0.108583247,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,25,0.128824477,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,25,0.105527638,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,30,0.211764706,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,30,0.199445983,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,30,0.162162162,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,30,0.171428571,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,30,0.154340836,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,30,0.115226337,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,30,0.147239264,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,30,0.151679307,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,35,0.190800681,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
-MDR,35,0.181818182,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-55.48333333,-47.85,non-Arctic
+MDR,15,0.032876712,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,15,0.027952481,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,15,0.029813665,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,15,0.032476319,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,15,0.028985507,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,15,0.03033367,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,15,0.033333333,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,15,0.029739777,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,20,0.104347826,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,20,0.082379863,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,20,0.089241448,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,20,0.092273892,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,20,0.071319409,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,20,0.071784646,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,20,0.106904232,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,20,0.082987552,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,25,0.14457831300000001,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,25,0.145228216,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,25,0.131004367,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,25,0.176322418,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,25,0.122511485,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,25,0.108583247,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,25,0.128824477,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,25,0.10552763800000001,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,30,0.211764706,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,30,0.199445983,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,30,0.162162162,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,30,0.171428571,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,30,0.154340836,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,30,0.115226337,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,30,0.147239264,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,30,0.151679307,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,35,0.190800681,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
+MDR,35,0.181818182,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Delatte_etal_2009_JMedEnto,NA,NA,NA,-21.3,55.5,non-Arctic
 MDR,20,0.062663185,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,31.3,-89.3,non-Arctic
 MDR,20,0.060913091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,31.3,-89.3,non-Arctic
 MDR,20,0.054318904,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,31.3,-89.3,non-Arctic
@@ -111,7 +111,7 @@ MDR,34,0.084262451,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_201
 MDR,20,0.063694268,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,30.4,-81.6,non-Arctic
 MDR,20,0.064102564,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,30.4,-81.6,non-Arctic
 MDR,25,0.101626016,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,30.4,-81.6,non-Arctic
-MDR,25,0.035335689,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,30.4,-81.6,non-Arctic
+MDR,25,0.035335689000000003,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,30.4,-81.6,non-Arctic
 MDR,30,0.121506683,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,30.4,-81.6,non-Arctic
 MDR,30,0.063291139,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Muturi_et_al_2011_JMedEnto,NA,NA,NA,30.4,-81.6,non-Arctic
 MDR,18,0.040816327,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_et_al_2010_VecBorn&ZooDis,NA,NA,NA,26.7,-80.4,non-Arctic
@@ -141,17 +141,17 @@ MDR,25,0.089051081,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,fig
 MDR,25,0.084905644,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
 MDR,25,0.08349148,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
 MDR,25,0.085127176,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,21,0.027382256,5.32E-04,5.32E-04,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
-MDR,26.5,0.064683053,0.002008271,0.002008271,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
-MDR,32,0.054975261,0.001571585,0.001571585,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
+MDR,21,0.027382256297918947,5.323494515750945e-4,5.323494515750945e-4,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
+MDR,26.5,0.0646830530401035,0.0020082707282826438,0.0020082707282826438,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
+MDR,32,0.05497526113249038,0.0015715852550244635,0.0015715852550244635,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
 MDR,12,0.001,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,Did not complete development,30.2,-93.2,non-Arctic
-MDR,15,0.051813472,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
-MDR,20,0.082644628,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
-MDR,23,0.12987013,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
-MDR,26,0.166666667,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
-MDR,29,0.192307692,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
-MDR,32,0.208333333,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
-MDR,35,0.208333333,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
+MDR,15,0.05181347150259067,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
+MDR,20,0.08264462809917356,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
+MDR,23,0.12987012987012986,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
+MDR,26,0.16666666666666666,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
+MDR,29,0.1923076923076923,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
+MDR,32,0.20833333333333334,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
+MDR,35,0.20833333333333334,NA,NA,NA,NA,NA,NA,Aedes,sollicitans,Shelton_1973_MosquitoNews,NA,Figure 7,NA,30.2,-93.2,non-Arctic
 MDR,6,0.001,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Jalil 1972,NA,NA,"Is actually 0, but changed to .001",33.1,-86.6,non-Arctic
 MDR,8,0.001,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Jalil 1972,NA,NA,"Is actually 0, but changed to .001",33.1,-86.6,non-Arctic
 MDR,10,0.016393443,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Jalil 1972,NA,NA,NA,33.1,-86.6,non-Arctic
@@ -164,10 +164,10 @@ MDR,32,0.142857143,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Jalil 1972,NA,NA,NA,33.1,
 MDR,36,0.125,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Jalil 1972,NA,NA,NA,33.1,-86.6,non-Arctic
 MDR,38,0.001,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Jalil 1972,NA,NA,"Is actually 0, but changed to .001",33.1,-86.6,non-Arctic
 MDR,12,0.001,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,Did not complete development,30.2,-93.2,non-Arctic
-MDR,15,0.046296296,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
-MDR,20,0.072463768,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
-MDR,23,0.090909091,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
-MDR,26,0.092592593,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
-MDR,29,0.090909091,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
+MDR,15,0.046296296296296294,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
+MDR,20,0.07246376811594203,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
+MDR,23,0.09090909090909091,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
+MDR,26,0.09259259259259259,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
+MDR,29,0.09090909090909091,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
 MDR,32,0.1,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,NA,30.2,-93.2,non-Arctic
 MDR,35,0.001,NA,NA,NA,NA,NA,NA,Aedes,triseriatus,Shelton_1973_MosquitoNews,NA,Figure 8,Did not complete development,30.2,-93.2,non-Arctic

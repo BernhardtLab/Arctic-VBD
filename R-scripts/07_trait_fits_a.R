@@ -8,7 +8,11 @@
 ##    0. Set-up workspace
 ##    1. MCMC settings for all models
 ##    2. Fitting TPC (Briere)
+##        A. Fit TPC by combining all data (Arctic and non-Arctic)
+##        B. Fit non-Arctic TPC using uniform priors
 ##    3. Fitting TPC (Quadratic)
+##        A. Fit TPC by combining all data (Arctic and non-Arctic)
+##        B. Fit non-Arctic TPC using uniform priors
 ##    4. Compare model fit between Briere and Quadratic models
 ##    5. Process and save model output for visualization
 ##
@@ -48,6 +52,13 @@ source("R-scripts/00_Functions.R")
 # Load data
 data.all <- read_csv("data-processed/TraitData_a.csv")
 unique(data.all$species)
+
+# Subset data
+## Arctic species
+data.a.arctic <- subset(data.all, type == "Arctic")
+
+## Non-Arctic species
+data.a.nonarctic <- subset(data.all, type == "non-Arctic")
 
 
 ## Plot raw data
@@ -91,16 +102,16 @@ plot.data.a.combine
 
 # 1. MCMC Settings for all models ----------------------------------------------
 
-# Number of posterior dist elements = [(ni - nb) / nt] * nc = [(45000 - 5000) / 8] * 3 = 15000
-ni <- 45000 # number of iterations in each chain
-nb <- 5000 # number of 'burn in' iterations to discard
-nt <- 8 # thinning rate - jags saves every nt iterations in each chain
+# Number of posterior dist elements = [(ni - nb) / nt] * nc = [(450000 - 50000) / 100] * 3 = 12000
+ni <- 450000 # number of iterations in each chain
+nb <- 50000 # number of 'burn in' iterations to discard
+nt <- 100 # thinning rate - jags saves every nt iterations in each chain
 nc <- 3 # number of chains
-
-set.seed(123) # for reproducibility
 
 
 # 2. Fitting TPC (Briere) ------------------------------------------------------
+
+## 2A. Fit TPC by combining all data (Arctic and non-Arctic) -------------------
 
 ##### Temp sequence for derived quantity calculations
 # For actual fits
@@ -143,7 +154,8 @@ inits <- function(){list(
 
 
 ##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", 
+                "q", "T0", "Tm", "sigma_q", "sigma_T0", 
                 "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
 
 
@@ -160,6 +172,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 a.alldata.bri.uni <- jags(data = jag.data,
                           inits = inits,
                           parameters.to.save = parameters,
@@ -182,15 +195,16 @@ save(a.alldata.bri.uni, file = "R-scripts/R2jags-objects/all-mods/a.alldata.bri.
 
 ## Diagnostics
 ##### Examine output
-a.alldata.bri.uni$BUGSoutput$summary[1:8,]
-# mcmcplot(a.alldata.bri.uni)
+a.alldata.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]
+mcmcplot(a.alldata.bri.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"))
+
 
 # Extract the DIC for future model comparisons
 a.alldata.bri.uni$BUGSoutput$DIC
 
 
 ## Plot data + fit
-df.a.alldata.bri.uni <- data.frame(a.alldata.bri.uni$BUGSoutput$summary)[-(1:8),]
+df.a.alldata.bri.uni <- data.frame(a.alldata.bri.uni$BUGSoutput$summary)
 
 ## Extract the model prediction
 ## Overall curve
@@ -297,10 +311,110 @@ ggsave("figures/a.alldata.bri.uni.png", plot.a.alldata.bri.uni,
        width = 10.3, height = 5.6)
 
 
+## 2B. Fit non-Arctic TPC using uniform priors ---------------------------------
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
+
+
+##### Set data
+data <- data.a.nonarctic
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(25, 45)
+)
+
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
+
+##### Run JAGS
+set.seed(123) # for reproducibility
+a.nonarctic.bri.uni <- jags(data = jag.data,
+                           inits = inits,
+                           parameters.to.save = parameters,
+                           model.file = "R-scripts/briere_T.txt",
+                           n.thin = nt,
+                           n.chains = nc,
+                           n.burnin = nb,
+                           n.iter = ni,
+                           DIC = T,
+                           working.directory = getwd()
+                           )
+
+## Save the model as Rdata 
+save(a.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/all-mods/a.nonarctic.bri.uni.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/all-mods/a.nonarctic.bri.uni.Rdata")
+
+
+## Diagnostics
+##### Examine output
+a.nonarctic.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(a.nonarctic.bri.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
+
+
+# Extract the DIC for future model comparisons
+a.nonarctic.bri.uni$BUGSoutput$DIC
+
+## Plot data + fit
+df.a.nonarctic.bri.uni <- data.frame(a.nonarctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+head(df.a.nonarctic.bri.uni)
+
+##### Plot
+plot.a.nonarctic.bri.uni <- df.a.nonarctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Rate (days-1)",
+    title = "a, non-arctic sp., briere, uniform priors"
+  ) +
+  theme_bw()
+
+plot.a.nonarctic.bri.uni
+
+ggsave("figures/a.nonarctic.bri.uni.png", plot.a.nonarctic.bri.uni,
+       width = 10.3, height = 5.6)
+
 
 
 # 3. Fitting TPC (quadratic) ---------------------------------------------------
 
+## 3A. Fit TPC by combining all data (Arctic and non-Arctic) -------------------
 
 ##### Temp sequence for derived quantity calculations
 Temp.xs <- seq(0, 45, 0.1)
@@ -342,7 +456,8 @@ inits <- function(){list(
 
 
 ##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", 
+                "q", "T0", "Tm", "sigma_q", "sigma_T0", 
                 "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
 
 
@@ -359,6 +474,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 a.alldata.quad.uni <- jags(data = jag.data,
                            inits = inits,
                            parameters.to.save = parameters,
@@ -381,15 +497,16 @@ save(a.alldata.quad.uni, file = "R-scripts/R2jags-objects/all-mods/a.alldata.qua
 
 ## Diagnostics
 ##### Examine output
-a.alldata.quad.uni$BUGSoutput$summary[1:8,]
-# mcmcplot(a.alldata.quad.uni)
+a.alldata.quad.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]
+mcmcplot(a.alldata.quad.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"))
+
 
 # Extract the DIC for future model comparisons
 a.alldata.quad.uni$BUGSoutput$DIC
 
 
 ## Plot data + fit
-df.a.alldata.quad.uni <- data.frame(a.alldata.quad.uni$BUGSoutput$summary)[-(1:8),]
+df.a.alldata.quad.uni <- data.frame(a.alldata.quad.uni$BUGSoutput$summary)
 
 ## Extract the model prediction
 ## Overall curve
@@ -496,6 +613,104 @@ ggsave("figures/a.alldata.quad.uni.png", plot.a.alldata.quad.uni,
        width = 10.3, height = 5.6)
 
 
+## 3B. Fit non-Arctic TPC using uniform priors ---------------------------------
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
+
+
+##### Set data
+data <- data.a.nonarctic
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(25, 45)
+)
+
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
+
+##### Run JAGS
+set.seed(123) # for reproducibility
+a.nonarctic.quad.uni <- jags(data = jag.data,
+                            inits = inits,
+                            parameters.to.save = parameters,
+                            model.file = "R-scripts/quad_T.txt",
+                            n.thin = nt,
+                            n.chains = nc,
+                            n.burnin = nb,
+                            n.iter = ni,
+                            DIC = T,
+                            working.directory = getwd()
+)
+
+## Save the model as Rdata 
+save(a.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/all-mods/a.nonarctic.quad.uni.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/all-mods/a.nonarctic.quad.uni.Rdata")
+
+
+## Diagnostics
+##### Examine output
+a.nonarctic.quad.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(a.nonarctic.quad.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
+
+
+# Extract the DIC for future model comparisons
+a.nonarctic.quad.uni$BUGSoutput$DIC
+
+## Plot data + fit
+df.a.nonarctic.quad.uni <- data.frame(a.nonarctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+head(df.a.nonarctic.quad.uni)
+
+##### Plot
+plot.a.nonarctic.quad.uni <- df.a.nonarctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Rate (days-1)",
+    title = "a, non-arctic sp., quadratic, uniform priors"
+  ) +
+  theme_bw()
+
+plot.a.nonarctic.quad.uni
+
+ggsave("figures/a.nonarctic.quad.uni.png", plot.a.nonarctic.quad.uni,
+       width = 10.3, height = 5.6)
 
 
 # 4. Compare model fit between Briere and Quadratic models ---------------------
@@ -540,18 +755,23 @@ a.alldata.bri.uni$BUGSoutput$DIC
 a.alldata.quad.uni$BUGSoutput$DIC 
 
 # Although the quadratic model produced a slightly lower DIC, this difference 
-# was negligible (ΔDIC = 1.8), indicating that both models were similarly 
+# was negligible (ΔDIC = 0.9), indicating that both models were similarly 
 # supported. Because biting rate is expected to exhibit a nonlinear, 
 # right-skewed thermal response, we selected the Brière function to parameterize
 # the suitability model, which better reflects the biological form of rate-based
 # TPCs and has been widely used in previous vector-borne disease models.
 
 
+a.nonarctic.bri.uni$BUGSoutput$DIC # This is the best fitting TPC
+a.nonarctic.quad.uni$BUGSoutput$DIC 
+
 # Save best-fitting TPC in a separate folder
 a.alldata.mod <- a.alldata.bri.uni
+a.nonarctic.mod <- a.nonarctic.bri.uni
 
 ## Save the model as Rdata 
 save(a.alldata.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata")
+save(a.nonarctic.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/a.nonarctic.mod.Rdata")
 
 
 
@@ -575,3 +795,15 @@ a.alldata.params.fullposts <- a.TPC.analysis[[3]]
 write_csv(a.alldata.predictions.summary, "data-processed/a/a.alldata.predictions.summary.csv")
 write_csv(a.alldata.params.summary, "data-processed/a/a.alldata.params.summary.csv")
 write_csv(a.alldata.params.fullposts, "data-processed/a/a.alldata.params.fullposts.csv")
+
+
+##### non-Arctic #####
+Temp.xs <- seq(0, 45, 0.1)
+a.TPC.analysis <- extractTPC(a.nonarctic.bri.uni, "a", Temp.xs)
+a.nonarctic.predictions.summary <- a.TPC.analysis[[1]]
+a.nonarctic.params.summary <- a.TPC.analysis[[2]]
+a.nonarctic.params.fullposts <- a.TPC.analysis[[3]]
+
+write_csv(a.nonarctic.predictions.summary, "data-processed/a/a.nonarctic.predictions.summary.csv")
+write_csv(a.nonarctic.params.summary, "data-processed/a/a.nonarctic.params.summary.csv")
+write_csv(a.nonarctic.params.fullposts, "data-processed/a/a.nonarctic.params.fullposts.csv")

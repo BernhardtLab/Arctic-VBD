@@ -14,7 +14,7 @@
 ## Inputs:
 ## Best-fitting TPC models for Arctic species:
 ## R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata
-## R-scripts/R2jags-objects/best-fitting-mods/lf.alldata.mod.Rdata
+## R-scripts/R2jags-objects/best-fitting-mods/lf.arctic.mod.Rdata
 ## R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata
 ## R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata
 ## R-scripts/R2jags-objects/best-fitting-mods/EV.arctic.mod.Rdata
@@ -22,12 +22,12 @@
 ## R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata
 ##
 ## data-processed/bc/bc.arctic.predictions.fullposts.csv - 
-##     Full posterior distributions for bc TPC predictions after cold-shift
+##     Full posterior distributions for bc TPC predictions after cold-shifting
 ## 
 ## Full posterior distributions for TPC parameters:
 ## data-processed/a/a.alldata.params.fullposts.csv
 ## data-processed/bc/bc.arctic.params.fullposts.csv
-## data-processed/lf/lf.alldata.params.fullposts.csv
+## data-processed/lf/lf.arctic.params.fullposts.csv
 ## data-processed/PDR/PDR.arctic.params.fullposts.csv
 ## data-processed/EFGC/EFGC.alldata.params.fullposts.csv
 ## data-processed/EV/EV.arctic.params.fullposts.csv
@@ -38,9 +38,23 @@
 ## Outputs: 
 ## figures/Fig4-suitability.sensitivity.png -
 ##     Main text figure 4
+##
+## data-processed/suitability/S.predictions.fullposts.csv -
+##     Full posterior distributions for suitability calculations
+##
+## data-processed/suitability/S.params.fullposts.csv - 
+##     Full posterior distributions for suitability
+##
+## data-processed/suitability/S.predictions.summary.csv - 
+##     Posterior summary of suitability across temperatures
+##
+## data-processed/suitability/S.params.summary.csv - 
+##     Summary statistics of Tmin, Topt, and Tmax for suitability
 ## 
-## data-processed/S.output.lowerCI.csv -
+## ## data-processed/suitability/S.predictions.scaled.csv -
 ##     Suitability for mapping
+
+
 
 # 0. Set-up workspace ----------------------------------------------------------
 
@@ -62,7 +76,7 @@ source("R-scripts/00_Functions.R")
 load("R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata")
 
 ## Adult lifespan (lf)
-load("R-scripts/R2jags-objects/best-fitting-mods/lf.alldata.mod.Rdata")
+load("R-scripts/R2jags-objects/best-fitting-mods/lf.arctic.mod.Rdata")
 
 ## Parasite development rate (PDR)
 load("R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata")
@@ -85,7 +99,7 @@ a.preds <- a.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get th
 bc.preds <- read_csv("data-processed/bc/bc.arctic.predictions.fullposts.csv")
 bc.preds <- as.matrix(bc.preds)
 
-lf.preds <- lf.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
+lf.preds <- lf.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
 PDR.preds <- PDR.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
 EFGC.preds <- EFGC.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
 EV.preds <- EV.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
@@ -96,7 +110,7 @@ MDR.preds <- MDR.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
 ## Pull out the full posterior distributions of TPC parameters
 a.params.fullposts <- read.csv("data-processed/a/a.alldata.params.fullposts.csv")
 bc.params.fullposts <- read.csv("data-processed/bc/bc.arctic.params.fullposts.csv")
-lf.params.fullposts <- read.csv("data-processed/lf/lf.alldata.params.fullposts.csv")
+lf.params.fullposts <- read.csv("data-processed/lf/lf.arctic.params.fullposts.csv")
 PDR.params.fullposts <- read.csv("data-processed/PDR/PDR.arctic.params.fullposts.csv")
 EFGC.params.fullposts <- read.csv("data-processed/EFGC/EFGC.alldata.params.fullposts.csv")
 EV.params.fullposts <- read.csv("data-processed/EV/EV.arctic.params.fullposts.csv")
@@ -117,44 +131,41 @@ N.Temp.xs <-length(Temp.xs)
 
 
 # save all 15000 MCMC iterations of suitability calculation (451 row (temp), columns = temp and 15000 MCMC iterations)
-S.calc.iter <- data.frame(Temp.xs, t(S.calc))
-colnames(S.calc.iter) <- c("temp", paste0("iter", seq(1:nrow(S.calc))))
+S.preds.fullposts <- data.frame(Temp.xs, t(S.calc))
+colnames(S.preds.fullposts) <- c("temp", paste0("iter", seq(1:nrow(S.calc))))
 
 # Save output
-write.csv(S.calc.iter, "data-processed/S.calc.iter.csv")
+write.csv(S.preds.fullposts, "data-processed/suitability/S.predictions.fullposts.csv")
 
 # Get the Tmin, Topt and Tmax for each MCMC iteration
-S.calc.iter.summary <- calcDerivedTPCParamPosteriors(S.calc, Temp.xs)
-S.calc.iter.summary$iter <- seq(1:nrow(S.calc))
-write.csv(S.calc.iter.summary, "data-processed/S.calc.iter.summary.csv")
+S.params.fullposts <- calcDerivedTPCParamPosteriors(S.calc, Temp.xs)
+S.params.fullposts$iter <- seq(1:nrow(S.calc))
+write.csv(S.params.fullposts, "data-processed/suitability/S.params.fullposts.csv")
 
 
-# Get S mean, median, upper + lower CIs
+# Get S mean, median, upper + lower CIs across temp gradient
 S.out <- calcPostQuants(as.data.frame(S.calc), "S", Temp.xs)
+S.out <- S.out %>% 
+  dplyr::select(temperature, lowerCI, lowerQ, median, mean, upperQ, upperCI, trait)
 
-# Save output
-write.csv(S.out, "data-processed/S.output.raw.csv")
-
+head(S.out)
 
 ## Calculate relative S(T) 
 # by scaling to the maximum median
 S.out.median <- S.out %>% 
-  mutate(scaled_median = S.out$median / max(S.out$median))
-
-write.csv(S.out.median, "data-processed/S.output.median.csv")
-
-# by scaling to the maximum upper CI
-S.out.upperCI <- S.out %>% 
-  mutate(scaled_median = S.out$median / max(S.out$upperCI)) %>%
-  mutate(scaled_lowerCI = S.out$lowerCI / max(S.out$upperCI)) %>%
-  mutate(scaled_upperCI = S.out$upperCI / max(S.out$upperCI )) %>%
-  mutate(scaled_lowerQ = S.out$lowerQ / max(S.out$upperCI)) %>%
-  mutate(scaled_upperQ= S.out$upperQ / max(S.out$upperCI ))
+  mutate(scaled_lowerCI = S.out$lowerCI / max(S.out$median)) %>%
+  mutate(scaled_lowerQ = S.out$lowerQ / max(S.out$median)) %>%
+  mutate(scaled_median = S.out$median / max(S.out$median)) %>% 
+  mutate(scaled_upperQ= S.out$upperQ / max(S.out$median)) %>% 
+  mutate(scaled_upperCI = S.out$upperCI / max(S.out$median))
   
+write.csv(S.out.median, "data-processed/suitability/S.predictions.summary.csv")
+
+
 
 
 # Plot S
-plot.S <- ggplot(data = S.out.upperCI) +
+plot.S <- ggplot(data = S.out.median) +
   geom_ribbon(aes(x = temperature, ymin = scaled_lowerCI, ymax = scaled_upperCI),
               fill = "grey",
               alpha = 0.5) +
@@ -180,23 +191,23 @@ ggsave("figures/suitability.png", plot.S, width = 10.3, height = 5.6)
 
 # 3. Calculate Tmin, Tmax and Topt (and CIs) for suitability --------------------------------------
 
-S.viz.out <- extractDerivedTPC(as.data.frame(S.calc), "S", Temp.xs)
+S.params.summary <- extractDerivedTPC(as.data.frame(S.calc), "S", Temp.xs)
 
-S.viz.out <- S.viz.out %>% 
+S.params.summary <- S.params.summary %>% 
   mutate(term = case_when(term == "cf.Tm" ~ "Tmax",
                           term == "cf.T0"~ "Tmin",
                           term == "Topt" ~ "Topt",
                           term == "Tbreadth" ~ "Tbreadth"))
 
 
-S.viz.out$term <- factor(S.viz.out$term,
+S.params.summary$term <- factor(S.params.summary$term,
                          levels = c("Tmax", "Topt", "Tmin", "Tbreadth"))
 
 # Save output
-write.csv(S.viz.out, "data-processed/S.summary.csv")
+write.csv(S.params.summary, "data-processed/suitability/S.params.summary.csv")
 
 # Plot
-plot.S.viz <- S.viz.out %>% 
+plot.S.params <- S.params.summary %>% 
   filter(term != "Tbreadth") %>% 
   ggplot() +
   geom_linerange(aes(xmin = lowerQ, xmax = upperQ, y = term, colour = term), 
@@ -219,9 +230,9 @@ plot.S.viz <- S.viz.out %>%
         panel.background = element_blank(),
         panel.border = element_rect(colour = "black", fill = NA))
 
-plot.S.viz
+plot.S.params
 
-plot.suitability <- plot_grid(plot.S, plot.S.viz,
+plot.suitability <- plot_grid(plot.S, plot.S.params,
                               ncol = 1,
                               rel_heights = c(2,1),
                               align = "hv"
@@ -296,11 +307,19 @@ plot.SA <- ggplot() +
                                  "MDR" = "#D55E00"),
                        name = element_blank(), # No legend title
                        breaks = c("S", "a", "bc", "lf", "PDR", "EFGC", "EV", "pLA", "MDR"),
-                       labels = c("S", "a", "bc", "lf", "PDR", "EFGC",  "EV", "pLA", "MDR")) +
+                      labels = c("Suitability (S)",
+                                 "Biting rate (a)", 
+                                 "Vector competence (bc)", 
+                                 "Adult lifespan (lf)", 
+                                 "Pathogen development rate (PDR)", 
+                                 "Eggs per female per\ngonotrophic cycle (EFGC)",  
+                                 "Egg viability (EV)", 
+                                 "Larval-to-adult survival (pLA)", 
+                                 "Mosquito development rate (MDR)")) + 
   theme_bw() +
   theme(axis.text = element_text(size = 12),
-        axis.title = element_text(size = 14),,
-        legend.text = element_text(size = 14),
+        axis.title = element_text(size = 14),
+        legend.text = element_text(size = 12),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
@@ -312,7 +331,7 @@ plot.SA
 ggsave("figures/sensitivity.analysis.png", plot.SA, width = 10, height = 5)
 
 
-plot.everything <- plot_grid(plot.S, plot.S.viz, plot.SA,
+plot.everything <- plot_grid(plot.S, plot.S.params, plot.SA,
                              ncol = 1,
                              labels = c(LETTERS[1:3]), 
                              rel_heights = c(2,1,2),
@@ -323,18 +342,8 @@ plot.everything <- plot_grid(plot.S, plot.S.viz, plot.SA,
 plot.everything
 
 ggsave("figures/Fig4-suitability.sensitivity.png", plot.everything, 
-       width = 8, height = 10)
+       width = 10, height = 10)
 
-
-##### TPC summary
-
-a.alldata.mod$BUGSoutput$summary[1:8,]
-lf.alldata.mod$BUGSoutput$summary[1:8,]
-PDR.arctic.mod$BUGSoutput$summary[1:5,]
-EFGC.alldata.mod$BUGSoutput$summary[1:8,]
-EV.arctic.mod$BUGSoutput$summary[1:5,]
-pLA.arctic.mod$BUGSoutput$summary[1:5,]
-MDR.arctic.mod$BUGSoutput$summary[1:5,]
 
 
 
@@ -345,18 +354,23 @@ head(S.out)
 ## Goal: create maps to compare the spatial distribution of days of thermal 
 ## suitability for transmission.
 
-## We use two thermal suitability thresholds: S(T) > 0.001 and S(T) > 0.5, both 
-## with a posterior probability greater than 0.975. This conservative thresholds
-## ensure that transmission is almost certainly not excluded by temperature and 
-## can minimize type I error (inclusion of inclusion of unsuitable areas and 
-## prevent overestimation of potential risk)
+## We use two thermal suitability thresholds: S(T) > 0.001 and S(T) > 0.5, each 
+## with a posterior probability greater than 0.975, 0.5, and 0.025.
 
-## We will do that by scale the lower CI contour to itself get S(T) for mapping
-S.output.lowerCI <- data.frame(temp = S.out$temperature,
-                               scaled_lowerCI = S.out$lowerCI/max(S.out$lowerCI))
+## We will do that by scale the lower CI, median, and upper CI contours to 
+## themselves get S(T) for mapping
 
+S.out.scaled <- data.frame(temp = S.out$temperature,
+                           scaled_lowerCI = S.out$lowerCI/max(S.out$lowerCI),
+                           scaled_median = S.out$median/max(S.out$median),
+                           scaled_upperCI = S.out$upperCI / max(S.out$upperCI)
+                           )
+
+head(S.out.scaled)
 
 # Check output
-plot(scaled_lowerCI ~ temp, data = S.output.lowerCI, type = "l")
+plot(scaled_lowerCI ~ temp, data = S.out.scaled, type = "l")
+plot(scaled_median ~ temp, data = S.out.scaled, type = "l")
+plot(scaled_upperCI ~ temp, data = S.out.scaled, type = "l")
 
-write.csv(S.output.lowerCI, "data-processed/S.output.lowerCI.csv")
+write.csv(S.out.scaled, "data-processed/suitability/S.predictions.scaled.csv")

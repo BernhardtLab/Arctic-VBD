@@ -53,7 +53,7 @@ temp.data$month <- as.factor(temp.data$month)
 
 temp.data <- temp.data %>% 
   filter(!is.na(mean_temp_c)) %>% 
-  filter(month %in% c("05", "06", "07", "08", "09"))
+  filter(month %in% c("06", "07", "08", "09"))
 
 temp.data.summary <- temp.data %>% 
   group_by(station_name, year, month) %>% 
@@ -61,7 +61,7 @@ temp.data.summary <- temp.data %>%
             num_observations = n())
 
 temp.data.summary
-temp.data.summary$month2 <- rep(c("May", "Jun", "Jul", "Aug", "Sep"), 22)
+temp.data.summary$month2 <- rep(c("Jun", "Jul", "Aug", "Sep"), 22)
 
 
 plot <- temp.data.summary %>% ggplot(aes(x = year, y = monthly_mean_temp)) +

@@ -66,13 +66,11 @@ plot.data.bc.nonarctic
 
 # 1. MCMC Settings for all models ----------------------------------------------
 
-# Number of posterior dist elements = [(ni - nb) / nt] * nc = [(45000 - 5000) / 8] * 3 = 15000
-ni <- 45000 # number of iterations in each chain
-nb <- 5000 # number of 'burn in' iterations to discard
-nt <- 8 # thinning rate - jags saves cery nt iterations in each chain
+# Number of posterior dist elements = [(ni - nb) / nt] * nc = [(450000 - 50000) / 100] * 3 = 12000
+ni <- 450000 # number of iterations in each chain
+nb <- 50000 # number of 'burn in' iterations to discard
+nt <- 100 # thinning rate - jags saves every nt iterations in each chain
 nc <- 3 # number of chains
-
-set.seed(123) # for reproducibility
 
 
 # 2. Fitting TPC (Briere) ------------------------------------------------------
@@ -117,6 +115,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
 
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 bc.nonarctic.bri.uni <- jags(data = jag.data,
                              inits = inits,
                              parameters.to.save = parameters,
@@ -138,8 +137,8 @@ save(bc.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/all-mods/bc.nonarcti
 
 ## Diagnostics
 ##### Examine output
-bc.nonarctic.bri.uni$BUGSoutput$summary[1:5,]
-mcmcplot(bc.nonarctic.bri.uni)
+bc.nonarctic.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(bc.nonarctic.bri.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
 
 # Extract the DIC for future model comparisons
 bc.nonarctic.bri.uni$BUGSoutput$DIC
@@ -215,6 +214,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
 
 
 # ##### Run JAGS
+set.seed(123) # for reproducibility
 bc.nonarctic.quad.uni <- jags(data = jag.data,
                               inits = inits,
                               parameters.to.save = parameters,
@@ -236,8 +236,9 @@ save(bc.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/all-mods/bc.nonarct
 
 ## Diagnostics
 ##### Examine output
-bc.nonarctic.quad.uni$BUGSoutput$summary[1:5,]
-mcmcplot(bc.nonarctic.quad.uni)
+bc.nonarctic.quad.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(bc.nonarctic.quad.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
+
 
 # Extract the DIC for future model comparisons
 bc.nonarctic.quad.uni$BUGSoutput$DIC
@@ -339,3 +340,16 @@ bc.nonarctic.params.fullposts <- bc.TPC.analysis[[3]]
 write_csv(bc.nonarctic.predictions.summary, "data-processed/bc/bc.nonarctic.predictions.summary.csv")
 write_csv(bc.nonarctic.params.summary, "data-processed/bc/bc.nonarctic.params.summary.csv")
 write_csv(bc.nonarctic.params.fullposts, "data-processed/bc/bc.nonarctic.params.fullposts.csv")
+
+
+##### Briere model #####
+Temp.xs <- seq(0, 45, 0.1)
+bc.TPC.analysis <- extractTPC(bc.nonarctic.bri.uni, "bc", Temp.xs)
+bc.nonarctic.predictions.summary <- bc.TPC.analysis[[1]]
+bc.nonarctic.params.summary <- bc.TPC.analysis[[2]]
+bc.nonarctic.params.fullposts <- bc.TPC.analysis[[3]]
+
+write_csv(bc.nonarctic.predictions.summary, "data-processed/supplemental-analysis/briere-only/bc.nonarctic.predictions.summary.csv")
+write_csv(bc.nonarctic.params.summary, "data-processed/supplemental-analysis/briere-only/bc.nonarctic.params.summary.csv")
+write_csv(bc.nonarctic.params.fullposts, "data-processed/supplemental-analysis/briere-only/bc.nonarctic.params.fullposts.csv")
+

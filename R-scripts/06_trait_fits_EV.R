@@ -11,14 +11,16 @@
 ##    1. MCMC settings for all models
 ##
 ##    2. Fitting TPC (Briere)
-##        A. Fit non-Arctic TPC to generate priors
-##        B. Fit gamma distributions to non-Arctic TPC parameters
-##        C. Fit Arctic TPC using data-informed priors
+##        A. Fit Arctic TPC using uniform priors
+##        B. Fit non-Arctic TPC to generate priors
+##        C. Fit gamma distributions to non-Arctic TPC parameters
+##        D. Fit Arctic TPC using data-informed priors
 ##
 ##    3. Fitting TPC (Quadratic)
-##        A. Fit non-Arctic TPC to generate priors
-##        B. Fit gamma distributions to non-Arctic TPC parameters
-##        C. Fit Arctic TPC using data-informed priors
+##        A. Fit Arctic TPC using uniform priors
+##        B. Fit non-Arctic TPC to generate priors
+##        C. Fit gamma distributions to non-Arctic TPC parameters
+##        D. Fit Arctic TPC using data-informed priors
 ##
 ##    4. Compare model fit between Briere and Quadratic models
 ##    5. Process and save model output for visualization
@@ -62,6 +64,7 @@ library(janitor)
 library(R2jags)
 library(mcmcplots) # Diagnostic plots for fits
 library(MASS)
+library(cowplot)
 
 
 # Load functions
@@ -102,18 +105,117 @@ plot.data.EV
 
 # 1. MCMC Settings for all models ----------------------------------------------
 
-# Number of posterior dist elements = [(ni - nb) / nt] * nc = [(45000 - 5000) / 8] * 3 = 15000
-ni <- 45000 # number of iterations in each chain
-nb <- 5000 # number of 'burn in' iterations to discard
-nt <- 8 # thinning rate - jags saves every nt iterations in each chain
+# Number of posterior dist elements = [(ni - nb) / nt] * nc = [(450000 - 50000) / 100] * 3 = 12000
+ni <- 450000 # number of iterations in each chain
+nb <- 50000 # number of 'burn in' iterations to discard
+nt <- 100 # thinning rate - jags saves every nt iterations in each chain
 nc <- 3 # number of chains
-
-set.seed(123) # for reproducibility
 
 
 # 2. Fitting TPC (Briere) ------------------------------------------------------
 
-## 2A. Fit non-Arctic TPC to generate priors -----------------------------------
+
+## 2A. Fit Arctic TPC using uniform priors -------------------------------------
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
+
+
+##### Set data
+data <- data.EV.arctic
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(25, 45)
+)
+
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
+
+##### Run JAGS
+set.seed(123) # for reproducibility
+EV.arctic.bri.uni <- jags(data = jag.data,
+                           inits = inits,
+                           parameters.to.save = parameters,
+                           model.file = "R-scripts/briereprob.txt",
+                           n.thin = nt,
+                           n.chains = nc,
+                           n.burnin = nb,
+                           n.iter = ni,
+                           DIC = T,
+                           working.directory = getwd()
+)
+
+## Save the model as Rdata 
+save(EV.arctic.bri.uni, file = "R-scripts/R2jags-objects/all-mods/EV.arctic.bri.uni.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/all-mods/EV.arctic.bri.uni.Rdata")
+
+
+## Diagnostics
+##### Examine output
+EV.arctic.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(EV.arctic.bri.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
+
+# Extract the DIC for future model comparisons
+EV.arctic.bri.uni$BUGSoutput$DIC
+
+## Plot data + fit
+df.EV.arctic.bri.uni <- data.frame(EV.arctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+head(df.EV.arctic.bri.uni)
+
+##### Plot
+plot.EV.arctic.bri.uni <- df.EV.arctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Proportion hatching",
+    title = "A) EV, arctic sp., briere, uniform priors"
+  ) +
+  theme_bw()
+
+plot.EV.arctic.bri.uni
+
+ggsave("figures/EV.arctic.bri.uni.png", plot.EV.arctic.bri.uni,
+       width = 10.3, height = 5.6)
+
+
+
+## 2B. Fit non-Arctic TPC to generate priors -----------------------------------
 
 
 ##### Temp sequence for derived quantity calculations
@@ -155,7 +257,8 @@ inits <- function(){list(
 
 
 ##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", 
+                "q", "T0", "Tm", "sigma_q", "sigma_T0", 
                 "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
 
 
@@ -173,6 +276,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  prior = prior)
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 EV.nonarctic.bri.uni <- jags(data = jag.data,
                                     inits = inits,
                                     parameters.to.save = parameters,
@@ -195,15 +299,15 @@ save(EV.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/all-mods/EV.nonarcti
 
 ## Diagnostics
 ##### Examine output
-EV.nonarctic.bri.uni$BUGSoutput$summary[1:8,]
-mcmcplot(EV.nonarctic.bri.uni)
+EV.nonarctic.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]
+mcmcplot(EV.nonarctic.bri.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"))
 
 # Extract the DIC for future model comparisons
 EV.nonarctic.bri.uni$BUGSoutput$DIC
 
 
 ## Plot data + fit
-df.EV.nonarctic.bri.uni <- data.frame(EV.nonarctic.bri.uni$BUGSoutput$summary)[-(1:8),]
+df.EV.nonarctic.bri.uni <- data.frame(EV.nonarctic.bri.uni$BUGSoutput$summary)[-(1:35),]
 
 ## Extract the model prediction
 ## Overall curve
@@ -339,7 +443,7 @@ ggsave("figures/EV.nonarctic.bri.uni.png", plot.EV.nonarctic.bri.uni,
 
 
 
-## 2B. Fit gamma distributions to non-Arctic TPC parameters --------------------
+## 2C. Fit gamma distributions to non-Arctic TPC parameters --------------------
 
 
 # Get the posterior dists for 3 main parameters (not sigma) into a data frame
@@ -355,9 +459,9 @@ save(EV.bri.prior.gamma.fits, file = "R-scripts/R2jags-objects/priors/EV.bri.pri
 
 
 
-## 2C. Fit Arctic TPC using data-informed priors -------------------------------
+## 2D. Fit Arctic TPC using data-informed priors -------------------------------
 
-load("R-scripts/R2jags-objects/priors/EV.bri.priors.Rsave")
+# load("R-scripts/R2jags-objects/priors/EV.bri.priors.Rsave")
 
 ##### Temp sequence for derived quantity calculations
 # For actual fits
@@ -367,6 +471,39 @@ N.Temp.xs <-length(Temp.xs)
 ##### Set data
 data <- data.EV.arctic
 hypers <- EV.bri.prior.gamma.fits * 0.1
+
+# Gamma prior density for Tm
+
+df.EV.Tm.prior <- tibble(
+  temp = seq(0, 45, 0.1),
+  density = dgamma(
+    temp,
+    shape = hypers["shape", "Tm"],
+    rate  = hypers["rate", "Tm"]
+  )
+)
+
+TPC.apex <- max(df.EV.nonarctic.bri.uni.pop$X50., na.rm = TRUE)
+
+df.EV.Tm.prior <- df.EV.Tm.prior %>%
+  mutate(
+    density.scaled = density / max(density, na.rm = TRUE) * TPC.apex * 0.5
+  )
+
+df.EV.T0.prior <- tibble(
+  temp = seq(0, 45, 0.1),
+  density = dgamma(
+    temp,
+    shape = hypers["shape", "T0"],
+    rate  = hypers["rate", "T0"]
+  )
+)
+
+df.EV.T0.prior <- df.EV.T0.prior %>%
+  mutate(
+    density.scaled = density / max(density, na.rm = TRUE) * TPC.apex * 0.5
+  )
+
 
 
 ##### inits Function
@@ -389,6 +526,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, hypers = hypers)
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 EV.arctic.bri.inf <- jags(data = jag.data,
                           inits = inits,
                           parameters.to.save = parameters,
@@ -399,19 +537,19 @@ EV.arctic.bri.inf <- jags(data = jag.data,
                           n.iter = ni,
                           DIC = T,
                           working.directory = getwd()
-)
+                          )
 
 ## Save the model as Rdata 
 save(EV.arctic.bri.inf, file = "R-scripts/R2jags-objects/all-mods/EV.arctic.bri.inf.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/EV.arctic.bri.inf.Rdata")
+# load("R-scripts/R2jags-objects/all-mods/EV.arctic.bri.inf.Rdata")
 
 
 ## Diagnostics
 ##### Examine output
-EV.arctic.bri.inf$BUGSoutput$summary[1:5,]
-mcmcplot(EV.arctic.bri.inf)
+EV.arctic.bri.inf$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(EV.arctic.bri.inf, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
 
 # Extract the DIC for future model comparisons
 EV.arctic.bri.inf$BUGSoutput$DIC
@@ -430,6 +568,22 @@ plot.EV.arctic.bri.inf <- df.EV.arctic.bri.inf %>%
   geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
   geom_point(data = data, aes(x = temp, y = trait), size = 2) +
   
+  geom_line(
+    data = df.EV.Tm.prior,
+    aes(x = temp, y = density.scaled),
+    colour = "firebrick3",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
+  geom_line(
+    data = df.EV.T0.prior,
+    aes(x = temp, y = density),
+    colour = "skyblue",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
     y = "Proportion hatching"
@@ -446,7 +600,106 @@ ggsave("figures/EV.arctic.bri.inf.png", plot.EV.arctic.bri.inf,
 
 # 3. Fitting TPC (quadratic) ---------------------------------------------------
 
-## 3A. Fit non-Arctic TPC to generate priors -----------------------------------
+## 3A. Fit Arctic TPC using uniform priors -------------------------------------
+
+##### Temp sequence for derived quantity calculations
+# For actual fits
+Temp.xs <- seq(0, 45, 0.1)
+N.Temp.xs <-length(Temp.xs)
+
+
+##### Set data
+data <- data.EV.arctic
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+
+prior <- data.frame(q = c(0, 1),
+                    T0 = c(0, 20),
+                    Tm = c(25, 45)
+                    )
+
+##### inits Function
+inits <- function(){list(
+  cf.q = 0.01,
+  cf.Tm = 35,
+  cf.T0 = 5,
+  cf.sigma = rlnorm(1))}
+
+##### Parameters to Estimate
+parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
+
+##### Organize data for JAGS
+trait <- data$trait
+N.obs <- length(trait)
+temp <- data$temp
+
+##### define data for JAGS in a list object
+jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
+                 N.Temp.xs = N.Temp.xs, prior = prior)
+
+##### Run JAGS
+set.seed(123) # for reproducibility
+EV.arctic.quad.uni <- jags(data = jag.data,
+                            inits = inits,
+                            parameters.to.save = parameters,
+                            model.file = "R-scripts/quadprob.txt",
+                            n.thin = nt,
+                            n.chains = nc,
+                            n.burnin = nb,
+                            n.iter = ni,
+                            DIC = T,
+                            working.directory = getwd()
+                            )
+
+## Save the model as Rdata 
+save(EV.arctic.quad.uni, file = "R-scripts/R2jags-objects/all-mods/EV.arctic.quad.uni.Rdata")
+
+# Read the .Rdata
+# load("R-scripts/R2jags-objects/all-mods/EV.arctic.quad.uni.Rdata")
+
+
+## Diagnostics
+##### Examine output
+EV.arctic.quad.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(EV.arctic.quad.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
+
+# Extract the DIC for future model comparisons
+EV.arctic.quad.uni$BUGSoutput$DIC
+
+## Plot data + fit
+df.EV.arctic.quad.uni <- data.frame(EV.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+head(df.EV.arctic.quad.uni)
+
+##### Plot
+plot.EV.arctic.quad.uni <- df.EV.arctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+  geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
+  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+  # Customize the axes and labels
+  #scale_x_continuous(limits = c(0, 41)) + 
+  #scale_y_continuous(limits = c(-0.005, 0.19)) +
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Proportion hatching",
+    title = "B) EV, arctic sp., quadratic, uniform priors"
+  ) +
+  theme_bw()
+
+plot.EV.arctic.quad.uni
+
+ggsave("figures/EV.arctic.quad.uni.png", plot.EV.arctic.quad.uni,
+       width = 10.3, height = 5.6)
+
+
+## 3B. Fit non-Arctic TPC to generate priors -----------------------------------
 
 
 ##### Temp sequence for derived quantity calculations
@@ -489,7 +742,8 @@ inits <- function(){list(
 
 
 ##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", "sigma_q", "sigma_T0", 
+parameters <- c("cf.q", "cf.T0", "cf.Tm", "cf.sigma", 
+                "q", "T0", "Tm", "sigma_q", "sigma_T0", 
                 "sigma_Tm", "z.trait.mu.pred.pop", "z.trait.mu.pred.id")
 
 
@@ -508,6 +762,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
 
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 EV.nonarctic.quad.uni <- jags(data = jag.data,
                               inits = inits,
                               parameters.to.save = parameters,
@@ -530,15 +785,16 @@ save(EV.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/all-mods/EV.nonarct
 
 ## Diagnostics
 ##### Examine output
-EV.nonarctic.quad.uni$BUGSoutput$summary[1:8,]
-mcmcplot(EV.nonarctic.quad.uni)
+EV.nonarctic.quad.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]
+mcmcplot(EV.nonarctic.quad.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"))
+
 
 # Extract the DIC for future model comparisons
 EV.nonarctic.quad.uni$BUGSoutput$DIC
 
 
 ## Plot data + fit
-df.EV.nonarctic.quad.uni <- data.frame(EV.nonarctic.quad.uni$BUGSoutput$summary)[-(1:8),]
+df.EV.nonarctic.quad.uni <- data.frame(EV.nonarctic.quad.uni$BUGSoutput$summary)
 
 ## Extract the model prediction
 ## Overall curve
@@ -671,7 +927,7 @@ ggsave("figures/EV.nonarctic.quad.uni.png", plot.EV.nonarctic.quad.uni,
 
 
 
-## 3B. Fit gamma distributions to non-Arctic TPC parameters --------------------
+## 3C. Fit gamma distributions to non-Arctic TPC parameters --------------------
 
 # Get the posterior dists for 3 main parameters (not sigma) into a data frame
 EV.quad.prior.cf.dists <- data.frame(q = as.vector(EV.nonarctic.quad.uni$BUGSoutput$sims.list$cf.q),
@@ -687,7 +943,7 @@ save(EV.quad.prior.gamma.fits, file = "R-scripts/R2jags-objects/priors/EV.quad.p
 
 
 
-## 3C. Fit Arctic TPC using data-informed priors -------------------------------
+## 3D. Fit Arctic TPC using data-informed priors -------------------------------
 
 # load("R-scripts/R2jags-objects/EVhypers.quad.Rsave")
 
@@ -700,6 +956,37 @@ N.Temp.xs <-length(Temp.xs)
 data <- data.EV.arctic
 hypers <- EV.quad.prior.gamma.fits * 0.1
 
+# Gamma prior density for Tm
+
+df.EV.Tm.prior <- tibble(
+  temp = seq(0, 45, 0.1),
+  density = dgamma(
+    temp,
+    shape = hypers["shape", "Tm"],
+    rate  = hypers["rate", "Tm"]
+  )
+)
+
+TPC.apex <- max(df.EV.nonarctic.quad.uni.pop$X50., na.rm = TRUE)
+
+df.EV.Tm.prior <- df.EV.Tm.prior %>%
+  mutate(
+    density.scaled = density / max(density, na.rm = TRUE) * TPC.apex * 0.5
+  )
+
+df.EV.T0.prior <- tibble(
+  temp = seq(0, 45, 0.1),
+  density = dgamma(
+    temp,
+    shape = hypers["shape", "T0"],
+    rate  = hypers["rate", "T0"]
+  )
+)
+
+df.EV.T0.prior <- df.EV.T0.prior %>%
+  mutate(
+    density.scaled = density / max(density, na.rm = TRUE) * TPC.apex * 0.5
+  )
 
 ##### inits Function
 inits<-function(){list(
@@ -721,6 +1008,7 @@ jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs,
                  N.Temp.xs = N.Temp.xs, hypers = hypers)
 
 ##### Run JAGS
+set.seed(123) # for reproducibility
 EV.arctic.quad.inf <- jags(data = jag.data,
                             inits = inits,
                             parameters.to.save = parameters,
@@ -731,7 +1019,7 @@ EV.arctic.quad.inf <- jags(data = jag.data,
                             n.iter = ni,
                             DIC = T,
                             working.directory = getwd()
-)
+                           )
 
 ## Save the model as Rdata 
 save(EV.arctic.quad.inf, file = "R-scripts/R2jags-objects/all-mods/EV.arctic.quad.inf.Rdata")
@@ -742,8 +1030,8 @@ save(EV.arctic.quad.inf, file = "R-scripts/R2jags-objects/all-mods/EV.arctic.qua
 
 ## Diagnostics
 ##### Examine output
-EV.arctic.quad.inf$BUGSoutput$summary[1:5,]
-mcmcplot(EV.arctic.quad.inf)
+EV.arctic.quad.inf$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+mcmcplot(EV.arctic.quad.inf, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
 
 # Extract the DIC for future model comparisons
 EV.arctic.quad.inf$BUGSoutput$DIC
@@ -762,6 +1050,22 @@ plot.EV.arctic.quad.inf <- df.EV.arctic.quad.inf %>%
   geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
   geom_point(data = data, aes(x = temp, y = trait), size = 2) +
 
+  geom_line(
+    data = df.EV.Tm.prior,
+    aes(x = temp, y = density.scaled),
+    colour = "firebrick3",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
+  geom_line(
+    data = df.EV.T0.prior,
+    aes(x = temp, y = density),
+    colour = "skyblue",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  
   labs(
     x = expression(paste("Temperature (", degree, "C)")),
     y = "Proportion hatching"
@@ -774,7 +1078,13 @@ ggsave("figures/EV.arctic.quad.inf.png", plot.EV.arctic.quad.inf,
        width = 10.3, height = 5.6)
 
 
+plot.EV.arctic <- plot_grid(plot.EV.arctic.bri.uni, plot.EV.arctic.quad.uni,
+                             plot.EV.arctic.bri.inf, plot.EV.arctic.quad.inf, ncol = 2)
 
+plot.EV.arctic
+
+ggsave("figures/EV.arctic.png", plot.EV.arctic,
+       width = 10.3, height = 5.6)
 
 # 4. Compare model fit between Briere and Quadratic models ---------------------
 
@@ -814,7 +1124,9 @@ ggsave("figures/EV.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 
 
 ## DIC
+EV.arctic.bri.uni$BUGSoutput$DIC 
 EV.arctic.bri.inf$BUGSoutput$DIC 
+EV.arctic.quad.uni$BUGSoutput$DIC
 EV.arctic.quad.inf$BUGSoutput$DIC # This is the best fitting TPC
 
 
@@ -893,3 +1205,26 @@ EV.nonarctic.params.fullposts <- EV.TPC.analysis[[3]]
 write_csv(EV.nonarctic.predictions.summary, "data-processed/EV/EV.nonarctic.predictions.summary.csv")
 write_csv(EV.nonarctic.params.summary, "data-processed/EV/EV.nonarctic.params.summary.csv")
 write_csv(EV.nonarctic.params.fullposts, "data-processed/EV/EV.nonarctic.params.fullposts.csv")
+
+
+
+##### Briere model #####
+Temp.xs <- seq(0, 45, 0.1)
+EV.TPC.analysis <- extractTPC(EV.arctic.bri.inf, "EV", Temp.xs) 
+EV.arctic.predictions.summary <- EV.TPC.analysis[[1]]
+EV.arctic.params.summary <- EV.TPC.analysis[[2]]
+EV.arctic.params.fullposts <- EV.TPC.analysis[[3]]
+
+write_csv(EV.arctic.predictions.summary, "data-processed/supplemental-analysis/briere-only/EV.arctic.predictions.summary.csv")
+write_csv(EV.arctic.params.summary, "data-processed/supplemental-analysis/briere-only/EV.arctic.params.summary.csv")
+write_csv(EV.arctic.params.fullposts, "data-processed/supplemental-analysis/briere-only/EV.arctic.params.fullposts.csv")
+
+Temp.xs <- seq(0, 45, 0.5)
+EV.TPC.analysis <- extractTPC_raneff(EV.nonarctic.bri.uni, "EV", Temp.xs)
+EV.nonarctic.predictions.summary <- EV.TPC.analysis[[1]]
+EV.nonarctic.params.summary <- EV.TPC.analysis[[2]]
+EV.nonarctic.params.fullposts <- EV.TPC.analysis[[3]]
+
+write_csv(EV.nonarctic.predictions.summary, "data-processed/supplemental-analysis/briere-only/EV.nonarctic.predictions.summary.csv")
+write_csv(EV.nonarctic.params.summary, "data-processed/supplemental-analysis/briere-only/EV.nonarctic.params.summary.csv")
+write_csv(EV.nonarctic.params.fullposts, "data-processed/supplemental-analysis/briere-only/EV.nonarctic.params.fullposts.csv")

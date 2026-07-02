@@ -421,7 +421,7 @@ sink()
 
 
 
-# Truncated normally-distributed Briere (for probability traits with random effects)----------------
+# Truncated normally-distributed Quadratic (for probability traits with random effects)----------------
 
 
 sink("R-scripts/quadprob_randeff.txt")

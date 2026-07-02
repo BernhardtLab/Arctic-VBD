@@ -185,7 +185,7 @@ extractTPC <- function(TPC_model, trait_name, temp_gradient) {
   Topt_summary <- calcToptQuants(TPC_predictions, trait_name, temp_gradient)
   
   # Pull out parameter summary from the fitted model 
-  TPC_param_summary <- as.data.frame(TPC_model$BUGSoutput$summary[1:5,]) %>%
+  TPC_param_summary <- as.data.frame(TPC_model$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]) %>%
     rownames_to_column(var = "term") %>%
     rename(lowerCI = `2.5%`, median = `50%`, upperCI = `97.5%`) %>% # Rename columns so they are easier to reference & can merge with Topt quantiles
     mutate(trait = trait_name)
@@ -229,7 +229,7 @@ extractTPC_raneff <- function(TPC_model, trait_name, temp_gradient) {
   Topt_summary <- calcToptQuants(TPC_predictions, trait_name, temp_gradient)
   
   # Pull out parameter summary from the fitted model 
-  TPC_param_summary <- as.data.frame(TPC_model$BUGSoutput$summary[1:8,]) %>%
+  TPC_param_summary <- as.data.frame(TPC_model$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]) %>%
     rownames_to_column(var = "term") %>%
     rename(lowerCI = `2.5%`, median = `50%`, upperCI = `97.5%`) %>% # Rename columns so they are easier to reference & can merge with Topt quantiles
     mutate(trait = trait_name)
@@ -418,10 +418,96 @@ SensitivityAnalysis_pd = function(# predicted trait values:
                       pLA_param$cf.Tm[i], # Tm
                       pLA_param$cf.q[i]) # q
     
-    dMDR.dT <- d_briere(Temp.xs,
+    dMDR.dT <- d_quad(Temp.xs,
                         MDR_param$cf.T0[i], # T0
                         MDR_param$cf.Tm[i], # Tm
                         MDR_param$cf.q[i]) # q
+    
+    # Calculate sensitivity (dS/dy * dy/dt) across temp gradient (for a single MCMC step)
+    
+    # See Mathematica notebook from Shocket et al. 2018 eLife for dR0/dy derivative calculations
+    
+    dS.da[i, ] <- 3/2 * S(a_preds[i, ], m_bc, m_lf, m_PDR, m_EFGC, m_EV, m_pLA, m_MDR)/(a_preds[i, ]+ec) * da.dT
+    dS.dbc[i, ] <- 1/2 * (S(m_a, bc_preds[i, ], m_lf, m_PDR, m_EFGC, m_EV, m_pLA, m_MDR)/(bc_preds[i, ]+ec) * dbc.dT)
+    dS.dlf[i, ] <- 1/2 * (S(m_a, m_bc, lf_preds[i, ], m_PDR, m_EFGC, m_EV, m_pLA, m_MDR) * 
+                            (1 + 3*lf_preds[i, ]*m_PDR) / ((lf_preds[i, ] + ec)^2 * (m_PDR + ec)) * dlf.dT)
+    dS.dPDR[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, PDR_preds[i, ], m_EFGC, m_EV, m_pLA, m_MDR)/((m_lf + ec)*(PDR_preds[i, ]+ec)^2) * dPDR.dT)
+    dS.dEFGC[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, EFGC_preds[i, ], m_EV, m_pLA, m_MDR)/(EFGC_preds[i, ]+ec) * dEFGC.dT)
+    dS.dEV[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_EFGC, EV_preds[i, ], m_pLA, m_MDR)/(EV_preds[i, ]+ec) * dEV.dT)
+    dS.dpLA[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_EFGC, m_EV, pLA_preds[i, ], m_MDR)/(pLA_preds[i, ]+ec) * dpLA.dT)
+    dS.dMDR[i, ] <- 1/2 * (S(m_a, m_bc, m_lf, m_PDR, m_EFGC, m_EV, m_pLA, MDR_preds[i, ])/(MDR_preds[i, ]+ec) * dMDR.dT)
+    
+    dS.dT[i, ] <-  dS.da[i, ] + dS.dbc[i, ] + dS.dlf[i, ] + dS.dPDR[i, ] + dS.dEFGC[i, ] + dS.dEV[i, ] + dS.dpLA[i, ] + dS.dMDR[i, ]
+    
+  } # end MCMC loop
+  
+  # Collect output in a list and return it
+  SA_list_out <- list(dS.da, dS.dbc, dS.dlf, dS.dPDR, dS.dEFGC, dS.dEV, dS.dpLA, dS.dMDR, dS.dT)
+  SA_list_out
+  
+} # end function
+
+
+## D. Function for sensitivity analysis - partial derivatives (Briere models only) ----
+
+SensitivityAnalysis_pd_bri = function(# predicted trait values:
+  a_preds, bc_preds, lf_preds, PDR_preds, 
+  EFGC_preds, EV_preds, pLA_preds, MDR_preds,
+  # Full posterior distribution of TPC parameters:
+  a_param, bc_param, lf_param, PDR_param, 
+  EFGC_param, EV_param, pLA_param, MDR_param,
+  # Trait means at each temperature
+  m_a, m_bc, m_lf, m_PDR, m_EFGC, m_EV, 
+  m_pLA, m_MDR) {
+  
+  # Create matrices to hold results
+  dS.da <- dS.dbc <- dS.dlf <- dS.dPDR <- dS.dEFGC <- dS.dEV <- dS.dpLA <- dS.dMDR <- dS.dT <- matrix(NA, nMCMC, N.Temp.xs)
+  
+  
+  # Calculate dy/dt and dS/dy for each MCMC step across the temp gradient
+  for(i in 1:nMCMC){ # loop through MCMC steps
+    
+    # Calculate derivative of all traits with respect to temp (dy/dt) across temp gradient (for a single MCMC step)
+    # The sims.list refers to the lists of fitted TPC parameters (T0, Tm, and q)
+    da.dT <- d_briere(Temp.xs,
+                      a_param$cf.T0[i], # T0
+                      a_param$cf.Tm[i], # Tm
+                      a_param$cf.q[i]) # q
+    
+    dbc.dT <- d_briere(Temp.xs,
+                     bc_param$cf.T0[i], # T0
+                     bc_param$cf.Tm[i], # Tm
+                     bc_param$cf.q[i]) # q
+    
+    dlf.dT <- d_briere(Temp.xs,
+                     lf_param$cf.T0[i], # T0
+                     lf_param$cf.Tm[i], # Tm
+                     lf_param$cf.q[i]) # q
+    
+    dPDR.dT <- d_briere(Temp.xs,
+                        PDR_param$cf.T0[i], # T0
+                        PDR_param$cf.Tm[i], # Tm
+                        PDR_param$cf.q[i]) # q
+    
+    dEFGC.dT <- d_briere(Temp.xs,
+                       EFGC_param$cf.T0[i], # T0
+                       EFGC_param$cf.Tm[i], # Tm
+                       EFGC_param$cf.q[i]) # q
+    
+    dEV.dT <- d_briere(Temp.xs,
+                     EV_param$cf.T0[i], # T0
+                     EV_param$cf.Tm[i], # Tm
+                     EV_param$cf.q[i]) # q
+    
+    dpLA.dT <- d_briere(Temp.xs,
+                      pLA_param$cf.T0[i], # T0
+                      pLA_param$cf.Tm[i], # Tm
+                      pLA_param$cf.q[i]) # q
+    
+    dMDR.dT <- d_briere(Temp.xs,
+                      MDR_param$cf.T0[i], # T0
+                      MDR_param$cf.Tm[i], # Tm
+                      MDR_param$cf.q[i]) # q
     
     # Calculate sensitivity (dS/dy * dy/dt) across temp gradient (for a single MCMC step)
     
