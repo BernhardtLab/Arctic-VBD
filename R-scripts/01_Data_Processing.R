@@ -1030,9 +1030,14 @@ MDR.albopictus$latitude[MDR.albopictus$citation == "Witwatana_Kittayaong_2006_Me
 MDR.albopictus$longitude[MDR.albopictus$citation == "Witwatana_Kittayaong_2006_Med&VetEnt"] <- lon_thai
 
 
-# Mosquitoes from Yee 2017 (citation was wrong in the data) were collected from various locations
+# Mosquitoes from Yee 2017 (citation was wrong in the data) were collected from 
+# Bergen and Mercer counties, New Jersey and  Indian  River  and  Osceola  counties, Florida
+# We will use the mean latitude
 MDR.albopictus$citation[MDR.albopictus$citation == "Yee_et al_2016 JAE_in_review"] <- "Yee_etal_2017_Oikos"
 MDR.albopictus$data_source[MDR.albopictus$citation == "Yee_etal_2017_Oikos"] <- "figure 3"
+
+lat_yee <- mean(c(40.3, 41.0, 27.7, 28.1))
+MDR.albopictus$latitude[MDR.albopictus$citation == "Yee_etal_2017_Oikos"] <- lat_yee
 
 
 
@@ -1462,8 +1467,12 @@ lon_Hattiesburg <- -89.3
 EFGC.albopictus$latitude[EFGC.albopictus$citation == "Ezeakacha_Dissertation_2015"] <- lat_Hattiesburg
 EFGC.albopictus$longitude[EFGC.albopictus$citation == "Ezeakacha_Dissertation_2015"] <- lon_Hattiesburg
 
-# Mosquitoes from Yee 2017 (citation was wrong in the data) were collected from various locations
+# Mosquitoes from Yee 2017 (citation was wrong in the data) were collected from 
+# Bergen and Mercer counties, New Jersey and  Indian  River  and  Osceola  counties, Florida
+# We will use the mean latitude
 EFGC.albopictus$citation[EFGC.albopictus$citation == "Yee_et al_2016 JAE_in_review"] <- "Yee_etal_2017_Oikos"
+lat_yee <- mean(c(40.3, 41.0, 27.7, 28.1))
+EFGC.albopictus$latitude[EFGC.albopictus$citation == "Yee_etal_2017_Oikos"] <- lat_yee
 
 
 TraitData_EFGC <- bind_rows(EFGC.aedes, EFGC.hexodontus, EFGC.albopictus)

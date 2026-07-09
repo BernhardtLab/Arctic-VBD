@@ -21,12 +21,12 @@
 ## R-scripts/R2jags-objects/best-fitting-mods/pLA.arctic.mod.Rdata
 ## R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata
 ##
-## data-processed/bc/bc.arctic.predictions.fullposts.csv - 
-##     Full posterior distributions for bc TPC predictions after cold-shifting
+## data-processed/bc/bc.nonarctic.predictions.fullposts.csv - 
+##     Full posterior distributions for bc TPC predictions
 ## 
 ## Full posterior distributions for TPC parameters:
 ## data-processed/a/a.alldata.params.fullposts.csv
-## data-processed/bc/bc.arctic.params.fullposts.csv
+## data-processed/bc/bc.nonarctic.params.fullposts.csv
 ## data-processed/lf/lf.arctic.params.fullposts.csv
 ## data-processed/PDR/PDR.arctic.params.fullposts.csv
 ## data-processed/EFGC/EFGC.alldata.params.fullposts.csv
@@ -75,6 +75,9 @@ source("R-scripts/00_Functions.R")
 ## biting rate (a)
 load("R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata")
 
+## vector competence (bc)
+load("R-scripts/R2jags-objects/best-fitting-mods/bc.nonarctic.mod.Rdata")
+
 ## Adult lifespan (lf)
 load("R-scripts/R2jags-objects/best-fitting-mods/lf.arctic.mod.Rdata")
 
@@ -96,9 +99,7 @@ load("R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata")
 
 #####  Pull out the derived/predicted values:
 a.preds <- a.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
-bc.preds <- read_csv("data-processed/bc/bc.arctic.predictions.fullposts.csv")
-bc.preds <- as.matrix(bc.preds)
-
+bc.preds <- bc.nonarctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
 lf.preds <- lf.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
 PDR.preds <- PDR.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
 EFGC.preds <- EFGC.alldata.mod$BUGSoutput$sims.list$z.trait.mu.pred.pop ## Only get the global-level fit
@@ -109,7 +110,7 @@ MDR.preds <- MDR.arctic.mod$BUGSoutput$sims.list$z.trait.mu.pred
 
 ## Pull out the full posterior distributions of TPC parameters
 a.params.fullposts <- read.csv("data-processed/a/a.alldata.params.fullposts.csv")
-bc.params.fullposts <- read.csv("data-processed/bc/bc.arctic.params.fullposts.csv")
+bc.params.fullposts <- read.csv("data-processed/bc/bc.nonarctic.params.fullposts.csv")
 lf.params.fullposts <- read.csv("data-processed/lf/lf.arctic.params.fullposts.csv")
 PDR.params.fullposts <- read.csv("data-processed/PDR/PDR.arctic.params.fullposts.csv")
 EFGC.params.fullposts <- read.csv("data-processed/EFGC/EFGC.alldata.params.fullposts.csv")
@@ -177,7 +178,7 @@ plot.S <- ggplot(data = S.out.median) +
   # scale_x_continuous(limits = c(10, 35)) +
   scale_x_continuous(limits = c(10, 40)) +
   labs(x = expression(paste("Temperature (", degree, "C)")), 
-       y = "Suitability (S)") +
+       y = "Suitability for parasitic worm transmission") +
   theme_bw() +
   theme(axis.text = element_text(size = 12),
         axis.title = element_text(size = 14))
@@ -185,9 +186,8 @@ plot.S <- ggplot(data = S.out.median) +
 
 plot.S
 
-ggsave("figures/suitability.png", plot.S, width = 10.3, height = 5.6)
 
-
+ggsave("figures/community_report1.png", plot.S, width = 6, height = 5)
 
 # 3. Calculate Tmin, Tmax and Topt (and CIs) for suitability --------------------------------------
 
@@ -240,6 +240,8 @@ plot.suitability <- plot_grid(plot.S, plot.S.params,
   theme(panel.background = element_rect(fill = "white", color = NA))
 
 plot.suitability
+
+ggsave("figures/suitability.png", plot.suitability, width = 10.3, height = 5.6)
 
 
 # 4. Sensitivity Analysis - partial derivatives --------------------------------

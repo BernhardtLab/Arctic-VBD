@@ -6,7 +6,9 @@
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. Load data and model output
-##  	2. Plot panels for each trait
+##  	2. Plot TPCs
+##			A. Arctic TPCs
+##			B. Non-Arctic TPCs
 ##    3. Summary table for TPC parameters
 ##
 ##
@@ -42,10 +44,6 @@ a.alldata.params.summary <- read.csv("data-processed/a/a.alldata.params.summary.
 ##### Vector competence (bc) #####
 ## Load data
 data.bc <- read_csv("data-processed/TraitData_bc.csv")
-
-## Arctic
-bc.arctic.predictions.summary <- read.csv("data-processed/bc/bc.arctic.predictions.summary.csv")
-bc.arctic.params.summary <- read.csv("data-processed/bc/bc.arctic.params.summary.csv")
 
 # Non-Arctic
 bc.nonarctic.predictions.summary <- read.csv("data-processed/bc/bc.nonarctic.predictions.summary.csv")
@@ -168,13 +166,15 @@ MDR.nonarctic.params.summary <- read.csv("data-processed/MDR/MDR.nonarctic.param
 
 #  2. Plot panels for each trait -----------------------------------------------
 
+## 2A. Arctic TPCs -------------------------------------------------------------
+
 ##### biting rate (a) #####
 plot.a <- a.alldata.predictions.summary %>% 
   ggplot() +
   geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#E69F00", alpha = 0.5) +
   geom_line(aes(x = temperature, y = median), color = "#E69F00", linewidth = 1) +
   
-  # Arctic data
+  # data
   geom_point(data = data.a, aes(x = temp, y = trait, colour = type), size = 2) +
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
@@ -196,10 +196,13 @@ plot.a
 
 
 ##### Vector competence (bc) #####
-plot.bc <- bc.arctic.predictions.summary %>% 
+plot.bc <- bc.nonarctic.predictions.summary %>% 
   ggplot() +
   geom_ribbon(aes(x = temperature, ymin = lowerCI, ymax = upperCI), fill = "#009E73", alpha = 0.5) +
   geom_line(aes(x = temperature, y = median), color = "#009E73", linewidth = 1) +
+  
+  # data
+  geom_point(data = data.bc, aes(x = temp, y = trait), colour = "azure4", size = 2) +
   
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
@@ -355,11 +358,11 @@ legend_panel <- ggdraw() +
 legend_panel
 
 plot.traits <- plot_grid(plot.pLA, plot.MDR, plot.lf, 
-                         plot.PDR, plot.EV, plot.bc,
-                         plot.a + theme(legend.position="none"), plot.EFGC, legend_panel, 
+                         plot.PDR, plot.EV, legend_panel,
+                         plot.a + theme(legend.position="none"), plot.EFGC, plot.bc, 
                          ncol = 3,
                          align = "hv",
-                         labels = LETTERS[1:8])
+                         labels = c(LETTERS[1:5], NA, LETTERS[6:8]))
 plot.traits
 
 
@@ -368,7 +371,7 @@ plot.traits
 
 #### Compare the position of TPCs curves and suitability along temperature gradient #####
 prediction.summary <- bind_rows(a.alldata.predictions.summary, 
-                                bc.arctic.predictions.summary, 
+                                bc.nonarctic.predictions.summary, 
                                 lf.arctic.predictions.summary, 
                                 PDR.arctic.predictions.summary,
                                 EFGC.alldata.predictions.summary, 
@@ -434,32 +437,155 @@ plot.all
 ggsave("figures/Fig3-trait.TPCs.png", plot.all, width = 14, height = 12)
 
 
+## 2B. non-Arctic TPCs -------------------------------------------------------------
+
+##### Adult lifespan (lf) #####
+plot.lf.nonarctic <- lf.nonarctic.predictions.summary %>% 
+  ggplot() +
+  geom_line(aes(x = temperature, y = lowerCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = upperCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
+  
+  # Arctic data
+  geom_point(data = data.lf.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(title = expression(paste("Adult Lifespan (",italic(lf),")")),
+       x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Time (days)") +
+  theme_bw() +
+  theme(title = element_text(size = 12),
+        legend.position="none",
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16))
+
+plot.lf.nonarctic 
+
+
+##### pathogen development rate (PDR) #####
+plot.PDR.nonarctic <- PDR.nonarctic.predictions.summary %>% 
+  ggplot() +
+  geom_line(aes(x = temperature, y = lowerCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = upperCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
+  
+  # Arctic data
+  geom_point(data = data.PDR.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(title = expression(paste("Pathogen Development Rate (",italic(PDR),")")),
+       x = expression(paste("Temperature (", degree, "C)")), 
+       y = parse(text = "Rate~(day^-1)")) +
+  theme_bw() +
+  theme(title = element_text(size = 12),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16))
+
+plot.PDR.nonarctic
+
+
+
+#####  Egg viability (EV) ##### 
+plot.EV.nonarctic <- EV.nonarctic.predictions.summary %>% 
+  ggplot() +
+  geom_line(aes(x = temperature, y = lowerCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = upperCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
+  
+  # Arctic data
+  geom_point(data = data.EV.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(title = expression(paste("Egg Viability (",italic(EV),")")),
+       x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Proportion hatching") +
+  theme_bw() +
+  theme(title = element_text(size = 12),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16))
+
+plot.EV.nonarctic
+
+
+##### Larval-to-adult survival (pLA) ##### 
+plot.pLA.nonarctic <- pLA.nonarctic.predictions.summary %>% 
+  ggplot() +
+  geom_line(aes(x = temperature, y = lowerCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = upperCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
+  
+  # Arctic data
+  geom_point(data = data.pLA.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(title = expression(paste("Larval-to-Adult Survival (",italic(pLA),")")),
+       x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Survival probability") +
+  theme_bw() +
+  theme(title = element_text(size = 12),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16))
+
+plot.pLA.nonarctic
+
+
+##### Mosquito development rate (MDR) #####
+plot.MDR.nonarctic <- MDR.nonarctic.predictions.summary %>% 
+  ggplot() +
+  geom_line(aes(x = temperature, y = lowerCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = upperCI), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
+  
+  # Arctic data
+  geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  # Customize the axes and labels
+  scale_x_continuous(limits = c(0, 46)) + 
+  labs(title = expression(paste("Mosquito Development Rate (",italic(MDR),")")),
+       x = expression(paste("Temperature (", degree, "C)")), 
+       y = parse(text = "Rate~(day^-1)")) +
+  theme_bw() +
+  theme(title = element_text(size = 12),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16))
+
+plot.MDR.nonarctic
+
+
+plot.traits.nonarctic <- plot_grid(plot.pLA.nonarctic, plot.MDR.nonarctic, plot.lf.nonarctic, 
+                         plot.PDR.nonarctic, plot.EV.nonarctic,
+                         ncol = 3,
+                         align = "hv",
+                         labels = LETTERS[1:5])
+plot.traits.nonarctic
+
+
+ggsave("figures/FigS3-trait.TPCs.nonarctic.png", plot.traits.nonarctic, width = 14, height = 12)
+
 
 
 # 3. Summary table for TPC parameters ------------------------------------------
 ##### TPC summary
-## biting rate (a)
-load("R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata")
-load("R-scripts/R2jags-objects/best-fitting-mods/lf.arctic.mod.Rdata")
-load("R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata")
-load("R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata")
-load("R-scripts/R2jags-objects/best-fitting-mods/EV.arctic.mod.Rdata")
-load("R-scripts/R2jags-objects/best-fitting-mods/pLA.arctic.mod.Rdata")
-load("R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata")
-
-a.alldata.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
-lf.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
-PDR.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
-EFGC.alldata.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
-EV.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
-pLA.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
-MDR.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+# load("R-scripts/R2jags-objects/best-fitting-mods/a.alldata.mod.Rdata")
+# load("R-scripts/R2jags-objects/best-fitting-mods/bc.nonarctic.mod.Rdata")
+# load("R-scripts/R2jags-objects/best-fitting-mods/lf.arctic.mod.Rdata")
+# load("R-scripts/R2jags-objects/best-fitting-mods/PDR.arctic.mod.Rdata")
+# load("R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata")
+# load("R-scripts/R2jags-objects/best-fitting-mods/EV.arctic.mod.Rdata")
+# load("R-scripts/R2jags-objects/best-fitting-mods/pLA.arctic.mod.Rdata")
+# load("R-scripts/R2jags-objects/best-fitting-mods/MDR.arctic.mod.Rdata")
+# 
+# a.alldata.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+# bc.nonarctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+# lf.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+# PDR.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+# EFGC.alldata.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+# EV.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+# pLA.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
+# MDR.arctic.mod$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
 
 
 # Create metadata for each trait
 trait_info <- tribble(~trait, ~func, ~raneff, ~params_summary, ~case,
                       "Biting rate (a)", "B", "Yes", a.alldata.params.summary, "moderate-case",
-                      "Vector competence (bc)", "Q", "No", bc.arctic.params.summary, "worst-case",
+                      "Vector competence (bc)", "Q", "No", bc.nonarctic.params.summary, "worst-case",
                       "Mosquito adult lifespan (lf)", "Q", "Yes", lf.arctic.params.summary, "best-case",
                       "Pathogen development rate (PDR)", "B", "No", PDR.arctic.params.summary, "best-case",
                       "Eggs per female per gonotrophic cycle (EFGC)", "Q", "Yes", EFGC.alldata.params.summary, "moderate-case",
