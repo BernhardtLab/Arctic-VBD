@@ -10,10 +10,10 @@ EFGC,18,38,108,13,min/max,eggs per batch,batch category,2nd,Aedes,punctor,sommer
 EFGC,18,28,55,6,min/max,eggs per batch,batch category,3rd,Aedes,punctor,sommerman_1969_MosqNews,10.5555/19711000494,table 3,n=10,Arctic,64,-145.7
 EFGC,20,59.17,2.91,2.91,sd,the mean number of eggs laid,diet,single blood meal and 15% solution of table sucrose,aedes,hexodontus,barlow_1955_CanJZool,10.1139/z55-024,table 1,n=106,Arctic,58.8,-94.1
 EFGC,20,64.96,3,3,sd,the mean number of eggs laid,diet,single blood meal and raisins,aedes,hexodontus,barlow_1955_CanJZool,10.1139/z55-024,table 1,n=103,Arctic,58.8,-94.1
-EFGC,25,54.47058824,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,NA,NA
-EFGC,25,79.75,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,NA,NA
-EFGC,25,43.0625,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,NA,NA
-EFGC,25,55.09091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,NA,NA
+EFGC,25,54.47058824,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,34.275,NA
+EFGC,25,79.75,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,34.275,NA
+EFGC,25,43.0625,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,34.275,NA
+EFGC,25,55.09091,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,NA,NA,non-Arctic,34.275,NA
 EFGC,20,77.8,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
 EFGC,20,73.9,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3
 EFGC,27,58.2,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Ezeakacha_Dissertation_2015,NA,NA,NA,non-Arctic,31.3,-89.3

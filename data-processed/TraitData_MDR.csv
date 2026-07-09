@@ -125,22 +125,22 @@ MDR,32,0.121396268,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_Thesis_2010,NA,N
 MDR,32,0.158227848,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Westbrook_Thesis_2010,NA,NA,NA,26.7,-80.4,non-Arctic
 MDR,25,0.094382022,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Witwatana_Kittayaong_2006_Med&VetEnt,NA,NA,NA,14.8,99,non-Arctic
 MDR,37,0.130508475,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Witwatana_Kittayaong_2006_Med&VetEnt,NA,NA,NA,14.8,99,non-Arctic
-MDR,21,0.04376784,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,21,0.048780488,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,21,0.058541257,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,21,0.063263832,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,21,0.060371526,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,21,0.062151408,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,21,0.058823529,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,21,0.063636346,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,25,0.072192523,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,25,0.065246341,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,25,0.090329422,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,25,0.09185444,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,25,0.089051081,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,25,0.084905644,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,25,0.08349148,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
-MDR,25,0.085127176,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,NA,NA,non-Arctic
+MDR,21,0.04376784,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,21,0.048780488,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,21,0.058541257,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,21,0.063263832,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,21,0.060371526,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,21,0.062151408,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,21,0.058823529,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,21,0.063636346,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,25,0.072192523,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,25,0.065246341,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,25,0.090329422,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,25,0.09185444,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,25,0.089051081,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,25,0.084905644,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,25,0.08349148,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
+MDR,25,0.085127176,NA,NA,NA,NA,NA,NA,Aedes,albopictus,Yee_etal_2017_Oikos,NA,figure 3,NA,34.275,NA,non-Arctic
 MDR,21,0.027382256297918947,5.323494515750945e-4,5.323494515750945e-4,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
 MDR,26.5,0.0646830530401035,0.0020082707282826438,0.0020082707282826438,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
 MDR,32,0.05497526113249038,0.0015715852550244635,0.0015715852550244635,NA,NA,Sex,Female,Aedes,nigromaculis,Brust_1967_CanEntomol,NA,Table 2,Converted from hours to days,49.9,-97.1,non-Arctic
