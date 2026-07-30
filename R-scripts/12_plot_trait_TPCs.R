@@ -9,7 +9,9 @@
 ##  	2. Plot TPCs
 ##			A. Arctic TPCs
 ##			B. Non-Arctic TPCs
+##			C. Uniform priors vs data-informed priors
 ##    3. Summary table for TPC parameters
+##    4. Summary table for DIC
 ##
 ##
 ## Outputs: 
@@ -557,7 +559,676 @@ plot.traits.nonarctic <- plot_grid(plot.pLA.nonarctic, plot.MDR.nonarctic, plot.
 plot.traits.nonarctic
 
 
-ggsave("figures/FigS3-trait.TPCs.nonarctic.png", plot.traits.nonarctic, width = 14, height = 12)
+ggsave("figures/FigS1-trait.TPCs.nonarctic.png", plot.traits.nonarctic, width = 14, height = 12)
+
+
+## 2C. Uniform priors vs data-informed priors ----------------------------------
+Temp.xs <- seq(0, 45, 0.1)
+
+
+##### Larval-to-adult survival (pLA) ##### 
+
+# Briere; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/pLA.arctic.bri.uni.Rdata")
+
+# Extract model prediction
+df.pLA.arctic.bri.uni <- data.frame(pLA.arctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+
+# Plot
+plot.pLA.arctic.bri.uni <- df.pLA.arctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Survival probability",
+       title = "A) Briere model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.pLA.arctic.bri.uni
+
+
+# Quadratic; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/pLA.arctic.quad.uni.Rdata")
+
+# Extract model prediction
+df.pLA.arctic.quad.uni <- data.frame(pLA.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.pLA.arctic.quad.uni <- df.pLA.arctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Survival probability",
+       title = "B) Quadratic model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.pLA.arctic.quad.uni
+
+
+# Briere; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/pLA.arctic.bri.inf.Rdata")
+
+# Extract model prediction
+df.pLA.arctic.bri.inf <- data.frame(pLA.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.pLA.arctic.bri.inf <- df.pLA.arctic.bri.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Survival probability",
+       title = "C) Briere model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.pLA.arctic.bri.inf
+
+
+# Quadratic; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/pLA.arctic.quad.inf.Rdata")
+
+# Extract model prediction
+df.pLA.arctic.quad.inf <- data.frame(pLA.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.pLA.arctic.quad.inf <- df.pLA.arctic.quad.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Survival probability",
+       title = "D) Quadratic model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.pLA.arctic.quad.inf
+
+
+plot.pLA.arctic <- plot_grid(plot.pLA.arctic.bri.uni, plot.pLA.arctic.quad.uni,
+                            plot.pLA.arctic.bri.inf, plot.pLA.arctic.quad.inf, ncol = 2)
+plot.pLA.arctic
+
+ggsave("figures/FigS2-pLA.uni.vs.inf.png", plot.pLA.arctic, width = 12, height = 8)
+
+
+
+##### Mosquito development rate (MDR) #####
+# Briere; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/MDR.arctic.bri.uni.Rdata")
+
+# Extract model prediction
+df.MDR.arctic.bri.uni <- data.frame(MDR.arctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+
+# Plot
+plot.MDR.arctic.bri.uni <- df.MDR.arctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Development rate (days-1)",
+       title = "A) Briere model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.MDR.arctic.bri.uni
+
+
+# Quadratic; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/MDR.arctic.quad.uni.Rdata")
+
+# Extract model prediction
+df.MDR.arctic.quad.uni <- data.frame(MDR.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.MDR.arctic.quad.uni <- df.MDR.arctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Development rate (days-1)",
+       title = "B) Quadratic model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.MDR.arctic.quad.uni
+
+
+# Briere; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/MDR.arctic.bri.inf.Rdata")
+
+# Extract model prediction
+df.MDR.arctic.bri.inf <- data.frame(MDR.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.MDR.arctic.bri.inf <- df.MDR.arctic.bri.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Development rate (days-1)",
+       title = "C) Briere model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.MDR.arctic.bri.inf
+
+
+# Quadratic; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/MDR.arctic.quad.inf.Rdata")
+
+# Extract model prediction
+df.MDR.arctic.quad.inf <- data.frame(MDR.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.MDR.arctic.quad.inf <- df.MDR.arctic.quad.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Development rate (days-1)",
+       title = "D) Quadratic model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.MDR.arctic.quad.inf
+
+
+plot.MDR.arctic <- plot_grid(plot.MDR.arctic.bri.uni, plot.MDR.arctic.quad.uni,
+                             plot.MDR.arctic.bri.inf, plot.MDR.arctic.quad.inf, ncol = 2)
+plot.MDR.arctic
+
+ggsave("figures/FigS3-MDR.uni.vs.inf.png", plot.MDR.arctic, width = 12, height = 8)
+
+
+
+##### Adult lifespan (lf) #####
+
+# Briere; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/lf.arctic.bri.uni.Rdata")
+
+# Extract model prediction
+df.lf.arctic.bri.uni <- data.frame(lf.arctic.bri.uni$BUGSoutput$summary)
+
+df.lf.arctic.bri.uni <- df.lf.arctic.bri.uni %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.lf.arctic.bri.uni))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.lf.arctic.bri.uni <- df.lf.arctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Time (days)",
+       title = "A) Briere model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.lf.arctic.bri.uni
+
+
+# Quadratic; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/lf.arctic.quad.uni.Rdata")
+
+# Extract model prediction
+df.lf.arctic.quad.uni <- data.frame(lf.arctic.quad.uni$BUGSoutput$summary)
+
+df.lf.arctic.quad.uni <- df.lf.arctic.quad.uni %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.lf.arctic.quad.uni))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.lf.arctic.quad.uni <- df.lf.arctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Time (days)",
+       title = "B) Quadratic model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.lf.arctic.quad.uni
+
+
+# Briere; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/lf.arctic.bri.inf.Rdata")
+
+# Extract model prediction
+df.lf.arctic.bri.inf <- data.frame(lf.arctic.bri.inf$BUGSoutput$summary)
+
+df.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.lf.arctic.bri.inf))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Time (days)",
+       title = "C) Briere model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.lf.arctic.bri.inf
+
+
+# Quadratic; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/lf.arctic.quad.inf.Rdata")
+
+# Extract model prediction
+df.lf.arctic.quad.inf <- data.frame(lf.arctic.quad.inf$BUGSoutput$summary)
+
+df.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>% 
+  filter(grepl("z.trait.mu.pred.pop", rownames(df.lf.arctic.quad.inf))) %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Time (days)",
+       title = "D) Quadratic model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.lf.arctic.quad.inf
+
+
+plot.lf.arctic <- plot_grid(plot.lf.arctic.bri.uni, plot.lf.arctic.quad.uni,
+                            plot.lf.arctic.bri.inf, plot.lf.arctic.quad.inf, ncol = 2)
+plot.lf.arctic
+
+ggsave("figures/FigS4-lf.uni.vs.inf.png", plot.lf.arctic, width = 12, height = 8)
+
+
+##### pathogen development rate (PDR) #####
+
+# Briere; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/PDR.arctic.bri.uni.Rdata")
+
+# Extract model prediction
+df.PDR.arctic.bri.uni <- data.frame(PDR.arctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+
+# Plot
+plot.PDR.arctic.bri.uni <- df.PDR.arctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Development rate (days-1)",
+       title = "A) Briere model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.PDR.arctic.bri.uni
+
+
+# Quadratic; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/PDR.arctic.quad.uni.Rdata")
+
+# Extract model prediction
+df.PDR.arctic.quad.uni <- data.frame(PDR.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.PDR.arctic.quad.uni <- df.PDR.arctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Development rate (days-1)",
+       title = "B) Quadratic model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.PDR.arctic.quad.uni
+
+
+# Briere; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/PDR.arctic.bri.inf.Rdata")
+
+# Extract model prediction
+df.PDR.arctic.bri.inf <- data.frame(PDR.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.PDR.arctic.bri.inf <- df.PDR.arctic.bri.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Development rate (days-1)",
+       title = "C) Briere model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.PDR.arctic.bri.inf
+
+
+# Quadratic; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/PDR.arctic.quad.inf.Rdata")
+
+# Extract model prediction
+df.PDR.arctic.quad.inf <- data.frame(PDR.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.PDR.arctic.quad.inf <- df.PDR.arctic.quad.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Development rate (days-1)",
+       title = "D) Quadratic model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.PDR.arctic.quad.inf
+
+
+plot.PDR.arctic <- plot_grid(plot.PDR.arctic.bri.uni, plot.PDR.arctic.quad.uni,
+                             plot.PDR.arctic.bri.inf, plot.PDR.arctic.quad.inf, ncol = 2)
+plot.PDR.arctic
+
+ggsave("figures/FigS5-PDR.uni.vs.inf.png", plot.PDR.arctic, width = 12, height = 8)
+
+
+
+
+#####  Egg viability (EV) ##### 
+
+# Briere; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/EV.arctic.bri.uni.Rdata")
+
+# Extract model prediction
+df.EV.arctic.bri.uni <- data.frame(EV.arctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+
+# Plot
+plot.EV.arctic.bri.uni <- df.EV.arctic.bri.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Proportion hatching",
+       title = "A) Briere model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.EV.arctic.bri.uni
+
+
+# Quadratic; uniform priors
+# Load TPCs fitted using uniform priors
+load("R-scripts/R2jags-objects/all-mods/EV.arctic.quad.uni.Rdata")
+
+# Extract model prediction
+df.EV.arctic.quad.uni <- data.frame(EV.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.EV.arctic.quad.uni <- df.EV.arctic.quad.uni %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Proportion hatching",
+       title = "B) Quadratic model; uniform priors"
+  ) +
+  theme_bw()
+
+
+plot.EV.arctic.quad.uni
+
+
+# Briere; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/EV.arctic.bri.inf.Rdata")
+
+# Extract model prediction
+df.EV.arctic.bri.inf <- data.frame(EV.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.EV.arctic.bri.inf <- df.EV.arctic.bri.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Proportion hatching",
+       title = "C) Briere model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.EV.arctic.bri.inf
+
+
+# Quadratic; data-informed priors
+# Load TPCs fitted using infform priors
+load("R-scripts/R2jags-objects/all-mods/EV.arctic.quad.inf.Rdata")
+
+# Extract model prediction
+df.EV.arctic.quad.inf <- data.frame(EV.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
+  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
+  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+# Plot
+plot.EV.arctic.quad.inf <- df.EV.arctic.quad.inf %>% 
+  ggplot(aes(x = temp)) +
+  geom_line(aes(y = X2.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X97.5.), colour = "firebrick1", linewidth = 1, linetype = "dashed") +
+  geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
+  
+  ## data
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  
+  # Customize the axes and labels
+  labs(x = expression(paste("Temperature (", degree, "C)")), 
+       y = "Proportion hatching",
+       title = "D) Quadratic model; data-informed priors"
+  ) +
+  theme_bw()
+
+
+plot.EV.arctic.quad.inf
+
+
+plot.EV.arctic <- plot_grid(plot.EV.arctic.bri.uni, plot.EV.arctic.quad.uni,
+                             plot.EV.arctic.bri.inf, plot.EV.arctic.quad.inf, ncol = 2)
+plot.EV.arctic
+
+ggsave("figures/FigS6-EV.uni.vs.inf.png", plot.EV.arctic, width = 12, height = 8)
+
 
 
 
@@ -659,3 +1330,59 @@ save_as_docx(
   "Table 1" = table1,
   path = "figures/table1.docx"
 )
+
+
+
+# 4. Summary table for DIC ------------------------------------------
+load("R-scripts/R2jags-objects/all-mods/EV.arctic.quad.inf.Rdata")
+
+# Helper: load one .Rdata file and pull out the DIC, returns NA if file doesn't exist
+get_dic <- function(filepath) {
+  if (!file.exists(filepath)) return(NA)
+  obj_name <- load(filepath)        # load() returns the name(s) of loaded objects
+  model    <- get(obj_name[1])      # retrieve object by that name
+  model$BUGSoutput$DIC
+}
+
+# Define traits and their file "group" (which determines suffix + which models exist)
+trait_info <- data.frame(
+  trait = c("a", "bc", "lf", "PDR", "EFGC", "EV", "pLA", "MDR"),
+  group = c("alldata", "nonarctic", rep("arctic", 2), "alldata", rep("arctic", 3)),
+  stringsAsFactors = FALSE
+)
+
+# Function to build filepath, or return NA path if that model wasn't fit
+make_path <- function(trait, group, model, prior) {
+  # informed priors only exist for the "arctic" group
+  if (prior == "inf" && group != "arctic") return(NA_character_)
+  paste0("R-scripts/R2jags-objects/all-mods/", trait, ".", group, ".", model, ".", prior, ".Rdata")
+}
+
+dic_table <- trait_info %>%
+  rowwise() %>%
+  mutate(
+    Briere_Uniform     = get_dic(make_path(trait, group, "bri", "uni")),
+    Briere_Informed    = { p <- make_path(trait, group, "bri", "inf"); if (is.na(p)) NA else get_dic(p) },
+    Quadratic_Uniform  = get_dic(make_path(trait, group, "quad", "uni")),
+    Quadratic_Informed = { p <- make_path(trait, group, "quad", "inf"); if (is.na(p)) NA else get_dic(p) }
+  ) %>%
+  ungroup() %>%
+  select(-group)
+
+# Round for display
+dic_table[,-1] <- round(dic_table[,-1], 1)
+
+dic_table[1] <- c("Biting rate (a)", "Vector competence (bc)", 
+                  "Adult lifespan (lf)", "Pathogen development rate (PDR)",
+                  "Eggs per female per gonotrophic cycle (EFGC)", 
+                  "Egg viability (EV)", "Larval-to-adult survival (pLA)",
+                  "Mosquito development rate (MDR)")
+print(dic_table)
+
+dic_table <- flextable(dic_table)
+
+save_as_docx(
+  "Table S4" = dic_table,
+  path = "figures/tableS4.docx"
+)
+

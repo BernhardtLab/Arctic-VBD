@@ -6,7 +6,8 @@
 ## 
 ## Table of content:
 ##    0. Set-up workspace
-##    1. Load data and model output
+##    1. Latitudinal regression
+##    2. Summary table
 
 
 # 0. Set-up workspace -----------------------------------------------------
@@ -22,7 +23,7 @@ library(metafor)
 # Load functions
 source("R-scripts/00_Functions.R")
 
-#  1. Load data and model output -----------------------------------------------
+#  1. Latitudinal regression ---------------------------------------------------
 
 
 ##### Mosquito adult lifespan (lf) #####
@@ -1982,7 +1983,7 @@ Tmin.lat <- plot_grid(pLA.Tmin.lat, MDR.Tmin.lat, lf.Tmin.lat,
                       align = "v", ncol = 2, labels = "AUTO")
 Tmin.lat
 
-ggsave("figures/FigS3-lat.Tmin.png", Tmin.lat,
+ggsave("figures/FigS7-lat.Tmin.png", Tmin.lat,
        width = 12, height = 6)
 
 
@@ -1991,7 +1992,7 @@ Tmax.lat <- plot_grid(pLA.Tmax.lat, MDR.Tmax.lat, lf.Tmax.lat,
                       align = "v", ncol = 2, labels = "AUTO")
 Tmax.lat
 
-ggsave("figures/FigS4-lat.Tmax.png", Tmax.lat,
+ggsave("figures/FigS8-lat.Tmax.png", Tmax.lat,
        width = 12, height = 6)
 
 q.lat <- plot_grid(pLA.q.lat, MDR.q.lat, lf.q.lat, 
@@ -1999,6 +2000,9 @@ q.lat <- plot_grid(pLA.q.lat, MDR.q.lat, lf.q.lat,
                    align = "v", ncol = 2, labels = "AUTO")
 q.lat
 
-ggsave("figures/FigS5-lat.q.png", q.lat,
+ggsave("figures/FigS9-lat.q.png", q.lat,
        width = 12, height = 6)
+
+
+# 2. Summary table -------------------------------------------------------------
 

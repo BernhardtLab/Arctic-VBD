@@ -622,7 +622,7 @@ save(lf.arctic.bri.inf, file = "R-scripts/R2jags-objects/all-mods/lf.arctic.bri.
 
 ## Diagnostics
 ##### Examine output
-lf.nonarctic.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]
+lf.arctic.bri.inf$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"),]
 mcmcplot(lf.arctic.bri.inf, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance", "sigma_T0", "sigma_Tm", "sigma_q"))
 
 # Extract the DIC for future model comparisons
