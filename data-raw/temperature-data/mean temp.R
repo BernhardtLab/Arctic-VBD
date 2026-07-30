@@ -1,4 +1,4 @@
-## Look at the mean summer temperature of Kugluktuk and Cambridge Bay from 2015-2025
+## Look at the mean summer temperature of Kugluktuk and Cambridge Bay from 2025
 
 library(tidyverse)
 library(janitor)
