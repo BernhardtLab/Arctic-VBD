@@ -15,10 +15,11 @@ library(tidyverse)
 library(readxl)
 library(janitor)
 library(R2jags)
-library(MASS)
 library(cowplot)
 library(RColorBrewer)
 library(metafor)
+library(officer)
+library(flextable)
 
 # Load functions
 source("R-scripts/00_Functions.R")
@@ -1972,8 +1973,8 @@ ggsave("figures/a.bri.TPC.params.lat.png", TPC.params.lat,
 
 
 ##### Plot everything together #####
-Tmin.lat <- plot_grid(pLA.Tmin.lat, MDR.Tmin.lat, lf.Tmin.lat, 
-                      PDR.Tmin.lat, EV.Tmin.lat, EFGC.Tmin.lat, a.Tmin.lat,
+Tmin.lat <- plot_grid(a.Tmin.lat, lf.Tmin.lat, PDR.Tmin.lat, EFGC.Tmin.lat,
+                      EV.Tmin.lat, pLA.Tmin.lat, MDR.Tmin.lat,
                       align = "v", ncol = 2, labels = "AUTO")
 Tmin.lat
 
@@ -1981,16 +1982,17 @@ ggsave("figures/FigS7-lat.Tmin.png", Tmin.lat,
        width = 12, height = 6)
 
 
-Tmax.lat <- plot_grid(pLA.Tmax.lat, MDR.Tmax.lat, lf.Tmax.lat, 
-                      PDR.Tmax.lat, EV.Tmax.lat, EFGC.Tmax.lat, a.Tmax.lat,
+
+Tmax.lat <- plot_grid(a.Tmax.lat, lf.Tmax.lat, PDR.Tmax.lat, EFGC.Tmax.lat,
+                      EV.Tmax.lat, pLA.Tmax.lat, MDR.Tmax.lat,
                       align = "v", ncol = 2, labels = "AUTO")
 Tmax.lat
 
 ggsave("figures/FigS8-lat.Tmax.png", Tmax.lat,
        width = 12, height = 6)
 
-q.lat <- plot_grid(pLA.q.lat, MDR.q.lat, lf.q.lat, 
-                   PDR.q.lat, EV.q.lat, EFGC.q.lat, a.q.lat,
+q.lat <- plot_grid(a.q.lat, lf.q.lat, PDR.q.lat, EFGC.q.lat,
+                   EV.q.lat, pLA.q.lat, MDR.q.lat,
                    align = "v", ncol = 2, labels = "AUTO")
 q.lat
 
@@ -2000,3 +2002,53 @@ ggsave("figures/FigS9-lat.q.png", q.lat,
 
 # 2. Summary table -------------------------------------------------------------
 
+# Function creating the summary table for the model
+save_coef <- function(trait, param){
+  obj_name <- paste0(trait, ".", param, ".fit")
+  
+  # Convert summary table to dataframe format
+  df <- as.data.frame(coef(summary(get(obj_name))))
+  
+  df <- round(df, 2) # round to 2 digits
+  
+  df <- df %>%
+    mutate(term = rownames(df)) %>%
+    select(term, everything())
+  rownames(df) <- NULL
+  
+  colnames(df) <- c("term", "Estimate", "SE", "Z statistic", "P-value", "CI lower", "CI upper")
+  
+  df <- flextable(df)
+
+  table.num <- ifelse(param == "T0", 6, ifelse(param == "Tm", 7, 8))
+  
+  filename = paste0("figures/tableS", table.num, ".", trait, ".docx")
+  
+  save_as_docx("Table" = df,
+    path = filename
+  )
+}
+
+save_coef("a", "T0")
+save_coef("lf", "T0")
+save_coef("PDR", "T0")
+save_coef("EFGC", "T0")
+save_coef("EV", "T0")
+save_coef("pLA", "T0")
+save_coef("MDR", "T0")
+
+save_coef("a", "Tm")
+save_coef("lf", "Tm")
+save_coef("PDR", "Tm")
+save_coef("EFGC", "Tm")
+save_coef("EV", "Tm")
+save_coef("pLA", "Tm")
+save_coef("MDR", "Tm")
+
+save_coef("a", "q")
+save_coef("lf", "q")
+save_coef("PDR", "q")
+save_coef("EFGC", "q")
+save_coef("EV", "q")
+save_coef("pLA", "q")
+save_coef("MDR", "q")

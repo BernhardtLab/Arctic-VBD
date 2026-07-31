@@ -184,6 +184,7 @@ plot.a <- a.alldata.predictions.summary %>%
        x = expression(paste("Temperature (", degree, "C)")), 
        y = parse(text = "Rate~(day^-1)")) +
   scale_colour_manual(values = c("Arctic" = "black", "non-Arctic" = "azure4"),
+                      label = c("Arctic", "Temperate"),
                       name = "Dataset"
                       ) +
   theme_bw() +
@@ -449,7 +450,7 @@ plot.lf.nonarctic <- lf.nonarctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
   
   # Arctic data
-  geom_point(data = data.lf.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels
+  geom_point(data = data.lf.nonarctic, aes(x = temp, y = trait), size = 2) +
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Adult Lifespan (",italic(lf),")")),
        x = expression(paste("Temperature (", degree, "C)")), 
@@ -471,7 +472,7 @@ plot.PDR.nonarctic <- PDR.nonarctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
   
   # Arctic data
-  geom_point(data = data.PDR.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.PDR.nonarctic, aes(x = temp, y = trait), size = 2) + 
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Pathogen Development Rate (",italic(PDR),")")),
        x = expression(paste("Temperature (", degree, "C)")), 
@@ -493,7 +494,7 @@ plot.EV.nonarctic <- EV.nonarctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
   
   # Arctic data
-  geom_point(data = data.EV.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.EV.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Egg Viability (",italic(EV),")")),
@@ -515,7 +516,7 @@ plot.pLA.nonarctic <- pLA.nonarctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
   
   # Arctic data
-  geom_point(data = data.pLA.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.pLA.nonarctic, aes(x = temp, y = trait), size = 2) + 
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Larval-to-Adult Survival (",italic(pLA),")")),
@@ -537,7 +538,7 @@ plot.MDR.nonarctic <- MDR.nonarctic.predictions.summary %>%
   geom_line(aes(x = temperature, y = median), colour = "grey4", linewidth = 1) +
   
   # Arctic data
-  geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.MDR.nonarctic, aes(x = temp, y = trait), size = 2) +
   # Customize the axes and labels
   scale_x_continuous(limits = c(0, 46)) + 
   labs(title = expression(paste("Mosquito Development Rate (",italic(MDR),")")),
@@ -586,7 +587,7 @@ plot.pLA.arctic.bri.uni <- df.pLA.arctic.bri.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -616,7 +617,7 @@ plot.pLA.arctic.quad.uni <- df.pLA.arctic.quad.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -646,7 +647,7 @@ plot.pLA.arctic.bri.inf <- df.pLA.arctic.bri.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -676,7 +677,7 @@ plot.pLA.arctic.quad.inf <- df.pLA.arctic.quad.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.pLA.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -716,7 +717,7 @@ plot.MDR.arctic.bri.uni <- df.MDR.arctic.bri.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -746,7 +747,7 @@ plot.MDR.arctic.quad.uni <- df.MDR.arctic.quad.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -776,7 +777,7 @@ plot.MDR.arctic.bri.inf <- df.MDR.arctic.bri.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -806,7 +807,7 @@ plot.MDR.arctic.quad.inf <- df.MDR.arctic.quad.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.MDR.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -849,7 +850,7 @@ plot.lf.arctic.bri.uni <- df.lf.arctic.bri.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2) + 
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -882,7 +883,7 @@ plot.lf.arctic.quad.uni <- df.lf.arctic.quad.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2) + 
 
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -915,7 +916,7 @@ plot.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2) + 
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -948,7 +949,7 @@ plot.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.lf.arctic, aes(x = temp, y = trait), size = 2) + 
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -988,7 +989,7 @@ plot.PDR.arctic.bri.uni <- df.PDR.arctic.bri.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -1018,7 +1019,7 @@ plot.PDR.arctic.quad.uni <- df.PDR.arctic.quad.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -1048,7 +1049,7 @@ plot.PDR.arctic.bri.inf <- df.PDR.arctic.bri.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -1078,7 +1079,7 @@ plot.PDR.arctic.quad.inf <- df.PDR.arctic.quad.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.PDR.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -1120,7 +1121,7 @@ plot.EV.arctic.bri.uni <- df.EV.arctic.bri.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2) + 
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -1150,7 +1151,7 @@ plot.EV.arctic.quad.uni <- df.EV.arctic.quad.uni %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2) + 
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -1180,7 +1181,7 @@ plot.EV.arctic.bri.inf <- df.EV.arctic.bri.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2) +
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
@@ -1210,7 +1211,7 @@ plot.EV.arctic.quad.inf <- df.EV.arctic.quad.inf %>%
   geom_line(aes(y = X50.), colour = "grey4", linewidth = 1) +
   
   ## data
-  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2, shape = 1) +  # Customize the axes and labels  # Customize the axes and labels
+  geom_point(data = data.EV.arctic, aes(x = temp, y = trait), size = 2) + 
   
   # Customize the axes and labels
   labs(x = expression(paste("Temperature (", degree, "C)")), 
