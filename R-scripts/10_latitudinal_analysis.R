@@ -1969,12 +1969,6 @@ TPC.params.lat
 ggsave("figures/a.bri.TPC.params.lat.png", TPC.params.lat,
        width = 10.3, height = 10)
 
-plot.traits <- plot_grid(plot.pLA, plot.MDR, plot.lf, 
-                         plot.PDR, plot.EV, legend_panel,
-                         plot.a + theme(legend.position="none"), plot.EFGC, plot.bc, 
-                         ncol = 3,
-                         align = "hv",
-                         labels = c(LETTERS[1:5], NA, LETTERS[6:8]))
 
 
 ##### Plot everything together #####
