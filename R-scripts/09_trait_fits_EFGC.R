@@ -7,12 +7,8 @@
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. MCMC settings for all models
-##    2. Fitting TPC (Briere)
-##        A. Fit TPC by combining all data (Arctic and non-Arctic)
-##        B. Fit non-Arctic TPC using uniform priors
-##    3. Fitting TPC (Quadratic)
-##        A. Fit TPC by combining all data (Arctic and non-Arctic)
-##        B. Fit non-Arctic TPC using uniform priors
+##    2. Fitting TPC (Briere) by combining all data (Arctic and non-Arctic)
+##    3. Fitting TPC (Quadratic) by combining all data (Arctic and non-Arctic)
 ##    4. Compare model fit between Briere and Quadratic models
 ##    5. Process and save model output for visualization
 ##
@@ -100,9 +96,7 @@ nt <- 100 # thinning rate - jags saves every nt iterations in each chain
 nc <- 3 # number of chains
 
 
-# 2. Fitting TPC (Briere) ------------------------------------------------------
-
-## 2A. Fit TPC by combining all data (Arctic and non-Arctic) -------------------
+# 2. Fitting TPC (Briere) by combining all data (Arctic and non-Arctic) --------
 
 ##### Temp sequence for derived quantity calculations
 # For actual fits
@@ -323,109 +317,8 @@ ggsave("figures/EFGC.alldata.bri.uni.png", plot.EFGC.alldata.bri.uni,
        width = 10.3, height = 5.6)
 
 
-## 2B. Fit non-Arctic TPC using uniform priors ---------------------------------
+# 3. Fitting TPC (quadratic) by combining all data (Arctic and non-Arctic) -----
 
-##### Temp sequence for derived quantity calculations
-# For actual fits
-Temp.xs <- seq(0, 45, 0.1)
-N.Temp.xs <-length(Temp.xs)
-
-
-##### Set data
-data <- data.EFGC.nonarctic
-
-##### Organize data for JAGS
-trait <- data$trait
-N.obs <- length(trait)
-temp <- data$temp
-
-
-prior <- data.frame(q = c(0, 1),
-                    T0 = c(0, 20),
-                    Tm = c(25, 45)
-)
-
-##### inits Function
-inits <- function(){list(
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
-
-##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
-
-##### Organize data for JAGS
-trait <- data$trait
-N.obs <- length(trait)
-temp <- data$temp
-
-##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
-                 N.Temp.xs = N.Temp.xs, prior = prior)
-
-##### Run JAGS
-set.seed(123) # for reproducibility
-EFGC.nonarctic.bri.uni <- jags(data = jag.data,
-                            inits = inits,
-                            parameters.to.save = parameters,
-                            model.file = "R-scripts/briere_T.txt",
-                            n.thin = nt,
-                            n.chains = nc,
-                            n.burnin = nb,
-                            n.iter = ni,
-                            DIC = T,
-                            working.directory = getwd()
-)
-
-## Save the model as Rdata 
-save(EFGC.nonarctic.bri.uni, file = "R-scripts/R2jags-objects/all-mods/EFGC.nonarctic.bri.uni.Rdata")
-
-# Read the .Rdata
-# load("R-scripts/R2jags-objects/all-mods/EFGC.nonarctic.bri.uni.Rdata")
-
-
-## Diagnostics
-##### Examine output
-EFGC.nonarctic.bri.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
-mcmcplot(EFGC.nonarctic.bri.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
-
-
-# Extract the DIC for future model comparisons
-EFGC.nonarctic.bri.uni$BUGSoutput$DIC
-
-## Plot data + fit
-df.EFGC.nonarctic.bri.uni <- data.frame(EFGC.nonarctic.bri.uni$BUGSoutput$summary)[-(1:5),] %>% 
-  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
-
-head(df.EFGC.nonarctic.bri.uni)
-
-##### Plot
-plot.EFGC.nonarctic.bri.uni <- df.EFGC.nonarctic.bri.uni %>% 
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
-  geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Eggs",
-    title = "EFGC, non-arctic sp., briere, uniform priors"
-  ) +
-  theme_bw()
-
-plot.EFGC.nonarctic.bri.uni
-
-ggsave("figures/EFGC.nonarctic.bri.uni.png", plot.EFGC.nonarctic.bri.uni,
-       width = 10.3, height = 5.6)
-
-
-# 3. Fitting TPC (quadratic) ---------------------------------------------------
-
-## 3A. Fit TPC by combining all data (Arctic and non-Arctic) -------------------
 
 ##### Temp sequence for derived quantity calculations
 # For actual fits
@@ -645,105 +538,6 @@ ggsave("figures/EFGC.alldata.quad.uni.png", plot.EFGC.alldata.quad.uni,
        width = 10.3, height = 5.6)
 
 
-## 3B. Fit non-Arctic TPC using uniform priors ---------------------------------
-
-##### Temp sequence for derived quantity calculations
-# For actual fits
-Temp.xs <- seq(0, 45, 0.1)
-N.Temp.xs <-length(Temp.xs)
-
-
-##### Set data
-data <- data.EFGC.nonarctic
-
-##### Organize data for JAGS
-trait <- data$trait
-N.obs <- length(trait)
-temp <- data$temp
-
-
-prior <- data.frame(q = c(0, 1),
-                    T0 = c(0, 20),
-                    Tm = c(25, 45)
-)
-
-##### inits Function
-inits <- function(){list(
-  cf.q = 0.01,
-  cf.Tm = 35,
-  cf.T0 = 5,
-  cf.sigma = rlnorm(1))}
-
-##### Parameters to Estimate
-parameters <- c("cf.q", "cf.T0", "cf.Tm","cf.sigma", "z.trait.mu.pred")
-
-##### Organize data for JAGS
-trait <- data$trait
-N.obs <- length(trait)
-temp <- data$temp
-
-##### define data for JAGS in a list object
-jag.data <- list(trait = trait, N.obs = N.obs, temp = temp, Temp.xs = Temp.xs, 
-                 N.Temp.xs = N.Temp.xs, prior = prior)
-
-##### Run JAGS
-set.seed(123) # for reproducibility
-EFGC.nonarctic.quad.uni <- jags(data = jag.data,
-                                inits = inits,
-                                parameters.to.save = parameters,
-                                model.file = "R-scripts/quad_T.txt",
-                                n.thin = nt,
-                                n.chains = nc,
-                                n.burnin = nb,
-                                n.iter = ni,
-                                DIC = T,
-                                working.directory = getwd()
-                                )
-
-## Save the model as Rdata 
-save(EFGC.nonarctic.quad.uni, file = "R-scripts/R2jags-objects/all-mods/EFGC.nonarctic.quad.uni.Rdata")
-
-# Read the .Rdata
-# load("R-scripts/R2jags-objects/all-mods/EFGC.nonarctic.quad.uni.Rdata")
-
-
-## Diagnostics
-##### Examine output
-EFGC.nonarctic.quad.uni$BUGSoutput$summary[c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"),]
-mcmcplot(EFGC.nonarctic.quad.uni, parms = c("cf.T0", "cf.Tm", "cf.q", "cf.sigma", "deviance"))
-
-
-# Extract the DIC for future model comparisons
-EFGC.nonarctic.quad.uni$BUGSoutput$DIC
-
-## Plot data + fit
-df.EFGC.nonarctic.quad.uni <- data.frame(EFGC.nonarctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
-  mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
-  dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
-
-head(df.EFGC.nonarctic.quad.uni)
-
-##### Plot
-plot.EFGC.nonarctic.quad.uni <- df.EFGC.nonarctic.quad.uni %>% 
-  ggplot(aes(x = temp)) +
-  geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
-  geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
-  geom_point(data = data, aes(x = temp, y = trait), size = 2) +
-  # Customize the axes and labels
-  #scale_x_continuous(limits = c(0, 41)) + 
-  #scale_y_continuous(limits = c(-0.005, 0.19)) +
-  labs(
-    x = expression(paste("Temperature (", degree, "C)")),
-    y = "Eggs",
-    title = "EFGC, non-arctic sp., quadratic, uniform priors"
-  ) +
-  theme_bw()
-
-plot.EFGC.nonarctic.quad.uni
-
-ggsave("figures/EFGC.nonarctic.quad.uni.png", plot.EFGC.nonarctic.quad.uni,
-       width = 10.3, height = 5.6)
-
 
 # 4. Compare model fit between Briere and Quadratic models ---------------------
 
@@ -786,17 +580,12 @@ ggsave("figures/EFGC.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 EFGC.alldata.bri.uni$BUGSoutput$DIC
 EFGC.alldata.quad.uni$BUGSoutput$DIC # This is the best fitting TPC
 
-# Only nonarctic data#
-EFGC.nonarctic.bri.uni$BUGSoutput$DIC 
-EFGC.nonarctic.quad.uni$BUGSoutput$DIC # This is the best fitting TPC
 
 # Save best-fitting TPC in a separate folder
 EFGC.alldata.mod <- EFGC.alldata.quad.uni
-EFGC.nonarctic.mod <- EFGC.nonarctic.quad.uni
 
 ## Save the model as Rdata 
 save(EFGC.alldata.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/EFGC.alldata.mod.Rdata")
-save(EFGC.nonarctic.mod, file = "R-scripts/R2jags-objects/best-fitting-mods/EFGC.nonarctic.mod.Rdata")
 
 
 # 5. Process and save model output for visualization ---------------------------
@@ -820,17 +609,6 @@ write_csv(EFGC.alldata.predictions.summary, "data-processed/EFGC/EFGC.alldata.pr
 write_csv(EFGC.alldata.params.summary, "data-processed/EFGC/EFGC.alldata.params.summary.csv")
 write_csv(EFGC.alldata.params.fullposts, "data-processed/EFGC/EFGC.alldata.params.fullposts.csv")
 
-
-##### non-Arctic #####
-Temp.xs <- seq(0, 45, 0.1)
-EFGC.TPC.analysis <- extractTPC(EFGC.nonarctic.quad.uni, "EFGC", Temp.xs)
-EFGC.nonarctic.predictions.summary <- EFGC.TPC.analysis[[1]]
-EFGC.nonarctic.params.summary <- EFGC.TPC.analysis[[2]]
-EFGC.nonarctic.params.fullposts <- EFGC.TPC.analysis[[3]]
-
-write_csv(EFGC.nonarctic.predictions.summary, "data-processed/EFGC/EFGC.nonarctic.predictions.summary.csv")
-write_csv(EFGC.nonarctic.params.summary, "data-processed/EFGC/EFGC.nonarctic.params.summary.csv")
-write_csv(EFGC.nonarctic.params.fullposts, "data-processed/EFGC/EFGC.nonarctic.params.fullposts.csv")
 
 
 ##### Briere model #####
