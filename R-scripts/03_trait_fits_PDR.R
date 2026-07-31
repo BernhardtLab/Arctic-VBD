@@ -173,10 +173,10 @@ PDR.arctic.bri.uni <- jags(data = jag.data,
 )
 
 ## Save the model as Rdata 
-save(PDR.arctic.bri.uni, file = "R-scripts/R2jags-objects/PDR.arctic.bri.uni.Rdata")
+save(PDR.arctic.bri.uni, file = "R-scripts/R2jags-objects/all-mods/PDR.arctic.bri.uni.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/PDR.arctic.bri.uni.Rdata")
+# load("R-scripts/R2jags-objects/all-mods/PDR.arctic.bri.uni.Rdata")
 
 
 ## Diagnostics
@@ -635,10 +635,10 @@ PDR.arctic.quad.uni <- jags(data = jag.data,
                             )
 
 ## Save the model as Rdata 
-save(PDR.arctic.quad.uni, file = "R-scripts/R2jags-objects/PDR.arctic.quad.uni.Rdata")
+save(PDR.arctic.quad.uni, file = "R-scripts/R2jags-objects/all-mods/PDR.arctic.quad.uni.Rdata")
 
 # Read the .Rdata
-# load("R-scripts/R2jags-objects/PDR.arctic.quad.uni.Rdata")
+# load("R-scripts/R2jags-objects/all-mods/PDR.arctic.quad.uni.Rdata")
 
 
 ## Diagnostics
