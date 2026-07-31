@@ -1334,7 +1334,6 @@ save_as_docx(
 
 
 # 4. Summary table for DIC ------------------------------------------
-load("R-scripts/R2jags-objects/all-mods/EV.arctic.quad.inf.Rdata")
 
 # Helper: load one .Rdata file and pull out the DIC, returns NA if file doesn't exist
 get_dic <- function(filepath) {
@@ -1380,6 +1379,7 @@ dic_table[1] <- c("Biting rate (a)", "Vector competence (bc)",
 print(dic_table)
 
 dic_table <- flextable(dic_table)
+dic_table
 
 save_as_docx(
   "Table S4" = dic_table,
