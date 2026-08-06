@@ -7,7 +7,7 @@
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. Load data
-##  	2. 
+##  	2. Calculate mean temp
 ##
 ## Inputs:
 ## data-raw/temperature-data/en_climate_daily_NU_2300903_2025_P1D.csv - 

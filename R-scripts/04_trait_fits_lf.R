@@ -299,7 +299,7 @@ plot.lf.arctic.bri.uni <- ggplot() +
 
 plot.lf.arctic.bri.uni
 
-ggsave("figures/lf.arctic.bri.uni.png", plot.lf.arctic.bri.uni,
+ggsave("figuers/TPC-fits/lf.arctic.bri.uni.png", plot.lf.arctic.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -492,7 +492,7 @@ plot.lf.nonarctic.bri.uni <- ggplot() +
 
 plot.lf.nonarctic.bri.uni
 
-ggsave("figures/lf.nonarctic.bri.uni.png", plot.lf.nonarctic.bri.uni,
+ggsave("figuers/TPC-fits/lf.nonarctic.bri.uni.png", plot.lf.nonarctic.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -741,7 +741,7 @@ plot.lf.arctic.bri.inf <- ggplot() +
 
 plot.lf.arctic.bri.inf
 
-ggsave("figures/lf.arctic.bri.inf0.2.png", plot.lf.arctic.bri.inf,
+ggsave("figuers/TPC-fits/lf.arctic.bri.inf0.2.png", plot.lf.arctic.bri.inf,
        width = 10.3, height = 5.6)
 
 
@@ -935,7 +935,7 @@ plot.lf.arctic.quad.uni <- ggplot() +
 
 plot.lf.arctic.quad.uni
 
-ggsave("figures/lf.arctic.quad.uni.png", plot.lf.arctic.quad.uni,
+ggsave("figuers/TPC-fits/lf.arctic.quad.uni.png", plot.lf.arctic.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -1128,7 +1128,7 @@ plot.lf.nonarctic.quad.uni <- ggplot() +
 
 plot.lf.nonarctic.quad.uni
 
-ggsave("figures/lf.nonarctic.quad.uni.png", plot.lf.nonarctic.quad.uni,
+ggsave("figuers/TPC-fits/lf.nonarctic.quad.uni.png", plot.lf.nonarctic.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -1378,7 +1378,7 @@ plot.lf.arctic.quad.inf <- ggplot() +
 
 plot.lf.arctic.quad.inf
 
-ggsave("figures/lf.arctic.quad.inf.png", plot.lf.arctic.quad.inf,
+ggsave("figuers/TPC-fits/lf.arctic.quad.inf.png", plot.lf.arctic.quad.inf,
        width = 10.3, height = 5.6)
 
 
@@ -1389,7 +1389,7 @@ plot.lf.arctic <- plot_grid(plot.lf.arctic.bri.uni, plot.lf.arctic.quad.uni,
 
 plot.lf.arctic
 
-ggsave("figures/lf.arctic.png", plot.lf.arctic,
+ggsave("figuers/TPC-fits/lf.arctic.png", plot.lf.arctic,
        width = 10.3, height = 5.6)
 
 ##### Find best fitting model #####
@@ -1424,7 +1424,7 @@ plot.all <- df.all %>%
 
 plot.all
 
-ggsave("figures/lf.bri.quad.png", plot.all, width = 10.3, height = 5.6)
+ggsave("figuers/TPC-fits/lf.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 
 
 ## DIC
@@ -1433,6 +1433,39 @@ lf.arctic.bri.inf$BUGSoutput$DIC
 lf.arctic.quad.uni$BUGSoutput$DIC
 lf.arctic.quad.inf$BUGSoutput$DIC # This is the best fitting TPC
 
+
+##### Plot Arctic vs. non-Arctic TPCs for the best fitting TPC #####
+df.lf.nonarctic.quad.uni.pop <- df.lf.nonarctic.quad.uni.pop %>% 
+  mutate(type = "non-Arctic")
+
+df.lf.arctic.quad.inf.pop <- df.lf.arctic.quad.inf.pop %>% 
+  mutate(type = "Arctic")
+
+df.arctic.nonarctic <- bind_rows(df.lf.nonarctic.quad.uni.pop, df.lf.arctic.quad.inf.pop)
+
+plot.arctic.nonarctic <- df.arctic.nonarctic %>% 
+  ggplot(aes(x = temp)) +
+  geom_point(data = data.all, aes(x = temp, y = trait, colour = type), size = 2) +
+  geom_ribbon(aes(ymin = X2.5., ymax = X97.5., fill = type), alpha = 0.5) +
+  geom_line(aes(y = X50., color = type), linewidth = 1) +
+  
+  labs(
+    x = expression(paste("Temperature (", degree, "C)")),
+    y = "Time (days)"
+  ) +
+  
+  # Customize the colours
+  ## ribbon
+  scale_fill_manual(values = c("Arctic" = "#4363d8", 
+                               "non-Arctic" = "grey")) +
+  ## line
+  scale_color_manual(values = c("Arctic" = "blue", 
+                                "non-Arctic" = "azure4")) +
+  theme_bw()
+
+plot.arctic.nonarctic
+
+ggsave("figures/TPC-fits/lf/lf.arctic.nonarctic.png", plot.arctic.nonarctic, width = 10.3, height = 5.6)
 
 
 # Save best-fitting TPC in a separate folder

@@ -303,7 +303,7 @@ plot.a.alldata.bri.uni <- ggplot() +
 
 plot.a.alldata.bri.uni
 
-ggsave("figures/a.alldata.bri.uni.png", plot.a.alldata.bri.uni,
+ggsave("figures/TPC-fits/a/a.alldata.bri.uni.png", plot.a.alldata.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -503,7 +503,7 @@ plot.a.alldata.quad.uni <- ggplot() +
 
 plot.a.alldata.quad.uni
 
-ggsave("figures/a.alldata.quad.uni.png", plot.a.alldata.quad.uni,
+ggsave("figures/TPC-fits/a/a.alldata.quad.uni.png", plot.a.alldata.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -541,7 +541,7 @@ plot.all <- df.all %>%
 
 plot.all
 
-ggsave("figures/a.bri.quad.png", plot.all, width = 10.3, height = 5.6)
+ggsave("figures/TPC-fits/a/a.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 
 
 #### DIC

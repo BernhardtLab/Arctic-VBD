@@ -7,7 +7,55 @@
 ## Table of content:
 ##    0. Set-up workspace
 ##    1. Latitudinal regression
-##    2. Summary table
+##    2. Summary tables
+##
+## 
+## Inputs:
+## Best-fitting TPC models for non-Arctic species for each trait:
+##    R-scripts/R2jags-objects/all-mods/lf.nonarctic.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/EV.nonarctic.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/pLA.nonarctic.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/MDR.nonarctic.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/PDR.nonarctic.bri.uni.Rdata
+##     
+## Best-fitting TPC models (Briere or Quadratic) for Arctic species fitted using
+## uniform priors:
+##    R-scripts/R2jags-objects/all-mods/lf.arctic.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/EV.arctic.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/pLA.arctic.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/MDR.arctic.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/PDR.arctic.bri.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/EFGC.alldata.quad.uni.Rdata
+##    R-scripts/R2jags-objects/all-mods/a.alldata.bri.uni.Rdata 
+##
+## Trait data:
+##    data-processed/TraitData_lf.csv
+##    data-processed/TraitData_EV.csv
+##    data-processed/TraitData_pLA.csv
+##    data-processed/TraitData_MDR.csv
+##    data-processed/TraitData_PDR.csv
+##    data-processed/TraitData_EFGC.csv
+##    data-processed/TraitData_a.csv
+##
+##
+## Outputs: 
+## figures/FigS7-lat.Tmin.png -
+##     Supplementary figure S7
+##
+## figures/FigS8-lat.Tmax.png -
+##     Supplementary figure S8
+##
+## figures/FigS9-lat.q.png -
+##     Supplementary figure S9
+## 
+## Summary tables for the meta-regression model: 
+##    figures/tableS7.a, figures/tableS7.EFGC, figures/tableS7.EV, 
+##    figures/tableS7.lf, figures/tableS7.MDR, figures/tableS7.PDR, 
+##    figures/tableS7.pLA, figures/tableS8.a, figures/tableS8.EFGC, 
+##    figures/tableS8.EV, figures/tableS8.lf, figures/tableS8.MDR, 
+##    figures/tableS8.PDR, figures/tableS8.pLA, figures/tableS9.a, 
+##    figures/tableS9.EFGC, figures/tableS9.EV, figures/tableS9.lf, 
+##    figures/tableS9.MDR, figures/tableS9.PDR, figures/tableS9.pLA,
 
 
 # 0. Set-up workspace -----------------------------------------------------
@@ -336,9 +384,6 @@ lf.q.lat
 TPC.params.lat <- plot_grid(lf.Tmin.lat, lf.Tmax.lat, lf.q.lat, align = "v", ncol = 1)
 TPC.params.lat
 
-ggsave("figures/lf.quad.TPC.params.lat.png", TPC.params.lat,
-       width = 10.3, height = 10)
-
 
 
 ##### Egg  viability (EV) #####
@@ -608,9 +653,6 @@ EV.q.lat
 
 TPC.params.lat <- plot_grid(EV.Tmin.lat, EV.Tmax.lat, EV.q.lat, align = "v", ncol = 1)
 TPC.params.lat
-
-ggsave("figures/EV.quad.TPC.params.lat.png", TPC.params.lat,
-       width = 10.3, height = 10)
 
 
 
@@ -892,8 +934,7 @@ pLA.q.lat
 TPC.params.lat <- plot_grid(pLA.Tmin.lat, pLA.Tmax.lat, pLA.q.lat, align = "v", ncol = 1)
 TPC.params.lat
 
-ggsave("figures/pLA.quad.TPC.params.lat.png", TPC.params.lat,
-       width = 10.3, height = 10)
+
 
 
 ##### Mosquito development rate (MDR) #####
@@ -1177,8 +1218,7 @@ MDR.q.lat
 TPC.params.lat <- plot_grid(MDR.Tmin.lat, MDR.Tmax.lat, MDR.q.lat, align = "v", ncol = 1)
 TPC.params.lat
 
-ggsave("figures/MDR.quad.TPC.params.lat.png", TPC.params.lat,
-       width = 10.3, height = 10)
+
 
 
 ##### Pathogen development rate (PDR) #####
@@ -1450,8 +1490,6 @@ PDR.q.lat
 TPC.params.lat <- plot_grid(PDR.Tmin.lat, PDR.Tmax.lat, PDR.q.lat, align = "v", ncol = 1)
 TPC.params.lat
 
-ggsave("figures/PDR.bri.TPC.params.lat.png", TPC.params.lat,
-       width = 10.3, height = 10)
 
 
 
@@ -1713,8 +1751,6 @@ EFGC.q.lat
 TPC.params.lat <- plot_grid(EFGC.Tmin.lat, EFGC.Tmax.lat, EFGC.q.lat, align = "v", ncol = 1)
 TPC.params.lat
 
-ggsave("figures/EFGC.quad.TPC.params.lat.png", TPC.params.lat,
-       width = 10.3, height = 10)
 
 
 
@@ -1967,8 +2003,6 @@ a.q.lat
 TPC.params.lat <- plot_grid(a.Tmin.lat, a.Tmax.lat, a.q.lat, align = "v", ncol = 1)
 TPC.params.lat
 
-ggsave("figures/a.bri.TPC.params.lat.png", TPC.params.lat,
-       width = 10.3, height = 10)
 
 
 

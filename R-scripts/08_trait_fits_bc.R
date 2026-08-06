@@ -165,7 +165,7 @@ plot.bc.nonarctic.bri.uni <- df.bc.nonarctic.bri.uni %>%
 
 plot.bc.nonarctic.bri.uni
 
-ggsave("figures/bc.nonarctic.bri.uni.png", plot.bc.nonarctic.bri.uni,
+ggsave("figures/TPC-fits/bc/bc.nonarctic.bri.uni.png", plot.bc.nonarctic.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -265,7 +265,7 @@ plot.bc.nonarctic.quad.uni <- df.bc.nonarctic.quad.uni %>%
 
 plot.bc.nonarctic.quad.uni
 
-ggsave("figures/bc.nonarctic.quad.uni.png", plot.bc.nonarctic.quad.uni,
+ggsave("figures/TPC-fits/bc/bc.nonarctic.quad.uni.png", plot.bc.nonarctic.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -304,7 +304,7 @@ plot.all <- df.all %>%
 
 plot.all
 
-ggsave("figures/bc.bri.quad.png", plot.all, width = 10.3, height = 5.6)
+ggsave("figures/TPC-fits/bc/bc.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 
 
 #### DIC

@@ -178,7 +178,7 @@ plot.S <- ggplot(data = S.out.median) +
   # scale_x_continuous(limits = c(10, 35)) +
   scale_x_continuous(limits = c(10, 40)) +
   labs(x = expression(paste("Temperature (", degree, "C)")), 
-       y = "Suitability for parasitic worm transmission") +
+       y = "Suitability (S)") +
   theme_bw() +
   theme(axis.text = element_text(size = 12),
         axis.title = element_text(size = 14))
@@ -186,8 +186,6 @@ plot.S <- ggplot(data = S.out.median) +
 
 plot.S
 
-
-ggsave("figures/community_report1.png", plot.S, width = 6, height = 5)
 
 # 3. Calculate Tmin, Tmax and Topt (and CIs) for suitability --------------------------------------
 
@@ -241,7 +239,7 @@ plot.suitability <- plot_grid(plot.S, plot.S.params,
 
 plot.suitability
 
-ggsave("figures/suitability.png", plot.suitability, width = 10.3, height = 5.6)
+ggsave("figures/TPC-fits/suitability/suitability.png", plot.suitability, width = 10.3, height = 5.6)
 
 
 # 4. Sensitivity Analysis - partial derivatives --------------------------------
@@ -330,7 +328,7 @@ plot.SA <- ggplot() +
 
 plot.SA
 
-ggsave("figures/sensitivity.analysis.png", plot.SA, width = 10, height = 5)
+ggsave("figures/TPC-fits/suitability/sensitivity.analysis.png", plot.SA, width = 10, height = 5)
 
 
 plot.everything <- plot_grid(plot.S, plot.S.params, plot.SA,

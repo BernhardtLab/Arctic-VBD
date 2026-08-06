@@ -16,11 +16,32 @@
 ##
 ## Outputs: 
 ## figures/Fig3-trait.TPCs.png -
-##     Main text figure 4
+##     Main text figure 3
+##
+## figures/FigS1-trait.TPCs.nonarctic.png -
+##     Supplementary figure S1
+##
+## figures/FigS2-pLA.uni.vs.inf.png -
+##     Supplementary figure S2
+##
+## figures/FigS3-MDR.uni.vs.inf.png -
+##     Supplementary figure S3
+##
+## figures/FigS4-lf.uni.vs.inf.png -
+##     Supplementary figure S4
+##
+## figures/FigS5-PDR.uni.vs.inf.png -
+##     Supplementary figure S5
+##
+## figures/FigS6-EV.uni.vs.inf.png -
+##     Supplementary figure S6
+##
 ## figures/tableS5.docx -
 ##     Supplementary table S5
+##
 ## figures/tableS6.docx -
 ##     Supplementary table S6
+##
 
 # 0. Set-up workspace ----------------------------------------------------------
 

@@ -1,11 +1,24 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: Create a conceptual figure for the study
+## Purpose: Create conceptual figures for the study
+##
+## Table of content:
+##    0. Set-up workspace
+##    1. Figure 1: trait-based approach
+##    2. Figure 2: Fitting TPCs under varying Arctic data availability
+##
+## Outputs: 
+## figures/Fig1-panelA.png
+## figures/Fig1-panelA.legend.png
+## figures/Fig1-panelB.png
+## figures/Fig1-panelC.png
+## figures/Fig2-nonarctic
+## figures/Fig2-nonarctic_vs_arctic.png
+## figures/Fig2-alldata.png
 
-##########
-###### 0. Set-up workspace ----
-##########
+
+# 0. Set-up workspace ----------------------------------------------------------
 
 library(tidyverse)
 library(ggsci)
@@ -44,7 +57,7 @@ quadratic = function(T, T0, Tm, q){
 
 
 
-# 1. Figure 1 ------------------------------------------------------------------
+# 1. Figure 1: trait-based approach --------------------------------------------
 
 ## Panel A: Estimate trait thermal responses -----------------------------------
 
@@ -110,7 +123,7 @@ legend_panel
 ggsave("figures/Fig1-panelA.legend.png", legend_panel, width = 3, height = 3)
 
 
-# Panel B: Calculate thermal suitability ---------------------------------------
+## Panel B: Calculate thermal suitability --------------------------------------
 
 ## We will use a normal distribution to illustrate the output of the thermal suitability model
 y <- dnorm(seq(0, 35, 0.1), mean = 17.5, sd = 5)
@@ -132,7 +145,7 @@ panel_b
 ggsave("figures/Fig1-panelB.png", panel_b, width = 3, height = 2.5)
 
 
-# Panel C: validating with field observations ----------------------------------
+## Panel C: validating with field observations ---------------------------------
 
 ##### Generate data points for field data
 set.seed(50) # Set a random seed for reproducibility of the simulation
@@ -159,7 +172,7 @@ panel_c
 ggsave("figures/Fig1-panelC.png", panel_c, width = 3, height = 2.5)
 
 
-# 2. Transforming Non-Arctic data to Arctic data -------------------------------
+# 2. Figure 2: Fitting TPCs under varying Arctic data availability -------------
 
 ## Non-Arctic TPC --------------------------------------------------------------
 nonarctic <- briere(Temp.xs, T0 = 15, Tm = 35, q = 0.008)

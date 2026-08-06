@@ -210,7 +210,7 @@ plot.EV.arctic.bri.uni <- df.EV.arctic.bri.uni %>%
 
 plot.EV.arctic.bri.uni
 
-ggsave("figures/EV.arctic.bri.uni.png", plot.EV.arctic.bri.uni,
+ggsave("figures/TPC-fits/EV/EV.arctic.bri.uni.png", plot.EV.arctic.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -438,7 +438,7 @@ plot.EV.nonarctic.bri.uni <- ggplot() +
 
 plot.EV.nonarctic.bri.uni
 
-ggsave("figures/EV.nonarctic.bri.uni.png", plot.EV.nonarctic.bri.uni,
+ggsave("figures/TPC-fits/EV/EV.nonarctic.bri.uni.png", plot.EV.nonarctic.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -592,7 +592,7 @@ plot.EV.arctic.bri.inf <- df.EV.arctic.bri.inf %>%
 
 plot.EV.arctic.bri.inf
 
-ggsave("figures/EV.arctic.bri.inf.png", plot.EV.arctic.bri.inf, 
+ggsave("figures/TPC-fits/EV/EV.arctic.bri.inf.png", plot.EV.arctic.bri.inf, 
        width = 10.3, height = 5.6)
 
 
@@ -695,7 +695,7 @@ plot.EV.arctic.quad.uni <- df.EV.arctic.quad.uni %>%
 
 plot.EV.arctic.quad.uni
 
-ggsave("figures/EV.arctic.quad.uni.png", plot.EV.arctic.quad.uni,
+ggsave("figures/TPC-fits/EV/EV.arctic.quad.uni.png", plot.EV.arctic.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -922,7 +922,7 @@ plot.EV.nonarctic.quad.uni <- ggplot() +
 
 plot.EV.nonarctic.quad.uni
 
-ggsave("figures/EV.nonarctic.quad.uni.png", plot.EV.nonarctic.quad.uni,
+ggsave("figures/TPC-fits/EV/EV.nonarctic.quad.uni.png", plot.EV.nonarctic.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -1074,7 +1074,7 @@ plot.EV.arctic.quad.inf <- df.EV.arctic.quad.inf %>%
 
 plot.EV.arctic.quad.inf
 
-ggsave("figures/EV.arctic.quad.inf.png", plot.EV.arctic.quad.inf,
+ggsave("figures/TPC-fits/EV/EV.arctic.quad.inf.png", plot.EV.arctic.quad.inf,
        width = 10.3, height = 5.6)
 
 
@@ -1083,7 +1083,7 @@ plot.EV.arctic <- plot_grid(plot.EV.arctic.bri.uni, plot.EV.arctic.quad.uni,
 
 plot.EV.arctic
 
-ggsave("figures/EV.arctic.png", plot.EV.arctic,
+ggsave("figures/TPC-fits/EV/EV.arctic.png", plot.EV.arctic,
        width = 10.3, height = 5.6)
 
 # 4. Compare model fit between Briere and Quadratic models ---------------------
@@ -1120,7 +1120,7 @@ plot.all <- df.all %>%
 
 plot.all
 
-ggsave("figures/EV.bri.quad.png", plot.all, width = 10.3, height = 5.6)
+ggsave("figures/TPC-fits/EV/EV.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 
 
 ## DIC
@@ -1161,7 +1161,7 @@ plot.arctic.nonarctic <- df.arctic.nonarctic %>%
 
 plot.arctic.nonarctic
 
-ggsave("figures/EV.arctic.nonarctic.png", plot.arctic.nonarctic, width = 10.3, height = 5.6)
+ggsave("figures/TPC-fits/EV/EV.arctic.nonarctic.png", plot.arctic.nonarctic, width = 10.3, height = 5.6)
 
 
 # Save best-fitting TPC in a separate folder

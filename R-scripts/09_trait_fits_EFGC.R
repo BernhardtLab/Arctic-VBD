@@ -313,7 +313,7 @@ plot.EFGC.alldata.bri.uni <- ggplot() +
 
 plot.EFGC.alldata.bri.uni
 
-ggsave("figures/EFGC.alldata.bri.uni.png", plot.EFGC.alldata.bri.uni,
+ggsave("figures/TPC-fits/EFGC/EFGC.alldata.bri.uni.png", plot.EFGC.alldata.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -534,7 +534,7 @@ plot.EFGC.alldata.quad.uni <- ggplot() +
 
 plot.EFGC.alldata.quad.uni
 
-ggsave("figures/EFGC.alldata.quad.uni.png", plot.EFGC.alldata.quad.uni,
+ggsave("figures/TPC-fits/EFGC/EFGC.alldata.quad.uni.png", plot.EFGC.alldata.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -573,7 +573,7 @@ plot.all <- df.all %>%
 
 plot.all
 
-ggsave("figures/EFGC.bri.quad.png", plot.all, width = 10.3, height = 5.6)
+ggsave("figures/TPC-fits/EFGC/EFGC.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 
 
 #### DIC
