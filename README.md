@@ -1,26 +1,41 @@
-# Data and code for Chan et al., Quantifying warming-induced changes[JB1.1] in vector-borne disease transmission potential in the Arctic
+# Data and code for Chan et al., Quantifying warming-induced changes in vector-borne disease transmission potential in the Arctic
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![DOI](https://img.shields.io/badge/DOI-pending-lightgrey.svg)](#citation)
 
-Authors: Lilian T.Y. Chan, Marta Shocket, Jason Laurich, Shauna Dworatzek, Danielle S.J. Nowosad, Thomas Mcilwraith, Beau Taptuna, Hannah Zikalala, Sarah J Adamowicz and Joey R. Bernhardt
+Authors: Lilian T.Y. Chan, Marta Shocket, Shauna Dworatzek, Danielle S.J. Nowosad, Jason Laurich, Thomas Mcilwraith, Beau Taptuna, Hannah Zikalala, Sarah J Adamowicz and Joey R. Bernhardt
 
 Description: In this study, we developed a temperature-dependent, trait-based mechanistic model to quantify the thermal suitability of transmission for Setaria yehi, a mosquito-borne nematode parasite of caribou in the Canadian Arctic. We synthesized published laboratory data on mosquito and parasite thermal traits, fitted temperature performance curves (TPCs) in a Bayesian framework, and integrated these traits into a transmission suitability model. We then projected transmission suitability under historical and future climate scenarios to assess how Arctic warming may alter the duration and geographic extent of disease transmission. 
-Raw trait data are located in the repository's [data-raw/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/data-raw) folder and . The workflow for the analysis includes 15 scripts, meant to be run in order. Scripts are located in the repository's [R-scripts/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/R-scripts) folder and figures produced by each script are stored in the [figures/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/figures) folder.
+
+Raw trait data are located in the repository's [data-raw/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/data-raw) folder. The workflow for the analysis includes 16 scripts, meant to be run in order. Scripts are located in the repository's [R-scripts/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/R-scripts) folder and figures and tables produced by each script are stored in the [figures/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/figures) folder.
 
 
 ## Scripts
+**00_Conceptual_figure.R**: This script created the conceptual figures for the manuscript, and produces figures 1 and 2.
 
 **00_Functions.R**: This script contains the functions to load for use in other scripts.
 
 **00_TPC_models.R**: This script provides the JAGS models for fitting TPCs.
 
-**01_Data_Processing.R**: This script clean and process raw trait data, then export each trait as a separate CSV file which are stored in the [processed-data/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/data-processed) folder.
+**01_Data_Processing.R**: This script cleans and processes raw trait data, then export each trait as a separate CSV file which are stored in the [data-processed/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/data-processed) folder.
 
-**02_trait_fits_MDR.R**: This script
+**Scripts 02 - 09**: Each script fits TPCs for a trait, with the naming convention: "0X_trait_fits_{trait name}.R". Model outputs were saved under [data-processed/{trait_name}](https://github.com/BernhardtLab/Arctic-VBD/tree/master/data-processed), which are used as an input for scripts 11-12. Individual TPC fit plots were saved in the [figures/TPC-fits/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/figures/TPC-fits) folder.
 
-For scripts 02 - 07, temperature sensitivities are defined in each simulation, with the naming convention: "{parameter_EAik}", where ik captures the relevant consumer, resource, or both. The parameter value at the reference (ambient) temperature in each simulation is given following the naming convention: "{parameter-ik_b}". Consumer species are given by the numbers 1 and 2 and substitutable resources a and b are referred to as N and P, respectively. The set of parameters at the ambient temperature define the model's starting conditions, and thus the position in ND--FD space of the all species pairs for a given simulation prior to warming.
+**10_latitudinal_analysis.R**: This script tests the relationship between latitude and TPC parameters for all traits except vector competence.
+
+**11_suitability_calculation.R**: This script parameterizes the suitability model and conducts sensitivity analysis.
+
+**12_plot_trait_TPCs.R**: This script creates plots for TPCs and summary tables for TPC parameters. This script produces main text figure 3, supplementary figures S1-6, as well as supplementary tablesS5-6.
+
+**13_mapping_median.ipynb**: This script 
+
+**14_mapping_lowerCI.ipynb*: Same as script 13, except
+
+**15_mapping_upperCI.ipynb*: Same as script 13, except
+
+**16_Kitikmeot_summer_temp.R**": This 
 
 Scripts only used for supplementary analyses are contained in the folder R-scripts \> supplemental-analysis and are arranged based on the main script that they are related to. Script 01S-param-dists-univsmulti.R explores the representation of unicellular and multicellular organisms in our synthesized dataset and generates posterior distributions for each paramter based on cellularity, where possible. Scripts 07S-temp-dep-macarthur-8r.R and 07S-temp-dep-macarthur-unimodal.R define the temperature-dependent competition model and calculations of niche and fitness differences for a consumer-resource model with 8 resources and a two-resource consumer-resource model where parameters respond to warming with unimodal curves, defined by the Johnson-Lewin model (Johnson and Lewin 1946, Journal of Cellular and Comparative Physiology).
+
 
 ## Data
 
@@ -71,7 +86,7 @@ sessionInfo()
 
 If you encounter differences in results, please check your package versions against those listed in `sessionInfo()` output.
 
-## Citation {#citation}
+## Citation
 
 If you use this code or data, please cite the associated manuscript:
 
@@ -83,4 +98,4 @@ This repository is released under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions about this repository, please direct them to the manuscript's corresponding author, Lilian Chan, at [tszying\@uoguelph.ca](mailto:tszying@uoguelph.ca){.email}
+If you have any questions about this repository, please direct them to the manuscript's corresponding author, Lilian Chan, at [tszying\@uoguelph.ca](mailto:tszying@uoguelph.ca)

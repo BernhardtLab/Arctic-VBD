@@ -2,7 +2,7 @@
 ## Arctic vector-borne disease transmission suitability model
 ##
 ## Purpose: Use trait thermal response posterior distributions from JAGS to 
-## calculate suitability S(T)
+## calculate suitability S(T) and conduct sensitivity analysis.
 ## 
 ## Table of content:
 ##    0. Set-up workspace

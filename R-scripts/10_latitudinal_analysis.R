@@ -1,8 +1,8 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: Investigate the relationship between thermal limits (Tmin, Tmax) and 
-## latitude
+## Purpose: test the relationship between latitude and TPC parameters (Tmin,
+## Tmax, q) for all traits other than vector competence.
 ## 
 ## Table of content:
 ##    0. Set-up workspace
