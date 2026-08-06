@@ -200,7 +200,7 @@ plot.MDR.arctic.bri.uni <- df.MDR.arctic.bri.uni %>%
 
 plot.MDR.arctic.bri.uni
 
-ggsave("figures/MDR.arctic.bri.uni.png", plot.MDR.arctic.bri.uni,
+ggsave("figures/TPC-fits/MDR.arctic.bri.uni.png", plot.MDR.arctic.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -489,7 +489,7 @@ plot.MDR.nonarctic.bri.uni <- ggplot() +
 
 plot.MDR.nonarctic.bri.uni
 
-ggsave("figures/MDR.nonarctic.bri.uni.png", plot.MDR.nonarctic.bri.uni,
+ggsave("figures/TPC-fits/MDR.nonarctic.bri.uni.png", plot.MDR.nonarctic.bri.uni,
        width = 10.3, height = 5.6)
 
 
@@ -649,7 +649,7 @@ plot.MDR.arctic.bri.inf <- df.MDR.arctic.bri.inf %>%
 
 plot.MDR.arctic.bri.inf
 
-ggsave("figures/MDR.arctic.bri.inf.png", plot.MDR.arctic.bri.inf,
+ggsave("figures/TPC-fits/MDR.arctic.bri.inf.png", plot.MDR.arctic.bri.inf,
        width = 10.3, height = 5.6)
 
 
@@ -752,7 +752,7 @@ plot.MDR.arctic.quad.uni <- df.MDR.arctic.quad.uni %>%
 
 plot.MDR.arctic.quad.uni
 
-ggsave("figures/MDR.arctic.quad.uni.png", plot.MDR.arctic.quad.uni,
+ggsave("figures/TPC-fits/MDR.arctic.quad.uni.png", plot.MDR.arctic.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -1039,7 +1039,7 @@ plot.MDR.nonarctic.quad.uni <- ggplot() +
 
 plot.MDR.nonarctic.quad.uni
 
-ggsave("figures/MDR.nonarctic.quad.uni.png", plot.MDR.nonarctic.quad.uni,
+ggsave("figures/TPC-fits/MDR.nonarctic.quad.uni.png", plot.MDR.nonarctic.quad.uni,
        width = 10.3, height = 5.6)
 
 
@@ -1195,7 +1195,7 @@ plot.MDR.arctic.quad.inf <- df.MDR.arctic.quad.inf %>%
 
 plot.MDR.arctic.quad.inf
 
-ggsave("figures/MDR.arctic.quad.inf.png", plot.MDR.arctic.quad.inf,
+ggsave("figures/TPC-fits/MDR.arctic.quad.inf.png", plot.MDR.arctic.quad.inf,
        width = 10.3, height = 5.6)
 
 
@@ -1208,7 +1208,7 @@ plot.MDR.arctic <- plot_grid(plot.MDR.arctic.bri.uni, plot.MDR.arctic.quad.uni,
 
 plot.MDR.arctic
 
-ggsave("figures/MDR.arctic.png", plot.MDR.arctic,
+ggsave("figures/TPC-fits/MDR.arctic.png", plot.MDR.arctic,
        width = 10.3, height = 5.6)
 
 ##### Find best fitting model #####
@@ -1243,7 +1243,7 @@ plot.all <- df.all %>%
 
 plot.all
 
-ggsave("figures/MDR.bri.quad.png", plot.all, width = 10.3, height = 5.6)
+ggsave("figures/TPC-fits/MDR.bri.quad.png", plot.all, width = 10.3, height = 5.6)
 
 
 ## DIC
@@ -1284,7 +1284,7 @@ plot.arctic.nonarctic <- df.arctic.nonarctic %>%
 
 plot.arctic.nonarctic
 
-ggsave("figures/MDR.arctic.nonarctic.png", plot.arctic.nonarctic, width = 10.3, height = 5.6)
+ggsave("figures/TPC-fits/MDR.arctic.nonarctic.png", plot.arctic.nonarctic, width = 10.3, height = 5.6)
 
 
 # Save the quadere TPCs in a separate folder
