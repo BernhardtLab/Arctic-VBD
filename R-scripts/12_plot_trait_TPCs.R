@@ -17,6 +17,10 @@
 ## Outputs: 
 ## figures/Fig3-trait.TPCs.png -
 ##     Main text figure 4
+## figures/tableS5.docx -
+##     Supplementary table S5
+## figures/tableS6.docx -
+##     Supplementary table S6
 
 # 0. Set-up workspace ----------------------------------------------------------
 
@@ -1328,8 +1332,8 @@ table1 <- flextable(table)
 
 
 save_as_docx(
-  "Table 1" = table1,
-  path = "figures/table1.docx"
+  "Table S5" = table1,
+  path = "figures/tableS5.docx"
 )
 
 
@@ -1383,7 +1387,7 @@ dic_table <- flextable(dic_table)
 dic_table
 
 save_as_docx(
-  "Table S4" = dic_table,
-  path = "figures/tableS4.docx"
+  "Table S6" = dic_table,
+  path = "figures/tableS6.docx"
 )
 

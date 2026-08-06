@@ -17,8 +17,8 @@
 ##     Daily temperature at Cambridge Bay
 ##
 ## Outputs: 
-## figures/FigS12-summer.temp.2025.png - 
-##     Distribution of daily mean air temperature by month (June–September 2025) 
+## figures/tableS10.docx - 
+##      Supplementary table S10
 
 
 # 0. Set-up workspace ----------------------------------------------------------
@@ -113,7 +113,7 @@ table[,-1] <- lapply(table[,-1], function(x) round(as.numeric(x), 1))
 
 table <- flextable(table)
 
-save_as_docx(table, path = "figures/tableS8.docx")
+save_as_docx(table, path = "figures/tableS10.docx")
 
 plot <- temp.data %>% ggplot(aes(x = mean_temp_c, fill = station_name)) +
   geom_histogram(binwidth = 1, color = "white", alpha = 0.8) +

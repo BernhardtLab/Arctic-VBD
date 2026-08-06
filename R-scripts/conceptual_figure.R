@@ -11,6 +11,7 @@ library(tidyverse)
 library(ggsci)
 library(ggpubr) # For ggarrange
 library(grafify)
+library(cowplot)
 
 
 briere = function(T, T0, Tm, q){
@@ -42,11 +43,10 @@ quadratic = function(T, T0, Tm, q){
 }
 
 
-##########
-###### 1. Figure 1 ----
-##########
 
-### Panel A: Estimate trait thermal responses ----
+# 1. Figure 1 ------------------------------------------------------------------
+
+## Panel A: Estimate trait thermal responses -----------------------------------
 
 ##### Generate the TPCs
 Temp.xs <- seq(0, 45, 0.1)
@@ -75,15 +75,15 @@ quad_data <- data.frame(temp = temp1, data = data1)
 bri_data <- data.frame(temp = temp2, data = data2)
 
 panel_a <- lines %>% ggplot(aes(x = temp)) +
-  geom_line(aes(y = value, colour = trait), size = 1) +
-  geom_point(data = quad_data, aes(y = data1), colour = "#0072B2", size = 2) +
-  geom_point(data = bri_data, aes(y = data2), colour = "#D55E00", size = 2) +
+  geom_line(aes(y = value, colour = trait), size = 1.5) +
+  geom_point(data = quad_data, aes(y = data1), pch = 21, colour="black", fill = "#0072B2", size = 2) +
+  geom_point(data = bri_data, aes(y = data2), pch = 21, colour="black", fill = "#D55E00", size = 2) +
   xlim(0,35) +
   labs(x = "Temperature", y = "Traits") +
   scale_colour_manual(values = c("trait1" = "#0072B2", "trait2" = "#D55E00"),
                       name = element_blank(), # No legend title
                       labels = c("Trait 1 \n(e.g. egg viability) \n", "Trait 2 \n(e.g. biting rate)")) + 
-  theme(legend.text = element_text(size = 8),
+  theme(legend.text = element_text(size = 10),
         legend.position = c(1.01, 1),
         legend.justification = c("right", "top"),
         legend.box.just = "right",
@@ -96,29 +96,29 @@ panel_a <- lines %>% ggplot(aes(x = temp)) +
         axis.line = element_line(colour = "black", 
                                  size = 0.9, linetype = "solid"))
 
-panel_a
+panel_a + theme(legend.position="none")
 
-ggsave("figures/conceptual_figure_panelA.png", panel_a, width = 3, height = 2.5)
+ggsave("figures/Fig1-panelA.png", panel_a + theme(legend.position="none"), width = 3, height = 2.5)
+
+legend <- get_legend(panel_a)
+
+legend_panel <- ggdraw() +
+  draw_grob(legend, x = -0.5, y = -0.5)
+
+legend_panel
+
+ggsave("figures/Fig1-panelA.legend.png", legend_panel, width = 3, height = 3)
 
 
-### Panel B: Calculate thermal suitability ----
+# Panel B: Calculate thermal suitability ---------------------------------------
 
 ## We will use a normal distribution to illustrate the output of the thermal suitability model
 y <- dnorm(seq(0, 35, 0.1), mean = 17.5, sd = 5)
 suitability <- data.frame(temp = seq(0, 35, 0.1), suit = y/max(y)) # Scaled from 0 to 1
 
-##### Generate data points for field data
-set.seed(50) # Set a random seed for reproducibility of the simulation
-temp3 <- c(5, 10, 12, 15, 21)
-mean3 <- dnorm(temp3, mean = 17.5, sd = 5)
-sigma <- 0.01
-data3 <- rnorm(length(temp3), mean = mean3, sd = sigma)
-
-field_data <- data.frame(temp = temp3, data = data3/max(y)) # scaled
 
 panel_b <-suitability %>% ggplot(aes(x = temp)) +
-  geom_line(aes(y = suit), colour = "black", size = 1) +
-  geom_point(data = field_data, aes(y = data), colour = "azure4", size = 2.5) +
+  geom_line(aes(y = suit), colour = "black", size = 2) +
   xlim(0,35) +
   labs(x = "Temperature", y = "Suitability") +
   theme(axis.text.y = element_blank(),
@@ -129,14 +129,39 @@ panel_b <-suitability %>% ggplot(aes(x = temp)) +
         axis.line = element_line(colour = "black", 
                                  size = 0.9, linetype = "solid"))
 panel_b
-ggsave("figures/conceptual_figure_panelB.png", panel_b, width = 3, height = 2.5)
+ggsave("figures/Fig1-panelB.png", panel_b, width = 3, height = 2.5)
 
 
-##########
-###### 2. Transforming Non-Arctic data to Arctic data ----
-##########
+# Panel C: validating with field observations ----------------------------------
 
-##### Non-Arctic TPC ----
+##### Generate data points for field data
+set.seed(50) # Set a random seed for reproducibility of the simulation
+temp3 <- c(5, 10, 12, 15, 21)
+mean3 <- dnorm(temp3, mean = 17.5, sd = 5)
+sigma <- 0.01
+data3 <- rnorm(length(temp3), mean = mean3, sd = sigma)
+
+field_data <- data.frame(temp = temp3, data = data3/max(y)) # scaled
+
+panel_c <-suitability %>% ggplot(aes(x = temp)) +
+  geom_line(aes(y = suit), colour = "black", size = 2) +
+  geom_point(data = field_data, aes(y = data), colour = "azure4", size = 2.5) +
+  xlim(0,35) +
+  labs(x = "Temperature", y = "Suitability") +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black", 
+                                 size = 0.9, linetype = "solid"))
+panel_c
+ggsave("figures/Fig1-panelC.png", panel_c, width = 3, height = 2.5)
+
+
+# 2. Transforming Non-Arctic data to Arctic data -------------------------------
+
+## Non-Arctic TPC --------------------------------------------------------------
 nonarctic <- briere(Temp.xs, T0 = 15, Tm = 35, q = 0.008)
 nonarctic_tpc <- data.frame(temp = Temp.xs, trait = nonarctic)
 
@@ -166,10 +191,10 @@ plot.nonarctic <- nonarctic_tpc %>% ggplot(aes(x = temp)) +
                                  size = 0.9, linetype = "solid"))
 plot.nonarctic
 
-ggsave("figures/conceptual_figure_nonarctic.png", plot.nonarctic, width = 3, height = 2)
+ggsave("figures/Fig2-nonarctic.png", plot.nonarctic, width = 3, height = 2)
 
 
-##### Arctic and Non-Arctic TPCs ----
+## Arctic and Non-Arctic TPCs --------------------------------------------------
 arctic <- briere(Temp.xs, T0 = 11, Tm = 33, q = 0.01)
 arctic_tpc <- data.frame(temp = Temp.xs, trait = arctic)
 
@@ -200,10 +225,10 @@ plot.both <- nonarctic_tpc %>% ggplot(aes(x = temp)) +
                                  size = 0.9, linetype = "solid"))
 plot.both
 
-ggsave("figures/conceptual_figure_nonarctic_vs_arctic.png", plot.both, width = 3, height = 2)
+ggsave("figures/Fig2-nonarctic_vs_arctic.png", plot.both, width = 3, height = 2)
 
 
-##### Combining Arctic and non-Arctic data ----
+## Combining Arctic and non-Arctic data ----------------------------------------
 
 alldata <- briere(Temp.xs, T0 = 14, Tm = 34.5, q = 0.008)
 alldata_tpc <- data.frame(temp = Temp.xs, trait = alldata)
@@ -241,30 +266,7 @@ plot.alldata <- alldata_tpc %>% ggplot(aes(x = temp)) +
                                  size = 0.9, linetype = "solid"))
 plot.alldata
 
-ggsave("figures/conceptual_figure_alldata.png", plot.alldata, width = 3, height = 2)
+ggsave("figures/Fig2-alldata.png", plot.alldata, width = 3, height = 2)
 
 
 
-##### Hot-cold shift ----
-
-hc_shift <- briere(Temp.xs, T0 = 11, Tm = 31, q = 0.00924)
-hc_shift_tpc <- data.frame(temp = Temp.xs, trait = hc_shift)
-
-plot.hc_shift <- hc_shift_tpc %>% ggplot(aes(x = temp, y = trait)) +
-  geom_line(data = nonarctic_tpc, colour = "azure4", size = 1) +
-  geom_line(colour = "#4363d8", size = 1) +
-  xlim(5, 40) +
-  ylim(0, 11) +
-  labs(x = "Temperature", y = "Traits") +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.line = element_line(colour = "black", 
-                                 size = 0.9, linetype = "solid"))
-plot.hc_shift
-
-ggsave("figures/conceptual_figure_hot_cold_shift.png", plot.hc_shift, width = 3, height = 2)

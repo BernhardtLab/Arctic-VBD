@@ -2020,7 +2020,7 @@ save_coef <- function(trait, param){
   
   df <- flextable(df)
 
-  table.num <- ifelse(param == "T0", 6, ifelse(param == "Tm", 7, 8))
+  table.num <- ifelse(param == "T0", 7, ifelse(param == "Tm", 8, 9))
   
   filename = paste0("figures/tableS", table.num, ".", trait, ".docx")
   
