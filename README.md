@@ -28,9 +28,9 @@ Raw trait data are located in the repository's [data-raw/](https://github.com/Be
 
 **13_mapping_median.ipynb**: This script 
 
-**14_mapping_lowerCI.ipynb*: Same as script 13, except
+**14_mapping_lowerCI.ipynb**: Same as script 13, except
 
-**15_mapping_upperCI.ipynb*: Same as script 13, except
+**15_mapping_upperCI.ipynb**: Same as script 13, except
 
 **16_Kitikmeot_summer_temp.R**": This 
 
