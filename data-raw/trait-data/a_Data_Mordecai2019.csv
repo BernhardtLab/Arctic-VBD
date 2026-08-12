@@ -1,0 +1,99 @@
+Ref,trait.name,T.C,T.K,trait,ErrorPosSI,ErrorNegSI,Trait2.name,Trait,host.code,paras.code,Citation,Figure,Notes,Increasing
+Verwillow_39,GCD,10,283.15,14.29,,,,,Ctar,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_39,GCD,15,288.15,8.33,,,,,Ctar,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_39,GCD,20,293.15,4.35,,,,,Ctar,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_39,GCD,25,298.15,4,,,,,Ctar,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_39,GCD,30,303.15,5.26,,,,,Ctar,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,No
+Verwillow_40,GCD,10,283.15,25,,,,,Cqui,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_40,GCD,15,288.15,14.29,,,,,Cqui,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_40,GCD,20,293.15,9.09,,,,,Cqui,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_40,GCD,25,298.15,9.09,,,,,Cqui,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_40,GCD,30,303.15,7.69,,,,,Cqui,,Reisen_1992_JMedEntomol,Figure 5,Reported as a; changed to GCD to match other data,Yes
+Verwillow_41,GCD,16,289.15,8.42276423,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,16,289.15,14.05691057,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,16,289.15,10.47154472,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,27,300.15,3.06646526,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,27,300.15,3.066465258,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,27,300.15,3.119335345,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,31,304.15,3.585365853,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,31,304.15,3.016260163,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,31,304.15,2.048780488,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,31,304.15,3.073170732,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Verwillow_41,GCD,35,308.15,2.061933534,,,,,Cpip,,Ruybal_2016_Parasites&Vectors,Figure 5,We calculated the time difference between 1st and 2nd ovipositions - not directly reported in figure,Yes
+Slamani_21,GCD,10,283.15,25.51,,,,,Cpip,,Ju-lin_2017_ChinJVectorBiol&Control,Table 4,Translated from Chinese paper,Yes
+Slamani_21,GCD,15,288.15,10.69,,,,,Cpip,,Ju-lin_2017_ChinJVectorBiol&Control,Table 4,Translated from Chinese paper,Yes
+Slamani_21,GCD,20,293.15,7,,,,,Cpip,,Ju-lin_2017_ChinJVectorBiol&Control,Table 4,Translated from Chinese paper,Yes
+Slamani_21,GCD,25,298.15,6.33,,,,,Cpip,,Ju-lin_2017_ChinJVectorBiol&Control,Table 4,Translated from Chinese paper,Yes
+Slamani_21,GCD,30,303.15,4.43,,,,,Cpip,,Ju-lin_2017_ChinJVectorBiol&Control,Table 4,Translated from Chinese paper,Yes
+Slamani_21,GCD,35,308.15,3.07,,,,,Cpip,,Ju-lin_2017_ChinJVectorBiol&Control,Table 4,Translated from Chinese paper,Yes
+Slamani_21,GCD,40,313.15,1000,,,,,Cpip,,Ju-lin_2017_ChinJVectorBiol&Control,Table 4,0 ovipositions; Translated from Chinese paper,No
+Shocket,GCD,10,283.15,1000,,,,,Cpal,,Mogi_1992_AnnalsoftheEnt.SocietyofAmerica,Results text,Day length co-varied with temperature - 10 hr for 15 degrees,Yes
+Shocket,GCD,25,298.15,4.5,,,,,Cqui,,Teckle_1960_AJTMH,Table 9,Used old name fatigans which later is now synonymous with quinquefasciatus,Yes
+Shocket,GCD,20,293.15,8.5,,,,,Cqui,,Teckle_1960_AJTMH,Table 9,Used old name fatigans which later is now synonymous with quinquefasciatus,Yes
+Shocket,GCD,15,288.15,19,,,,,Cqui,,Teckle_1960_AJTMH,Table 9,Used old name fatigans which later is now synonymous with quinquefasciatus,Yes
+Shocket,GCD,10,283.15,37.5,,,,,Cqui,,Teckle_1960_AJTMH,Table 9,Used old name fatigans which later is now synonymous with quinquefasciatus,Yes
+Shocket,GCD,5,278.15,1000,,,,,Cqui,,Teckle_1960_AJTMH,Table 9,Used old name fatigans which later is now synonymous with quinquefasciatus; 0 ovipositions,Yes
+Shocket,GCD,25,298.15,4.5,,,,,Cpip,,Teckle_1960_AJTMH,Table 9,,Yes
+Shocket,GCD,20,293.15,8.5,,,,,Cpip,,Teckle_1960_AJTMH,Table 9,,Yes
+Shocket,GCD,15,288.15,17.5,,,,,Cpip,,Teckle_1960_AJTMH,Table 9,,Yes
+Shocket,GCD,10,283.15,32.5,,,,,Cpip,,Teckle_1960_AJTMH,Table 9,,Yes
+Shocket,GCD,5,278.15,1000,,,,,Cpip,,Teckle_1960_AJTMH,Table 9,0 ovipositions,Yes
+Shocket,GCD,30,303.15,3.5,1.9,1.9,,,Cpip,,Madder_1983_JMedEntom,Table 11,,Yes
+Shocket,GCD,25,298.15,4.8,0.77,0.77,,,Cpip,,Madder_1983_JMedEntom,Table 11,,Yes
+Shocket,GCD,22,295.15,5.6,0.71,0.71,,,Cpip,,Madder_1983_JMedEntom,Table 11,,Yes
+Shocket,GCD,20,293.15,6.1,0.57,0.57,,,Cpip,,Madder_1983_JMedEntom,Table 11,,Yes
+Shocket,GCD,17,290.15,15.2,1.3,1.3,,,Cpip,,Madder_1983_JMedEntom,Table 11,,Yes
+Shocket,GCD,2,275.15,1000,,,,,Cmel,,Mahmood_1997_JAMCA,Table 1,No eggs laid,Yes
+Shocket,GCD,10,283.15,23.2,3.06,3.06,,,Cmel,,Mahmood_1997_JAMCA,Table 1,,Yes
+Shocket,GCD,16,289.15,11.5,1.27,1.27,,,Cmel,,Mahmood_1997_JAMCA,Table 1,,Yes
+Shocket,GCD,22,295.15,5.7,0.48,0.48,,,Cmel,,Mahmood_1997_JAMCA,Table 1,,Yes
+Shocket,GCD,28,301.15,4.5,0.2,0.2,,,Cmel,,Mahmood_1997_JAMCA,Table 1,,Yes
+Shocket,GCD,32,305.15,1000,,,,,Cmel,,Mahmood_1997_JAMCA,Table 1,No eggs hatched,No
+Shocket,GCD,34,307.15,1000,,,,,Cmel,,Mahmood_1997_JAMCA,Table 1,No eggs laid,No
+JohnsonPub,a,15,288.15,0.078125,,,,,Apse,,Lardeux et al 2008,,,Yes
+JohnsonPub,a,20,293.15,0.15625,,,,,Apse,,Lardeux et al 2008,,,Yes
+JohnsonPub,a,23,296.15,0.196078431,,,,,Apse,,Lardeux et al 2008,,,Yes
+JohnsonPub,a,25,298.15,0.285714286,,,,,Apse,,Lardeux et al 2008,,,Yes
+JohnsonPub,a,27,300.15,0.303030303,,,,,Apse,,Lardeux et al 2008,,,Yes
+JohnsonPub,a,29,302.15,0.37037037,,,,,Apse,,Lardeux et al 2008,,,Yes
+JohnsonPub,a,31,304.15,0.476190476,,,,,Apse,,Lardeux et al 2008,,,Yes
+JohnsonPub,a,33,306.15,0.416666667,,,,,Apse,,Lardeux et al 2008,,,No
+JohnsonPub,a,35,308.15,0.434782609,,,,,Apse,,Lardeux et al 2008,,,No
+MordecaiPub,GCD,22,295.15,7.3,,,,,Aaeg,,Focks_Barrera_2006_Research&TrainingTropicalDis_Geneva_Paper,,,Yes
+MordecaiPub,GCD,24,297.15,6.1,,,,,Aaeg,,Focks_Barrera_2006_Research&TrainingTropicalDis_Geneva_Paper,,,Yes
+MordecaiPub,GCD,26,299.15,4.2,,,,,Aaeg,,Focks_Barrera_2006_Research&TrainingTropicalDis_Geneva_Paper,,,Yes
+MordecaiPub,GCD,28,301.15,3.5,,,,,Aaeg,,Focks_Barrera_2006_Research&TrainingTropicalDis_Geneva_Paper,,,Yes
+MordecaiPub,GCD,30,303.15,2.9,,,,,Aaeg,,Focks_Barrera_2006_Research&TrainingTropicalDis_Geneva_Paper,,,Yes
+MordecaiPub,GCD,32,305.15,2.4,,,,,Aaeg,,Focks_Barrera_2006_Research&TrainingTropicalDis_Geneva_Paper,,,Yes
+MordecaiPub,a,21.68742415,294.8374242,0.167518059,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,22.2943022,295.4443022,0.144213433,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,22.38953929,295.5395393,0.168599215,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,22.92476429,296.0747643,0.168082804,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,24.39558634,297.5455863,0.25167012,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,25.01425641,298.1642564,0.251952493,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,25.87751143,299.0275114,0.202140476,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,26.16176525,299.3117653,0.202270215,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,27.47748918,300.6274892,0.307846963,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,Yes
+MordecaiPub,a,28.18628204,301.336282,0.27698188,,,,,Aaeg,,Focks_et_al_1993a_JMedEntom,,,No
+MordecaiPub,a,16,289.15,0,,,,,Aaeg,,Morin_et_al_2015,,,Yes
+MordecaiPub,a,40,313.15,0,,,,,Aaeg,,Morin_et_al_2015,,,No
+MordecaiPub,GCD,20,293.15,8.052631579,,,,,Aalb,,Delatte_etal_2009_JMedEnto,,,Yes
+MordecaiPub,GCD,25,298.15,4.425531915,,,,,Aalb,,Delatte_etal_2009_JMedEnto,,,Yes
+MordecaiPub,GCD,30,303.15,3.492537313,,,,,Aalb,,Delatte_etal_2009_JMedEnto,,,Yes
+MordecaiPub,GCD,35,308.15,4.421052632,,,,,Aalb,,Delatte_etal_2009_JMedEnto,,,No
+Shocket,GCD,18.5,291.65,5,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,18.5,291.65,7,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,21,294.15,5,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,21,294.15,6,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,23.5,296.65,4,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,23.5,296.65,6,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,24.5,297.65,4,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,24.5,297.65,5,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,23.5,296.65,4,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,23.5,296.65,5,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,21.5,294.65,4,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,21.5,294.65,6,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,19,292.15,5,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,19,292.15,7,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,14,287.15,7,,,,,Cann,,Russell_1986_AusJEntom,,,Yes
+Shocket,GCD,14,287.15,12,,,,,Cann,,Russell_1986_AusJEntom,,,Yes

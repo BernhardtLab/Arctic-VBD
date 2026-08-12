@@ -16,7 +16,7 @@
 ##
 ##
 ## Inputs:
-## csv and Excel files located in 'data-raw', containing published trait estimates
+## csv and Excel files located in 'data-raw/trait-data', containing published trait estimates
 ## across temperature gradients. Each file corresponds to a specific study or data source.
 ##
 ## Files include: a&EFGC&lf_aedes_spp.Sommerman1969.csv, a_Data_Mordecai2019.csv, 
@@ -51,7 +51,7 @@ library(sp) # For converting latitude and longitude from DMS to decimal
 
 ## Arctic species --------------------------------------------------------------
 ###### Ae. cinereus, Ae. communis, Ae. impiger, Ae. punctor in Alaska ######
-a.aedes <- read_csv("data-raw/a&EFGC&lf_aedes_spp.Sommerman1969.csv") %>% 
+a.aedes <- read_csv("data-raw/trait-data/a&EFGC&lf_aedes_spp.Sommerman1969.csv") %>% 
   clean_names() %>% 
   filter(trait_name == "1/a") 
 
@@ -71,7 +71,7 @@ a.aedes <- a.aedes %>%
 ## Non-Arctic species (for informing priors) -------------------------------
 
 # From VecTrait database
-a.VecTrait <- read_csv("data-raw/a_VecTrait.csv") %>% 
+a.VecTrait <- read_csv("data-raw/trait-data/a_VecTrait.csv") %>% 
   clean_names()
 
 unique(a.VecTrait$interactor1) 
@@ -80,7 +80,7 @@ unique(a.VecTrait$interactor1)
 
 
 # From data compiled in Mordecaiet al. 2019
-a.Mordecai2019 <- read_csv("data-raw/a_Data_Mordecai2019.csv") %>% 
+a.Mordecai2019 <- read_csv("data-raw/trait-data/a_Data_Mordecai2019.csv") %>% 
   clean_names()
 
 unique(a.Mordecai2019$host_code) 
@@ -152,7 +152,7 @@ ggsave("figures/raw_data/plot.data.a.png", plot.data.a, , width = 9.83, height =
 ## transmission efficiency (b)
 
 ###### Ae. vexans and Ae. canadensis (transmitting Dirofilaria immitis) ######
-bc.vexans <- read_csv("data-raw/bc&PDR_dirofilaria_immitis_aedes_vexans.Jankowski1976.csv") %>% 
+bc.vexans <- read_csv("data-raw/trait-data/bc&PDR_dirofilaria_immitis_aedes_vexans.Jankowski1976.csv") %>% 
   clean_names()
 
 bc.vexans <- bc.vexans %>% 
@@ -163,7 +163,7 @@ bc.vexans <- bc.vexans %>%
 
 ###### Ae. Trivittatus (transmitting Dirofilaria immitis) ######
 # This data is infection efficiency (c)
-bc.trivittatus <- read_csv("data-raw/bc&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
+bc.trivittatus <- read_csv("data-raw/trait-data/bc&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
   clean_names()
   
 
@@ -199,7 +199,7 @@ ggsave("figures/raw_data/plot.data.bc.png", plot.data.bc, , width = 9.83, height
 
 ## Arctic species --------------------------------------------------------------
 ###### Varestrongylus eleguneniensis ######
-PDR.eleguneniensis <- read_csv("data-raw/PDR_varestrongylus_eleguneniensis.Kafle2018.csv") %>% 
+PDR.eleguneniensis <- read_csv("data-raw/trait-data/PDR_varestrongylus_eleguneniensis.Kafle2018.csv") %>% 
   clean_names()
 
 # This dataset is raw data downloaded from the paper
@@ -244,7 +244,7 @@ PDR.eleguneniensis$longitude <- lon_quebec
 
 
 ###### Setaria tundra ######
-PDR.tundra <- read_csv("data-raw/PDR_setaria_tundra.Laaksonen2009.csv") %>% 
+PDR.tundra <- read_csv("data-raw/trait-data/PDR_setaria_tundra.Laaksonen2009.csv") %>% 
   clean_names()
 
 PDR.tundra <- PDR.tundra %>% 
@@ -263,7 +263,7 @@ PDR.tundra[1, "trait"] <- 1/1000
 ## Non-Arctic species (for informing priors) -------------------------------
 
 ###### Dirofilaria immitis (in Ae. Trivittatus) ######
-PDR.immitis.trivittatus <- read_csv("data-raw/bc&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
+PDR.immitis.trivittatus <- read_csv("data-raw/trait-data/bc&PDR_dirofilaria_immitis_aedes_trivittatus.Christensen1978.csv") %>% 
   clean_names() 
 
 PDR.immitis.trivittatus <- PDR.immitis.trivittatus %>% 
@@ -279,7 +279,7 @@ PDR.immitis.trivittatus[1,"trait"] <- 1/1000
 
 
 ###### Dirofilaria immitis (in Ae. canadensis and Ae. vexans) ###### 
-PDR.immitis.vexans <- read_csv("data-raw/bc&PDR_dirofilaria_immitis_aedes_vexans.Jankowski1976.csv") %>% 
+PDR.immitis.vexans <- read_csv("data-raw/trait-data/bc&PDR_dirofilaria_immitis_aedes_vexans.Jankowski1976.csv") %>% 
   clean_names() 
 
 
@@ -294,7 +294,7 @@ PDR.immitis.vexans <- PDR.immitis.vexans %>%
 
 
 ###### Dirofilaria immitis (in Ae. triseriatus ) ######
-PDR.immitis.triseriatus <- read_csv("data-raw/PDR_dirofilaria_immitis_aedes_triseriatus_vexans.Fortin1981.csv") %>% 
+PDR.immitis.triseriatus <- read_csv("data-raw/trait-data/PDR_dirofilaria_immitis_aedes_triseriatus_vexans.Fortin1981.csv") %>% 
   clean_names() 
 
 
@@ -313,7 +313,7 @@ PDR.immitis.triseriatus[1:3, "trait"] <- 1/1000
 
 
 ######  lymphatic filarisis worms (in Ae. polynesiensis) ###### 
-PDR.bancrofti <- read_csv("data-raw/PDR_wuchereria_bancrofti_aedes_polynesiensis.Lardeux1997.csv") %>% 
+PDR.bancrofti <- read_csv("data-raw/trait-data/PDR_wuchereria_bancrofti_aedes_polynesiensis.Lardeux1997.csv") %>% 
   clean_names()
 
 PDR.bancrofti <- PDR.bancrofti %>% 
@@ -379,7 +379,7 @@ ggsave("figures/raw_data/plot.data.PDR.png", plot.data.PDR, , width = 9.83, heig
 
 # 4. Egg viability (EV) ---------------------------------------------------
 
-EV.Shocket2020 <- read_csv("data-raw/EV_TraitData_Shocket2020.csv") %>% 
+EV.Shocket2020 <- read_csv("data-raw/trait-data/EV_TraitData_Shocket2020.csv") %>% 
   clean_names()
 
 unique(EV.Shocket2020$host_code)
@@ -484,7 +484,7 @@ EV.nigromaculis$longitude[EV.nigromaculis$citation == "McHaffey_1972_MosqNews"] 
 
 
 ###### Ae. triseriatus ######
-EV.triseriatus <- read_csv("data-raw/EV_aedes_triseriatus.Zimmerman2025.csv") %>% 
+EV.triseriatus <- read_csv("data-raw/trait-data/EV_aedes_triseriatus.Zimmerman2025.csv") %>% 
   clean_names()
 
 EV.triseriatus <- EV.triseriatus %>% 
@@ -511,7 +511,7 @@ EV.triseriatus$longitude[EV.triseriatus$citation == "Zimmerman_2025_JVectorEcol"
 
 
 ###### Ae. albopictus (from VecTrait database) ######
-EV.VecTrait <- read_csv("data-raw/EV_VecTrait.csv") %>% 
+EV.VecTrait <- read_csv("data-raw/trait-data/EV_VecTrait.csv") %>% 
   clean_names()
 
 unique(EV.VecTrait$interactor1)
@@ -590,7 +590,7 @@ ggsave("figures/raw_data/plot.data.EV.png", plot.data.EV, width = 9.83, height =
 # 5. Larval-to-adult survival (pLA) ---------------------------------------
 
 ## Arctic species ----------------------------------------------------------
-pLA.Mordecai2019 <- read_csv("data-raw/pLA_Data_Mordecai2019.csv") %>% 
+pLA.Mordecai2019 <- read_csv("data-raw/trait-data/pLA_Data_Mordecai2019.csv") %>% 
   clean_names()
 
 unique(pLA.Mordecai2019$host_code)
@@ -652,7 +652,7 @@ pLA.vexans$longitude[pLA.vexans$citation == "Trpis&Shemanchuk_1970_TheCanadianEn
 
 
 ###### Ae. flavescens ######
-pLA.flavescens <- read_csv("data-raw/MDR&pLA_aedes_flavescens.Trpis1969.csv") %>% 
+pLA.flavescens <- read_csv("data-raw/trait-data/MDR&pLA_aedes_flavescens.Trpis1969.csv") %>% 
   clean_names()
 
 pLA.flavescens <- pLA.flavescens %>% 
@@ -775,7 +775,7 @@ pLA.triseriatus$latitude[pLA.triseriatus$citation == "Shelton_1973_MosquitoNews"
 pLA.triseriatus$longitude[pLA.triseriatus$citation == "Shelton_1973_MosquitoNews"] <- lon_lakecharles
 
 # From VecTrait database
-pLA.VecTrait <- read_csv("data-raw/pLA_VecTrait.csv") %>% 
+pLA.VecTrait <- read_csv("data-raw/trait-data/pLA_VecTrait.csv") %>% 
   clean_names()
 
 unique(pLA.VecTrait$interactor1) 
@@ -837,7 +837,7 @@ ggsave("figures/raw_data/plot.data.pLA.png", plot.data.pLA, width = 9.83, height
 
 ## Arctic species ----------------------------------------------------------
 ###### Ae. nigripes ######
-MDR.nigripes <- read_excel("data-raw/MDR_aedes_nigripes.Culler2015.xlsx", 
+MDR.nigripes <- read_excel("data-raw/trait-data/MDR_aedes_nigripes.Culler2015.xlsx", 
                            sheet = "Dev. Time") %>% 
   clean_names() 
 
@@ -868,7 +868,7 @@ MDR.nigripes <- MDR.nigripes %>%
 
 colnames(MDR.nigripes)[2] <- "temp"
 
-read_excel("data-raw/MDR_aedes_nigripes.Culler2015.xlsx", 
+read_excel("data-raw/trait-data/MDR_aedes_nigripes.Culler2015.xlsx", 
                            sheet = "Pond Locations")
   
 # Mosquitoes were collected in Black pond, 
@@ -882,7 +882,7 @@ MDR.nigripes <- MDR.nigripes %>%
 
 
 ###### Ae. flavescens ######
-MDR.flavescens <- read_csv("data-raw/MDR&pLA_aedes_flavescens.Trpis1969.csv") %>% 
+MDR.flavescens <- read_csv("data-raw/trait-data/MDR&pLA_aedes_flavescens.Trpis1969.csv") %>% 
   clean_names()
 
 MDR.flavescens <- MDR.flavescens %>% 
@@ -901,7 +901,7 @@ MDR.flavescens[c(1,6), "trait"] <- 1/1000
 
 ###### Ae. vexans ######
 ## Read Mordecai et al 2019 data
-MDR.Mordecai2019 <- read_csv("data-raw/MDR_Data_Mordecai2019.csv") %>% 
+MDR.Mordecai2019 <- read_csv("data-raw/trait-data/MDR_Data_Mordecai2019.csv") %>% 
   clean_names() %>% 
   # select columns that we need
   select(trait_name, t_c, trait, error_pos_si, error_neg_si, trait2_name, 
@@ -1180,7 +1180,7 @@ ggsave("figures/raw_data/plot.data.MDR.png", plot.data.MDR, width = 9.83, height
 
 ## Arctic species ----------------------------------------------------------
 ###### Ae. vexans ######
-lf.vexans <- read_csv("data-raw/lf_aedes_vexans.Costello1971.csv") %>% 
+lf.vexans <- read_csv("data-raw/trait-data/lf_aedes_vexans.Costello1971.csv") %>% 
   clean_names() 
 
 lf.vexans <- lf.vexans %>% 
@@ -1220,7 +1220,7 @@ lf.vexans$longitude[lf.vexans$citation == "Costello_1971_JEconEntomol"] <- lon_w
 
 
 ###### Ae. cinereus, Ae. communis, Ae. impiger, Ae. punctor in Alaska ######
-lf.aedes <- read_csv("data-raw/a&EFGC&lf_aedes_spp.Sommerman1969.csv") %>%
+lf.aedes <- read_csv("data-raw/trait-data/a&EFGC&lf_aedes_spp.Sommerman1969.csv") %>%
   clean_names() %>%
   filter(trait_name == "lf") %>% 
   # Add new columns to provide more info
@@ -1234,7 +1234,7 @@ lf.aedes$trait2 <- as.character(lf.aedes$trait2)
 ## Non-Arctic species (for informing priors) -------------------------------
 
 ###### Ae. albopictus (from VecTrait) ######
-lf.VecTrait <- read_csv("data-raw/lf_VecTrait.csv") %>% 
+lf.VecTrait <- read_csv("data-raw/trait-data/lf_VecTrait.csv") %>% 
   clean_names()
 
 unique(lf.VecTrait$interactor1)
@@ -1272,7 +1272,7 @@ lf.VecTrait <- lf.VecTrait %>%
 
 ###### Ae. albopictus (from Mordecai et al. 2019) ######
 
-lf.Mordecai2019 <- read_csv("data-raw/lf_Data_Mordecai2019.csv") %>% 
+lf.Mordecai2019 <- read_csv("data-raw/trait-data/lf_Data_Mordecai2019.csv") %>% 
   clean_names() %>% 
   select(!series_id)
   
@@ -1380,7 +1380,7 @@ ggsave("figures/raw_data/plot.data.lf.png", plot.data.lf, width = 9.83, height =
 ## Arctic species --------------------------------------------------------------
 
 ##### Ae. hexodontus #####
-EFGC.hexodontus <- read_csv("data-raw/EFGC_aedes_hexodontus.Barlow1955.csv") %>% 
+EFGC.hexodontus <- read_csv("data-raw/trait-data/EFGC_aedes_hexodontus.Barlow1955.csv") %>% 
   clean_names()
 
 EFGC.hexodontus <- EFGC.hexodontus %>% 
@@ -1388,7 +1388,7 @@ EFGC.hexodontus <- EFGC.hexodontus %>%
 
 
 ##### Ae. cinereus, Ae. communis, Ae. impiger, Ae. punctor in Alaska #####
-EFGC.aedes <- read_csv("data-raw/a&EFGC&lf_aedes_spp.Sommerman1969.csv") %>%
+EFGC.aedes <- read_csv("data-raw/trait-data/a&EFGC&lf_aedes_spp.Sommerman1969.csv") %>%
   clean_names() %>%
   filter(trait_name == "EFGC") 
 
@@ -1407,7 +1407,7 @@ EFGC.aedes <- EFGC.aedes %>%
 
 
 ## Non-Arctic species (for informing priors) -----------------------------------
-EFGC.Mordecai2019 <- read_csv("data-raw/Fecundity_Data_Mordecai2019.csv") %>% 
+EFGC.Mordecai2019 <- read_csv("data-raw/trait-data/Fecundity_Data_Mordecai2019.csv") %>% 
   clean_names() %>% 
   # TFD was defined as eggs laid per female per gonotrophic cycle (number/female) in this dataset (see Mordecai 2017 Table A in S2 Text)
   filter(trait_name == "TFD") 
