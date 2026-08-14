@@ -161,6 +161,14 @@ panel_c <-suitability %>% ggplot(aes(x = temp)) +
   geom_point(data = field_data, aes(y = data), colour = "azure4", size = 2.5) +
   xlim(0,35) +
   labs(x = "Temperature", y = "Suitability") +
+  scale_y_continuous(
+    
+    # Features of the first axis
+    name = "Suitability",
+    
+    # Add a second axis and specify its features
+    sec.axis = sec_axis(~., name = "Parasite incidence")
+  ) +
   theme(axis.text.y = element_blank(),
         axis.ticks.y = element_blank(),
         panel.grid.major = element_blank(),
