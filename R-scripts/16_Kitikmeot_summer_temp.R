@@ -74,6 +74,13 @@ temp.data.samp.summary <- temp.data.samp %>%
 
 temp.data.samp.summary
 
+temp.data.samp %>% 
+  filter(!is.na(mean_temp_c)) %>%
+  group_by(station_name) %>% 
+  summarise(mean_temp_sampling_period = mean(mean_temp_c),
+            sd_sampling_period = sd(mean_temp_c))
+
+
 # Calculate Mean daily air temperatures for each month
 temp.data <- rbind(KUG.data.2025, CBAY.data.2025)
 
@@ -99,6 +106,11 @@ temp.data.summary <- temp.data %>%
   summarise(mean_temp = mean(mean_temp_c))
 
 temp.data.summary
+
+temp.data %>% 
+  group_by(station_name, month2) %>% 
+  summarise(mean_temp = mean(mean_temp_c),
+            sd = sd(mean_temp_c))
 
 # Change wide format
 temp.data.summary.wide <- temp.data.summary %>% 
