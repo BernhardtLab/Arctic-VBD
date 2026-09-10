@@ -603,6 +603,7 @@ df.pLA.arctic.bri.uni <- data.frame(pLA.arctic.bri.uni$BUGSoutput$summary)[-(1:5
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
 
+dic <- paste0("DIC: ", round(pLA.arctic.bri.uni$BUGSoutput$DIC, 1))
 
 # Plot
 plot.pLA.arctic.bri.uni <- df.pLA.arctic.bri.uni %>% 
@@ -619,7 +620,12 @@ plot.pLA.arctic.bri.uni <- df.pLA.arctic.bri.uni %>%
        y = "Survival probability",
        title = "A) Briere model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.pLA.arctic.bri.uni
@@ -633,6 +639,8 @@ load("R-scripts/R2jags-objects/all-mods/pLA.arctic.quad.uni.Rdata")
 df.pLA.arctic.quad.uni <- data.frame(pLA.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(pLA.arctic.quad.uni$BUGSoutput$DIC, 1))
 
 # Plot
 plot.pLA.arctic.quad.uni <- df.pLA.arctic.quad.uni %>% 
@@ -649,7 +657,12 @@ plot.pLA.arctic.quad.uni <- df.pLA.arctic.quad.uni %>%
        y = "Survival probability",
        title = "B) Quadratic model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.pLA.arctic.quad.uni
@@ -663,6 +676,8 @@ load("R-scripts/R2jags-objects/all-mods/pLA.arctic.bri.inf.Rdata")
 df.pLA.arctic.bri.inf <- data.frame(pLA.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(pLA.arctic.bri.inf$BUGSoutput$DIC, 1))
 
 # Plot
 plot.pLA.arctic.bri.inf <- df.pLA.arctic.bri.inf %>% 
@@ -679,7 +694,12 @@ plot.pLA.arctic.bri.inf <- df.pLA.arctic.bri.inf %>%
        y = "Survival probability",
        title = "C) Briere model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.pLA.arctic.bri.inf
@@ -693,6 +713,8 @@ load("R-scripts/R2jags-objects/all-mods/pLA.arctic.quad.inf.Rdata")
 df.pLA.arctic.quad.inf <- data.frame(pLA.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(pLA.arctic.quad.inf$BUGSoutput$DIC, 1))
 
 # Plot
 plot.pLA.arctic.quad.inf <- df.pLA.arctic.quad.inf %>% 
@@ -709,7 +731,12 @@ plot.pLA.arctic.quad.inf <- df.pLA.arctic.quad.inf %>%
        y = "Survival probability",
        title = "D) Quadratic model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+        )
 
 
 plot.pLA.arctic.quad.inf
@@ -733,6 +760,7 @@ df.MDR.arctic.bri.uni <- data.frame(MDR.arctic.bri.uni$BUGSoutput$summary)[-(1:5
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
 
+dic <- paste0("DIC: ", round(MDR.arctic.bri.uni$BUGSoutput$DIC, 1))
 
 # Plot
 plot.MDR.arctic.bri.uni <- df.MDR.arctic.bri.uni %>% 
@@ -749,7 +777,12 @@ plot.MDR.arctic.bri.uni <- df.MDR.arctic.bri.uni %>%
        y = "Development rate (days-1)",
        title = "A) Briere model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.MDR.arctic.bri.uni
@@ -763,6 +796,8 @@ load("R-scripts/R2jags-objects/all-mods/MDR.arctic.quad.uni.Rdata")
 df.MDR.arctic.quad.uni <- data.frame(MDR.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(MDR.arctic.quad.uni$BUGSoutput$DIC, 1))
 
 # Plot
 plot.MDR.arctic.quad.uni <- df.MDR.arctic.quad.uni %>% 
@@ -779,7 +814,12 @@ plot.MDR.arctic.quad.uni <- df.MDR.arctic.quad.uni %>%
        y = "Development rate (days-1)",
        title = "B) Quadratic model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.MDR.arctic.quad.uni
@@ -793,6 +833,8 @@ load("R-scripts/R2jags-objects/all-mods/MDR.arctic.bri.inf.Rdata")
 df.MDR.arctic.bri.inf <- data.frame(MDR.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(MDR.arctic.bri.inf$BUGSoutput$DIC, 1))
 
 # Plot
 plot.MDR.arctic.bri.inf <- df.MDR.arctic.bri.inf %>% 
@@ -809,7 +851,12 @@ plot.MDR.arctic.bri.inf <- df.MDR.arctic.bri.inf %>%
        y = "Development rate (days-1)",
        title = "C) Briere model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.MDR.arctic.bri.inf
@@ -819,10 +866,13 @@ plot.MDR.arctic.bri.inf
 # Load TPCs fitted using infform priors
 load("R-scripts/R2jags-objects/all-mods/MDR.arctic.quad.inf.Rdata")
 
+
 # Extract model prediction
 df.MDR.arctic.quad.inf <- data.frame(MDR.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(MDR.arctic.quad.inf$BUGSoutput$DIC, 1))
 
 # Plot
 plot.MDR.arctic.quad.inf <- df.MDR.arctic.quad.inf %>% 
@@ -839,7 +889,12 @@ plot.MDR.arctic.quad.inf <- df.MDR.arctic.quad.inf %>%
        y = "Development rate (days-1)",
        title = "D) Quadratic model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.MDR.arctic.quad.inf
@@ -867,6 +922,8 @@ df.lf.arctic.bri.uni <- df.lf.arctic.bri.uni %>%
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
 
+dic <- paste0("DIC: ", round(lf.arctic.bri.uni$BUGSoutput$DIC, 1))
+
 # Plot
 plot.lf.arctic.bri.uni <- df.lf.arctic.bri.uni %>% 
   ggplot(aes(x = temp)) +
@@ -882,7 +939,12 @@ plot.lf.arctic.bri.uni <- df.lf.arctic.bri.uni %>%
        y = "Time (days)",
        title = "A) Briere model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.lf.arctic.bri.uni
@@ -900,6 +962,8 @@ df.lf.arctic.quad.uni <- df.lf.arctic.quad.uni %>%
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
 
+dic <- paste0("DIC: ", round(lf.arctic.quad.uni$BUGSoutput$DIC, 1))
+
 # Plot
 plot.lf.arctic.quad.uni <- df.lf.arctic.quad.uni %>% 
   ggplot(aes(x = temp)) +
@@ -915,7 +979,12 @@ plot.lf.arctic.quad.uni <- df.lf.arctic.quad.uni %>%
        y = "Time (days)",
        title = "B) Quadratic model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.lf.arctic.quad.uni
@@ -933,6 +1002,8 @@ df.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>%
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
 
+dic <- paste0("DIC: ", round(lf.arctic.bri.inf$BUGSoutput$DIC, 1))
+
 # Plot
 plot.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>% 
   ggplot(aes(x = temp)) +
@@ -948,7 +1019,12 @@ plot.lf.arctic.bri.inf <- df.lf.arctic.bri.inf %>%
        y = "Time (days)",
        title = "C) Briere model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.lf.arctic.bri.inf
@@ -966,6 +1042,8 @@ df.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>%
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
 
+dic <- paste0("DIC: ", round(lf.arctic.quad.inf$BUGSoutput$DIC, 1))
+
 # Plot
 plot.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>% 
   ggplot(aes(x = temp)) +
@@ -981,7 +1059,12 @@ plot.lf.arctic.quad.inf <- df.lf.arctic.quad.inf %>%
        y = "Time (days)",
        title = "D) Quadratic model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.lf.arctic.quad.inf
@@ -1005,6 +1088,7 @@ df.PDR.arctic.bri.uni <- data.frame(PDR.arctic.bri.uni$BUGSoutput$summary)[-(1:5
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
 
+dic <- paste0("DIC: ", round(PDR.arctic.bri.uni$BUGSoutput$DIC, 1))
 
 # Plot
 plot.PDR.arctic.bri.uni <- df.PDR.arctic.bri.uni %>% 
@@ -1021,7 +1105,12 @@ plot.PDR.arctic.bri.uni <- df.PDR.arctic.bri.uni %>%
        y = "Development rate (days-1)",
        title = "A) Briere model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.PDR.arctic.bri.uni
@@ -1035,6 +1124,8 @@ load("R-scripts/R2jags-objects/all-mods/PDR.arctic.quad.uni.Rdata")
 df.PDR.arctic.quad.uni <- data.frame(PDR.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(PDR.arctic.quad.uni$BUGSoutput$DIC, 1))
 
 # Plot
 plot.PDR.arctic.quad.uni <- df.PDR.arctic.quad.uni %>% 
@@ -1051,7 +1142,12 @@ plot.PDR.arctic.quad.uni <- df.PDR.arctic.quad.uni %>%
        y = "Development rate (days-1)",
        title = "B) Quadratic model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.PDR.arctic.quad.uni
@@ -1065,6 +1161,8 @@ load("R-scripts/R2jags-objects/all-mods/PDR.arctic.bri.inf.Rdata")
 df.PDR.arctic.bri.inf <- data.frame(PDR.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(PDR.arctic.bri.inf$BUGSoutput$DIC, 1))
 
 # Plot
 plot.PDR.arctic.bri.inf <- df.PDR.arctic.bri.inf %>% 
@@ -1081,7 +1179,12 @@ plot.PDR.arctic.bri.inf <- df.PDR.arctic.bri.inf %>%
        y = "Development rate (days-1)",
        title = "C) Briere model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.PDR.arctic.bri.inf
@@ -1095,6 +1198,8 @@ load("R-scripts/R2jags-objects/all-mods/PDR.arctic.quad.inf.Rdata")
 df.PDR.arctic.quad.inf <- data.frame(PDR.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(PDR.arctic.quad.inf$BUGSoutput$DIC, 1))
 
 # Plot
 plot.PDR.arctic.quad.inf <- df.PDR.arctic.quad.inf %>% 
@@ -1111,7 +1216,12 @@ plot.PDR.arctic.quad.inf <- df.PDR.arctic.quad.inf %>%
        y = "Development rate (days-1)",
        title = "D) Quadratic model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.PDR.arctic.quad.inf
@@ -1137,6 +1247,7 @@ df.EV.arctic.bri.uni <- data.frame(EV.arctic.bri.uni$BUGSoutput$summary)[-(1:5),
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
 
+dic <- paste0("DIC: ", round(EV.arctic.bri.uni$BUGSoutput$DIC, 1))
 
 # Plot
 plot.EV.arctic.bri.uni <- df.EV.arctic.bri.uni %>% 
@@ -1153,7 +1264,12 @@ plot.EV.arctic.bri.uni <- df.EV.arctic.bri.uni %>%
        y = "Proportion hatching",
        title = "A) Briere model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.EV.arctic.bri.uni
@@ -1167,6 +1283,8 @@ load("R-scripts/R2jags-objects/all-mods/EV.arctic.quad.uni.Rdata")
 df.EV.arctic.quad.uni <- data.frame(EV.arctic.quad.uni$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(EV.arctic.quad.uni$BUGSoutput$DIC, 1))
 
 # Plot
 plot.EV.arctic.quad.uni <- df.EV.arctic.quad.uni %>% 
@@ -1183,7 +1301,12 @@ plot.EV.arctic.quad.uni <- df.EV.arctic.quad.uni %>%
        y = "Proportion hatching",
        title = "B) Quadratic model; uniform priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.EV.arctic.quad.uni
@@ -1197,6 +1320,8 @@ load("R-scripts/R2jags-objects/all-mods/EV.arctic.bri.inf.Rdata")
 df.EV.arctic.bri.inf <- data.frame(EV.arctic.bri.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(EV.arctic.bri.inf$BUGSoutput$DIC, 1))
 
 # Plot
 plot.EV.arctic.bri.inf <- df.EV.arctic.bri.inf %>% 
@@ -1213,7 +1338,12 @@ plot.EV.arctic.bri.inf <- df.EV.arctic.bri.inf %>%
        y = "Proportion hatching",
        title = "C) Briere model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.EV.arctic.bri.inf
@@ -1227,6 +1357,8 @@ load("R-scripts/R2jags-objects/all-mods/EV.arctic.quad.inf.Rdata")
 df.EV.arctic.quad.inf <- data.frame(EV.arctic.quad.inf$BUGSoutput$summary)[-(1:5),] %>% 
   mutate(temp = Temp.xs) %>% # Add the corresponding temp to the dataframe
   dplyr::select(temp, mean, sd, X2.5., X50., X97.5.)
+
+dic <- paste0("DIC: ", round(EV.arctic.quad.inf$BUGSoutput$DIC, 1))
 
 # Plot
 plot.EV.arctic.quad.inf <- df.EV.arctic.quad.inf %>% 
@@ -1243,7 +1375,12 @@ plot.EV.arctic.quad.inf <- df.EV.arctic.quad.inf %>%
        y = "Proportion hatching",
        title = "D) Quadratic model; data-informed priors"
   ) +
-  theme_bw()
+  annotate(geom = "text", x = Inf, y = Inf, label = dic, hjust = 1.1, vjust = 1.5, size = 6) +
+  theme_bw() +
+  theme(plot.title = element_text(size = 20),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16)
+  )
 
 
 plot.EV.arctic.quad.inf
