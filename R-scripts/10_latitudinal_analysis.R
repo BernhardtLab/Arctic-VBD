@@ -267,7 +267,7 @@ lf.Tmin.lat <- lf.TPC.pars %>%
   geom_ribbon(data = lf.T0.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmin",
     title = expression(paste("Adult Lifespan (",italic(lf),")"))
   ) +
@@ -291,8 +291,12 @@ lf.Tmin.lat <- lf.TPC.pars %>%
                                  "Ae. cinereus",
                                  "Ae. communis",
                                  "Ae. impiger")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 lf.Tmin.lat
 
@@ -310,7 +314,7 @@ lf.Tmax.lat <- lf.TPC.pars %>%
   geom_ribbon(data = lf.Tm.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmax",
     title = expression(paste("Adult Lifespan (",italic(lf),")"))
   ) +
@@ -334,8 +338,12 @@ lf.Tmax.lat <- lf.TPC.pars %>%
                                  "Ae. cinereus",
                                  "Ae. communis",
                                  "Ae. impiger")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 lf.Tmax.lat
 
@@ -352,7 +360,7 @@ lf.q.lat <- lf.TPC.pars %>%
   geom_ribbon(data = lf.q.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "q",
     title = expression(paste("Adult Lifespan (",italic(lf),")"))
   ) +
@@ -376,8 +384,12 @@ lf.q.lat <- lf.TPC.pars %>%
                                  "Ae. cinereus",
                                  "Ae. communis",
                                  "Ae. impiger")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 lf.q.lat
 
@@ -553,7 +565,7 @@ EV.Tmin.lat <- EV.TPC.pars %>%
   geom_ribbon(data = EV.T0.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmin",
     title = expression(paste("Egg Viability (",italic(EV),")"))
   ) +
@@ -572,8 +584,12 @@ EV.Tmin.lat <- EV.TPC.pars %>%
                       labels = c("Ae. albopictus", "Ae. triseriatus",
                                  "Ae. dorsalis", "Ae. nigromaculis", 
                                  "Ae. vexans")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 EV.Tmin.lat
 
@@ -590,7 +606,7 @@ EV.Tmax.lat <- EV.TPC.pars %>%
   geom_ribbon(data = EV.Tm.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmax",
     title = expression(paste("Egg Viability (",italic(EV),")"))
   ) +
@@ -627,7 +643,7 @@ EV.q.lat <- EV.TPC.pars %>%
   geom_ribbon(data = EV.q.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "q",
     title = expression(paste("Egg Viability (",italic(EV),")"))
   ) +
@@ -646,8 +662,12 @@ EV.q.lat <- EV.TPC.pars %>%
                       labels = c("Ae. albopictus", "Ae. triseriatus",
                                  "Ae. dorsalis", "Ae. nigromaculis", 
                                  "Ae. vexans")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 EV.q.lat
 
@@ -833,7 +853,7 @@ pLA.Tmin.lat <- pLA.TPC.pars %>%
   geom_ribbon(data = pLA.T0.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmin",
     title = expression(paste("Larval-to-Adult Survival (",italic(pLA),")"))
   ) +
@@ -852,8 +872,12 @@ pLA.Tmin.lat <- pLA.TPC.pars %>%
                       labels = c("Ae. sollicitans", "Ae. triseriatus",
                                  "Ae. albopictus", "Ae. nigromaculis", 
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 pLA.Tmin.lat
 
@@ -870,7 +894,7 @@ pLA.Tmax.lat <- pLA.TPC.pars %>%
   geom_ribbon(data = pLA.Tm.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmax",
     title = expression(paste("Larval-to-Adult Survival (",italic(pLA),")"))
   ) +
@@ -889,8 +913,12 @@ pLA.Tmax.lat <- pLA.TPC.pars %>%
                       labels = c("Ae. sollicitans", "Ae. triseriatus",
                                  "Ae. albopictus", "Ae. nigromaculis", 
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 pLA.Tmax.lat
 
@@ -907,7 +935,7 @@ pLA.q.lat <- pLA.TPC.pars %>%
   geom_ribbon(data = pLA.q.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "q",
     title = expression(paste("Larval-to-Adult Survival (",italic(pLA),")"))
   ) +
@@ -926,8 +954,12 @@ pLA.q.lat <- pLA.TPC.pars %>%
                       labels = c("Ae. sollicitans", "Ae. triseriatus",
                                  "Ae. albopictus", "Ae. nigromaculis", 
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 pLA.q.lat
 
@@ -1111,9 +1143,9 @@ MDR.Tmin.lat <- MDR.TPC.pars %>%
   geom_ribbon(data = MDR.T0.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmin",
-    title = expression(paste("Mosquito Development Rate (",italic(MDR),")"))
+    title = expression(paste("Mosquito Development Rate (",italic(MDR),") ***"))
   ) +
   
   scale_colour_manual(values = c("albopictus" = "#67000D",
@@ -1132,8 +1164,12 @@ MDR.Tmin.lat <- MDR.TPC.pars %>%
                                  "Ae. triseriatus",
                                  "Ae. nigromaculis", 
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 MDR.Tmin.lat
 
@@ -1152,7 +1188,7 @@ MDR.Tmax.lat <- MDR.TPC.pars %>%
   labs(
     x = "Absolute latitude",
     y = "Tmax",
-    title = expression(paste("Mosquito Development Rate (",italic(MDR),")"))
+    title = expression(paste("Mosquito Development Rate (",italic(MDR),") ***"))
   ) +
   
   scale_colour_manual(values = c("albopictus" = "#67000D",
@@ -1171,8 +1207,12 @@ MDR.Tmax.lat <- MDR.TPC.pars %>%
                                  "Ae. triseriatus",
                                  "Ae. nigromaculis", 
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 MDR.Tmax.lat
 
@@ -1189,7 +1229,7 @@ MDR.q.lat <- MDR.TPC.pars %>%
   geom_ribbon(data = MDR.q.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "q",
     title = expression(paste("Mosquito Development Rate (",italic(MDR),")"))
   ) +
@@ -1210,8 +1250,12 @@ MDR.q.lat <- MDR.TPC.pars %>%
                                  "Ae. triseriatus",
                                  "Ae. nigromaculis", 
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 MDR.q.lat
 
@@ -1417,8 +1461,12 @@ PDR.Tmin.lat <- PDR.TPC.pars %>%
                       labels = c("Wuchereria bancrofti",
                                  "Dirofilaria immitis",
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 PDR.Tmin.lat
 
@@ -1437,7 +1485,7 @@ PDR.Tmax.lat <- PDR.TPC.pars %>%
   labs(
     x = "Absolute latitude",
     y = "Tmax",
-    title = expression(paste("Pathogen Development Rate (",italic(PDR),")"))
+    title = expression(paste("Pathogen Development Rate (",italic(PDR),") **"))
   ) +
   
   scale_colour_manual(values = c("bancrofti" = "#67000D",
@@ -1450,8 +1498,12 @@ PDR.Tmax.lat <- PDR.TPC.pars %>%
                       labels = c("Wuchereria bancrofti",
                                  "Dirofilaria immitis",
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 PDR.Tmax.lat
 
@@ -1482,8 +1534,12 @@ PDR.q.lat <- PDR.TPC.pars %>%
                       labels = c("Wuchereria bancrofti",
                                  "Dirofilaria immitis",
                                  "Arctic spp.")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 PDR.q.lat
 
@@ -1634,9 +1690,9 @@ EFGC.Tmin.lat <- EFGC.TPC.pars %>%
   geom_ribbon(data = EFGC.T0.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmin",
-    title = expression(paste("Eggs per Female \nper Gonotrophic Cycle (",italic(EFGC),")"))
+    title = expression(paste("Eggs per Female per Gonotrophic Cycle (",italic(EFGC),")"))
   ) +
   
   scale_colour_manual(values = c("albopictus" = "#67000D",
@@ -1658,8 +1714,12 @@ EFGC.Tmin.lat <- EFGC.TPC.pars %>%
                                  "Ae. cinereus",
                                  "Ae. communis",
                                  "Ae. impiger")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 EFGC.Tmin.lat
 
@@ -1677,9 +1737,9 @@ EFGC.Tmax.lat <- EFGC.TPC.pars %>%
   geom_ribbon(data = EFGC.Tm.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmax",
-    title = expression(paste("Eggs per Female \nper Gonotrophic Cycle (",italic(EFGC),")"))
+    title = expression(paste("Eggs per Female per Gonotrophic Cycle (",italic(EFGC),")"))
   ) +
   
   scale_colour_manual(values = c("albopictus" = "#67000D",
@@ -1701,8 +1761,12 @@ EFGC.Tmax.lat <- EFGC.TPC.pars %>%
                                  "Ae. cinereus",
                                  "Ae. communis",
                                  "Ae. impiger")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 EFGC.Tmax.lat
 
@@ -1719,9 +1783,9 @@ EFGC.q.lat <- EFGC.TPC.pars %>%
   geom_ribbon(data = EFGC.q.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "q",
-    title = expression(paste("Eggs per Female \nper Gonotrophic Cycle (",italic(EFGC),")"))
+    title = expression(paste("Eggs per Female per Gonotrophic Cycle (",italic(EFGC),")"))
   ) +
   
   scale_colour_manual(values = c("albopictus" = "#67000D",
@@ -1743,8 +1807,12 @@ EFGC.q.lat <- EFGC.TPC.pars %>%
                                  "Ae. cinereus",
                                  "Ae. communis",
                                  "Ae. impiger")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 EFGC.q.lat
 
@@ -1895,7 +1963,7 @@ a.Tmin.lat <- a.TPC.pars %>%
   geom_ribbon(data = a.T0.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmin",
     title = expression(paste("Biting Rate (",italic(a),")"))
   ) +
@@ -1916,8 +1984,12 @@ a.Tmin.lat <- a.TPC.pars %>%
                                  "Ae. cinereus",
                                  "Ae. communis",
                                  "Ae. impiger")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 a.Tmin.lat
 
@@ -1935,7 +2007,7 @@ a.Tmax.lat <- a.TPC.pars %>%
   geom_ribbon(data = a.Tm.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "Tmax",
     title = expression(paste("Biting Rate (",italic(a),")"))
   ) +
@@ -1956,8 +2028,12 @@ a.Tmax.lat <- a.TPC.pars %>%
                                  "Ae. cinereus",
                                  "Ae. communis",
                                  "Ae. impiger")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 a.Tmax.lat
 
@@ -1974,7 +2050,7 @@ a.q.lat <- a.TPC.pars %>%
   geom_ribbon(data = a.q.pred, aes(ymin = lower, ymax = upper), alpha = 0.2) + 
   
   labs(
-    x = "absolute latitude",
+    x = "Absolute latitude",
     y = "q",
     title = expression(paste("Biting Rate (",italic(a),")"))
   ) +
@@ -1996,7 +2072,12 @@ a.q.lat <- a.TPC.pars %>%
                                  "Ae. communis",
                                  "Ae. impiger")) +
   
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 a.q.lat
 
@@ -2013,7 +2094,7 @@ Tmin.lat <- plot_grid(a.Tmin.lat, lf.Tmin.lat, PDR.Tmin.lat, EFGC.Tmin.lat,
 Tmin.lat
 
 ggsave("figures/FigS7-lat.Tmin.png", Tmin.lat,
-       width = 12, height = 6)
+       width = 12, height = 8)
 
 
 
@@ -2023,7 +2104,7 @@ Tmax.lat <- plot_grid(a.Tmax.lat, lf.Tmax.lat, PDR.Tmax.lat, EFGC.Tmax.lat,
 Tmax.lat
 
 ggsave("figures/FigS8-lat.Tmax.png", Tmax.lat,
-       width = 12, height = 6)
+       width = 12, height = 8)
 
 q.lat <- plot_grid(a.q.lat, lf.q.lat, PDR.q.lat, EFGC.q.lat,
                    EV.q.lat, pLA.q.lat, MDR.q.lat,
@@ -2031,7 +2112,7 @@ q.lat <- plot_grid(a.q.lat, lf.q.lat, PDR.q.lat, EFGC.q.lat,
 q.lat
 
 ggsave("figures/FigS9-lat.q.png", q.lat,
-       width = 12, height = 6)
+       width = 12, height = 8)
 
 
 # 2. Summary table -------------------------------------------------------------
