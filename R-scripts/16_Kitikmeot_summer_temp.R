@@ -1,8 +1,8 @@
 ## Lilian Chan, University of Guelph
 ## Arctic vector-borne disease transmission suitability model
 ##
-## Purpose: calculated the mean air temperature for June, July, and August 2025 
-##          in Kugluktuk and Cambridge Bay. 
+## Purpose: calculated the local air temperature from Cambridge Bay and 
+## Kugluktuk over the sampling period in 2025. 
 ## 
 ## Table of content:
 ##    0. Set-up workspace
