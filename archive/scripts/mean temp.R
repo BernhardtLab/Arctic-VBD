@@ -4,31 +4,31 @@ library(tidyverse)
 library(janitor)
 
 ## Kugluktuk data
-KUG.data.2015 <- read_csv("Temp data/en_climate_daily_NU_2300903_2015_P1D.csv")
-KUG.data.2016 <- read_csv("Temp data/en_climate_daily_NU_2300903_2016_P1D.csv")
-KUG.data.2017 <- read_csv("Temp data/en_climate_daily_NU_2300903_2017_P1D.csv")
-KUG.data.2018 <- read_csv("Temp data/en_climate_daily_NU_2300903_2018_P1D.csv")
-KUG.data.2019 <- read_csv("Temp data/en_climate_daily_NU_2300903_2019_P1D.csv")
-KUG.data.2020 <- read_csv("Temp data/en_climate_daily_NU_2300903_2020_P1D.csv")
-KUG.data.2021 <- read_csv("Temp data/en_climate_daily_NU_2300903_2021_P1D.csv")
-KUG.data.2022 <- read_csv("Temp data/en_climate_daily_NU_2300903_2022_P1D.csv")
-KUG.data.2023 <- read_csv("Temp data/en_climate_daily_NU_2300903_2023_P1D.csv")
-KUG.data.2024 <- read_csv("Temp data/en_climate_daily_NU_2300903_2024_P1D.csv")
-KUG.data.2025 <- read_csv("Temp data/en_climate_daily_NU_2300903_2025_P1D.csv")
+KUG.data.2015 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2015_P1D.csv")
+KUG.data.2016 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2016_P1D.csv")
+KUG.data.2017 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2017_P1D.csv")
+KUG.data.2018 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2018_P1D.csv")
+KUG.data.2019 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2019_P1D.csv")
+KUG.data.2020 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2020_P1D.csv")
+KUG.data.2021 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2021_P1D.csv")
+KUG.data.2022 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2022_P1D.csv")
+KUG.data.2023 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2023_P1D.csv")
+KUG.data.2024 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2024_P1D.csv")
+KUG.data.2025 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2300903_2025_P1D.csv")
 
 
 ## Cambridge Bay data
-CBAY.data.2015 <- read_csv("Temp data/en_climate_daily_NU_2400601_2015_P1D.csv")
-CBAY.data.2016 <- read_csv("Temp data/en_climate_daily_NU_2400601_2016_P1D.csv")
-CBAY.data.2017 <- read_csv("Temp data/en_climate_daily_NU_2400601_2017_P1D.csv")
-CBAY.data.2018 <- read_csv("Temp data/en_climate_daily_NU_2400601_2018_P1D.csv")
-CBAY.data.2019 <- read_csv("Temp data/en_climate_daily_NU_2400601_2019_P1D.csv")
-CBAY.data.2020 <- read_csv("Temp data/en_climate_daily_NU_2400601_2020_P1D.csv")
-CBAY.data.2021 <- read_csv("Temp data/en_climate_daily_NU_2400601_2021_P1D.csv")
-CBAY.data.2022 <- read_csv("Temp data/en_climate_daily_NU_2400601_2022_P1D.csv")
-CBAY.data.2023 <- read_csv("Temp data/en_climate_daily_NU_2400601_2023_P1D.csv")
-CBAY.data.2024 <- read_csv("Temp data/en_climate_daily_NU_2400601_2024_P1D.csv")
-CBAY.data.2025 <- read_csv("Temp data/en_climate_daily_NU_2400601_2025_P1D.csv")
+CBAY.data.2015 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2015_P1D.csv")
+CBAY.data.2016 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2016_P1D.csv")
+CBAY.data.2017 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2017_P1D.csv")
+CBAY.data.2018 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2018_P1D.csv")
+CBAY.data.2019 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2019_P1D.csv")
+CBAY.data.2020 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2020_P1D.csv")
+CBAY.data.2021 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2021_P1D.csv")
+CBAY.data.2022 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2022_P1D.csv")
+CBAY.data.2023 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2023_P1D.csv")
+CBAY.data.2024 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2024_P1D.csv")
+CBAY.data.2025 <- read_csv("data-raw/temperature-data/en_climate_daily_NU_2400601_2025_P1D.csv")
 
 
 temp.data <- rbind(KUG.data.2015, KUG.data.2016, KUG.data.2017, KUG.data.2018,
@@ -53,7 +53,7 @@ temp.data$month <- as.factor(temp.data$month)
 
 temp.data <- temp.data %>% 
   filter(!is.na(mean_temp_c)) %>% 
-  filter(month %in% c("06", "07", "08", "09"))
+  filter(month %in% c("07", "08"))
 
 temp.data.summary <- temp.data %>% 
   group_by(station_name, year, month) %>% 
@@ -61,24 +61,27 @@ temp.data.summary <- temp.data %>%
             num_observations = n())
 
 temp.data.summary
-temp.data.summary$month2 <- rep(c("Jun", "Jul", "Aug", "Sep"), 22)
+temp.data.summary$month2 <- rep(c("Jul", "Aug"), 22)
 
 
 plot <- temp.data.summary %>% ggplot(aes(x = year, y = monthly_mean_temp)) +
   geom_line(aes(color = station_name, 
                 group = interaction(station_name, month2)), 
             linewidth = 1.25) +
-  scale_color_discrete(breaks = c("KUGLUKTUK A", "CAMBRIDGE BAY A"),
+  geom_hline(yintercept = 13.4, linetype = "dashed") +
+  scale_color_manual(values = c("KUGLUKTUK A" = "#56ADF7", "CAMBRIDGE BAY A" = "#D81B60"),
+                       breaks = c("KUGLUKTUK A", "CAMBRIDGE BAY A"),
                        labels = c("Kugluktuk", "Cambridge Bay")) +
   labs(y = "Monthly mean temperature (ºC)") +
-  facet_wrap(~factor(month2, c("May", "Jun", "Jul", "Aug", "Sep"))) +
+  facet_wrap(~factor(month2, c("Jul", "Aug"))) +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        )
 
 
 plot
 
-ggsave("Temp data/historical_temp.png", plot)
+ggsave("figures/defense/historical_temp.png", plot)
 
 
 
