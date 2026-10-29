@@ -208,11 +208,11 @@ write.csv(S.params.summary, "data-processed/suitability/S.params.summary.csv")
 plot.S.params <- S.params.summary %>% 
   filter(term != "Tbreadth") %>% 
   ggplot() +
-  geom_linerange(aes(xmin = lowerQ, xmax = upperQ, y = term, colour = term), 
+  geom_linerange(aes(xmin = lowerQ, xmax = upperQ, y = term), 
                  linewidth = 1) +
-  geom_linerange(aes(xmin = lowerCI, xmax = upperCI, y = term, colour = term), 
+  geom_linerange(aes(xmin = lowerCI, xmax = upperCI, y = term), 
                  linewidth = 0.5) + #default size = 0.5
-  geom_point(aes(x = median, y = term, colour = term)) +
+  geom_point(aes(x = median, y = term)) +
   scale_x_continuous(limits = c(10, 40)) +
   labs(x = expression(paste("Temperature (", degree, "C)"))) +
   scale_y_discrete(labels=c("Tmin" = expression(paste("T"[min])), 

@@ -203,6 +203,29 @@ plot.MDR.arctic.bri.uni
 ggsave("figures/TPC-fits/MDR/MDR.arctic.bri.uni.png", plot.MDR.arctic.bri.uni,
        width = 10.3, height = 5.6)
 
+# plot.MDR.arctic.bri.uni <- df.MDR.arctic.bri.uni %>% 
+#   ggplot(aes(x = temp)) +
+#   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+#   geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
+#   #geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+#   # Customize the axes and labels
+#   #scale_x_continuous(limits = c(0, 41)) + 
+#   #scale_y_continuous(limits = c(-0.005, 0.19)) +
+#   labs(
+#     x = expression(paste("Temperature (", degree, "C)")),
+#     y = "",
+#   ) +
+#   theme(axis.text = element_text(size = 12),
+#         axis.title = element_text(size = 16),
+#         panel.grid.major = element_blank(),
+#         panel.grid.minor = element_blank(),
+#         panel.background = element_blank(),
+#         panel.border = element_rect(colour = "black", fill = NA))
+# 
+# plot.MDR.arctic.bri.uni
+# 
+# ggsave("figures/defense/briere.png", plot.MDR.arctic.bri.uni,
+#        width = 10.3, height = 5.6)
 
 ## 2B. Fit non-Arctic TPC to generate priors -----------------------------------
 
@@ -755,6 +778,29 @@ plot.MDR.arctic.quad.uni
 ggsave("figures/TPC-fits/MDR/MDR.arctic.quad.uni.png", plot.MDR.arctic.quad.uni,
        width = 10.3, height = 5.6)
 
+# plot.MDR.arctic.quad.uni <- df.MDR.arctic.quad.uni %>% 
+#   ggplot(aes(x = temp)) +
+#   geom_ribbon(aes(ymin = X2.5., ymax = X97.5.), fill = "#4363d8", alpha = 0.5) +
+#   geom_line(aes(y = X50.), color = "blue", linewidth = 1) +
+#   #geom_point(data = data, aes(x = temp, y = trait), size = 2) +
+#   # Customize the axes and labels
+#   #scale_x_continuous(limits = c(0, 41)) + 
+#   #scale_y_continuous(limits = c(-0.005, 0.19)) +
+#   labs(
+#     x = expression(paste("Temperature (", degree, "C)")),
+#     y = "",
+#   ) +
+#   theme(axis.text = element_text(size = 12),
+#         axis.title = element_text(size = 16),
+#         panel.grid.major = element_blank(),
+#         panel.grid.minor = element_blank(),
+#         panel.background = element_blank(),
+#         panel.border = element_rect(colour = "black", fill = NA))
+# 
+# plot.MDR.arctic.quad.uni
+# 
+# ggsave("figures/defense/quad.png", plot.MDR.arctic.quad.uni,
+#        width = 10.3, height = 5.6)
 
 ## 3B. Fit non-Arctic TPC to generate priors -----------------------------------
 
