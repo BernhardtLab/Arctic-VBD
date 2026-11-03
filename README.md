@@ -60,7 +60,7 @@ It also contains a folder for each trait and [suitability](https://github.com/Be
 
 ## Archive
 
-The [archive/](https://github.com/BernhardtLab/Arctic-VBD/tree/main/archive) folder contains earlier versions of scripts, data, and figures that were produced during the development of the analysis but are not part of the final manuscript workflow. This includes previous R scripts, intermediate data files, and older figure outputs. These files are retained for reference but are not required to reproduce the results in the paper.
+The [archive/](https://github.com/BernhardtLab/Arctic-VBD/tree/master/archive) folder contains earlier versions of scripts, data, and figures that were produced during the development of the analysis but are not part of the final manuscript workflow. This includes previous R scripts, intermediate data files, and older figure outputs. These files are retained for reference but are not required to reproduce the results in the paper.
 
 ## Requirements
 
