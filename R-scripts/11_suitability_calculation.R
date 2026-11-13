@@ -36,7 +36,8 @@
 ## 
 ##
 ## Outputs: 
-## figures/Fig4-suitability.sensitivity.png -
+## figures/Fig4-suitability.sensitivity.png
+## figures/Fig4-suitability.sensitivity.pdf -
 ##     Main text figure 4
 ##
 ## data-processed/suitability/S.predictions.fullposts.csv -
@@ -344,6 +345,8 @@ plot.everything
 ggsave("figures/Fig4-suitability.sensitivity.png", plot.everything, 
        width = 10, height = 10)
 
+ggsave("figures/Fig4-suitability.sensitivity.pdf", plot.everything, 
+       width = 10, height = 10)
 
 
 

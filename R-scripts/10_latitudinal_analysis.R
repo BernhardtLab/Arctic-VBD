@@ -39,13 +39,16 @@
 ##
 ##
 ## Outputs: 
-## figures/FigS7-lat.Tmin.png -
+## figures/FigS7-lat.Tmin.png
+## figures/FigS7-lat.Tmin.pdf -
 ##     Supplementary figure S7
 ##
-## figures/FigS8-lat.Tmax.png -
+## figures/FigS8-lat.Tmax.png
+## figures/FigS8-lat.Tmax.pdf -
 ##     Supplementary figure S8
 ##
 ## figures/FigS9-lat.q.png -
+## figures/FigS9-lat.q.pdf - 
 ##     Supplementary figure S9
 ## 
 ## Summary tables for the meta-regression model: 
@@ -625,8 +628,12 @@ EV.Tmax.lat <- EV.TPC.pars %>%
                       labels = c("Ae. albopictus", "Ae. triseriatus",
                                  "Ae. dorsalis", "Ae. nigromaculis", 
                                  "Ae. vexans")) +
-  
-  theme_bw()
+  theme_bw() +
+  theme(plot.title = element_text(size = 16),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 16),
+        legend.text = element_text(size = 12)
+  )
 
 EV.Tmax.lat
 
@@ -2096,6 +2103,8 @@ Tmin.lat
 ggsave("figures/FigS7-lat.Tmin.png", Tmin.lat,
        width = 12, height = 8)
 
+ggsave("figures/FigS7-lat.Tmin.pdf", Tmin.lat,
+       width = 12, height = 8)
 
 
 Tmax.lat <- plot_grid(a.Tmax.lat, lf.Tmax.lat, PDR.Tmax.lat, EFGC.Tmax.lat,
@@ -2106,12 +2115,19 @@ Tmax.lat
 ggsave("figures/FigS8-lat.Tmax.png", Tmax.lat,
        width = 12, height = 8)
 
+ggsave("figures/FigS8-lat.Tmax.pdf", Tmax.lat,
+       width = 12, height = 8)
+
+
 q.lat <- plot_grid(a.q.lat, lf.q.lat, PDR.q.lat, EFGC.q.lat,
                    EV.q.lat, pLA.q.lat, MDR.q.lat,
                    align = "v", ncol = 2, labels = "AUTO")
 q.lat
 
 ggsave("figures/FigS9-lat.q.png", q.lat,
+       width = 12, height = 8)
+
+ggsave("figures/FigS9-lat.q.pdf", q.lat,
        width = 12, height = 8)
 
 

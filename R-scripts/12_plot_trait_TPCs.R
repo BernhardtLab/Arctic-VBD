@@ -15,25 +15,32 @@
 ##
 ##
 ## Outputs: 
-## figures/Fig3-trait.TPCs.png -
+## figures/Fig3-trait.TPCs.png
+## figures/Fig3-trait.TPCs.pdf -
 ##     Main text figure 3
 ##
-## figures/FigS1-trait.TPCs.nonarctic.png -
+## figures/FigS1-trait.TPCs.nonarctic.png,
+## figures/FigS1-trait.TPCs.nonarctic.pdf -
 ##     Supplementary figure S1
 ##
-## figures/FigS2-pLA.uni.vs.inf.png -
+## figures/FigS2-pLA.uni.vs.inf.png
+## figures/FigS2-pLA.uni.vs.inf.pdf -
 ##     Supplementary figure S2
 ##
-## figures/FigS3-MDR.uni.vs.inf.png -
+## figures/FigS3-MDR.uni.vs.inf.png
+## figures/FigS3-MDR.uni.vs.inf.pdf -
 ##     Supplementary figure S3
 ##
-## figures/FigS4-lf.uni.vs.inf.png -
+## figures/FigS4-lf.uni.vs.inf.png
+## figures/FigS4-lf.uni.vs.inf.pdf -
 ##     Supplementary figure S4
 ##
-## figures/FigS5-PDR.uni.vs.inf.png -
+## figures/FigS5-PDR.uni.vs.inf.png
+## figures/FigS5-PDR.uni.vs.inf.pdf -
 ##     Supplementary figure S5
 ##
-## figures/FigS6-EV.uni.vs.inf.png -
+## figures/FigS6-EV.uni.vs.inf.png
+## figures/FigS6-EV.uni.vs.inf.pdf -
 ##     Supplementary figure S6
 ##
 ## figures/tableS5.docx -
@@ -464,6 +471,8 @@ plot.all
 
 ggsave("figures/Fig3-trait.TPCs.png", plot.all, width = 14, height = 12)
 
+ggsave("figures/Fig3-trait.TPCs.pdf", plot.all, width = 14, height = 12)
+
 
 ## 2B. non-Arctic TPCs -------------------------------------------------------------
 
@@ -586,6 +595,8 @@ plot.traits.nonarctic
 
 
 ggsave("figures/FigS1-trait.TPCs.nonarctic.png", plot.traits.nonarctic, width = 14, height = 12)
+
+ggsave("figures/FigS1-trait.TPCs.nonarctic.pdf", plot.traits.nonarctic, width = 14, height = 12)
 
 
 ## 2C. Uniform priors vs data-informed priors ----------------------------------
@@ -748,6 +759,8 @@ plot.pLA.arctic
 
 ggsave("figures/FigS2-pLA.uni.vs.inf.png", plot.pLA.arctic, width = 12, height = 8)
 
+ggsave("figures/FigS2-pLA.uni.vs.inf.pdf", plot.pLA.arctic, width = 12, height = 8)
+
 
 
 ##### Mosquito development rate (MDR) #####
@@ -905,6 +918,8 @@ plot.MDR.arctic <- plot_grid(plot.MDR.arctic.bri.uni, plot.MDR.arctic.quad.uni,
 plot.MDR.arctic
 
 ggsave("figures/FigS3-MDR.uni.vs.inf.png", plot.MDR.arctic, width = 12, height = 8)
+
+ggsave("figures/FigS3-MDR.uni.vs.inf.pdf", plot.MDR.arctic, width = 12, height = 8)
 
 
 
@@ -1076,6 +1091,8 @@ plot.lf.arctic
 
 ggsave("figures/FigS4-lf.uni.vs.inf.png", plot.lf.arctic, width = 12, height = 8)
 
+ggsave("figures/FigS4-lf.uni.vs.inf.pdf", plot.lf.arctic, width = 12, height = 8)
+
 
 ##### pathogen development rate (PDR) #####
 
@@ -1233,6 +1250,7 @@ plot.PDR.arctic
 
 ggsave("figures/FigS5-PDR.uni.vs.inf.png", plot.PDR.arctic, width = 12, height = 8)
 
+ggsave("figures/FigS5-PDR.uni.vs.inf.pdf", plot.PDR.arctic, width = 12, height = 8)
 
 
 
@@ -1392,6 +1410,7 @@ plot.EV.arctic
 
 ggsave("figures/FigS6-EV.uni.vs.inf.png", plot.EV.arctic, width = 12, height = 8)
 
+ggsave("figures/FigS6-EV.uni.vs.inf.pdf", plot.EV.arctic, width = 12, height = 8)
 
 
 
